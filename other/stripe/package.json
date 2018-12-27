@@ -1,0 +1,25 @@
+{
+ "name": "hstripe",
+ "version": "1.0.0",
+ "description": "",
+ "engines": {
+   "node": ">=10.14.2",
+},
+ "main": "index.js",
+ "scripts": {
+  "start": "node index.js"
+ },
+ "private": true,
+ "dependencies": {
+  "body-parser":">=1.18.3",
+  "express":">=4.16.3",
+  "js-yaml":">=3.11.0",
+  "pug":">=2.0.3",
+  "stripe":">=5.10.0"
+ } ,
+ "devDependencies": {
+   "ts-node":">=7.0.1",
+   "@types/node":">=10.12.2",
+   "typescript":">=3.1.3"
+ }
+}
