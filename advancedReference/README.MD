@@ -39,7 +39,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 - [Slick carousel](http://kenwheeler.github.io/slick/)
 - [My Device size](https://www.mydevice.io)
 - [Prepros.io](https://prepros.io/help/autoprefixer)
-- [Backend to avoid](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f)
+- [back-end to avoid](https://engineering.videoblocks.com/web-architecture-101-a3224e126947?gi=8a9df433a15f)
 - [Haroopad MD editor](http://pad.haroopress.com/user)
 - [Automatic programing](https://en.wikipedia.org/wiki/Automatic_programming)
 - [Riot Table](https://codepen.io/bchoii/pen/VeQepw)
