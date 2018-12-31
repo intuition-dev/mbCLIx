@@ -5,10 +5,10 @@
 ## Videos:
 S = sales, I = Foundation, II = B&M, III = Vista
 - S <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- S [Metabake Full Slides](http://prez.MetaBake.org/p)
-- S [Metabake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- S [MetaBake Full Slides](http://prez.MetaBake.org/p)
+- S [MetaBake Sales Summary](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-- I [Metabake Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- I [MetaBake Quick Demo](https://youtu.be/WyCdSFTUIvM)
 - I [mbake CLI](https://youtu.be/-KkPfAnEXyk)
 - I [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 - I [Mount S3 to local drive](http://wgehnerlab1.MetaBake.org.s3-website-us-east-1.amazonaws.com/lab1v0.html)
@@ -21,7 +21,7 @@ S = sales, I = Foundation, II = B&M, III = Vista
 ## Other:
 
 -[Conversion to S3](https://www.progress.com/blogs/importing-salesforce-data-into-amazon-s3-via-jdbc-driver)
--[StaticGen](https://www.staticgen.com/metabakeorg)
+-[StaticGen](https://www.staticgen.com/MetaBakeorg)
 - <a href='https://www.npmjs.com/package/mbake' target='_blank'>Check for latest version of mbake</a>
 - <a href='http://git.MetaBake.org' target='_blank'>git.MetaBake.org</a>
 - [Pug](https://pug.MetaBake.org)
