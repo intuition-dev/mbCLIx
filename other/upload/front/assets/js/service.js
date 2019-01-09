@@ -15,10 +15,10 @@ class Service {
 
       this.service.post('/upload', data)
          .then(function (response) {
-            console.log(response);
+            console.info(response);
          })
          .catch(function (error) {
-            console.log(error);
+            console.info(error);
          });
    }
 

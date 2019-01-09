@@ -14,7 +14,7 @@ const watch = require('watch')
 const process = require('process')
 // -----------------------------------------------
 const DIR = '/Users/vic/Dropbox/Apps/site44/cekvenich.site44.com/'
-console.log(DIR)
+console.info(DIR)
 
 
 // -----------------------------------------------
@@ -25,16 +25,16 @@ var vmOpts = { // recurse
 function rec() { // run _sync in each folder
 	var paths = walkSync(DIR, { globs: ['**/_sync.js'] })
 	var arrayLength = paths.length
-	console.log(arrayLength)
+	console.info(arrayLength)
 	for (var i = 0; i < arrayLength; i++) {
 		process.chdir(DIR)
 		var onlyPath = DIR + path.dirname(paths[i])
-		//console.log(onlyPath)
+		//console.info(onlyPath)
 		var code = fs.readFileSync(DIR+paths[i])
 		process.chdir(onlyPath) // chdir
 		vm.runInNewContext(code, vmOpts) // make
-		console.log('----------------------------------------------------------------------')
-		console.log()
+		console.info('----------------------------------------------------------------------')
+		console.info()
 	}//loop
 }//()
 rec() // rebuild at start
@@ -47,7 +47,7 @@ var waOpts = {
 watch.watchTree(DIR, waOpts, function (f, curr, prev) {
 	try {
 		var ext = path.extname(f)
-		console.log(ext) // if sass or pug, run rec()
+		console.info(ext) // if sass or pug, run rec()
 		if('.pug' == ext || '.md' == ext || '.sass' == ext || '.scss' == ext)
 			rec()
 	} catch(err) {  }

@@ -57,11 +57,11 @@ script.
 
 		var d = shadow.getElementById('dhome-card')//ctx
 		d.innerHTML=res
-		//console.log(d)
+		//console.info(d)
 
 		var i = $('a', shadow)
 		i.click(function (e) {//prevent
-			console.log('2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+			console.info('2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 			var $anchor = $(e.currentTarget)
 			var href = $anchor.prop('href')
 			e.stopPropagation()

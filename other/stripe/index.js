@@ -22,4 +22,4 @@ exp.post('/api/charge', (req, res) => {
 });
 exp.use(express.static('www'));
 exp.listen(PORT);
-console.log(PORT);
+console.info(PORT);

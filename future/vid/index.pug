@@ -24,14 +24,14 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			console.log('home-card')
+			console.info('home-card')
 			TW.loadComp('/_webComp/home-card.html', $('#comps'), UIComp1Init)
 		}
 
 		function UIComp1Init() {
-			console.log('.')
+			console.info('.')
 			var xx = TW.registerCustomElement ('home-card', HomeCard)
-			//console.log(xx)
+			//console.info(xx)
 		}
 
 block footer

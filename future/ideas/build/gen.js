@@ -43,8 +43,8 @@ require('jstransformer-sass')
 // -- CODE: --
 
 function doErr(err, loc, onComp, ctx_) {
-	console.log(loc)
-	console.log(err)
+	console.info(loc)
+	console.info(err)
 	onComp(err, ctx_)
 }
 
@@ -63,7 +63,7 @@ exports.genUg = function(root, files, onComp, ctx_) {//optional
 		var fullPath = root + files[i]
 		fullFiles.push(fullPath)
 	}
-	//console.log(fullFiles)
+	//console.info(fullFiles)
 	try {
 		var res = UglifyJS.minify(fullFiles, {
 			mangle:
@@ -91,7 +91,7 @@ exports.genSass = function(root, path, onComp, ctx_) {//optional
 				throw(warn.toString() + ctx)
 			})
 			var fixed = result.css
-			//console.log(fixed)
+			//console.info(fixed)
 			if(SASS.clean)
 				new CleanCSS().minify(fixed, function (error, minified) {
 					if(error) { doErr(error, 'CleanCSS', onComp, ctx_); return }

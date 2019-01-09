@@ -20,7 +20,7 @@ script.
 		var tpl1 = document.getElementById('sxv').text
 		var data = {'src': src}
 		var res = TW.bind(tpl1, data)
-		//console.log(res)
+		//console.info(res)
 
 		var d = shadow.querySelector('#v1')//ctx
 		d.innerHTML=res
@@ -34,7 +34,7 @@ script.
 			//,hideVideoControlsOnLoad: "true"
 			,success: function(ply, originalNode) {
 				ply.setCurrentTime(5.0)
-				console.log('ok', ply.getCurrentTime ()	)
+				console.info('ok', ply.getCurrentTime ()	)
 			}
 		})
 

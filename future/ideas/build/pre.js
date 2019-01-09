@@ -51,8 +51,8 @@ UG.preamble = 'All Rights Reserved - Contact this domain webmaster for Intellect
 // -- STEPS: --
 
 function doErr(err, loc, onComp, ctx_, root) {
-	console.log(loc)
-	console.log(err)
+	console.info(loc)
+	console.info(err)
 	onComp(err, ctx_, root)
 }
 
@@ -75,7 +75,7 @@ exports.preSass = function(root, path, onComp, ctx_) {//optional
 				throw(warn.toString() + ctx)
 			})
 			var fixed = result.css
-			//console.log(fixed)
+			//console.info(fixed)
 			if(SASS.clean)
 				new CleanCSS().minify(fixed, function (error, minified) {
 					if(error) { doErr(error, 'CleanCSS', onComp, ctx_, root); return }
@@ -96,9 +96,9 @@ exports.preRiotPug = function(root, path, onComp, ctx_) { // calls pug b4 riot
 }//()
 
 exports.onDoneFile = function (data, ctx, dir) {
-	//console.log(data)
-	console.log(ctx)
+	//console.info(data)
+	console.info(ctx)
 	fs.writeFile(dir + ctx, data, function(err) {
-		if(err) return console.log(err)
+		if(err) return console.info(err)
 	})
 }

@@ -1,6 +1,6 @@
 var path = require('path')
 __dirname=path.resolve('.')
-console.log(__dirname)
+console.info(__dirname)
 var pre = require(__dirname+'/pre.js')
 // -----------------------------------------------
 
@@ -10,6 +10,6 @@ function preSass( f ) {
 }
 
 // build:
-console.log('pre processing hello world:')
+console.info('pre processing hello world:')
 
 preSass('test')

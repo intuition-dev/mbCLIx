@@ -18,14 +18,14 @@ script.
 		}//()
 
 	ListEl.init = function(values) {
-		console.log('init')
+		console.info('init')
 		var tpl1 = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 
 		var tpl1Foo = doT.template(tpl1)
 		var res = tpl1Foo(data2)
 
-		//console.log(res)
+		//console.info(res)
 
 		var lst = ListEl._shadow.querySelector('#myList')//ctx
 		lst.innerHTML=res
@@ -40,7 +40,7 @@ script.
 			//flyd.on(_handleRec, stream)
 		}
 		_handleRec(el) {
-			console.log(el)
+			console.info(el)
 		}
 		get emitter() {
 			return this._emit
