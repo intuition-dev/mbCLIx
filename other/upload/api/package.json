@@ -6,9 +6,9 @@
   "author": "",
   "license": "MIT",
   "engines": {
-   "node": "~10.15.0",
+   "node": ">=10.15.0",
    "yarn": ">=1.13.0",
-   "mbake": ">=4.15.10"
+   "mbake": ">=4.15.15"
 },
   "dependencies": {
     "cors": ">=2.8.5",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/node": ">=10.12.18",
-    "mbake": ">=4.15.10",
+    "mbake": ">=4.15.15",
     "ts-node": ">=7.0.1",
     "typescript": ">=3.2.2"
   }
