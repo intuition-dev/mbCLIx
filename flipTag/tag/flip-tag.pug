@@ -3,10 +3,8 @@ liz-flipcard
     <yield />
   
   script.
-    
    
       this.flipx = false;
-
       this.flipy = false;
 
       thiz = this
@@ -26,13 +24,15 @@ liz-flipcard
         if (opts.direction === "y") {
           thiz.backflip = true;
         }
+
         [].slice.call(this.root.querySelectorAll('.front,.back,.cardwrap')).forEach((function(thiz) {
           return function(elem) {
             elem.style.width = thiz.root.offsetWidth + "px";
-            return elem.style.height = thiz.root.offsetHeight + "px";
+            elem.style.height = thiz.root.offsetHeight + "px";
           };
         })(this));
-        return this.update();
+
+        this.update();
       });
 
       toggle() {

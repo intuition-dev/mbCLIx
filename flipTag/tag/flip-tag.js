@@ -1,7 +1,6 @@
 
 riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx,flipy:flipy,backflip:backflip,back45:back45}"><yield></yield></div>', '', '', function(opts) {
     this.flipx = false;
-
     this.flipy = false;
 
     thiz = this
@@ -21,13 +20,15 @@ riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx,flipy:flipy,backfli
       if (opts.direction === "y") {
         thiz.backflip = true;
       }
+
       [].slice.call(this.root.querySelectorAll('.front,.back,.cardwrap')).forEach((function(thiz) {
         return function(elem) {
           elem.style.width = thiz.root.offsetWidth + "px";
-          return elem.style.height = thiz.root.offsetHeight + "px";
+          elem.style.height = thiz.root.offsetHeight + "px";
         };
       })(this));
-      return this.update();
+
+      this.update();
     });
 
     this.toggle = function() {
