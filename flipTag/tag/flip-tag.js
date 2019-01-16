@@ -39,7 +39,7 @@ riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx,flipy:flipy,backfli
         if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
           this.flipy = !this.flipy;
         }
-        return this.update();
+         this.update();
     }.bind(this)
 
     this.front = function () {
@@ -50,7 +50,7 @@ riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx,flipy:flipy,backfli
         if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
           this.flipy = false;
         }
-        return this.update();
+         this.update();
     }.bind(this)
 
     this.back = function() {
@@ -61,7 +61,7 @@ riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx,flipy:flipy,backfli
         if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
           this.flipy = true;
         }
-        return this.update();
+         this.update();
 
     }.bind(this)
 });
