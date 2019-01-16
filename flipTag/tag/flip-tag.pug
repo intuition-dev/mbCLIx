@@ -4,10 +4,12 @@ liz-flipcard
   
   script.
     
-    (function() {
+   
       this.flipx = false;
 
       this.flipy = false;
+
+      thiz = this
 
       this.on('mount', function() {
         var _ref;
@@ -19,57 +21,51 @@ liz-flipcard
         }
         this.root.style.display = "block";
         if ((_ref = opts.direction) != null ? _ref.match(/[xy]{2}/) : void 0) {
-          this.back45 = true;
+          thiz.back45 = true;
         }
         if (opts.direction === "y") {
-          this.backflip = true;
+          thiz.backflip = true;
         }
-        [].slice.call(this.root.querySelectorAll('.front,.back,.cardwrap')).forEach((function(_this) {
+        [].slice.call(this.root.querySelectorAll('.front,.back,.cardwrap')).forEach((function(thiz) {
           return function(elem) {
-            elem.style.width = _this.root.offsetWidth + "px";
-            return elem.style.height = _this.root.offsetHeight + "px";
+            elem.style.width = thiz.root.offsetWidth + "px";
+            return elem.style.height = thiz.root.offsetHeight + "px";
           };
         })(this));
         return this.update();
       });
 
-      this.toggle = (function(_this) {
-        return function() {
+      toggle() {
           var _ref, _ref1;
           if (opts.direction !== "y" || ((_ref = opts.direction) != null ? _ref.match(/x/) : void 0)) {
-            _this.flipx = !_this.flipx;
+            this.flipx = !this.flipx;
           }
           if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
-            _this.flipy = !_this.flipy;
+            this.flipy = !this.flipy;
           }
-          return _this.update();
-        };
-      })(this);
+          return this.update(); 
+      }
 
-      this.front = (function(_this) {
-        return function() {
+      front () {
           var _ref, _ref1;
           if (opts.direction !== "y" || ((_ref = opts.direction) != null ? _ref.match(/x/) : void 0)) {
-            _this.flipx = false;
+            this.flipx = false;
           }
           if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
-            _this.flipy = false;
+            this.flipy = false;
           }
-          return _this.update();
-        };
-      })(this);
+          return this.update();
+      }
 
-      this.back = (function(_this) {
-        return function() {
+      back() {
           var _ref, _ref1;
           if (opts.direction !== "y" || ((_ref = opts.direction) != null ? _ref.match(/x/) : void 0)) {
-            _this.flipx = true;
+            this.flipx = true;
           }
           if ((_ref1 = opts.direction) != null ? _ref1.match(/y/) : void 0) {
-            _this.flipy = true;
+            this.flipy = true;
           }
-          return _this.update();
-        };
-      })(this);
+          return this.update();
+        
+      }
 
-    }).call(this);
