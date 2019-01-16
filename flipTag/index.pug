@@ -1,8 +1,10 @@
 doctype html
 html
   head
-    title Liz Kis Riot Flipcard
-    link(rel='stylesheet', href='/css/style.css')
+      title Liz Kis Riot Flipcard
+      link(rel='stylesheet', href='/css/style.css')
+      script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
+      script(src='/tag/flip-tag.min.js')
 
   body
     .container
@@ -37,8 +39,7 @@ html
           .back(style='background:#078;padding:0')
             img(onclick='{toggle}', src='https://placekitten.com/315/315')
 
-    script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
-    script(src='/tag/flip-tag.min.js')
+
     flip-tag
     script.
       let flipTag = riot.mount('liz-flipcard')[0];
