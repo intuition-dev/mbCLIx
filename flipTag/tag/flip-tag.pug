@@ -1,9 +1,8 @@
 liz-flipcard
-  div.cardwrap(class='{flipx:flipx, flipy:flipy, backflip:backflip, back45:back45}')
-    <yield />
+   div.cardwrap(class='{flipx:flipx, flipy:flipy, backflip:backflip, back45:back45}')
+      <yield />
   
-  script.
-   
+   script.
       this.flipx = false
       this.flipy = false
 
@@ -24,7 +23,6 @@ liz-flipcard
         if (opts.direction === 'y') {
           thiz.backflip = true
         }
-
 
         [].slice.call(this.root.querySelectorAll('.front, .back, .cardwrap')).forEach((function(thiz) {
           return function(elem) {
@@ -67,6 +65,5 @@ liz-flipcard
             this.flipy = true
           }
            this.update()
-        
       }
 

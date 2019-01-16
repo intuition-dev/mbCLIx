@@ -62,6 +62,5 @@ riot.tag2('liz-flipcard', '<div class="cardwrap {flipx:flipx, flipy:flipy, backf
           this.flipy = true
         }
          this.update()
-
     }.bind(this)
 });
