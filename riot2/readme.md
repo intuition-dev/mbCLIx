@@ -12,7 +12,7 @@
 - There could be multiple instance of a tag on a page.
 - Leverage tag lifecycle events (eg mount) as needed.
 - Avoid tag mixins. 
-- (*) Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
+- *RULE* Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
 - Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
  
 
