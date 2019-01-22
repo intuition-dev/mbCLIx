@@ -1,5 +1,8 @@
 ## Guidelines as to when to use Tag/Components
 
+**RULE**: Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
+
+Other:
 - Main point of page/screen should be pug/include, not a component - so it's easy to see what a page does
 - But there are things around the main thing supporting it. Those could be tags. If:
 - There is some .js that we can hide in the tag
@@ -12,7 +15,7 @@
 - There could be multiple instance of a tag on a page.
 - Leverage tag lifecycle events (eg mount) as needed.
 - Avoid tag mixins. 
-- *RULE* Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
+
 - Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
  
 
