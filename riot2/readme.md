@@ -29,7 +29,7 @@ In this example `html` which is passed to a `tag` from `index.pug` specified und
 ```html
 boa-tag
     p Here is an example of 
-        b &#60;yield&#47;&#62; 
+        b <yield/> 
         | functionallity.
         br
         | This text is inside a tag.
@@ -46,3 +46,9 @@ And this `html` in compiled output will be inserted exactly in the place where t
         .
         <yield />
 ```
+
+For more information learn more about Riot.js, pug and Yield:
+
+* [Learn dynamic binding with Riot.js in 90 seconds](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
+* [Riot.js Yield](http://tutorials.jenkov.com/riotjs/yield.html)
+* [Riot.js Guide](https://riot.js.org/guide/)
