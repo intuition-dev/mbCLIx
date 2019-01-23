@@ -22,6 +22,8 @@ Other:
 - There could be multiple instance of a tag on a page.
 - Leverage tag lifecycle events (eg mount) as needed.
 - Avoid tag mixins. 
+- Should be able to work external
+- Should change based on attributes. 
 
 - Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
  
