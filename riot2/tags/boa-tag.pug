@@ -1,11 +1,13 @@
 boa-tag
 
+    form
+
+      <yield />
+
+         button(type='submit', onclick='!{"{getSub}"}') Check Subtraction!
+
     p.num { num }
 
-    form
-        input(type='number', placeholder='Enter any number')
-        input(type='number', placeholder='Enter any number')
-    <yield />
 
     script.
         // sum
@@ -13,9 +15,7 @@ boa-tag
             e.preventDefault();
             let arg1 = $('input:first-of-type', this.root).val();
             let arg2 = $('input:last-of-type', this.root).val();
-            this.doSomething(arg1, arg2);
-        }
-        doSomething(arg1, arg2) {
+ 
             this.update({num: +arg1+ +arg2});
         }
 
@@ -24,8 +24,6 @@ boa-tag
             e.preventDefault();
             let arg1 = $('input:first-of-type', this.root).val();
             let arg2 = $('input:last-of-type', this.root).val();
-            this.doSomething2(arg1, arg2);
-        }
-        doSomething2(arg1, arg2) {
+  
             this.update({num: +arg1 - +arg2});
         }

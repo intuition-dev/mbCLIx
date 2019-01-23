@@ -23,18 +23,14 @@ html
             div
                 p A simple example of calculating
 
-                boa-tag
-                    button(type='submit', onclick='!{"{getSum}"}') Check sum!
-                    p Here is an example of 
-                        b &#60;yield&#47;&#62; 
-                        | functionallity.
-                        br
-                        | This text is inside a tag.
+                boa-tag(operatio=minus)
+                     input(type='number', placeholder='Enter any number')
+                     input(type='number', placeholder='Enter any number')
+
+                boa-tag(oper=sum)
+                     input(type='number', placeholder='Enter any number')
+                     input(type='number', placeholder='Enter any number')
                     
-
-                boa-tag
-                    button(type='submit', onclick='!{"{getSub}"}') Check Subtraction!
-
 
             script.
                riot.mount('*')
