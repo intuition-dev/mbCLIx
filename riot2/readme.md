@@ -1,12 +1,14 @@
 ## Guidelines as to when to use Tag/Components
 
-**RULE**: Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
+**RULE**: Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o jq)
 
-   // Contexted jQuery
-   $('p', this.root)
+```html
+// Contexted jQuery
+$('p', this.root)
 
-   // Contexted Query Selector
-   this.root.querySelectorAll('p')
+// Contexted Query Selector
+this.root.querySelectorAll('p')
+```
 
 
 Other:
@@ -23,7 +25,7 @@ Other:
 - Leverage tag lifecycle events (eg mount) as needed.
 - Avoid tag mixins. 
 - Should be able to work external
-- Should change based on attributes. 
+- Should change based on html tag attributes. 
 
 - Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
  
@@ -47,13 +49,13 @@ boa-tag
 And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` tag is specified in a tag:
 
 ```html
-    boa-tag
+boa-tag
 
-        p.num { num }
-        .
-        .
-        .
-        <yield />
+    p.num { num }
+    .
+    .
+    .
+    <yield />
 ```
 
 For more information learn more about Riot.js, pug and Yield:

@@ -14,7 +14,6 @@ html
         script(src='https://cdn.jsdelivr.net/npm/riot@3.13.2/riot.min.js')
         script(src='https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.slim.min.js')
         script(src=ROOT + 'tags/boa-tag.js')
-        script(src=ROOT + 'tags/boa2-tag.js')
     body
         header
             h1 #{title}
@@ -25,13 +24,17 @@ html
                 p A simple example of calculating
 
                 boa-tag
+                    button(type='submit', onclick='!{"{getSum}"}') Check sum!
                     p Here is an example of 
                         b &#60;yield&#47;&#62; 
                         | functionallity.
                         br
                         | This text is inside a tag.
+                    
 
-                boa2-tag
+                boa-tag
+                    button(type='submit', onclick='!{"{getSub}"}') Check Subtraction!
+
 
             script.
                riot.mount('*')
