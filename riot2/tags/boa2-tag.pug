@@ -1,0 +1,20 @@
+boa2-tag
+
+    p.num { num }
+
+    form
+        input(type='number', placeholder='Enter any number', ref='one2')
+        input(type='number', placeholder='Enter any number', ref='two2')
+        button(type='submit', onclick="{getSum}") Check Subtraction!
+
+    script.
+        getSum(e) {
+            e.preventDefault();
+            let arg1 = this.refs.one2.value;
+            let arg2 = this.refs.two2.value;
+            this.doSomething(arg1, arg2);
+        }
+
+        doSomething(arg1, arg2) {
+            this.update({num: +arg1 - +arg2});
+        }

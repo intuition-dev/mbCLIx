@@ -5,8 +5,8 @@
 Other:
 - Main point of page/screen should be pug/include, not a component - so it's easy to see what a page does
 - But there are things around the main thing supporting it. Those could be tags. If:
-- There is some .js that we can hide in the tag
-- Could host the tag.js outside of the web app, think:  banner ad. Encapsulation! 
+    - There is some .js that we can hide in the tag
+    - Could host the tag.js outside of the web app, think:  banner ad. Encapsulation! 
 - Normally each tag, when mounted on the page, is passed the modelview. Binding is inside the tag.  eg: options
 - Tag does update() (using virtual DOM as is current fad)
 - When possible make tag as much attribute or dom based. eg yield, and again ... attributes over .js
@@ -28,19 +28,21 @@ In this example `html` which is passed to a `tag` from `index.pug` specified und
 
 ```html
 boa-tag
-    form
-        input(type='number', placeholder='Enter any number', id='one')
-        input(type='number', placeholder='Enter any number', id='two')
-        button(type='submit') Check sum!
+    p Here is an example of 
+        b &#60;yield&#47;&#62; 
+        | functionallity.
+        br
+        | This text is inside a tag.
 ```
 
-And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` tag is specified:
+And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` tag is specified in a tag:
 
 ```html
     boa-tag
 
-        p A simple example of calculating. The form below is passed inside a tag using Yield feature
         p.num { num }
-
+        .
+        .
+        .
         <yield />
 ```
