@@ -2,6 +2,13 @@
 
 **RULE**: Must use Contexted DOM selector|query (check RIOT Guide for jq and w/o  jq)
 
+   // Contexted jQuery
+   $('p', this.root)
+
+   // Contexted Query Selector
+   this.root.querySelectorAll('p')
+
+
 Other:
 - Main point of page/screen should be pug/include, not a component - so it's easy to see what a page does
 - But there are things around the main thing supporting it. Those could be tags. If:
@@ -20,7 +27,7 @@ Other:
  
 
 
-## Riot2 XXX Fix docs, move tags to folder.
+## Riot2 
 
 The <yield> tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime.
 
