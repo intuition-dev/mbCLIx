@@ -59,7 +59,7 @@ boa-tag
     <yield />
 ```
 
-! Note:
+**Note:**
 
 There might be a bug/issue with addressing to a function through html tag attribute from a page to a tag, so instead of this:
 
