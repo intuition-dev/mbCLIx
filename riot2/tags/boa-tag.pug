@@ -4,26 +4,27 @@ boa-tag
 
         <yield />
         .h-row
-            button(type='submit', onclick='{init}') {opts.text}
+            button(type='submit', onclick='{this.handleClick}') {opts.text}
             p.num { num }
 
     script.
-        let type = opts.type;
+        this.on('before-mount', function() { // right after the tag is mounted on the page
+            handleClick(e) {
+                e.preventDefault();
 
-        init(e) {
-            e.preventDefault();
-
-            if (type === 'sum') {
-                // sum
-                let arg1 = $('input:first-of-type', this.root).val();
-                let arg2 = $('input:last-of-type', this.root).val();
-    
-                this.update({num: +arg1+ +arg2});
-            } else {
-                // subtraction
-                let arg1 = $('input:first-of-type', this.root).val();
-                let arg2 = $('input:last-of-type', this.root).val();
-    
-                this.update({num: +arg1 - +arg2});
+                let type = opts.type;
+                if (type === 'sum') {
+                    // sum
+                    let arg1 = $('input:first-of-type', this.root).val();
+                    let arg2 = $('input:last-of-type', this.root).val();
+        
+                    this.update({num: +arg1+ +arg2});
+                } else {
+                    // subtraction
+                    let arg1 = $('input:first-of-type', this.root).val();
+                    let arg2 = $('input:last-of-type', this.root).val();
+        
+                    this.update({num: +arg1 - +arg2});
+                }
             }
-        }
+        });
