@@ -10,6 +10,7 @@ $('p', this.root)
 this.root.querySelectorAll('p')
 ```
 
+A tag is architected so it is easy for the page to use - even if it is hard to write the tag.
 
 Other:
 - Main point of page/screen should be pug/include, not a component - so it's easy to see what a page does
@@ -25,7 +26,7 @@ Other:
 - Leverage tag lifecycle events (eg mount) as needed.
 - Avoid tag mixins. 
 - Should be able to work external
-- Should change based on html tag attributes. 
+- Should change based on html tag attributes. Use attributes when you can.
 
 - Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
  
