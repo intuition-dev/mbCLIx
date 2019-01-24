@@ -85,16 +85,17 @@ input::placeholder {
 p.num {
     font-size: 30px;
     font-weight: bold;
+    margin: 0 0 0 20px;
 }
 
 button {
     border: 0;
     display: table;
-    margin: 2rem 0;
     color: #fff;
     text-transform: uppercase;
     padding: 10px 25px;
     cursor: pointer;
+    
 }
 
 button, input {
@@ -107,4 +108,11 @@ button:active, input:active {
 
 form {
     margin-top: 3rem;
+}
+
+.h-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2rem 0;
 }

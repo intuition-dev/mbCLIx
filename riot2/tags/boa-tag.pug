@@ -2,28 +2,28 @@ boa-tag
 
     form
 
-      <yield />
-
-         button(type='submit', onclick='!{"{getSub}"}') Check Subtraction!
-
-    p.num { num }
-
+        <yield />
+        .h-row
+            button(type='submit', onclick='{init}') {opts.text}
+            p.num { num }
 
     script.
-        // sum
-        getSum(e) {
-            e.preventDefault();
-            let arg1 = $('input:first-of-type', this.root).val();
-            let arg2 = $('input:last-of-type', this.root).val();
- 
-            this.update({num: +arg1+ +arg2});
-        }
+        let type = opts.type;
 
-        // subtraction
-        getSub(e) {
+        init(e) {
             e.preventDefault();
-            let arg1 = $('input:first-of-type', this.root).val();
-            let arg2 = $('input:last-of-type', this.root).val();
-  
-            this.update({num: +arg1 - +arg2});
+
+            if (type === 'sum') {
+                // sum
+                let arg1 = $('input:first-of-type', this.root).val();
+                let arg2 = $('input:last-of-type', this.root).val();
+    
+                this.update({num: +arg1+ +arg2});
+            } else {
+                // subtraction
+                let arg1 = $('input:first-of-type', this.root).val();
+                let arg2 = $('input:last-of-type', this.root).val();
+    
+                this.update({num: +arg1 - +arg2});
+            }
         }

@@ -23,17 +23,17 @@ html
             div
                 p A simple example of calculating
 
-                boa-tag(operatio=minus)
-                     input(type='number', placeholder='Enter any number')
-                     input(type='number', placeholder='Enter any number')
+                boa-tag(type='sum', text='Check Sum!')
+                    input(type='number', placeholder='Enter any number')
+                    input(type='number', placeholder='Enter any number')
 
-                boa-tag(oper=sum)
-                     input(type='number', placeholder='Enter any number')
-                     input(type='number', placeholder='Enter any number')
+                boa-tag(type='sub', text='Check Subtraction!')
+                    input(type='number', placeholder='Enter any number')
+                    input(type='number', placeholder='Enter any number')
                     
 
             script.
-               riot.mount('*')
+                riot.mount('*')
 
             .info
                 h3 For more information learn more about Riot.js, pug and Yield:
