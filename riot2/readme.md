@@ -59,6 +59,28 @@ boa-tag
     <yield />
 ```
 
+! Note:
+
+There might be a bug/issue with addressing to a function through html tag attribute from a page to a tag, so instead of this:
+
+```html
+button(onclick='{toggle}') Text
+```
+
+you might need to escape `{}` brackets from removing in compiled html, like this:
+
+```html
+button(onclick='!{"{toggle}"}') Text
+```
+
+to then access it in a tag's script code like this:
+
+```js
+this.toggle = (function(_this) {
+    _this.update();
+})(this);
+```
+
 For more information learn more about Riot.js, pug and Yield:
 
 * [Learn dynamic binding with Riot.js in 90 seconds](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
