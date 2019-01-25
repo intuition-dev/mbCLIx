@@ -1,0 +1,16 @@
+site_name: Meta Docs
+site_url: http://mBake.org
+repo_url: http://mBake.org
+pages:
+   - Home: index.md
+
+   - Web IDE: ca.md
+   - File Watcher: watch.md
+   - What is so Meta?: meta.md
+
+   - Using a CDN: cdn.md
+   - API Reference: ref.md
+   - Resources: res.md
+   - About: about.md
+
+theme: readthedocs
