@@ -1,23 +1,24 @@
 
-riot.tag2('boa-tag', '<form><yield></yield> <div class="h-row"> <button type="submit" onclick="{this.handleClick}">{opts.text}</button> <p class="num">{num}</p> </div> </form>', '', '', function(opts) {
-    this.on('before-mount', function() {
-        this.handleClick = function(e) {
-            e.preventDefault();
+riot.tag2('boa-tag', '<form><yield></yield> <div class="h-row"> <button type="submit">{opts.text}</button> <p class="num">{num}</p> </div> </form>', '', '', function(opts) {
+      this.on('mount', function() {
+          let THIZ = this
+          $('button', this.root).click(function(evt) {
 
-            let type = opts.type;
-            if (type === 'sum') {
+             evt.preventDefault()
+             let type = opts.type;
+             if (type === 'sum') {
 
-                let arg1 = $('input:first-of-type', this.root).val();
-                let arg2 = $('input:last-of-type', this.root).val();
+                let arg1 = $('input:first-of-type', THIZ.root).val()
+                let arg2 = $('input:last-of-type', THIZ.root).val()
 
-                this.update({num: +arg1+ +arg2});
-            } else {
+                THIZ.update({num: +arg1+ +arg2});
+             } else {
 
-                let arg1 = $('input:first-of-type', this.root).val();
-                let arg2 = $('input:last-of-type', this.root).val();
+                let arg1 = $('input:first-of-type', THIZ.root).val()
+                let arg2 = $('input:last-of-type', THIZ.root).val()
 
-                this.update({num: +arg1 - +arg2});
-            }
-        }.bind(this)
-    });
+                THIZ.update({num: +arg1 - +arg2})
+             }
+          })
+    })
 });
