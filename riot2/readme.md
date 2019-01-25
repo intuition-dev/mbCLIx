@@ -17,7 +17,7 @@ Other:
 - But there are things around the main thing supporting it. Those could be tags. If:
     - There is some .js that we can hide in the tag
     - Could host the tag.js outside of the web app, think:  banner ad. Encapsulation! 
-- Normally each tag, when mounted on the page, is passed the modelview. Binding is inside the tag.  eg: options
+- Normally each tag, when mounted on the page, is passed the ViewModel. Binding is inside the tag.  eg: options
 - Tag does update() (using virtual DOM as is current fad)
 - When possible make tag as much attribute or dom based. eg yield, and again ... attributes over .js
 - CSS style could be scoped -  Scoped CSS :scope
