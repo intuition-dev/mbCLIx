@@ -1,4 +1,5 @@
 
+Agenda:
 
 Advanced .5D
 ========
@@ -19,7 +20,9 @@ Advanced .5D
 
 - GSAP, Ad
 
-- Caddy 1H
+- Other Examples, eg Slides
+
+- Navbar .5H (Navbar first, other FX at end)
 
 Perspectives 1H
 ============
@@ -28,6 +31,8 @@ Perspectives 1H
 - Meta of tag: declarative, advanced Pug Tags (FlipCard) 
 
 - Cake DSL
+
+- Caddy 1H
 
 - Meta of webapp: admin app by admin
 
