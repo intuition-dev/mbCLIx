@@ -9,6 +9,26 @@ $('p', this.root)
 // Contexted Query Selector
 this.root.querySelectorAll('p')
 ```
+It is not the best practice to have an event on the dom, eg: `button(onclick='{this.handleClick}') button text` in html attribute, instead it's better register and event to a dom like this:
+
+```js
+$('button', this.root).click(function() {...});
+```
+It is a good practice to use the life cycle event mount, eg:
+
+```js
+this.on('mount', function() {...});
+```
+and use `this.update()`, eg:
+```js
+this.on('mount', function() { // right after the tag is mounted on the page
+    let THIZ = this; // this is the tag
+    .
+    .
+    .
+    THIZ.update({num: +arg1 - +arg2});
+});
+```
 
 A tag is architected so it is easy for the page to use - even if it is hard to write the tag.
 
