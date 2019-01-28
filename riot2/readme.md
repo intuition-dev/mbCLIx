@@ -36,30 +36,27 @@ Other:
 
 The <yield> tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime.
 
-In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-tag` tag (the `form`):
+In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-tag` tag (two form inputs):
 
 ```html
-boa-tag
-    p Here is an example of 
-        b <yield/> 
-        | functionallity.
-        br
-        | This text is inside a tag.
+boa-tag(type='sum', text='Check Sum!')
+    input(type='number', placeholder='Enter any number')
+    input(type='number', placeholder='Enter any number')
 ```
 
-And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` tag is specified in a tag:
+And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` html tag is specified in a riot tag:
 
 ```html
 boa-tag
 
-    p.num { num }
-    .
-    .
-    .
-    <yield />
+    form
+        <yield />
+        .h-row
+            button(type='submit') {opts.text}
+            p.num { num }
 ```
 
-**Note:**
+**NOTE**
 
 There might be a bug/issue with addressing to a function through html tag attribute from a page to a tag, so instead of this:
 
@@ -73,13 +70,6 @@ you might need to escape `{}` brackets from removing in compiled html, like this
 button(onclick='!{"{toggle}"}') Text
 ```
 
-to then access it in a tag's script code like this:
-
-```js
-this.toggle = (function(_this) {
-    _this.update();
-})(this);
-```
 
 For more information learn more about Riot.js, pug and Yield:
 
