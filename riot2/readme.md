@@ -21,7 +21,7 @@ this.on('mount', function() {...});
 ```
 and use `this.update()`, eg:
 ```js
-this.on('mount', function() { // right after the tag is mounted on the page
+this.on('mount', function() { // right after the component is mounted on the page
     let THIZ = this; // this is the tag
     .
     .
@@ -30,7 +30,7 @@ this.on('mount', function() { // right after the tag is mounted on the page
 });
 ```
 
-A tag is architected so it is easy for the page to use - even if it is hard to write the tag.
+A component is architected so it is easy for the page to use - even if it is hard to write the tag.
 
 Other:
 - Main point of page/screen should be pug/include, not a component - so it's easy to see what a page does
@@ -38,25 +38,25 @@ Other:
     - There is some .js that we can hide in the tag
     - Could host the tag.js outside of the web app, think:  banner ad. Encapsulation! 
 - Normally each tag, when mounted on the page, is passed the ViewModel. Binding is inside the tag.  eg: options
-- Tag does update() (using virtual DOM as is current fad)
-- When possible make tag as much attribute or dom based. eg yield, and again ... attributes over .js
+- component does update() (using virtual DOM as is current fad)
+- When possible make component as much attribute or dom based. eg yield, and again ... attributes over .js
 - CSS style could be scoped -  Scoped CSS :scope
 - Could be used in another webapps. eg: contact us.
-- There could be multiple instance of a tag on a page.
-- Leverage tag lifecycle events (eg mount) as needed.
-- Avoid tag mixins. 
+- There could be multiple instance of a component on a page.
+- Leverage component lifecycle events (eg mount) as needed.
+- Avoid component mixins. 
 - Should be able to work external
-- Should change based on html tag attributes. Use attributes when you can.
+- Should change based on html component attributes. Use attributes when you can.
 
-- Tag should not reference or affect other things on a page. It is one way communication from page. If anything: tag broadcasts events
+- component should not reference or affect other things on a page. It is one way communication from page. If anything: component broadcasts events
  
 
 
 ## Riot2 
 
-The <yield> tag is a special riot core feature that allows you to inject and compile the content of any custom tag inside its template in runtime.
+The <yield> component is a special riot core feature that allows you to inject and compile the content of any custom component inside its template in runtime.
 
-In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-tag` tag (two form inputs):
+In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-tag` component (two form inputs):
 
 ```html
 boa-tag(type='sum', text='Check Sum!')
@@ -64,7 +64,7 @@ boa-tag(type='sum', text='Check Sum!')
     input(type='number', placeholder='Enter any number')
 ```
 
-And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` html tag is specified in a riot tag:
+And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` html component is specified in a riot tag:
 
 ```html
 boa-tag
@@ -78,7 +78,7 @@ boa-tag
 
 **NOTE**
 
-There might be a bug/issue with addressing to a function through html tag attribute from a page to a tag, so instead of this:
+There might be a bug/issue with addressing to a function through html component attribute from a page to a tag, so instead of this:
 
 ```html
 button(onclick='{toggle}') Text

@@ -16,6 +16,6 @@ To redirect from not existing pages (eg: http://blog-website.s3-website-us-east-
 </RoutingRules>
 ```
 
-Specify page to which 404 will be redirected in `<ReplaceKeyWith>` tag and the host name in `<HostName>` tag.
+Specify page to which 404 will be redirected in `<ReplaceKeyWith>` component and the host name in `<HostName>` tag.
 
 See this ![screenshot](image.png?raw=true "AWS s3 404 redirect") for more information.

@@ -28,7 +28,7 @@ Perspectives 1H
 ============
 - (*) Phonegap deploy sample app to build.adobe
 
-- Meta of tag: declarative, advanced Pug Tags (FlipCard) 
+- Meta of tag: declarative, advanced Pug components (FlipCard) 
 
 - Cake DSL
 
