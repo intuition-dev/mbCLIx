@@ -56,10 +56,10 @@ Other:
 
 The <yield> component is a special riot core feature that allows you to inject and compile the content of any custom component inside its template in runtime.
 
-In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-tag` component (two form inputs):
+In this example `html` which is passed to a `tag` from `index.pug` specified under the `boa-comp` component (two form inputs):
 
 ```html
-boa-tag(type='sum', text='Check Sum!')
+boa-comp(type='sum', text='Check Sum!')
     input(type='number', placeholder='Enter any number')
     input(type='number', placeholder='Enter any number')
 ```
@@ -67,7 +67,7 @@ boa-tag(type='sum', text='Check Sum!')
 And this `html` in compiled output will be inserted exactly in the place where the `<yield/>` html component is specified in a riot tag:
 
 ```html
-boa-tag
+boa-comp
 
     form
         <yield />
