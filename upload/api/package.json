@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/node": ">=10.12.18",
     "mbake": ">=4.15.15",
-    "ts-node": ">=7.0.1",
+    
     "typescript": ">=3.2.2"
   }
 }
