@@ -7,7 +7,7 @@
 1. Create www/index.html    <body> oh hi </body>
 
 1.  Configure Caddyfile to use WebDAV.
-Example in this folder.
+Example Caddyfile in this folder.
 
 
 1. Mount. eg. Eg CyberDuck WebDAV http and match port, under /webdav path
