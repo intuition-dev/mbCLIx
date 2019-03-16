@@ -6,8 +6,8 @@
   "author": "",
   "license": "MIT",
   "engines": {
-   "node": ">=10.15.1",
-   "yarn": ">=1.13.0",
+   "node": ">=10.15.3",
+   "yarn": ">=1.15.2",
    "mbake": ">=4.15.15"
 },
   "dependencies": {
