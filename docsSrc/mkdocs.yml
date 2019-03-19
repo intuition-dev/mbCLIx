@@ -1,0 +1,20 @@
+site_name: mBake Advanced Docs   
+
+nav:
+
+   - Home: index.md
+
+   - Social SEO: seo.md
+   - AMP: amp.md
+   - Components: tags.md
+   - CMS: cms.md
+   - Electron SPA: electron.md
+   - Meta Cake: meta-cake.md
+   
+
+   - Resources: res.md
+   - About: about.md
+
+theme: readthedocs
+docs_dir: src
+site_dir: ../docs
