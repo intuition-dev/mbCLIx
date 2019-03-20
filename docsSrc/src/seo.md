@@ -11,6 +11,15 @@ You can inspect code in the example blog app:
 
         $ mbake -b
 
+compile files and run the app:
+
+        $ mbakeW -c .
+        $ cd blog
+        $ mbake -i .
+        $ cd ../assets
+        $ mbakeW -s .
+        $ mbakeW -w .
+
 in the `/layout/layout.pug` file you can see defined SEO meta tags in `head`:
 
         meta(name='description', content=content_text)

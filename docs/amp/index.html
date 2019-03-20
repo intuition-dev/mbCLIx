@@ -132,6 +132,47 @@
             <div class="section">
               
                 <h1 id="amp">AMP</h1>
+<p>The Accelerated Mobile Pages (AMP) is an open-source library that provides a straightforward way to create web pages that are compelling, smooth, and load near instantaneously for users. Web pages and ads published in the AMP open-source format load near instantly, giving users a smooth, more engaging experience on mobile and desktop.</p>
+<p>When a standard webpage has an AMP counterpart, a link to the AMP page is placed in an HTML tag in the source code of the standard page. Because most AMP pages are easily discoverable by web crawlers, third parties such as search engines and other referring websites can choose to link to the AMP version of a webpage instead of the standard version.</p>
+<p>AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML.</p>
+<p>To learn what's necessary to create a valid AMP HTML page inspect code in blog app (downloaded in the <a href="/seo/">previous tutorial</a>). Open file <code>/layout/layout.pug</code>, it is the layout for regular pages, here in <code>head</code> you can see the link to the AMP page:</p>
+<pre><code>    link(rel='amphtml', href='m.html')
+</code></pre>
+<p>With this link and the link to regular page in amp-page <code>head</code> this pages are linked to each other, so search engines know that this page has an amp version. Then open <code>/layout/layout-m.pug</code> file, it is the layout for amp-pages.</p>
+<p>This line tells that this is an AMP page:</p>
+<pre><code>    html('⚡')
+</code></pre>
+<p>Next lines in <code>head</code>.
+The charset definition must be the first child of the <code>head</code> tag:</p>
+<pre><code>    meta(charset='utf-8')
+</code></pre>
+<p>The AMP runtime must be loaded as the second child of the <code>head</code> tag:</p>
+<pre><code>    script(async, src='https://cdn.ampproject.org/v0.js')
+</code></pre>
+<p>then goes a canonical link pointing to the regular HTML, as well required for an AMP page. (If no HTML version exists, it should point to itself):</p>
+<pre><code>    link(rel='canonical', href='index.html')
+</code></pre>
+<p>AMP page require a viewport declaration. It's recommended to include initial-scale=1:</p>
+<pre><code>    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover")
+</code></pre>
+<p>CSS must be embedded inline. In mbake we use include feature for css, we define css in the separate file, but in the compiled html output css will still be inline:</p>
+<pre><code>    include ../shared/css.pug
+</code></pre>
+<p>If you'll open file <code>shared/css.pug</code> you can see that styles wrapped in <code>style(amp-custom='').</code>
+AMP HTML documents must contain the following boilerplate in their <code>head</code> tag:</p>
+<pre><code>    style(amp-boilerplate='').
+        body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+</code></pre>
+<p>In <code>body</code> tag almost all regular html tags are supported except for certain tags, such as the <code>img</code> tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags, eg: <code>blog/blog/post-*/layout-single-m.pug</code>:</p>
+<pre><code>    amp-img.img__inside(alt='...', src='who.jpg', width='300', height='300')
+</code></pre>
+<p>You can test your AMP page on validation errors online here:</p>
+<pre><code>    https://search.google.com/test/amp
+</code></pre>
+<p>or directly in browser by adding this string to the end of your page's url:</p>
+<pre><code>    /m.html#development=1
+</code></pre>
+<p>open browser's console and it will show you whether the page has validation errors or validation is successful.</p>
 <p>In the <a href="/tags/">next tutorial </a> you will learn about Components.
 NEXT: Go to <a href="/tags/">Components</a>.</p>
               

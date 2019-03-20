@@ -139,6 +139,14 @@ Including social media metadata in all new pieces of content allows you to optim
 <p>You can inspect code in the example blog app:</p>
 <pre><code>    $ mbake -b
 </code></pre>
+<p>compile files and run the app:</p>
+<pre><code>    $ mbakeW -c .
+    $ cd blog
+    $ mbake -i .
+    $ cd ../assets
+    $ mbakeW -s .
+    $ mbakeW -w .
+</code></pre>
 <p>in the <code>/layout/layout.pug</code> file you can see defined SEO meta tags in <code>head</code>:</p>
 <pre><code>    meta(name='description', content=content_text)
 
