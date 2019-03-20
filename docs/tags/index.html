@@ -74,6 +74,8 @@
         
             <li><a class="toctree-l3" href="#fliptag">FlipTag</a></li>
         
+            <li><a class="toctree-l3" href="#riot2">riot2</a></li>
+        
         </ul>
     
 
@@ -139,6 +141,53 @@
               
                 <h1 id="components">Components</h1>
 <h2 id="fliptag">FlipTag</h2>
+<p><a href="https://github.com/metabake/MetaCake-plugins-2/tree/master/docs/items/flip">Here</a> you can check the example of an advanced <code>FlipTag</code> component.</p>
+<p>Download and unpack or git clone <a href="https://github.com/metabake/MetaCake-plugins-2/tree/master/docs/items/flip">the project</a>.</p>
+<p>From the root (<code>/flip</code>) folder, compile <code>.pug</code>:</p>
+<pre><code>    mbakeW -c .
+</code></pre>
+<p>Use component with the attributes in your <code>index.pug</code>:</p>
+<pre><code class="pug">flipcard(direction='y', style='width:315px;height:100px;display:none')
+  .front
+    h2 Flip Vertical
+    button(onclick='{toggle}') Flip
+  .back(style='background:#a40')
+    h2 I'm Flipped
+    button(onclick='{toggle}') Back
+</code></pre>
+
+<p>You can access any method from <code>flip-comp.pug</code> in your <code>index.pug</code> file, eg:</p>
+<pre><code class="pug">.button(onclick='{toggle}')
+</code></pre>
+
+<p>As well as element's attributes, you define them also in <code>index.pug</code>:</p>
+<pre><code class="pug">flipcard(direction='y')
+</code></pre>
+
+<p>and then they are used in <code>flip-comp.pug</code>.</p>
+<h2 id="riot2">riot2</h2>
+<p><a href="https://github.com/metabake/mBake-Advanced4/tree/master/riot2">Here</a> is another example of an advanced <code>riot2</code> component.</p>
+<p>The <code>&lt;yield&gt;</code> component that is used here is a special riot core feature that allows you to inject and compile the content of any custom component inside its template in runtime.</p>
+<p>In this example <code>html</code> which is passed to a <code>boa-comp.pug</code> component from <code>index.pug</code> specified under the <code>boa-comp</code> html-tag/component (two form inputs):</p>
+<pre><code class="html">boa-comp(type='sum', text='Check Sum!')
+    input(type='number', placeholder='Enter any number')
+    input(type='number', placeholder='Enter any number')
+</code></pre>
+
+<p>And this <code>html</code> in compiled html output will be inserted exactly in the place where the <code>&lt;yield/&gt;</code> html-tag/component is specified in a riot tag:</p>
+<pre><code class="html">boa-comp
+
+    form
+        &lt;yield /&gt;
+        .h-row
+            button(type='submit') {opts.text}
+            p.num { num }
+</code></pre>
+
+<p>The idea of this component is to use it, without knowing or investigating which code is written and how it works in <code>boa-comp.pug</code> component, but simply using it in your html by passing html parameters to it, eg:</p>
+<pre><code>type='sum', text='Check Sum!'
+</code></pre>
+<p>And the component will do all calculation, depending only on this parameters that are being passed. Ideally even not a programmer can use it. It is a next level of productivity, since components are more productive.</p>
 <p>In the <a href="/cms/">next tutorial </a> you will learn about CMS.
 NEXT: Go to <a href="/cms/">Editor CMS</a>.</p>
               

@@ -6,6 +6,8 @@ When a standard webpage has an AMP counterpart, a link to the AMP page is placed
 
 AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML.
 
+AMP is useful for SEO and has two benefits for it. One is it will have a `Fast` label designation on search engine results pages, and the other is that it will be a ranking factor. 
+
 ## AMP page example
 
 ### Head
@@ -50,6 +52,12 @@ AMP HTML documents must contain the following boilerplate in their `head` tag:
         style(amp-boilerplate='').
             body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
 
+### Custom scripts in the AMP pages
+
+Note that no custom script is supported in the AMP page. The whole point of AMP is to only allow a subset of web technologies to stop your page being slow.
+
+Javascript is often the cause of slow websites and so AMP pages do not allow them (except for the AMP scripts themselves), though they've tried to fill in the gap this leaves with amp components which are specially written to not be slow.
+
 ### Body
 
 In `body` tag almost all regular html tags are supported except for certain tags, such as the `img` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags, eg: `blog/blog/post-*/layout-single-m.pug`:
@@ -58,15 +66,15 @@ In `body` tag almost all regular html tags are supported except for certain tags
 
 ### AMP page validation
 
-You can test your AMP page on validation errors online here, type in the unput field the page that is needed to be validated (note that you need to enter url to your amp page, eg: `http://example/about/m.html`):
+You can test your AMP page on validation errors online here, type in the unput field the page that is needed to be validated (note that you need to enter url to your AMP page, eg: `http://example/about/m.html`):
 
         https://search.google.com/test/amp
 
-or you can validate amp page directly in browser by adding this string to the end of your page's url, eg:
+or you can validate AMP page directly in browser by adding this string to the end of your page's url, eg:
 
         http://example/about/m.html#development=1
 
-If you're validating page in browser, open browser's console and it will show you whether the page has validation errors or validation is successful. Or if you're validating amp page through [search.google.com](https://search.google.com/test/amp) it will show you the results of validation under the input field on the same page.
+If you're validating page in browser, open browser's console and it will show you whether the page has validation errors or validation is successful. Or if you're validating AMP page through [search.google.com](https://search.google.com/test/amp) it will show you the results of validation under the input field on the same page.
 
 In the [next tutorial ](/tags/) you will learn about Components.
 NEXT: Go to [Components](/tags/).
