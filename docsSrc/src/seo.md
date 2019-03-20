@@ -13,12 +13,12 @@ You can inspect code in the example blog app:
 
 compile files and run the app:
 
-        $ mbakeW -c .
+        $ mbakeX -c .
         $ cd blog
         $ mbake -i .
         $ cd ../assets
-        $ mbakeW -s .
-        $ mbakeW -w .
+        $ mbakeX -s .
+        $ mbakeX -w .
 
 in the `/layout/layout.pug` file you can see defined SEO meta tags in `head`:
 

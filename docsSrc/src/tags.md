@@ -8,7 +8,7 @@ Download and unpack or git clone [the project](https://github.com/metabake/MetaC
 
 From the root (`/flip`) folder, compile `.pug`:
 
-        mbakeW -c .
+        mbakeX -c .
 
 Use component with the attributes in your `index.pug`:
 
