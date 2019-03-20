@@ -1,12 +1,16 @@
 # AMP
 
-The Accelerated Mobile Pages (AMP) is an open-source library that provides a straightforward way to create web pages that are compelling, smooth, and load near instantaneously for users. Web pages and ads published in the AMP open-source format load near instantly, giving users a smooth, more engaging experience on mobile and desktop.
+The Accelerated Mobile Pages (AMP) — is an open-source library that provides a straightforward way to create web pages that are compelling, smooth, and load near instantaneously for users. Web pages and ads published in the AMP open-source format load near instantly, giving users a smooth, more engaging experience on mobile and desktop.
 
 When a standard webpage has an AMP counterpart, a link to the AMP page is placed in an HTML tag in the source code of the standard page. Because most AMP pages are easily discoverable by web crawlers, third parties such as search engines and other referring websites can choose to link to the AMP version of a webpage instead of the standard version.
 
 AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML.
 
-To learn what's necessary to create a valid AMP HTML page inspect code in blog app (downloaded in the [previous tutorial](/seo/)). Open file `/layout/layout.pug`, it is the layout for regular pages, here in `head` you can see the link to the AMP page:
+## AMP page example
+
+### Head
+
+To learn what's necessary to create a valid AMP HTML page inspect code in blog app (`$ mbake -b`, downloaded in the [previous tutorial](/seo/)). Open file `/layout/layout.pug`, it is the layout for regular pages, here in `head` you can see the link to the AMP page:
 
         link(rel='amphtml', href='m.html')
 
@@ -37,25 +41,32 @@ CSS must be embedded inline. In mbake we use include feature for css, we define 
 
         include ../shared/css.pug
 
-If you'll open file `shared/css.pug` you can see that styles wrapped in `style(amp-custom='').`
+If you'll open file `shared/css.pug` you can see that styles wrapped in `style(amp-custom='').` it is also required. As for css properties itself there are also some restrictions, for example in amp page version styles can't be used `!important` is will give a validation error, and the inline style sheet has to be a maximum size of 50 kilobytes, if more it will also give a validation error.
+
+Check for more rules on css for AMP pages [here](https://www.ampproject.org/docs/design/responsive/style_pages). 
+
 AMP HTML documents must contain the following boilerplate in their `head` tag:
 
         style(amp-boilerplate='').
             body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
 
+### Body
+
 In `body` tag almost all regular html tags are supported except for certain tags, such as the `img` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags, eg: `blog/blog/post-*/layout-single-m.pug`:
 
         amp-img.img__inside(alt='...', src='who.jpg', width='300', height='300')
 
-You can test your AMP page on validation errors online here:
+### AMP page validation
+
+You can test your AMP page on validation errors online here, type in the unput field the page that is needed to be validated (note that you need to enter url to your amp page, eg: `http://example/about/m.html`):
 
         https://search.google.com/test/amp
 
-or directly in browser by adding this string to the end of your page's url:
+or you can validate amp page directly in browser by adding this string to the end of your page's url, eg:
 
-        /m.html#development=1
+        http://example/about/m.html#development=1
 
-open browser's console and it will show you whether the page has validation errors or validation is successful.
+If you're validating page in browser, open browser's console and it will show you whether the page has validation errors or validation is successful. Or if you're validating amp page through [search.google.com](https://search.google.com/test/amp) it will show you the results of validation under the input field on the same page.
 
 In the [next tutorial ](/tags/) you will learn about Components.
 NEXT: Go to [Components](/tags/).
