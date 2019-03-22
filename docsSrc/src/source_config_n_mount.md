@@ -66,5 +66,5 @@
 __Summary__: With Cloud hosting and mount, you can edit apps from your filesystem and see the edits reflected on the web without extra deployment work.
 
 
-In the [next tutorial ](/seo/) you will learn about Social SEO.
-NEXT: Go to [Social SEO](/seo/).
+In the [next tutorial ](/webdav_linux_mount/) you will learn how to mount webDAV on linux.
+NEXT: Go to [Mount webDAV on linux](/webdav_linux_mount/).

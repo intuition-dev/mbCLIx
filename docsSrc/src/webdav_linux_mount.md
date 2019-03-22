@@ -1,4 +1,4 @@
-# Mount webDAV on linux via CA:
+# Mount webDAV on linux
 
 We'll be mounting using `davfs2` — a Linux file system driver that allows to mount a WebDAV resource.
 
@@ -81,6 +81,6 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
 		// will ask for username and password: admin 123123
 		$ umount /root/mount
 
-In the [next tutorial ](/pug_static_data/) you will learn about Pug and static data binding.
+In the [next tutorial](/seo/) you will learn about Social SEO.
 
-NEXT: Go to [Templating/Pug and static binding](/pug_static_data/).
+NEXT: Go to [Social SEO](/seo/).

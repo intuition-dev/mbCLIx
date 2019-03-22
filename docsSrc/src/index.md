@@ -21,8 +21,6 @@ Find out more about MetaBake:
 
 - <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
-- [Slide Deck](http://prez.mBake.org/p)
-
 - [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
 MetaBake allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
@@ -57,13 +55,14 @@ That's it! If you don't have Yarn installed, first go [here](https://yarnpkg.com
    or: mbake subfoldername
 ```
 
-Auto-build/generate: if you are using a MetaBake META build server (see META doc), you don't even have to do the 'mbake .'. META has a watcher that triggers 'mbake' when you save a file. 
-
 ## How to run an mbake app (such as Hello World)
 
-mbake apps run on any static web server. This includes low-cost cloud hosting such as Amazon S3. We show how to work with S3 later in this doc.
+mbake apps run on any static web server.
+mbake has a watcher that triggers 'mbake' when you save a file, it also runs your app locally on `:8090` port:
 
-When you develop locally, you could use 'Web Server for Chrome' to run mbake apps. To install it, open your Google Chrome web browser and install the 'Web Server for Chrome' app from [here](https://chrome.google.com/webstore/search/Web%20Server?_category=apps). Launch the app, click the 'Choose Folder' button and select the root folder of your app (e.g. where index.html of your Hello World app is). Also ensure 'Options' has 'Automatically show index.html' checked. Ensure the Web Server is STARTED, then navigate to the proposed URL (e.g. http://127.0.0.1:8887).
+```
+   $ mbakeX -w .
+```
 
 Even though mbake apps are installed on a static server, they are dynamic because they allow user authentication and work with JSON for dynamic rendering and database APIs for dynamic databinding.
 
@@ -74,45 +73,39 @@ Even though mbake apps are installed on a static server, they are dynamic becaus
    mbake
 
 ## Generate sample app, e.g.
-   mbake -v
-
-## Navigate to it, e.g.
-   cd crud
+   mbake -u
 ```
 
 ## Other popular mbake commands
 
-* `mbake -c .` - Convert Pug/Riot files to useable comp/js, e.g.: data binding.
+* `mbakeX -c .` - Convert Pug/Riot files to useable comp/js, e.g.: data binding.
 * `mbake -i .` - Convert dat.yaml static files to JSON, for dynamic binding. More about this in B-M-SPA docs.
 
 ## How to see all mbake options
 
 ```
    $ mbake
+   $ mbakeX
 ```
 
 ## How to make mbake apps serverless
 
 To go extreme serverless, we show how to use mbake with
 
-- Amazon Web Services (AWS) S3 HTTP hosting
-- Mounting software so you can mount AWS S3 as a drive
+- Remote environment HTTP hosting (eg: Digital Ocean Linux)
+- Mounting software so you can mount your site folder as a drive
 - Google Firebase/Firestore 
 
 ### Go extreme serverless following the steps (Tutorials):
 
-- [Setup S3 as your HTTP server and mount it](/s3_n_webdrive_mount/)
-- [Mount S3 to linux box via goofys using CodeAnywhere editor](/ca/)
-- [Learn Pug and static binding; view via S3 HTTP server](/pug_static_data/)
-- [Spectre SCSS Theme Framework and SCSS](/spectre_n_scss/)
-- [dynamic databinding](/dynamic_data_binding/)
-- [Generate a serverless CRUD webapp](/crud/)
-- [Simple CRUD example app and ViewModel+Bind](/model/)
-- [Design](/design/)
-- [Blog](/blog/)
-
-
-When done, you should see [this](https://youtu.be/-KkPfAnEXyk).
+- [Caddy Config with webDAV and Mountain Duck mount](/source_config_n_mount/)
+- [Mount webDAV on linux](/webdav_linux_mount/)
+- [Social SEO](/seo/)
+- [AMP](/amp/)
+- [Components](/tags/)
+- [CMS](/cms/)
+- [Electron SPA](/electron/)
+- [Meta Cake](/meta-cake/)
 
 Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake.
 
@@ -126,7 +119,4 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake.
    $ mbake .
 ```
 
-NEXT: Go to [Setup S3 as your HTTP server and mount it](/s3_n_webdrive_mount/).
-
-
-
+NEXT: Go to [Caddy Config with webDAV and Mountain Duck mount](/source_config_n_mount/).
