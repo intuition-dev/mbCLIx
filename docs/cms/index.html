@@ -55,6 +55,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../source_config_n_mount/">Caddy Config with webDAV and Mountain Duck mount</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../seo/">Social SEO</a>
 	    </li>
           
@@ -74,6 +79,12 @@
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#editor-cms">Editor CMS</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#cms-deploy">CMS Deploy</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -132,6 +143,81 @@
             <div class="section">
               
                 <h1 id="editor-cms">Editor CMS</h1>
+<p>CMS App was configured to make operations to some another site (eg: mounted blog), in it one can: </p>
+<pre><code>- edit `.md` and `.yaml` files
+- upload images and video files
+- create new posts
+- set publish date for posts (if you will set date in future, the post won't publish until that time)
+</code></pre>
+<h2 id="cms-deploy">CMS Deploy</h2>
+<p><!-- TODO -->
+1. Assuming you have finished <a href="/source_config_n_mount/">this tutorial</a> </p>
+<ol>
+<li>Create folder for Blog CMS Editor App, download Blog CMS App to this folder, change <code>cms</code> with your own name:
+    <code>sh
+    $ mkdir cms
+    $ cd cms
+    $ mbakeX -c</code></li>
+<li>
+<p>Create an account (if you haven't one already) and database in <a href="https://console.firebase.google.com">Firebase</a>. Navigate to the Service Accounts tab in your database project's settings page. Click the <code>Generate New Private Key</code> button at the bottom of the Firebase Admin SDK section of the Service Accounts tab. After you click the button, a JSON file containing your service account's credentials will be downloaded. Next go to the <code>Authentication</code> tab, click <code>Sign-in method</code> and set <code>Email/Password</code> method to <code>Enabled</code>.</p>
+</li>
+<li>
+<p>To CMS App folder add the following files next to example files accordingly:</p>
+<ul>
+<li>
+<p>Rename downloaded in the previous step Firebase Admin SDK file to: <code>serviceAccountKey.json</code> and place it in folder: <code>/cms/CMS</code>. </p>
+</li>
+<li>
+<p>Copy file <code>.env.example</code> to the same folder, rename it to <code>.env</code>. In the Firebase console go to <code>Project Overview</code> tab, on the next screen click <code>&lt;/&gt;</code> icon, a popup <code>Add Firebase to your web app</code> will appear. Fill the <code>.env</code> file fields values with according values of your project.</p>
+</li>
+<li>
+<p>Copy file <code>config.js.example</code> in the folder <code>/cms/CMS/wwwAdmin</code> rename it to <code>config.js</code> and change ip url to your server or local ip address.</p>
+</li>
+<li>
+<p>Copy file <code>config.js.example</code> in the folder <code>/cms/CMS/www</code>, rename it to <code>config.js</code> and change ip url to your server or local ip address and change the values of fields <code>apiKey, authDomain, projectId</code> accordingly to the values of your project that you've already retrieved in one of the previous steps.</p>
+</li>
+<li>
+<p>Copy file <code>config.yaml.example</code> in the folder <code>/cms/CMS</code>, rename it to <code>config.yaml</code>, it is necessarily change <code>appMount</code> field value to the path to your mounted folder with site from CDN. You can also change ports or admin password (optional).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>in folder <code>/cms/CMS</code> run command to install node_modules, compile them and run node:
+    ```sh
+    $ yarn
+    $ tsc</p>
+<p>$ node index.js 
+// or: 
+// $ nohup node index.js &amp; 
+// if you want node running after the terminal will be closed
+<code>1. In folders `/cms/CMS/www` and `/cms/CMS/wwwAdmin` accordingly run command to compile pug:</code>sh
+$ mbake .
+<code>1. in folders `/cms/CMS/www/assets` and `/cms/CMS/wwwAdmin/assets` accordingly run command to compile sass:</code>sh
+$ mbake -s .
+<code>1. Open in browser Blog Admin App:</code>sh
+[your-ip]:8080
+// eg: http://0.0.0.0:8080
+```</p>
+<p>Open in browser Blog Editors App:</p>
+<p><code>[your-ip]:9080
+// eg: http://0.0.0.0:9080</code>
+1. Login to Admin App is: 'admin', password is: '123456' (Note: if you have changed the password in config.yaml, then use your new password)</p>
+</li>
+<li>
+<p>Create a new user in Admin App, reset password via received email and then login in Editors app with this user's credentials.</p>
+</li>
+<li>
+<p>In Editors App you can: </p>
+<ul>
+<li>edit <code>.md</code> and <code>.yaml</code> files</li>
+<li>upload images and video files</li>
+<li>create new posts</li>
+<li>set publish date for posts (if you will set date in future, the post won't publish until that time)</li>
+</ul>
+<p>All this operations will be applied to your mounted site.</p>
+<p><em>Note:</em> that changes will apply after your configured CDN cache will expire.</p>
+</li>
+</ol>
 <p>In the <a href="/electron/">next tutorial </a> you will learn about Electron SPA.
 NEXT: Go to <a href="/electron/">Electron SPA</a>.</p>
               
