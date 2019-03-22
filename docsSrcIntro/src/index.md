@@ -101,7 +101,7 @@ To go extreme serverless, we show how to use mbake with
 - [Learn Pug and static binding; view via S3 HTTP server](/pug_static_data/)
 - [Spectre SCSS Theme Framework and SCSS](/spectre_n_scss/)
 - [dynamic databinding](/dynamic_data_binding/)
-- [Generate a serverless CRUD webapp](/crud/)
+- [Generate a serverless CRUD web-app](/crud/)
 - [Simple CRUD example app and ViewModel+Bind](/model/)
 - [Design](/design/)
 - [Blog](/blog/)

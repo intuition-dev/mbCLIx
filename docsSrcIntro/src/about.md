@@ -39,7 +39,7 @@ _mbake_ currently compiles Pug, Markdown and Yaml to generate HTML and JSON. Usi
 
 _mbake_ generates static sites, but it also supports making those sites dynamic with API calls and data feeds such as from JSON.
 
-_mbake_ helps is another example of a http://staticgen.com webapp.
+_mbake_ helps is another example of a http://staticgen.com web-app.
 
 _mbake_ includes sample starters apps for CRUD. After you are comfortable with mbake, check out B-M-SPA and Meta.
 

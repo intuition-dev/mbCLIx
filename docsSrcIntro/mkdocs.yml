@@ -6,7 +6,7 @@ nav:
    - Learn Templating/Pug: pug_static_data.md
    - Spectre SCSS Theme Framework and SCSS: spectre_n_scss.md
    - Dynamic databinding: dynamic_data_binding.md
-   - Generate a serverless CRUD webapp: crud.md
+   - Generate a serverless CRUD web-app: crud.md
    - Simple CRUD example app and ViewModel+Bind: model.md
    - Design: design.md
    - Blog: blog.md

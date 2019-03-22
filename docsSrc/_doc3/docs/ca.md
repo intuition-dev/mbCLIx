@@ -54,7 +54,7 @@
 
    # -h will get you help
 
-	// check to see your S3 webapp files
+	// check to see your S3 web-app files
 	ls -la
 
 	// if errors, check /var/log/syslog for direction

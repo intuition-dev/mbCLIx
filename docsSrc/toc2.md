@@ -34,7 +34,7 @@ Perspectives 1H
 
 - Caddy 1H
 
-- Meta of webapp: admin app by admin
+- Meta of web-app: admin app by admin
 
 - How to extend
 
