@@ -132,6 +132,111 @@
             <div class="section">
               
                 <h1 id="electron-spa">Electron SPA</h1>
+<p>Electron is built on Chromium and the navigation model is pretty much the exact same as any other web browser.
+Electron needs ROOT, as / in electron means root of drive; not root of http server. There is no http server. Not having to go to a remote web server means loading pages in Electron should be pretty quick.
+Electron has node and it lets you start Chrome. So you can build a Windows app, or an OSX app.
+Electron apps are normally SPA. Our example also in one page.</p>
+<ol>
+<li>
+<p>Run the command to extract an Electron SPA App example:</p>
+<pre><code>$ mbakeX -e
+</code></pre>
+</li>
+<li>
+<p>From the <code>/elect</code> folder install node modules:</p>
+<pre><code>$ yarn
+</code></pre>
+</li>
+<li>
+<p>Compile <code>.pug</code> in <code>/elect/app/www</code> folder and <code>.scss/.sass</code> in <code>/elect/app/www/assets</code>, eg:</p>
+<pre><code>$ mbake .
+$ mbake -s .
+</code></pre>
+</li>
+<li>
+<p>Run the app from the <code>elect/app</code> folder with the command:</p>
+<pre><code>$ npm start
+</code></pre>
+<p>The application should show up.</p>
+</li>
+<li>
+<p>Inspect <code>/elect/app/www/assets/router/spa-router.js</code>, here you can see code:</p>
+<pre><code>SPArouter.zone = '#router';
+.
+.
+.
+SPArouter.init(onNavigate);
+function onNavigate (evt) {
+    if (evt.detail.type == SPArouter.NavSTART) { //start
+        //$('#router').fadeTo(100,.2);
+    }
+    else if (evt.detail.type == SPArouter.NavDONE) {
+        $(SPArouter.zone).html(evt.detail.newContent);
+        //$('#router').fadeTo(100,1);
+        window.scrollTo(0, 0);
+    }
+}
+</code></pre>
+<p>and here <code>/elect/app/www/layout/layout.pug</code> you can see div <code>#router</code>:</p>
+<pre><code>.column
+    #router
+       block main
+</code></pre>
+<p>It intercepts href and replaces a #div. So every page content will place in <code>#router</code> div and for every page just the contents of this div is changed.</p>
+</li>
+<li>
+<p>Inspect <code>/elect/app/www/index.pug</code> it the first page that is shown right after the app is run:</p>
+<pre><code>extends /layout/layout
+
+block main
+
+    .pad.
+        Oh Hi
+</code></pre>
+<p>this page extends the <code>/elect/app/www/layout/layout.pug</code> and this means that <code>block main</code> is inside the <code>#router</code> div.</p>
+</li>
+<li>
+<p>Inspect <code>/elect/app/www/screen/tabulator/index.pug</code> it the second page, it shows the Tabulator.js table with the news from different sources that are get through api:</p>
+<pre><code>block main
+
+.pad
+    #feed-table.table-custom
+
+    script.
+        loadjs.ready(['services'], function () {
+            let apiService = new ApiService();
+            apiService.getFeedData()
+            .then(feed =&gt; {
+                //console.info('feed.data.articles', feed.data.articles);
+
+                this.table = new Tabulator("#feed-table", {
+                    data:feed.data.articles,// assign data to table
+                    layout:"fitColumns",    // fit columns to width of table
+                    columns:[               // Define Table Columns
+                        {title:"id", field:"id", visible:false},
+                        {title:"Source", field:"source.name", align:"left"},
+                        {title:"Author", field:"author", align:"left"},
+                        {title:"Title", field:"title", align:"left"},
+                        {title:"Content", field:"content", align:"left"}
+                    ],
+                    rowClick:(e, row) =&gt; { // fill the form fields
+                        this.activeRow = row;
+                        var row = row.getData();
+                        window.rowUid = row.id;
+                        $('input[name="name"]').val(row.name);
+                        $('input[name="email"]').val(row.email);
+
+                        $('html, body').animate({ // scroll to form
+                            scrollTop: $("#editor-form").offset().top
+                        }, 500);
+                    },
+                });
+            });
+
+        });
+</code></pre>
+</li>
+</ol>
 <p>In the <a href="/meta-cake/">next tutorial </a> you will learn about Meta Cake.
 NEXT: Go to <a href="/meta-cake/">Meta Cake</a>.</p>
               
