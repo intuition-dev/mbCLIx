@@ -1,6 +1,6 @@
 site_name: SPA Docs
-site_url: http://mBake.org
-repo_url: http://mBake.org
+site_url: http://mbake.org
+repo_url: http://mbake.org
 pages:
    - Home/ B.M.: index.md
 

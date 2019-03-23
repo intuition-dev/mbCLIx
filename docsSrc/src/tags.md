@@ -90,7 +90,7 @@ and then they are used in `flip-comp.pug`.
 
 ## riot2
 
-[Here](https://github.com/metabake/mBake-Advanced4/tree/master/riot2) is another example of an advanced `riot2` component.
+[Here](https://github.com/metabake/mbake-Advanced4/tree/master/riot2) is another example of an advanced `riot2` component.
 
 The `<yield>` component that is used here is a special riot core feature that allows you to inject and compile the content of any custom component inside its template in runtime.
 

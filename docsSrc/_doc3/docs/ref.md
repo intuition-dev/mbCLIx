@@ -1,6 +1,6 @@
 # API Reference
 
-- [API Reference](http://doc.mBake.org/api)
+- [API Reference](http://doc.mbake.org/api)
 
 ### admin.yaml
 

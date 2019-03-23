@@ -160,9 +160,9 @@ __NEXT STEPS:__ You can try out more Template projects (type `$ mbake`). You can
 
 Definitely look at:
 
-- <a href='https://github.com/MetaBake/_mBake/tree/master/awesomeReference' target='_blank'>Awesome list of MetaBake&trade; resources</a>
+- <a href='https://github.com/MetaBake/_mbake/tree/master/awesomeReference' target='_blank'>Awesome list of MetaBake&trade; resources</a>
 
-- <https://git.mBake.org>.
+- <https://git.mbake.org>.
 
 
 In the [next tutorial](/model/), we cover a _view-model pattern_.
