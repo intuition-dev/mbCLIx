@@ -1,4 +1,4 @@
-- [SPA video](https://youtu.be/LHFjjDPlU3A)
+- [SPA video](http://youtu.be/LHFjjDPlU3A)
 - [Click for 'THE' B-M-SPA docs](http://doc.mbake.org/SPA/)
 
 

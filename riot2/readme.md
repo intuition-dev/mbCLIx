@@ -93,6 +93,6 @@ button(onclick='!{"{toggle}"}') Text
 
 For more information learn more about Riot.js, pug and Yield:
 
-* [Learn dynamic binding with Riot.js in 90 seconds](https://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
+* [Learn dynamic binding with Riot.js in 90 seconds](http://medium.com/@uptimevic/learn-riot-js-dynamic-binding-in-90-seconds-fcece5237c67)
 * [Riot.js Yield](http://tutorials.jenkov.com/riotjs/yield.html)
-* [Riot.js Guide](https://riot.js.org/guide/)
+* [Riot.js Guide](http://riot.js.org/guide/)

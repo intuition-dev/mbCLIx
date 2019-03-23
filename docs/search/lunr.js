@@ -2958,7 +2958,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 
   /**
    * export the module via AMD, CommonJS or as a browser global
-   * Export code from https://github.com/umdjs/umd/blob/master/returnExports.js
+   * Export code from http://github.com/umdjs/umd/blob/master/returnExports.js
    */
   ;(function (root, factory) {
     if (typeof define === 'function' && define.amd) {

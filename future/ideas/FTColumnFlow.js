@@ -25,7 +25,7 @@
 /*global Node*/
 
 
-// UMD from https://gist.github.com/wilsonpage/8598603
+// UMD from http://gist.github.com/wilsonpage/8598603
 ;(function(define){define(function(require,exports,module){
 
 	"use strict";

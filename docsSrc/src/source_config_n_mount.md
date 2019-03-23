@@ -2,13 +2,13 @@
 
 1. Setup up an enviroment in the cloud, e.g. [Digital Ocean](www.digitalocean.com).
 
-1. Setup a Web IDE account, e.g. [CodeAnywhere](https://codeanywhere.com).
+1. Setup a Web IDE account, e.g. [CodeAnywhere](http://codeanywhere.com).
 
 1. Install yarn, mbake, typescript
 
 1. Install Caddy with webDAV plugin, eg:
 
-        $ curl https://getcaddy.com | bash -s personal http.webdav
+        $ curl http://getcaddy.com | bash -s personal http.webdav
 
 1. Add `Caddyfile` to the root folder and config it, eg:
 
@@ -51,13 +51,13 @@
 
         http://0.0.0.0:8080/
 
-1. Install on Mac [Mountain Duck](https://mountainduck.io) you may choose a different _webDAV mount_ software. Mount replaces FTP.
+1. Install on Mac [Mountain Duck](http://mountainduck.io) you may choose a different _webDAV mount_ software. Mount replaces FTP.
 
 1. In Mountain Duck, create a new `webDAV (HTTP)` connection. Fill the fields for `server` and `username`, `path` -- `/webdav/www` and port with your credentials, then click `connect`, it will ask for username and password from the Caddyfile webDAV config. You have mounted folder of your site from remote environment on your local PC and you can edit it.
 
-1. Create an account on [CDN77](https://www.cdn77.com/) if you don't already have one.
+1. Create an account on [CDN77](http://www.cdn77.com/) if you don't already have one.
 
-1. Go to [CDN 77](https://client.cdn77.com) and create a `Resource` for your remote environment hosting: select `My Origin`, select `http` and in the `domain` field type in the your ip address and port.
+1. Go to [CDN 77](http://client.cdn77.com) and create a `Resource` for your remote environment hosting: select `My Origin`, select `http` and in the `domain` field type in the your ip address and port.
 
 1. Go to tab `other settings` and select `cache expiry` -- `10 minutes`, then go to `Purge` tab and `purge all files`. This action is needed to reduce the time of files caching.
 

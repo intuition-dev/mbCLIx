@@ -3,7 +3,7 @@
 SEO stands for Search Engine Optimization.
 Including social media metadata in all new pieces of content allows you to optimize for sharing Twitter, Facebook, Google+ and Pinerest by defining exactly how titles, descriptions, images and more appear in social streams.
 
-The implications for SEO are also significant. The right data, including optimized images, helps content to spread, which often leads to increased links and mentions. You can find many templates of SEO meta tags in the internet (eg: [here](https://moz.com/blog/meta-data-templates-123))
+The implications for SEO are also significant. The right data, including optimized images, helps content to spread, which often leads to increased links and mentions. You can find many templates of SEO meta tags in the internet (eg: [here](http://moz.com/blog/meta-data-templates-123))
 
 In mbake you can write values for each meta tag and for each page in the page's dat.yaml file and then in the layout address to these fields in meta tags. This allows you to define meta tags just once (in the layout) amd then access to them on each page from dat.yaml file.
 
@@ -46,7 +46,7 @@ Now open `/blog/post-*/dat.yaml`, here you can see that the variables from the l
         Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam
         molestie, ante at imperdiet ornare, sapien nulla volutpat nunc.
         image: >-
-        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
+        http://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAOd1CI4oPfTryZpo_rAyZXf9ltuPAvRv45XPGDghPSLii5We
         content_text: >-
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem
         ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

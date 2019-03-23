@@ -1,4 +1,4 @@
-<img src="https://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+<img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
 
 
 # What is mbake?
@@ -17,15 +17,15 @@ MetaBake&trade; is a modern development approach that helps you deliver web apps
 
 Find out more about MetaBake:
 
-- [Quick Demo](https://youtu.be/WyCdSFTUIvM)
+- [Quick Demo](http://youtu.be/WyCdSFTUIvM)
 
-- <a href='https://vimeo.com/282034037' target='_blank'>Meetup Video</a>
+- <a href='http://vimeo.com/282034037' target='_blank'>Meetup Video</a>
 
-- [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
+- [Summary for Managers](http://www.youtube.com/watch?v=OK-cJNSkQII)
 
 MetaBake&trade; allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
 
-MetaBake&trade; and mbake are open source. The source code is available at [github.com/MetaBake](https://github.com/MetaBake)
+MetaBake&trade; and mbake are open source. The source code is available at [github.com/MetaBake](http://github.com/MetaBake)
 
 See [Resources](/res/) for related projects.
 
@@ -36,7 +36,7 @@ From a command line such as PowerShell, type:
 ```
    $ yarn global add mbake
 ```
-That's it! If you don't have Yarn installed, first go [here](https://yarnpkg.com/lang/en/docs/install/#windows-stable).
+That's it! If you don't have Yarn installed, first go [here](http://yarnpkg.com/lang/en/docs/install/#windows-stable).
 
 ## How to create a Hello World app with mbake
 

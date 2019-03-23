@@ -2,7 +2,7 @@
 
 1. On Linux, install Caddy with webdav plugin, eg:
 
-   curl https://getcaddy.com | bash -s personal http.webdav
+   curl http://getcaddy.com | bash -s personal http.webdav
 
 1. Create www/index.html    <body> oh hi </body>
 
@@ -17,4 +17,4 @@ Example Caddyfile in this folder.
 You can access mount
 
 1. Open issue: Open: Find a linux mount to WebDAV
-https://mbake.acunote.com/projects/54685/tasks/96
+http://mbake.acunote.com/projects/54685/tasks/96

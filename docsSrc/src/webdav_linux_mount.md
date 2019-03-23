@@ -34,7 +34,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
 
     Add a line to the end of file in following style:
 
-		https://<WebDav URI>   <username> <password>
+		http://<WebDav URI>   <username> <password>
 
     eg: 
 		http://0.0.0.0:8080/webdav/www  admin 123123
@@ -51,7 +51,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
 
     	$ vim /etc/fstab
 
-		https://<WebDav URI> <mount point> davfs user,noauto,file_mode=600,dir_mode=700 0 1
+		http://<WebDav URI> <mount point> davfs user,noauto,file_mode=600,dir_mode=700 0 1
 
     eg:
 		http://0.0.0.0:8080/webdav/www /root/mount davfs user,noauto,file_mode=600,dir_mode=700 0 1

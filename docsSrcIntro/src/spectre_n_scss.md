@@ -2,7 +2,7 @@
 
 ### Spectre
 
-The default SCSS theme framework used in most examples is [Spectre CSS](https://picturepan2.github.io/spectre/getting-started.html#introduction). Spectre is small (~10KB) but fully featured and easy to use. Spectre does not use JavaScript, which makes it [AMP-compatible](https://www.ampproject.org/learn/overview/) - a big plus for content-driven sites and apps.
+The default SCSS theme framework used in most examples is [Spectre CSS](http://picturepan2.github.io/spectre/getting-started.html#introduction). Spectre is small (~10KB) but fully featured and easy to use. Spectre does not use JavaScript, which makes it [AMP-compatible](http://www.ampproject.org/learn/overview/) - a big plus for content-driven sites and apps.
 
 ### SCSS
 
@@ -28,7 +28,7 @@ The main scss differences from usual css are:
 ### assets.yaml
 
 In our project we use mbake scss compiler, it works through assets.yaml eg:
-- https://github.com/metabake/MetaBake-Docs/tree/master/meta-website/assets
+- http://github.com/metabake/MetaBake-Docs/tree/master/meta-website/assets
 
 There is list of sass files in assets.yaml and it will compile to /assets/css folder. So you can just run the command from the 'assets' folder to compile scss/sass to css:
 
@@ -43,6 +43,6 @@ You can also use mbake live reload/watcher/compiler from the root folder of your
 
 In the [next tutorial](/dynamic_data_binding/), we cover _dynamic databinding_.
 
-Learn more about SCSS ans SASS [here](https://sass-lang.com)
+Learn more about SCSS ans SASS [here](http://sass-lang.com)
 
 NEXT: Go to [dynamic databinding](/dynamic_data_binding/).

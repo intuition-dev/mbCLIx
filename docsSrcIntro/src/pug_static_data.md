@@ -1,7 +1,7 @@
 
 ## Learn Templating/Pug and static binding; view via S3 HTTP server.
 
-Simply said, _Pug_ is HTML without closing tags. Pug is a templating language, more powerful than [Markdown](https://en.wikipedia.org/wiki/Markdown). If you know Node/Express, you know Pug already.
+Simply said, _Pug_ is HTML without closing tags. Pug is a templating language, more powerful than [Markdown](http://en.wikipedia.org/wiki/Markdown). If you know Node/Express, you know Pug already.
 
 If you know HTML, you also mostly know Pug: just don't close the tags. Pug also has variables (e.g. `#{key1}`) and imports (e.g. `include fragment.pug`).
 

@@ -1,6 +1,6 @@
 
 
-- <a href='https://youtu.be/CMUiPC0YtYA' target='_blank'>WebIDE video</a>
+- <a href='http://youtu.be/CMUiPC0YtYA' target='_blank'>WebIDE video</a>
 - <a href='http://doc.mbake.org/meta/' target='_blank'>Click for 'THE' Meta docs</a>
 
 ## low-code = 10X faster web app development.

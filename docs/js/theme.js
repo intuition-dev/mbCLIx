@@ -77,7 +77,7 @@ window.SphinxRtdTheme = (function (jquery) {
 }($));
 
 // The code below is a copy of @seanmadsen code posted Jan 10, 2017 on issue 803.
-// https://github.com/mkdocs/mkdocs/issues/803
+// http://github.com/mkdocs/mkdocs/issues/803
 // This just incorporates the auto scroll into the theme itself without
 // the need for additional custom.js file.
 //

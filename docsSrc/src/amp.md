@@ -29,7 +29,7 @@ The charset definition must be the first child of the `head` tag:
 
 The AMP runtime must be loaded as the second child of the `head` tag:
 
-        script(async, src='https://cdn.ampproject.org/v0.js')
+        script(async, src='//cdn.ampproject.org/v0.js')
 
 then goes a canonical link pointing to the regular HTML, as well required for an AMP page. (If no HTML version exists, it should point to itself):
 
@@ -45,7 +45,7 @@ CSS must be embedded inline. In mbake we use include feature for css, we define 
 
 If you'll open file `shared/css.pug` you can see that styles wrapped in `style(amp-custom='').` it is also required. As for css properties itself there are also some restrictions, for example in amp page version styles can't be used `!important` is will give a validation error, and the inline style sheet has to be a maximum size of 50 kilobytes, if more it will also give a validation error.
 
-Check for more rules on css for AMP pages [here](https://www.ampproject.org/docs/design/responsive/style_pages). 
+Check for more rules on css for AMP pages [here](http://www.ampproject.org/docs/design/responsive/style_pages). 
 
 AMP HTML documents must contain the following boilerplate in their `head` tag:
 
@@ -68,13 +68,13 @@ In `body` tag almost all regular html tags are supported except for certain tags
 
 You can test your AMP page on validation errors online here, type in the unput field the page that is needed to be validated (note that you need to enter url to your AMP page, eg: `http://example/about/m.html`):
 
-        https://search.google.com/test/amp
+        http://search.google.com/test/amp
 
 or you can validate AMP page directly in browser by adding this string to the end of your page's url, eg:
 
         http://example/about/m.html#development=1
 
-If you're validating page in browser, open browser's console and it will show you whether the page has validation errors or validation is successful. Or if you're validating AMP page through [search.google.com](https://search.google.com/test/amp) it will show you the results of validation under the input field on the same page.
+If you're validating page in browser, open browser's console and it will show you whether the page has validation errors or validation is successful. Or if you're validating AMP page through [search.google.com](http://search.google.com/test/amp) it will show you the results of validation under the input field on the same page.
 
 In the [next tutorial ](/tags/) you will learn about Components.
 NEXT: Go to [Components](/tags/).

@@ -1,7 +1,7 @@
 
 # Using build.phonegap.com from your SPA
 
-- [SPA](https://youtu.be/LHFjjDPlU3A)
+- [SPA](http://youtu.be/LHFjjDPlU3A)
 
 
 
