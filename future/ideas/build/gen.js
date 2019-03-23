@@ -11,7 +11,7 @@ Installation steps:
 	npm install - g clean-css
 	npm install uglify-js
 	npm install pug
-	npm install jstransformer-markdown-it
+	npm install jstransformer-Markdown-it
 	(sudo) npm install jstransformer-sass
 
 */
@@ -37,7 +37,7 @@ const UglifyJS = require('uglify-js')
 const pug 		= require('pug')
 //load pug filters:
 require('jstransformer')
-require('jstransformer-markdown-it')
+require('jstransformer-Markdown-it')
 require('jstransformer-sass')
 
 // -- CODE: --

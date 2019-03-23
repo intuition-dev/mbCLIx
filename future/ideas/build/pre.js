@@ -10,7 +10,7 @@ Installation steps(sudo, admin or supper user):
 	npm -g install clean-css
 	npm -g install riot
 	npm -g install pug
-	npm -g install jstransformer-markdown-it
+	npm -g install jstransformer-Markdown-it
 	npm -g install jstransformer-sass
 
 Current version of node is 7.12 and node-sass version is 3.13: npm -g ls node-sass
@@ -30,7 +30,7 @@ const fs  		= require('fs')
 
 //install pug filters:
 require('jstransformer')
-require('jstransformer-markdown-it')
+require('jstransformer-Markdown-it')
 require('jstransformer-sass')
 // -----------------------------------------------
 
