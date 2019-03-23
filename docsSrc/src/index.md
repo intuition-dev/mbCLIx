@@ -23,9 +23,9 @@ Find out more about MetaBake:
 
 - [Summary for Managers](https://www.youtube.com/watch?v=OK-cJNSkQII)
 
-MetaBake allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
+MetaBake&trade; allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
 
-MetaBake and mbake are open source. The source code is available at [github.com/MetaBake](https://github.com/MetaBake)
+MetaBake&trade; and mbake are open source. The source code is available at [github.com/MetaBake](https://github.com/MetaBake)
 
 See [Resources](/res/) for related projects.
 
