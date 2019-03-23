@@ -30,7 +30,7 @@ Perspectives 1H
 
 - Meta of comp: declarative, advanced Pug components (FlipCard) 
 
-- Cake DSL
+- Cake 
 
 - Caddy 1H
 
