@@ -12,7 +12,7 @@ The CRUD and Fetch() that ViewModel is just plumbing.
 
 After you will create simple CRUD app you will create your own Firestore database, insert data and add authentication to the app. 
 
-Firestore is Firebase’s new database. It’s designed to store and sync app data at global scale easily. It’s a managed NoSQL document-oriented database for mobile and web development. Firestore includes pure client-side user authentication and can be used from the browser via JavaScript. No custom serverside code is needed. This is key to be able to develop faster.
+Firestore is FireStore’s new database. It’s designed to store and sync app data at global scale easily. It’s a managed NoSQL document-oriented database for mobile and web development. Firestore includes pure client-side user authentication and can be used from the browser via JavaScript. No custom serverside code is needed. This is key to be able to develop faster.
 
 You will need to learn about http://tabulator.info/ which allows you to create interactive tables in seconds from any HTML Table, JavaScript Array, AJAX data source or JSON formatted data.
 

@@ -94,7 +94,7 @@ To go extreme serverless, we show how to use mbake with
 
 - Remote environment HTTP hosting (eg: Digital Ocean Linux)
 - Mounting software so you can mount your site folder as a drive
-- Google Firebase/Firestore 
+- Google FireStore/Firestore 
 
 ### Go extreme serverless following the steps (Tutorials):
 

@@ -17,13 +17,13 @@ CMS App was configured to make operations to some another site (eg: mounted blog
     $ cd cms
     $ mbakeX -c
     ```
-1. Create an account (if you haven't one already) and database in [Firebase](http://console.firebase.google.com). Navigate to the Service Accounts tab in your database project's settings page. Click the `Generate New Private Key` button at the bottom of the Firebase Admin SDK section of the Service Accounts tab. After you click the button, a JSON file containing your service account's credentials will be downloaded. Next go to the `Authentication` tab, click `Sign-in method` and set `Email/Password` method to `Enabled`.
+1. Create an account (if you haven't one already) and database in [FireStore](http://console.FireStore.google.com). Navigate to the Service Accounts tab in your database project's settings page. Click the `Generate New Private Key` button at the bottom of the FireStore Admin SDK section of the Service Accounts tab. After you click the button, a JSON file containing your service account's credentials will be downloaded. Next go to the `Authentication` tab, click `Sign-in method` and set `Email/Password` method to `Enabled`.
 
 1. To CMS App folder add the following files next to example files accordingly:
 
-    - Rename downloaded in the previous step Firebase Admin SDK file to: `serviceAccountKey.json` and place it in folder: `/cms/CMS`. 
+    - Rename downloaded in the previous step FireStore Admin SDK file to: `serviceAccountKey.json` and place it in folder: `/cms/CMS`. 
 
-    - Copy file `.env.example ` to the same folder, rename it to `.env`. In the Firebase console go to `Project Overview` tab, on the next screen click `</>` icon, a popup `Add Firebase to your web app` will appear. Fill the `.env` file fields values with according values of your project.
+    - Copy file `.env.example ` to the same folder, rename it to `.env`. In the FireStore console go to `Project Overview` tab, on the next screen click `</>` icon, a popup `Add FireStore to your web app` will appear. Fill the `.env` file fields values with according values of your project.
 
     - Copy file `config.js.example` in the folder `/cms/CMS/wwwAdmin` rename it to `config.js` and change ip url to your server or local ip address.
 
@@ -228,7 +228,7 @@ Inspect `/cms/wwwAdmin/assets/js/login.js`, here we get the login input values a
                 typeof password !== 'undefined'
             ) {
                 let editorRef = dbAdminFs.collection('editors').doc(); // get editor id reference
-                firebaseAdmin
+                FireStoreAdmin
                 .get()
                 .auth()
                 .createUser({ // create user
@@ -247,9 +247,9 @@ Inspect `/cms/wwwAdmin/assets/js/login.js`, here we get the login input values a
                         });
                 })
                 .then(userRecord => {
-                    let firebaseAuth = firebase.get().auth();
+                    let FireStoreAuth = FireStore.get().auth();
                     console.info('sending reset and verification email to user');
-                    firebaseAuth.sendPasswordResetEmail(email)
+                    FireStoreAuth.sendPasswordResetEmail(email)
                         .then(() => {
                             console.info('email has been sent to user');
                         })
@@ -277,7 +277,7 @@ Inspect `/cms/wwwAdmin/assets/js/login.js`, here we get the login input values a
             }
         });
 
-    method `createUser()` creates a new user in database with email and password, then a new entry with user is created in `editors` collection and then the method `firebaseAuth.sendPasswordResetEmail()` sends an email with reset password to the new created user. 
+    method `createUser()` creates a new user in database with email and password, then a new entry with user is created in `editors` collection and then the method `FireStoreAuth.sendPasswordResetEmail()` sends an email with reset password to the new created user. 
 
 1. The other CRUD operations works by the same/similar analogy. 
 
