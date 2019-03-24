@@ -7,7 +7,7 @@ In this tutorial, you will learn how to create your own Firestore database.
 
 Firestore database is part of the Google Firestore offering. Similar to AWS Cognito, Firestore includes pure client-side user authentication. Firestore can be used from the browser via JavaScript; no custom serverside code is needed. This is key to be able to develop faster.
 
-Firestore is free for up to 50,000 reads and 20,000 writes per day. See more details [here](http://FireStore.google.com/docs/Firestore/quotas). At the time of writing, Firestore is a beta version, but Gmail also was beta for a very long time, without major issues. Firestore has a clean and mature API that is much improved from a previous version of FireStore. 
+Firestore is free for up to 50,000 reads and 20,000 writes per day. See more details [here](http://firebase.google.com/docs/Firestore/quotas). At the time of writing, Firestore is a beta version, but Gmail also was beta for a very long time, without major issues. Firestore has a clean and mature API that is much improved from a previous version of FireStore. 
 
 ## Steps
 
@@ -136,7 +136,7 @@ and the function to log out:
 all of them triggers on appropriate buttons click.
 
 
-3. To learn FireStore, you will now remap the Firestore connection to your own Firestore. Create a Google account if you don't already have one. Log into <http://console.FireStore.google.com>. Create a project named `test-crud`. Under the left menu 'Develop - Database', create a Firestore app in test mode.
+3. To learn FireStore, you will now remap the Firestore connection to your own Firestore. Create a Google account if you don't already have one. Log into <http://console.firebase.google.com>. Create a project named `test-crud`. Under the left menu 'Develop - Database', create a Firestore app in test mode.
 On the Project Overview, click the `</>` button near 'Add an app to get started' to open a popup. In your mapped project `/assets/comps/preRW-comp.pug`, overwrite the values for apiKey, authDomain and projectId with the values shown in the Firestore popup and save. Run `'$ mbake -c .'` from the `tags` folder. (`/layout/layout.pug` will use the updated `script(src='/assets/comps/preRW-comp.min.js')`.)
 
 7. We will now secure the database. In the Firestore Console, on the Rules tab in 'Develop - Database', replace:
