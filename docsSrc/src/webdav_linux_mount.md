@@ -81,6 +81,6 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
 		// will ask for username and password: admin 123123
 		$ umount /root/mount
 
-In the [next tutorial](/seo/) you will learn about Social SEO.
+In the [next tutorial](/seo/) you will learn about social SEO.
 
 NEXT: Go to [Social SEO](/seo/).

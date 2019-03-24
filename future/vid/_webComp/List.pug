@@ -11,7 +11,7 @@ script#Lst1Tpl(type='text/x-dot-template').
 
 script.
 	//http://www.javascriptoo.com/dot-js
-	console.log ('in temp list ') // don't forget #comps
+	console.log ('in temp list ') //- don't forget #comps
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')

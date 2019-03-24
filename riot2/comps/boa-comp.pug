@@ -8,20 +8,20 @@ boa-comp
             p.num { num }
 
     script.
-        this.on('mount', function() { // right after the tag is mounted on the page
-            let THIZ = this // this is the tag
+        this.on('mount', function() { //- right after the tag is mounted on the page
+            let THIZ = this //- this is the tag
             $('button', this.root).click(function(evt) {
-               // a this here is related to click scope - not the tag
+               //- a this here is related to click scope - not the tag
                evt.preventDefault()
                let type = opts.type;
                if (type === 'sum') {
-                  // sum
+                  //- sum
                   let arg1 = $('input:first-of-type', THIZ.root).val()
                   let arg2 = $('input:last-of-type', THIZ.root).val()
 
                   THIZ.update({num: +arg1+ +arg2});
                } else {
-                  // subtraction
+                  //- subtraction
                   let arg1 = $('input:first-of-type', THIZ.root).val()
                   let arg2 = $('input:last-of-type', THIZ.root).val()
 

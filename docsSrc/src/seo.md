@@ -1,4 +1,4 @@
-# Social SEO
+# social SEO
 
 SEO stands for Search Engine Optimization.
 Including social media metadata in all new pieces of content allows you to optimize for sharing Twitter, Facebook, Google+ and Pinerest by defining exactly how titles, descriptions, images and more appear in social streams.
