@@ -1,6 +1,6 @@
 # AMP
 
-The Accelerated Mobile Pages (AMP) — is an open-source library that provides a straightforward way to create web pages that are compelling, smooth, and load near instantaneously for users. Web pages and ads published in the AMP open-source format load near instantly, giving users a smooth, more engaging experience on mobile and desktop.
+The Accelerated Mobile Pages (AMP) — is an open source library that provides a straightforward way to create web pages that are compelling, smooth, and load near instantaneously for users. Web pages and ads published in the AMP open source format load near instantly, giving users a smooth, more engaging experience on mobile and desktop.
 
 When a standard webpage has an AMP counterpart, a link to the AMP page is placed in an HTML tag in the source code of the standard page. Because most AMP pages are easily discoverable by web crawlers, third parties such as search engines and other referring websites can choose to link to the AMP version of a webpage instead of the standard version.
 
