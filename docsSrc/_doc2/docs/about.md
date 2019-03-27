@@ -1,5 +1,5 @@
 - [SPA video](http://youtu.be/LHFjjDPlU3A)
-- [Click for 'THE' B-M-SPA docs](http://doc.mbake.org/SPA/)
+- [Click for 'THE' B-M-SPA docs](http://doc.MetaBake.org/SPA/)
 
 
 ## low-code = 10X faster web app development.
@@ -32,6 +32,6 @@ You can reinvest the time saved by using MetaBake&trade; into a more interactive
 
 # About B&M SPA
 
-This section is about _B-M-SPA_, curated technologies and techniques that help you build dynamic apps and mobile apps faster. It assumes that you are familiar with the mbake project, as it builds on it. If you are not familiar with mbake, please go to [mbake docs](http://doc.mbake.org/mbake) and review.
+This section is about _B-M-SPA_, curated technologies and techniques that help you build dynamic apps and mobile apps faster. It assumes that you are familiar with the mbake project, as it builds on it. If you are not familiar with mbake, please go to [mbake docs](http://doc.MetaBake.org/mbake) and review.
 
 This project is named B-M-SPA for "Bricks, Mortar and Single-Page Applications". It contains building blocks for dynamic apps and mobile apps, and points at ways to to put them together. Writing a good SPA is the high art of app development - it is certainly a bit harder than writing regular webpages. If properly done - using Phonegap version 8+ - you can use a SPA as the core of a hybrid/cross-platform appstore app (iOS and Android) without loss of native capabilities such as device permissions.

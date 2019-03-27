@@ -1,7 +1,7 @@
 
 
 - <a href='http://youtu.be/CMUiPC0YtYA' target='_blank'>WebIDE video</a>
-- <a href='http://doc.mbake.org/meta/' target='_blank'>Click for 'THE' Meta docs</a>
+- <a href='http://doc.MetaBake.org/meta/' target='_blank'>Click for 'THE' Meta docs</a>
 
 ## low-code = 10X faster web app development.
 ### With MetaBake's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
