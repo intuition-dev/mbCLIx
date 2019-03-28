@@ -2,4 +2,4 @@
 
 Are you sure you shoud do advanced?
 
-https://metabake.github.io/mBake-Advanced4/
+https://metabake.github.io/mbakeAdvanced/

@@ -1,4 +1,4 @@
-<img src="http://metabake.github.io/MetaBake-Docs/logo.jpg" width="100">
+<img src="http://metabake.github.io/mbakeDocs/logo.jpg" width="100">
 
 
 # What is mbake?
