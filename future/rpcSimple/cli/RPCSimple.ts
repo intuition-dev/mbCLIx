@@ -9,14 +9,13 @@ class RPCSimple {// requires promise and fetch for ie11
     this.port = port
 
     this.user = 'guest' // default is guest user
-    this.pswd = 'guest'
   }
   user
-  pswd
+  pswdH
 
-  setUser(user,pswd) { // simple auth
+  setUser(user,pswdH) { // simple auth, pass an isomorphic salted hash of password via crypto
     this.user = user
-    this.pswd = pswd
+    this.pswdH = pswdH // eg https://github.com/brix/crypto-js
   }
 
   static uniq = '--A'
@@ -27,7 +26,7 @@ class RPCSimple {// requires promise and fetch for ie11
   request(ent, method, params) { // returns promise
     //if array, return as array
 
-    params['pswd'+RPCSimple.uniq] = btoa(this.pswd)
+    params['pswdH'+RPCSimple.uniq] = btoa(this.pswdH)
     params['user'+RPCSimple.uniq] = btoa(this.user)
     params['method'+RPCSimple.uniq] = method
    
@@ -45,9 +44,13 @@ class RPCSimple {// requires promise and fetch for ie11
             return response.json()
           })
           .then(function(respJSON) {
-            const resp = JSON.stringify(respJSON)
+            const resp:any = JSON.stringify(respJSON)
             console.log(resp)
-            resolve(resp)
+            if(resp.errorMessage) {
+              reject(resp)
+            }
+
+            resolve(resp.result)
 
           })//fetch
       })//pro
