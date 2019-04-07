@@ -34,7 +34,6 @@ var RPCSimple = (function () {
                 if (resp.errorMessage) {
                     reject(resp);
                 }
-                console.log(resp.result);
                 resolve(resp.result);
             });
         });

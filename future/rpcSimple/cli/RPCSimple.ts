@@ -42,7 +42,7 @@ class RPCSimple {// requires promise and fetch for ie11
       fetch(url, {
             body: data 
             ,headers: {
-              'Content-Type': 'application/json',
+             'Content-Type': 'application/json',
             }
             ,method: 'post',
           })//fetch
@@ -54,7 +54,6 @@ class RPCSimple {// requires promise and fetch for ie11
             if(resp.errorMessage) {
               reject(resp)
             }
-            console.log(resp.result)
             resolve(resp.result)
           })//fetch
       })//pro

@@ -4,15 +4,18 @@ const serviceApp = express()
 serviceApp.use(bodyParser.json())
 
 
-serviceApp.use(bodyParser.json())
 class CustomCors {
    cors() {
       return (request, response, next) => {
-         console.log('cors')
          response.setHeader('Access-Control-Allow-Origin', '*')
          response.setHeader('Access-Control-Allow-Headers', '*')
+
          if (request.method === 'OPTIONS') {
-            response.status(204).send()
+            console.log('cors')
+            response.setHeader('Access-Control-Max-Age', 600) // 10 minutes
+            response.status(204)
+            console.log('e cors')
+            response.send()
          } else {
             return next()
          }
@@ -21,6 +24,7 @@ class CustomCors {
 }
 const customCors = new CustomCors()
 serviceApp.use(customCors.cors())
+serviceApp.use(bodyParser.json())
 
 
 const uniq = '--X'
@@ -47,6 +51,7 @@ serviceApp.post('/pageOne', (req, res) => {
       console.log(resp)
       res.json(resp)
    }
+   console.info()
 })
 
 

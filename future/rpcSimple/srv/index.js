@@ -2,15 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const serviceApp = express();
 serviceApp.use(bodyParser.json());
-serviceApp.use(bodyParser.json());
 class CustomCors {
     cors() {
         return (request, response, next) => {
-            console.log('cors');
             response.setHeader('Access-Control-Allow-Origin', '*');
             response.setHeader('Access-Control-Allow-Headers', '*');
             if (request.method === 'OPTIONS') {
-                response.status(204).send();
+                console.log('cors');
+                response.setHeader('Access-Control-Max-Age', 600);
+                response.status(204);
+                console.log('e cors');
+                response.send();
             }
             else {
                 return next();
@@ -20,6 +22,7 @@ class CustomCors {
 }
 const customCors = new CustomCors();
 serviceApp.use(customCors.cors());
+serviceApp.use(bodyParser.json());
 const uniq = '--X';
 serviceApp.post('/pageOne', (req, res) => {
     const user = req.body['user' + uniq];
@@ -42,6 +45,7 @@ serviceApp.post('/pageOne', (req, res) => {
         console.log(resp);
         res.json(resp);
     }
+    console.info();
 });
 serviceApp.listen(8888, () => {
     console.info('8888');
