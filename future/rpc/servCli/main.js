@@ -1,7 +1,5 @@
 'use strict';
 
-const jaysonBrowserClient = require('3rd/jayson/client/browser');
-const fetch = require('node-fetch');
 
 const callServer = function(request, callback) {
   const options = {
@@ -26,3 +24,12 @@ client.request('multiply', [5, 5], function(err, error, result) {
   if(err) throw err;
   console.log(result); // 25
 });
+
+rpc = new rpc(port)
+rpc.user
+rpc.pswd
+
+pro = rpc.request(ent,method,params)
+
+
+Response(errorLevelAndMsg,result)
