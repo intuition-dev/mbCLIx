@@ -8,20 +8,27 @@ adminApp.use(bodyParser.json())
 adminApp.use(bodyParser.json());
 
 
+// Response(errorLevelAndMsg, result, type:array, ispacked)
+
+
 adminApp.get("/", (req, res) => {
-   res.send('Hello world');
-});
-adminApp.post("/editors", (req, res) => {
-   let email = req.body.email;
-   let password = req.body.password;
-   if (typeof email !== 'undefined' &&
-      typeof name !== 'undefined' &&
-      typeof password !== 'undefined'
-   ) {
+   res.send('Nothing to see here, move along');
+})
+
+adminApp.post("/pageOne", (req, res) => {
+   const user = req.body.user;
+   const pswd = req.body.pswd;
+   console.log(user,pswd)
+
+   const method = req.body.method
+   if('multiply'==method) {
+
+
+   
 
    } else {
       res.status(400);
-      res.send({ error: 'parameters missing' });
+      res.send({ error: 'mismatch' });
    }
 });
 

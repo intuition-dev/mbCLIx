@@ -1,19 +1,9 @@
 
 
-need to check auth and auth of api
-
-1. send auth
-
-2. json rpc | rest?
-
-3. ECS, where e = page, vm, component, or componentVM
-
-4. action
-
-5. user/pswd
-
-6. returns packed json
-
-7. ok, packed: array | row
-
-8. error, message 
+Typescript
+no ajax
+Can be any back end entity or combo, eg SQL + ElasticSearch
+Packs json if arrary
+Like basicauth w/o headers
+Browser centric unlike json rpc
+Uses ECS entity
