@@ -1,13 +1,8 @@
 const express = require('express')
-const basicAuth = require('express-basic-auth')
+
 const bodyParser = require("body-parser");
 const adminApp = express();
 adminApp.use(bodyParser.json())
-
-
-adminApp.use(basicAuth({
-   users: { 'admin': '123' }
-}))
 
 
 adminApp.use(bodyParser.json());
