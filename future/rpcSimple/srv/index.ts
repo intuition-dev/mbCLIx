@@ -1,11 +1,20 @@
 const express = require('express')
-
 const bodyParser = require("body-parser")
 const serviceApp = express()
 serviceApp.use(bodyParser.json())
 
 
 serviceApp.use(bodyParser.json())
+class CustomCors {
+   cors() {
+      return (request, response, next) => {
+         response.setHeader('Access-Control-Allow-Origin', '*')
+      }
+   };
+}
+const customCors = new CustomCors()
+serviceApp.use(customCors.cors())
+
 
 
 serviceApp.get("/", (req, res) => {
@@ -13,7 +22,7 @@ serviceApp.get("/", (req, res) => {
 })
 
 
-const uniq = '--A'
+const uniq = '--X'
 serviceApp.post("/pageOne", (req, res) => {
    const user = req.body['user'+uniq]
    const pswdH = req.body['pswdH'+uniq]

@@ -13,6 +13,7 @@ var RPCSimple = (function () {
         params['user' + RPCSimple.uniq] = btoa(this.user);
         params['method' + RPCSimple.uniq] = method;
         var data = JSON.stringify(params);
+        console.info(data);
         return new Promise(function (resolve, reject) {
             fetch(this.urlRoot + ent + ':' + this.port, {
                 body: data,
@@ -22,6 +23,7 @@ var RPCSimple = (function () {
                 method: 'post',
             })
                 .then(function (response) {
+                console.log('here1');
                 return response.json();
             })
                 .then(function (respJSON) {

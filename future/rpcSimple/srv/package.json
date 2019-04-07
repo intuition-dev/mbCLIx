@@ -7,9 +7,6 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "express-basic-auth": "^1.1.6",
-    "jayson": ">=3.0.1",
-    "mbake": ">=5.4.4"
+    "express": "^4.16.4"
   }
 }

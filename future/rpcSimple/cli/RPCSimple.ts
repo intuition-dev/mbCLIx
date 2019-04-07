@@ -18,7 +18,7 @@ class RPCSimple {// requires promise and fetch for ie11
     this.pswdH = pswdH // eg https://github.com/brix/crypto-js
   }
 
-  static uniq = '--A'
+  static uniq = '--X'
   /**
    * 
    * @param ent Ent would be the pageUrl or componentUrl or such
@@ -33,7 +33,8 @@ class RPCSimple {// requires promise and fetch for ie11
     let data = JSON.stringify(params)
    
     return new Promise(function(resolve, reject) {
-        fetch(this.urlRoot+ent+':'+this.port, {
+      console.info(data)
+      fetch(this.urlRoot+ent+':'+this.port, {
             body: data 
             ,headers: {
               "Content-Type": "application/json",
@@ -41,6 +42,7 @@ class RPCSimple {// requires promise and fetch for ie11
             ,method: 'post',
           })//fetch
           .then(function(response) {
+            console.log('here1')
             return response.json()
           })
           .then(function(respJSON) {
@@ -60,7 +62,7 @@ class RPCSimple {// requires promise and fetch for ie11
 
 const rpc = new RPCSimple('http://localhost/',8888)
 
-const pro:any = rpc.request('pageOne','multiply',{a:5, b:5})
+const pro:any = rpc.request('pageOne','multiply',{a:5, b:2})
 pro.then(function(result) {
   console.log(result)
 })

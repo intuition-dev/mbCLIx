@@ -1,27 +1,51 @@
 const express = require('express');
-const basicAuth = require('express-basic-auth');
 const bodyParser = require("body-parser");
-const adminApp = express();
-adminApp.use(bodyParser.json());
-adminApp.use(basicAuth({
-    users: { 'admin': '123' }
-}));
-adminApp.use(bodyParser.json());
-adminApp.get("/", (req, res) => {
-    res.send('Hello world');
+const serviceApp = express();
+serviceApp.use(bodyParser.json());
+serviceApp.use(bodyParser.json());
+class CustomCors {
+    cors() {
+        return (request, response, next) => {
+            response.setHeader('Access-Control-Allow-Origin', '*');
+            response.setHeader('Access-Control-Allow-Methods', '*');
+            response.setHeader('Access-Control-Allow-Headers', '*');
+            if (request.method === 'OPTIONS') {
+                response.status(204).send();
+            }
+            else {
+                return next();
+            }
+        };
+    }
+    ;
+}
+const customCors = new CustomCors();
+serviceApp.use(customCors.cors());
+serviceApp.get("/", (req, res) => {
+    res.send('Nothing to see here, move along');
 });
-adminApp.post("/editors", (req, res) => {
-    let email = req.body.email;
-    let password = req.body.password;
-    if (typeof email !== 'undefined' &&
-        typeof name !== 'undefined' &&
-        typeof password !== 'undefined') {
+const uniq = '--A';
+serviceApp.post("/pageOne", (req, res) => {
+    const user = req.body['user' + uniq];
+    const pswdH = req.body['pswdH' + uniq];
+    console.log(user, pswdH);
+    const method = req.body['method' + uniq];
+    console.log(method);
+    const resp = {};
+    if ('multiply' == method) {
+        let a = req.body.a;
+        let b = req.body.b;
+        resp.result = a * b;
+        resp.type = '';
+        resp.ispacked = false;
+        res.json(resp);
     }
     else {
-        res.status(400);
-        res.send({ error: 'parameters missing' });
+        resp.errorLevel = -1;
+        resp.errorMessage = 'mismatch';
+        res.json(resp);
     }
 });
-adminApp.listen(8888, () => {
+serviceApp.listen(8888, () => {
     console.info('8888');
 });
