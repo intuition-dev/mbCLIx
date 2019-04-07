@@ -4,9 +4,10 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": ">=1.18.3",
-    "express": ">=4.16.4"
-  }, 
-    "devDependencies": {
+    "express": ">=4.16.4",
+    "express-formidable": "^1.2.0"
+  },
+  "devDependencies": {
     "@types/node": ">=11.13.0"
-    }
+  }
 }

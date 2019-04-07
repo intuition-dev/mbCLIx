@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const serviceApp = express()
-serviceApp.use(bodyParser.json())
+const formidable = require("express-formidable");
 
 
 class CustomCors {
@@ -24,20 +24,29 @@ class CustomCors {
 }
 const customCors = new CustomCors()
 serviceApp.use(customCors.cors())
-serviceApp.use(bodyParser.json())
 
 
-const uniq = '--X'
+serviceApp.use(bodyParser.urlencoded({ extended: false }))
+serviceApp.use(formidable());
+
+
 serviceApp.post('/pageOne', (req, res) => {
-   const user = req.body['user'+uniq]
-   const pswdH = req.body['pswdH'+uniq]
-   console.info(req.body)
-   const method = req.body['method'+uniq]
+
+   console.log(req.fields)
+
+   
+   const user = req.fields.user
+   const pswdH = req.fields.pswdH
+   console.log(user,pswdH)
+
+   const method = req.fields.method
+   const params = JSON.parse( req.fields.params )
+   console.log(method, params)
 
    const resp:any= {} // new response
    if('multiply'==method) {
-      let a = req.body.a
-      let b = req.body.b
+      let a = params.a
+      let b = params.b
 
       resp.result = a*b
 

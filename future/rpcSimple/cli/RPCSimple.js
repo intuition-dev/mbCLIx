@@ -10,20 +10,18 @@ var RPCSimple = (function () {
         this.pswdH = pswdH;
     };
     RPCSimple.prototype.request = function (ent, method, params) {
-        params['pswdH' + RPCSimple.uniq] = btoa(this.pswdH);
-        params['user' + RPCSimple.uniq] = btoa(this.user);
-        params['method' + RPCSimple.uniq] = method;
-        var data = JSON.stringify(params);
+        var formData = new FormData();
+        formData.append('params', JSON.stringify(params));
+        formData.append('user', btoa(this.user));
+        formData.append('pswdH', btoa(this.pswdH));
+        formData.append('method', method);
         var THIZ = this;
         return new Promise(function (resolve, reject) {
-            console.info(data);
+            console.info(formData.get('method'));
             var url = THIZ.httpOrs + '://' + THIZ.host + ':' + THIZ.port + ent;
             console.log(url);
             fetch(url, {
-                body: data,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                body: formData,
                 method: 'post',
             })
                 .then(function (respJSON) {
@@ -38,7 +36,6 @@ var RPCSimple = (function () {
             });
         });
     };
-    RPCSimple.uniq = '--X';
     return RPCSimple;
 }());
 var rpc = new RPCSimple('http', 'localhost', 8888);
