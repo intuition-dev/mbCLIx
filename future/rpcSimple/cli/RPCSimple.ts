@@ -15,7 +15,7 @@ class RPCSimple {// requires promise and fetch for ie11
   user
   pswdH
 
-  setUser(user,pswdH) { // simple auth, pass an isomorphic salted hash of password via crypto
+  setUser(user,pswdH) { // simple auth, pass should be isomorphic salted hash via crypto
     this.user = user
     this.pswdH = pswdH // eg https://github.com/brix/crypto-js
   }
@@ -44,16 +44,25 @@ class RPCSimple {// requires promise and fetch for ie11
             body: formData 
             ,method: 'post',
           })//fetch
-          .then(function(respJSON) {
-            return respJSON.json()
+          .then(function(fullResp) {
+            console.info(fullResp)
+            if(!fullResp.ok) {
+              reject(fullResp.statusText)
+            } else {
+              const obj = fullResp.json()
+              return obj
+            }
           })
           .then(function(resp) {
-            console.info(resp)
             if(resp.errorMessage) {
               reject(resp)
             }
             resolve(resp.result)
           })//fetch
+          .catch(function (err) {
+            console.log('fetch err')
+            console.log(err)
+          })
       })//pro
     }//req()
 }//class
@@ -65,3 +74,13 @@ const pro:any = rpc.request('/pageOne','multiply',{a:5, b:2})
 pro.then(function(result) {
   console.log(result)
 })
+
+
+/*const proErr:any = rpc.request('/page2','multiplyXXX',{a:5, b:2})
+proErr.then(function(result) {
+  console.log(result)
+}).catch(function (err) {
+  console.log('err')
+  console.log(err)
+})
+*/

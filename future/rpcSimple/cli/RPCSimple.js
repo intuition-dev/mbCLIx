@@ -24,15 +24,25 @@ var RPCSimple = (function () {
                 body: formData,
                 method: 'post',
             })
-                .then(function (respJSON) {
-                return respJSON.json();
+                .then(function (fullResp) {
+                console.info(fullResp);
+                if (!fullResp.ok) {
+                    reject(fullResp.statusText);
+                }
+                else {
+                    var obj = fullResp.json();
+                    return obj;
+                }
             })
                 .then(function (resp) {
-                console.info(resp);
                 if (resp.errorMessage) {
                     reject(resp);
                 }
                 resolve(resp.result);
+            })
+                .catch(function (err) {
+                console.log('fetch err');
+                console.log(err);
             });
         });
     };

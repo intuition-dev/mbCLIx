@@ -1,37 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const formidable = require('express-formidable');
 const serviceApp = express();
-const formidable = require("express-formidable");
+serviceApp.use(bodyParser.urlencoded({ extended: false }));
+serviceApp.use(formidable());
 class CustomCors {
     cors() {
         return (request, response, next) => {
+            console.log('.');
             response.setHeader('Access-Control-Allow-Origin', '*');
-            response.setHeader('Access-Control-Allow-Headers', '*');
-            if (request.method === 'OPTIONS') {
-                console.log('cors');
-                response.setHeader('Access-Control-Max-Age', 600);
-                response.status(204);
-                console.log('e cors');
-                response.send();
-            }
-            else {
-                return next();
-            }
+            return next();
         };
     }
 }
 const customCors = new CustomCors();
 serviceApp.use(customCors.cors());
-serviceApp.use(bodyParser.urlencoded({ extended: false }));
-serviceApp.use(formidable());
 serviceApp.post('/pageOne', (req, res) => {
     console.log(req.fields);
     const user = req.fields.user;
     const pswdH = req.fields.pswdH;
-    console.log(user, pswdH);
     const method = req.fields.method;
     const params = JSON.parse(req.fields.params);
-    console.log(method, params);
     const resp = {};
     if ('multiply' == method) {
         let a = params.a;

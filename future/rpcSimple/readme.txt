@@ -2,6 +2,7 @@
 
 Typescript
 no ajax
+no preflight
 Can be any back end entity or combo, eg SQL + ElasticSearch
 Packs json if arrary
 Like basicauth w/o headers
