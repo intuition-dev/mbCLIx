@@ -1,6 +1,7 @@
 var RPCSimple = (function () {
-    function RPCSimple(urlRoot, port) {
-        this.urlRoot = urlRoot;
+    function RPCSimple(httpOrs, host, port) {
+        this.httpOrs = httpOrs;
+        this.host = host;
         this.port = port;
         this.user = 'guest';
     }
@@ -13,25 +14,27 @@ var RPCSimple = (function () {
         params['user' + RPCSimple.uniq] = btoa(this.user);
         params['method' + RPCSimple.uniq] = method;
         var data = JSON.stringify(params);
+        var THIZ = this;
         return new Promise(function (resolve, reject) {
             console.info(data);
-            fetch(this.urlRoot + ent + ':' + this.port, {
+            var url = THIZ.httpOrs + '://' + THIZ.host + ':' + THIZ.port + ent;
+            console.log(url);
+            fetch(url, {
                 body: data,
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
                 method: 'post',
             })
-                .then(function (response) {
-                console.log('here1');
-                return response.json();
-            })
                 .then(function (respJSON) {
-                var resp = JSON.stringify(respJSON);
-                console.log(resp);
+                return respJSON.json();
+            })
+                .then(function (resp) {
+                console.info(resp);
                 if (resp.errorMessage) {
                     reject(resp);
                 }
+                console.log(resp.result);
                 resolve(resp.result);
             });
         });
@@ -39,8 +42,8 @@ var RPCSimple = (function () {
     RPCSimple.uniq = '--X';
     return RPCSimple;
 }());
-var rpc = new RPCSimple('http://localhost/', 8888);
-var pro = rpc.request('pageOne', 'multiply', { a: 5, b: 2 });
+var rpc = new RPCSimple('http', 'localhost', 8888);
+var pro = rpc.request('/pageOne', 'multiply', { a: 5, b: 2 });
 pro.then(function (result) {
     console.log(result);
 });

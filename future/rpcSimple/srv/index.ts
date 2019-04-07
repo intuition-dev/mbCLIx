@@ -8,32 +8,27 @@ serviceApp.use(bodyParser.json())
 class CustomCors {
    cors() {
       return (request, response, next) => {
+         console.log('cors')
          response.setHeader('Access-Control-Allow-Origin', '*')
+         response.setHeader('Access-Control-Allow-Headers', '*')
          if (request.method === 'OPTIONS') {
             response.status(204).send()
          } else {
             return next()
          }
       }
-   };
+   }
 }
 const customCors = new CustomCors()
 serviceApp.use(customCors.cors())
-
-
-
-serviceApp.get('/', (req, res) => {
-   res.send('Nothing to see here, move along')
-})
 
 
 const uniq = '--X'
 serviceApp.post('/pageOne', (req, res) => {
    const user = req.body['user'+uniq]
    const pswdH = req.body['pswdH'+uniq]
-   console.log(user,pswdH)
+   console.info(req.body)
    const method = req.body['method'+uniq]
-   console.log(method)
 
    const resp:any= {} // new response
    if('multiply'==method) {
@@ -44,10 +39,12 @@ serviceApp.post('/pageOne', (req, res) => {
 
       resp.type = ''//eg array
       resp.ispacked = false     
+      console.log(resp)
       res.json(resp)
    } else {
       resp.errorLevel = -1
       resp.errorMessage = 'mismatch'
+      console.log(resp)
       res.json(resp)
    }
 })
