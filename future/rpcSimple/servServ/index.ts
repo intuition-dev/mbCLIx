@@ -1,38 +1,43 @@
 const express = require('express')
 
 const bodyParser = require("body-parser");
-const adminApp = express();
-adminApp.use(bodyParser.json())
+const serviceApp = express();
+serviceApp.use(bodyParser.json())
 
 
-adminApp.use(bodyParser.json());
+serviceApp.use(bodyParser.json());
 
 
 // Response(errorLevelAndMsg, result, type:array, ispacked)
 
 
-adminApp.get("/", (req, res) => {
+serviceApp.get("/", (req, res) => {
    res.send('Nothing to see here, move along');
 })
 
-adminApp.post("/pageOne", (req, res) => {
-   const user = req.body.user;
-   const pswd = req.body.pswd;
+const uniq = '--A'
+serviceApp.post("/pageOne", (req, res) => {
+   const user = req.body['user'+uniq]
+   const pswd = req.body['pswd'+uniq]
    console.log(user,pswd)
+   const method = req.body['method'+uniq]
+   console.log(method)
 
-   const method = req.body.method
+
+   const resp:any= {} // new response
    if('multiply'==method) {
 
 
    
-
+      res.json(resp)
    } else {
-      res.status(400);
-      res.send({ error: 'mismatch' });
+      resp.errorLevel = 1
+      resp.errorMessage = 'mismatch'
+      res.json(resp)
    }
-});
+})
 
 
-adminApp.listen(8888, () => {
+serviceApp.listen(8888, () => {
    console.info('8888');
 });

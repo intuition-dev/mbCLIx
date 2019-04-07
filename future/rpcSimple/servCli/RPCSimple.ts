@@ -19,16 +19,17 @@ class RPCSimple {// requires promise and fetch for ie11
     this.pswd = pswd
   }
 
+  static uniq = '--A'
   /**
    * 
    * @param ent Ent would be the pageUrl or componentUrl or such
    */
   request(ent, method, params) { // returns promise
     //if array, return as array
-    
-    params.pswd = btoa(this.pswd)
-    params.user = btoa(this.user)
-    params.method = method
+
+    params['pswd'+RPCSimple.uniq] = btoa(this.pswd)
+    params['user'+RPCSimple.uniq] = btoa(this.user)
+    params['method'+RPCSimple.uniq] = method
    
     let data = JSON.stringify(params)
    
