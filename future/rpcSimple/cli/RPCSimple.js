@@ -13,8 +13,8 @@ var RPCSimple = (function () {
         params['user' + RPCSimple.uniq] = btoa(this.user);
         params['method' + RPCSimple.uniq] = method;
         var data = JSON.stringify(params);
-        console.info(data);
         return new Promise(function (resolve, reject) {
+            console.info(data);
             fetch(this.urlRoot + ent + ':' + this.port, {
                 body: data,
                 headers: {
@@ -36,11 +36,11 @@ var RPCSimple = (function () {
             });
         });
     };
-    RPCSimple.uniq = '--A';
+    RPCSimple.uniq = '--X';
     return RPCSimple;
 }());
 var rpc = new RPCSimple('http://localhost/', 8888);
-var pro = rpc.request('pageOne', 'multiply', { a: 5, b: 5 });
+var pro = rpc.request('pageOne', 'multiply', { a: 5, b: 2 });
 pro.then(function (result) {
     console.log(result);
 });

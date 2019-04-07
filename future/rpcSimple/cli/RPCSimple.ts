@@ -37,7 +37,7 @@ class RPCSimple {// requires promise and fetch for ie11
       fetch(this.urlRoot+ent+':'+this.port, {
             body: data 
             ,headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             }
             ,method: 'post',
           })//fetch
