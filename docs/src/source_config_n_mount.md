@@ -8,7 +8,7 @@
 
 1. Install Caddy with webDAV plugin, eg:
 
-        $ curl http://getcaddy.com | bash -s personal http.webdav
+        $ curl https://getcaddy.com | bash -s personal http.webdav
 
 1. Add `Caddyfile` to the root folder and config it, eg:
 
