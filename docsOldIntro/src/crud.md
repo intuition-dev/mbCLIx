@@ -160,7 +160,7 @@ __NEXT STEPS:__ You can try out more Template projects (type `$ mbake`). You can
 
 Definitely look at:
 
-- <a href='http://github.com/MetaBake/_mbake/tree/master/awesomeReference' target='_blank'>Awesome list of MetaBake&trade; resources</a>
+- <a href='http://github.com/MetaBake/_mbake/tree/master/awesomeReference' target='_blank'>Awesome list of MetaBakeresources</a>
 
 - <http://git.MetaBake.org>.
 

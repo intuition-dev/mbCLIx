@@ -9,11 +9,11 @@ If you don't have time, see [tl;dr](#tldr) at the bottom of this page.
 
 mbake compares to other static generators and grunt/gulp; but it does a lot more with a lot less coding.
 
-mbake is part of the MetaBake&trade; approach but can be used by itself.
+mbake is part of the MetaBakeapproach but can be used by itself.
 
 ## What is MetaBake?
 
-MetaBake&trade; is a modern development approach that helps you deliver web apps 10X faster with less coding. MetaBake&trade; has 10 pillars.
+MetaBakeis a modern development approach that helps you deliver web apps 10X faster with less coding. MetaBakehas 10 pillars.
 
 Find out more about MetaBake:
 
@@ -23,9 +23,9 @@ Find out more about MetaBake:
 
 - [Summary for Managers](http://www.youtube.com/watch?v=OK-cJNSkQII)
 
-MetaBake&trade; allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
+MetaBakeallows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
 
-MetaBake&trade; and mbake are open source. The source code is available at [github.com/MetaBake](http://github.com/MetaBake)
+MetaBakeand mbake are open source. The source code is available at [github.com/MetaBake](http://github.com/MetaBake)
 
 See [Resources](/res/) for related projects.
 
