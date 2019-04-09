@@ -1,6 +1,6 @@
 # Meta Cake
 
-- [Meta Cake](http://github.com/MetaBake /MetaCake-plugins-2) is a library of plugins or components.
+- [Meta Cake](http://github.com/MetaBake/MetaCake-plugins-2) is a library of plugins or components.
 
 - It is also a domain specific language, specific component to your app.
 

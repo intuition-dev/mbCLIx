@@ -14,7 +14,7 @@ If you don't like this router, MetaBake also supports Framework7, SmoothState or
 
 The router and Hello World router is here:
 
- - [B-M-SPA/SPA/www/router](http://github.com/MetaBake /B-M-SPA/tree/master/router)
+ - [B-M-SPA/SPA/www/router](http://github.com/MetaBake/B-M-SPA/tree/master/router)
 
 
 
