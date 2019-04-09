@@ -1,5 +1,5 @@
-# MetaBake-advanced
+# MetaBake -advanced
 
 Are you sure you shoud do advanced?
 
-https://metabake.github.io/mbakeAdvanced/
+https://MetaBake.github.io/mbakeAdvanced/

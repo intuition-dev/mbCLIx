@@ -1,4 +1,4 @@
-<img src="http://metabake.github.io/mbakeDocs/logo.jpg" width="100">
+<img src="http://MetaBake.github.io/mbakeDocs/logo.jpg" width="100">
 
 
 # What is mbake?
@@ -9,13 +9,13 @@ If you don't have time, see [tl;dr](#tldr) at the bottom of this page.
 
 mbake compares to other static generators and grunt/gulp; but it does a lot more with a lot less coding.
 
-mbake is part of the MetaBakeapproach but can be used by itself.
+mbake is part of the MetaBake approach but can be used by itself.
 
-## What is MetaBake?
+## What is MetaBake ?
 
-MetaBakeis a modern development approach that helps you deliver web apps 10X faster with less coding. MetaBakehas 10 pillars.
+MetaBake is a modern development approach that helps you deliver web apps 10X faster with less coding. MetaBake has 10 pillars.
 
-Find out more about MetaBake:
+Find out more about MetaBake :
 
 - [Quick Demo](http://youtu.be/WyCdSFTUIvM)
 
@@ -23,9 +23,9 @@ Find out more about MetaBake:
 
 - [Summary for Managers](http://www.youtube.com/watch?v=OK-cJNSkQII)
 
-MetaBakeallows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
+MetaBake allows for gradual adoption. You can start by adopting just one or a few of its pillars. mbake is a good start.
 
-MetaBakeand mbake are open source. The source code is available at [github.com/MetaBake](http://github.com/MetaBake)
+MetaBake and mbake are open source. The source code is available at [github.com/MetaBake ](http://github.com/MetaBake )
 
 See [Resources](/res/) for related projects.
 
@@ -107,7 +107,7 @@ To go extreme serverless, we show how to use mbake with
 - [Blog](/blog/)
 
 
-Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake.
+Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake .
 
 ## tl;dr
 
