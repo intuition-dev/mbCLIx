@@ -28,7 +28,7 @@ The main scss differences from usual css are:
 ### assets.yaml
 
 In our project we use mbake scss compiler, it works through assets.yaml eg:
-- http://github.com/MetaBake/MetaBake -Docs/tree/master/meta-website/assets
+- http://github.com/Metabake/Metabake -Docs/tree/master/meta-website/assets
 
 There is list of sass files in assets.yaml and it will compile to /assets/css folder. So you can just run the command from the 'assets' folder to compile scss/sass to css:
 
