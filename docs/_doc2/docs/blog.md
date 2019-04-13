@@ -1,10 +1,10 @@
 
-## Blog/Items example
+## CMS/Items example
 
 
 ```
    mbake -b
-   cd blog
+   cd CMS
 ```
 
 ## dat.yaml  -part 2
@@ -15,7 +15,7 @@ dat.yaml has dual usage.
 - The other is dynamic, with dat_i.yaml, used to create items.json from dat.yaml.
 
 ```
-   cd blog
+   cd CMS
    mbake -i .
 ```
 That generates an items.json file that you can client side fetch(| axios), and bind dynamically.

@@ -11,4 +11,4 @@ From a command line such as PowerShell, type:
 
 ```
 
-That's it! If you don't have Node with NPM installed, first go [here for Windows](http://nodejs.org/en/download/) or [here for MAC](http://blog.teamtreehouse.com/install-node-js-npm-mac).
+That's it! If you don't have Node with NPM installed, first go [here for Windows](http://nodejs.org/en/download/) or [here for MAC](http://CMS.teamtreehouse.com/install-node-js-npm-mac).

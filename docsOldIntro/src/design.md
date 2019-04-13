@@ -4,6 +4,6 @@ Design of UI is very important because it is the first thing that customer see o
 
 For more information on Spectre SCSS framework see [Spectre docs](http://picturepan2.github.io/spectre/getting-started.html)
 
-In the [next tutorial](/blog/), we cover a _blog website_.
+In the [next tutorial](/CMS/), we cover a _CMS website_.
 
-NEXT: Go to [Blog](/blog/).
+NEXT: Go to [CMS](/CMS/).

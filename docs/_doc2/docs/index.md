@@ -1,6 +1,6 @@
 
 
-### (B-M) Bricks and Mortar with SPA, router, PhoneGap, Blog
+### (B-M) Bricks and Mortar with SPA, router, PhoneGap, CMS
 and more examples
 
 You'll need to know mbake section before this section. Or you can skip this section and jump to Meta section, and come back to this later.
@@ -11,6 +11,6 @@ You can jump in any order on the left. But SPA-Router must be before App Store.
 In Meta you learn the right way to do it.
 
 
-# LinkBlog
+# LinkCMS
 
-Also, in examples, there is blog: linkBlog, and more.
+Also, in examples, there is CMS: linkCMS, and more.

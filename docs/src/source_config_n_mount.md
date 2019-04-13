@@ -24,7 +24,7 @@
             errors ../err1
         }
 
-1. Create folder `www` and in this folder download blog source:
+1. Create folder `www` and in this folder download CMS source:
 
         $ mkdir www
         $ cd www 
@@ -36,7 +36,7 @@
         $ cd assets
         $ mbakeX -s .
         $ cd ..
-        $ cd blog
+        $ cd CMS
         $ mbake -i .
 
 1. Run Caddy server, from the root folder where Caddyfile is:

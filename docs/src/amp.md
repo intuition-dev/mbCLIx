@@ -12,7 +12,7 @@ AMP is useful for SEO and has two benefits for it. One is it will have a `Fast` 
 
 ### Head
 
-To learn what's necessary to create a valid AMP HTML page inspect code in blog app (`$ mbake -b`, downloaded in the [previous tutorial](/seo/)). Open file `/layout/layout.pug`, it is the layout for regular pages, here in `head` you can see the link to the AMP page:
+To learn what's necessary to create a valid AMP HTML page inspect code in CMS app (`$ mbake -b`, downloaded in the [previous tutorial](/seo/)). Open file `/layout/layout.pug`, it is the layout for regular pages, here in `head` you can see the link to the AMP page:
 
         link(rel='amphtml', href='m.html')
 
@@ -60,7 +60,7 @@ Javascript is often the cause of slow websites and so AMP pages do not allow the
 
 ### Body
 
-In `body` tag almost all regular html tags are supported except for certain tags, such as the `img` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags, eg: `blog/blog/post-*/layout-single-m.pug`:
+In `body` tag almost all regular html tags are supported except for certain tags, such as the `img` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags, eg: `CMS/CMS/post-*/layout-single-m.pug`:
 
         amp-img.img__inside(alt='...', src='who.jpg', width='300', height='300')
 

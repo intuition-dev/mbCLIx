@@ -3,18 +3,18 @@
 SEO stands for Search Engine Optimization.
 Including social media metadata in all new pieces of content allows you to optimize for sharing Twitter, Facebook, Google+ and Pinerest by defining exactly how titles, descriptions, images and more appear in social streams.
 
-The implications for SEO are also significant. The right data, including optimized images, helps content to spread, which often leads to increased links and mentions. You can find many templates of SEO meta tags in the internet (eg: [here](http://moz.com/blog/meta-data-templates-123))
+The implications for SEO are also significant. The right data, including optimized images, helps content to spread, which often leads to increased links and mentions. You can find many templates of SEO meta tags in the internet (eg: [here](http://moz.com/CMS/meta-data-templates-123))
 
 In mbake you can write values for each meta tag and for each page in the page's dat.yaml file and then in the layout address to these fields in meta tags. This allows you to define meta tags just once (in the layout) amd then access to them on each page from dat.yaml file.
 
-You can inspect code in the example blog app:
+You can inspect code in the example CMS app:
 
         $ mbake -b
 
 compile files and run the app:
 
         $ mbakeX -c .
-        $ cd blog
+        $ cd CMS
         $ mbake -i .
         $ cd ../assets
         $ mbakeX -s .
@@ -40,7 +40,7 @@ in the `/layout/layout.pug` file you can see defined SEO meta tags in `head`:
         meta(property='og:description', content=comment)
 
 Notice that instead of their value (text or url) there are variables.
-Now open `/blog/post-*/dat.yaml`, here you can see that the variables from the layout's `head` are defined here with their value as text or url, eg:
+Now open `/CMS/post-*/dat.yaml`, here you can see that the variables from the layout's `head` are defined here with their value as text or url, eg:
 
         title: >-
         Quisque faucibus lacinia turpis id fermentum. Sed eu velit massa. Etiam

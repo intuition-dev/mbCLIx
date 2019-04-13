@@ -1,6 +1,6 @@
 # Editor CMS
 
-CMS App was configured to make operations to some another site (eg: mounted blog), in it one can: 
+CMS App was configured to make operations to some another site (eg: mounted CMS), in it one can: 
 
 - edit `.md` and `.yaml` files
 - upload images and video files
@@ -11,7 +11,7 @@ CMS App was configured to make operations to some another site (eg: mounted blog
 <!-- TODO -->
 1. Assuming you have finished [this tutorial](/source_config_n_mount/) 
 
-1. Create folder for Blog CMS Editor App, download Blog CMS App to this folder, change `cms` with your own name:
+1. Create folder for CMS CMS Editor App, download CMS CMS App to this folder, change `cms` with your own name:
     ```sh
     $ mkdir cms
     $ cd cms
@@ -50,13 +50,13 @@ CMS App was configured to make operations to some another site (eg: mounted blog
     ```sh
     $ mbake -s .
     ```
-1. Open in browser Blog Admin App:
+1. Open in browser CMS Admin App:
     ```sh
     [your-ip]:8080
     // eg: http://0.0.0.0:8080
     ```
 
-    Open in browser Blog Editors App:
+    Open in browser CMS Editors App:
 
     ```
     [your-ip]:9080
