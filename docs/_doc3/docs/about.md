@@ -9,7 +9,7 @@
 
 # About Metabake 
 
-mbake.org is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with mbake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
+Metabake.org is a development productivity suite. It should allow you to deliver 10 times faster then legacy development stacks/methodologies. We have found that - with Metabake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
 
 How does open source Metabake deliver 10X faster and cheaper web app development? Not enough organizations are fully leveraging the new Serverless. With Serverless services like Firestore and S3 you get rid of **ALL** server-side and middleware development and operations. This is where up to 2/3 of your time and cost used to go. Gone!
 
@@ -17,7 +17,7 @@ On the client side (browser apps and mobile apps) Metabake does something simila
 
 The Metabake approach has 10 pillars that are the foundation for achieving mind-blowing development productivity gains. I'll just mention one more pillar here: automatic programming. You've probably heard of 'static site generators' like Hugo or Jekyll that people use to generate their web site or a CMS. Automatic programming means using a similar generator to write your web app! This can get you to yet another level of productivity.
 
-To learn more about the Metabake approach, including all 10 pillars and full examples, go to mbake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/Metabake as the first step into 10X faster web app development.
+To learn more about the Metabake approach, including all 10 pillars and full examples, go to Metabake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/Metabake as the first step into 10X faster web app development.
 
 #### Metabake productivity is based on three modules:
 
