@@ -10,11 +10,10 @@
 Example Caddyfile in this folder.
 
 
-1. Mount. eg. Eg CyberDuck WebDAV http and match port, under /webdav path
+1. Mount. eg. Eg  MlutainDuck WebDAV http and match port, under /webdav path
 
 1. Now install CMS in www/
 
 You can access mount
 
 1. Open issue: Open: Find a linux mount to WebDAV
-http://mbake.acunote.com/projects/54685/tasks/96
