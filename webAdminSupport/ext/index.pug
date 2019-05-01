@@ -4,8 +4,10 @@ html
       meta(charset='utf-8')
       meta(name='viewport', content='width=device-width, initial-scale=1')
       title #{title}
-      script(src=ROOT +'app.js')
-      script(src="//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js")
+      //- script(src=ROOT + 'lib/js-yaml/js-yaml.min.js')
+      script(src=ROOT + 'lib/jquery/jquery.min.js')
+      script(src=ROOT + 'app.js')
+
       style.
          h1 {
             font-size: 12px;
@@ -22,11 +24,16 @@ html
             color: #fff;
             text-transform: uppercase;
             transition: all .2s ease-in-out;
+            cursor: pointer;
          }
          button:hover {
             background: rgba(27, 175, 42, 1);
          }
+         button[disabled] {
+            background: rgba(0,0,0,.2);
+            cursor: default;
+         }
 
    body
       h1 Map Admin Checker
-      button(id="check") Check this page now
+      button(id='check', type='button', disabled) Check this page now
