@@ -17,45 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var checkPageButton = document.getElementById('check');
         checkPageButton.disabled = false;
+        consoleLog('webAdminUrl -----------------> ', bgPage.getWebAdminUrl());
         checkPageButton.addEventListener('click', function() {
             // redirect to WebAdmin
-            chrome.tabs.update({url: "http://157.230.189.157:9080"});
+            chrome.tabs.update({url: bgPage.getWebAdminUrl() });
         });
     } else {
         consoleLog($('#check'), 'OFF');
     }
-
-
-    // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    //    chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
-    //       tabs.forEach(element => {       
-    //          var url = new URL(element.url);
-    //          var domain = url.hostname;
-    //          var map = 'http://' + domain + '/map.yaml';
-    //          // consoleLog('map ------>', map);
-
-    //          $.get(map)
-    //             .done(function(res){
-    //                let map = jsyaml.load(res);
-    //                consoleLog('RES:', res, map.isAdmin);
-    //                if (typeof map.isAdmin !== 'undefined' && map.isAdmin === true) {
-    //                   chrome.browserAction.setBadgeText({text:"ready"});
-    //                } else {
-    //                   chrome.browserAction.setBadgeText({text:"X"});
-    //                }
-    //             })
-    //             .fail(function(err){
-    //                consoleLog('ERR:', err);
-    //                chrome.browserAction.setBadgeText({text:"X"});
-    //             });
-
-    //          var checkPageButton = document.getElementById('check');
-    //          checkPageButton.addEventListener('click', function() {
-    //             // TODO redirect to admin CMS
-    //          });
-
-    //       });
-    //    });
-    // });
 
 }, false);

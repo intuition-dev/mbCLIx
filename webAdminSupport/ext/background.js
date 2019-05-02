@@ -1,21 +1,21 @@
 let active = false;
+function isActive() { return active; }
+
+let webAdminUrl;
+function getWebAdminUrl() { return webAdminUrl; }
 
 let activate = () => {
-    // chrome.browserAction.setBadgeText({ text: "ready" });
     active = true;
     console.info("Extension is active");
     chrome.browserAction.setIcon({path:"icon.png"});
-
+    
 }
 
 let deactivate = () => {
-    // chrome.browserAction.setBadgeText({ text: "N/A" });
     active = false;
     console.info("Extension deactivated");
     chrome.browserAction.setIcon({path:"icon_disabled.png"});
 }
-
-function isActive() { return active; }
 
 let checkExtStatus = function () {
     deactivate();
@@ -36,7 +36,8 @@ let checkExtStatus = function () {
                         .done(function (res) {
                             let map = jsyaml.load(res);
                             console.info('RES:', res, map.isAdmin);
-                            if (typeof map.isAdmin !== 'undefined' && map.isAdmin === true) {
+                            webAdminUrl = map.isAdmin;
+                            if (typeof map.isAdmin !== 'undefined') {
                                 activate();
                             } else {
                                 deactivate();
