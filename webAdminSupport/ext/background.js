@@ -23,14 +23,14 @@ let checkExtStatus = function () {
         chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (response) {
             tabs.forEach(function (activeTab) {
                 if (typeof activeTab.url !== 'undefined') {
-                    console.info('activeTab ------>', activeTab, activeTab.url);
+                    // console.info('activeTab ------>', activeTab, activeTab.url);
                     chrome.extension.sendMessage('hello');
                     
                     var url = new URL(activeTab.url);
                     var domain = url.hostname;
                     if (url.protocol === 'http:' || url.protocol === 'https:') {
-                        var map = url.protocol + '//' + domain + '/map.yaml';
-                        console.info('map ------>', map);
+                        var map = url.protocol + '//' + domain + '/server.yaml';
+                        // console.info('map ------>', map);
                         
                         $.get(map)
                         .done(function (res) {

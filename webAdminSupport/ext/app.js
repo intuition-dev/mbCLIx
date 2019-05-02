@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var checkPageButton = document.getElementById('check');
         checkPageButton.disabled = false;
-        consoleLog('webAdminUrl -----------------> ', bgPage.getWebAdminUrl());
         checkPageButton.addEventListener('click', function() {
             // redirect to WebAdmin
             chrome.tabs.update({url: bgPage.getWebAdminUrl() });
