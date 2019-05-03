@@ -8,8 +8,18 @@ html
         script(src=ROOT + 'app.js')
 
         style.
+            body {
+                margin: 15px;
+            }
             h1 {
                 font-size: 12px;
+                font-weight: 200;
+                line-height: 1.5;
+                letter-spacing: 2px;
+            }
+            h1 div {
+                font-weight: 600;
+                letter-spacing: 1px;
             }
             h1, button {
                 white-space: nowrap;
@@ -17,6 +27,7 @@ html
             }
             button {
                 padding: 5px 10px;
+                margin: 10px;
                 border: 0; 
                 border-radius: 4px;
                 background: #1b98f8;
@@ -34,5 +45,6 @@ html
             }
 
     body
-        h1 WebAdmin
-        button(id='check', type='button', disabled) Edit site content
+        h1 Metabake
+            div WebAdmin
+        button(id='check', type='button', disabled) Edit page
