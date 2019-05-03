@@ -2,7 +2,9 @@ let active = false;
 function isActive() { return active; }
 
 let webAdminUrl;
+let u;
 function getWebAdminUrl() { return webAdminUrl; }
+function getCurrentPage() { return u; }
 
 let activate = () => {
     active = true;
@@ -24,6 +26,8 @@ let checkExtStatus = function () {
             tabs.forEach(function (activeTab) {
                 if (typeof activeTab.url !== 'undefined') {
                     // console.info('activeTab ------>', activeTab, activeTab.url);
+                    u = new URL(activeTab.url);
+                    u = u.pathname.replace(/^\/|\/$/g, '');
                     chrome.extension.sendMessage('hello');
                     
                     var url = new URL(activeTab.url);

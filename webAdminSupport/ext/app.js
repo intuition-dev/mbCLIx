@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
         checkPageButton.disabled = false;
         checkPageButton.addEventListener('click', function() {
             // redirect to WebAdmin
-            chrome.tabs.update({url: bgPage.getWebAdminUrl() });
+            consoleLog('getCurrentPage()', bgPage.getCurrentPage());
+            chrome.tabs.update({url: bgPage.getWebAdminUrl() + '/#' +  bgPage.getCurrentPage()});
         });
     } else {
         consoleLog($('#check'), 'OFF');
