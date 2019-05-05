@@ -7,7 +7,7 @@ NPM needs the extra flags to be able to install Electron. Electron is used for t
 From a command line such as PowerShell, type:
 
 ```
-   npm i -g mbake --unsafe-perm=true --allow-root
+   npm we -g mbake --unsafe-perm=true --allow-root
 
 ```
 

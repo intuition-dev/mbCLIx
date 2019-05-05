@@ -1,7 +1,7 @@
 
 # Regarding the video wall.
 
-I posted a wall video wall of some nice web-apps I found. To play videos, I needed a media player. There are several good media players that you can use that support IOS and Android features. After checking this chart I used Radiant MP.
+I posted a wall video wall of some nice web-apps we found. To play videos, we needed a media player. There are several good media players that you can use that support IOS and Android features. After checking this chart we used Radiant MP.
 
 
 ![](//cekvenich.site44.com/post/vwall/players.png)

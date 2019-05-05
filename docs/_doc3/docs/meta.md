@@ -3,7 +3,7 @@
 
 http://youtube.com/watch?v=WyCdSFTUIvM
 
-Meta is 'automatic programing'. Now... you may say, there is no way for my application/product, that I can build a program that write the program.
+Meta is 'automatic programing'. Now... you may say, there is no way for my application/product, that we can build a program that write the program.
 
 You can.
 
