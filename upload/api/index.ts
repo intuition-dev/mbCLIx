@@ -1,6 +1,6 @@
 
 ////declare let require: any
-//declare var console: Console;
+//declare let console: Console;
 
 const express = require("express");
 const cors = require('cors')
