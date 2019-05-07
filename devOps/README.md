@@ -9,8 +9,14 @@ Load in a closure, assume they are not 100% uptime.
 Most should be loaded last, favor UX load times. For example after DOM plus 100ms.
 
 Don't have devOps code in random places. 
- You can load a fragment via Pug flag in Production only, not local or dev. To avoid site rebuild, check an Env.json file and if PROD load.
-(Fragment should be called devOps.pug, included before headFrag).
+ You can load a fragment via Pug flag in Production only, not local or dev:
+ 
+ ```
+   mbakeX --bakeWP .
+ ```
+ Fragment should be called devOps.pug, included before headFrag.
+
+# Levels of DevOps
 
 # Bronze Level
 
