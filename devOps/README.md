@@ -14,7 +14,7 @@ Don't have devOps code in random places.
 
 # Bronze Level
 
-## Site (Marketing)
+## Site tracking (Marketing)
 
 This is only used for websites, not webapps.
 
@@ -23,7 +23,7 @@ It is to be avoided.
 
 - http://simpleanalytics.io seems best
 
-- http://clicky.com seems OK, but has EU issues.
+- http://clicky.com seems OK, but may have EU user notification issues.
 
 
 ## Waterfall
@@ -44,7 +44,7 @@ Of course everyone tests locally on IE 11, FF, iOS, Safari, Android, etc.
 
 - Errorception is also very nice but a bit smaller.
 
-Both?
+Maybe use both.
 
 ### QUnit
 
@@ -59,16 +59,17 @@ Unit testing services layer, View or regular Model(not VM) has much less benefit
 
 ## RUM, Synthetic transaction and Page/Screen Loads (pings)
 
-These are 3 different things, but same vendor provides all 3:
+These are 3 different things, but same vendor provides all 3, and waterfall:
 
-- http://monitis.com
+- http://monitis.com They do recording or FireFox
 
 Also: 
-- 
+- http://uptrends.com Step script
+- http://site24x7.com Native app recorder
 
 ## Capacity / Preventive 1
 
-Take a single ViewModel and QUnit script. The script will try to stress.
+** Take a single ViewModel and QUnit script. The script will try to stress.
 Then open the QUnit test in a few browsers. So you triple the stress.
 
 
