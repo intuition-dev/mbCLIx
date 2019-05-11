@@ -3,8 +3,7 @@
 So serverless means no (or few) back end developers and now Front End devs do DevOps. 
 
 # Using
-
-Load in a closure, assume they are not 100% uptime.
+Load devops scripts in a closure, assume they are not 100% uptime.
 
 Most should be loaded last, favor UX load times. For example after DOM plus 100ms.
 
@@ -18,7 +17,24 @@ Don't have devOps code in random places.
 
 # Levels of DevOps
 
-# Bronze Level
+# Bronze LEVEL
+
+
+## Waterfall
+
+- http://gtmetrix.com
+
+
+## Emulators (ie11 and older iOS)
+
+Of course everyone tests locally on IE 11, FF, iOS, Safari, Android, etc.
+
+- Browserstack account: to test IE 11, iOS and such.
+
+
+## Pings
+
+- RUM vendors
 
 ## Site tracking (Marketing)
 
@@ -32,17 +48,7 @@ It is to be avoided.
 - http://clicky.com seems OK, but may have EU user notification issues.
 
 
-## Waterfall
-
-- http://gtmetrix.com
-
-
-## Emulators (ie11 and older iOS)
-
-Of course everyone tests locally on IE 11, FF, iOS, Safari, Android, etc.
-
-- Browserstack account lets you supplement above
-
+# Silver LEVEL
 
 ## Errors
 
@@ -58,28 +64,23 @@ If you have a ViewModel layer, you should test user going across pages by 'openi
 
 #### This does not avoid need for QA resource and should only be used to supplement a Product side's QA resource.
 
-Unit testing services layer, View or regular Model(not VM) has much less benefits.
+Testing services layer ot View has much less benefits.
 
 
-# Silver Level
-
-## RUM, Synthetic transaction and Page/Screen Loads (pings)
+## RUM and Page/Screen Loads 
 
 These are 3 different things, but same vendor provides all 3, and waterfall:
 
-- http://monitis.com They do recording or FireFox
+- http://monitis.com They do recording on FireFox
 
 Also: 
 - http://uptrends.com Step script
 - http://site24x7.com Native app recorder
 
-## Capacity / Preventive 1
-
-** Take a single ViewModel and QUnit script. The script will try to stress.
-Then open the QUnit test in a few browsers. So you triple the stress.
+- Uptime status page
 
 
-# Gold Level
+# Gold LEVEL
 
 ## Capacity / Preventive 2
 
@@ -89,9 +90,24 @@ External browser load generators. Rather than you writing your
 
 - But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
 
-# Native/Hybrid WebApps
+##  Native/Hybrid WebApps
 
-A subset is used on deviceready: Errors and RUM.
+Errors and RUM.
+
+- Testing APIs
+
+## Capacity / Preventive 1
+
+** ViewModel and QUnit script. The script will try to stress.
+Then open the QUnit test in a few browsers. So you triple the stress.
+
+#### CDN
+- Also get CDN traffic samples via API
+
+
+# Platinum LEVEL
+
+- Synthetic transaction, provided by RUM vendors
 
 
 
