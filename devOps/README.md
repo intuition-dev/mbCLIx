@@ -15,11 +15,11 @@ The internal code will the recompile targeting the production endpoints. In gene
 ### Bugs in Production
 
 So any normal release does the above release.
-And if there are bugs on staging, mostly a new git branch is made from HEAD.
+And if there are bugs on staging, mostly a new git branch is made from MASTER.
 
 #### Sometimes there are IRREGULAR bug fixes in production (branch) 
 
-Bugs are reproduced in DEV on the branch and fixed in HEAD. Then the bug fixes is added to the branch (so fix is both in HEAD and the released production branch). Staging will then be 'rolled back' to the fixed production branch - that contains the fix. And tested in staging.
+Bugs are reproduced in DEV on the branch and fixed in MASTER. Then the bug fixes is added to the branch (so fix is both in MASTER and the released production branch). Staging will then be 'rolled back' to the fixed production branch - that contains the fix. And tested in staging.
 Then ZIPed and copied to PROD: X --bakeP.
 
 
@@ -35,7 +35,7 @@ Don't have devOps code in random places.
  ```
    mbakeX --bakeWP .
  ```
- Fragment should be called devOps.pug, included before headFrag.
+ Fragment should be called devOps.pug, included before MASTERFrag.
 
 ## Levels of DevOps
 
