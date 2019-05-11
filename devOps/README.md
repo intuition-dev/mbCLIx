@@ -128,11 +128,6 @@ Then open the QUnit test in a few browsers. So you triple the stress.
 #### CDN
 - Also get CDN traffic samples via API
 
-### Security
-
-There should be no .js in html page. And set the security flag to not allow it.
-
-
 
 # Platinum LEVEL
 
