@@ -74,6 +74,10 @@ It is to be avoided.
 
 # Silver LEVEL
 
+## SEO Console
+
+Websites get registered with Google WebMaster tools
+
 ## Errors
 
 - http://sentry.io
