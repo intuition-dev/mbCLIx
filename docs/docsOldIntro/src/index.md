@@ -13,7 +13,7 @@ mbake is part of the Metabake approach but can be used by itself.
 
 ## What is Metabake ?
 
-Metabake is a modern development approach that helps you deliver web apps 10X faster with less coding. Metabake has 10 pillars.
+Metabake is a modern development approach that helps you deliver web apps 10X quicker with less coding. Metabake has 10 pillars.
 
 Find out more about Metabake :
 

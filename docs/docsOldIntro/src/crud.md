@@ -5,7 +5,7 @@ CRUD stands for create-read-update-delete.
 
 In this tutorial, you will learn how to create your own Firestore database.
 
-Firestore database is part of the Google Firestore offering. Similar to AWS Cognito, Firestore includes pure client-side user authentication. Firestore can be used from the browser via JavaScript; no custom serverside code is needed. This is key to be able to develop faster.
+Firestore database is part of the Google Firestore offering. Similar to AWS Cognito, Firestore includes pure client-side user authentication. Firestore can be used from the browser via JavaScript; no custom serverside code is needed. This is key to be able to develop quicker.
 
 Firestore is free for up to 50,000 reads and 20,000 writes per day. See more details [here](http://firebase.google.com/docs/Firestore/quotas). At the time of writing, Firestore is a beta version, but Gmail also was beta for a very long time, without major issues. Firestore has a clean and mature API that is much improved from a previous version of FireStore. 
 

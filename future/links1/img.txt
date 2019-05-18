@@ -1,7 +1,7 @@
 Images are slow and expensive to deliver.
 A good lesson is AMP - they make images small.
 
-90% smaller is 90% faster - on mobile even more.
+90% smaller is 90% quicker - on mobile even more.
 Also go lowest - and then replace image.
 
 At first cut:
