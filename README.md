@@ -1,4 +1,4 @@
-# Metabake -advanced
+# MetaBake -advanced
 
 Are you sure you shoud do advanced?
 

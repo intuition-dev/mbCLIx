@@ -54,9 +54,9 @@ Other:
 
 ## FlipTag
 
-[Here](http://github.com/Metabake/MetaCake-plugins-2/tree/master/docs/items/flip) you can check the example of an advanced `FlipTag` component.
+[Here](http://github.com/MetaBake/MetaCake-plugins-2/tree/master/docs/items/flip) you can check the example of an advanced `FlipTag` component.
 
-Download and unpack or git clone [the project](http://github.com/Metabake/MetaCake-plugins-2/tree/master/docs/items/flip).
+Download and unpack or git clone [the project](http://github.com/MetaBake/MetaCake-plugins-2/tree/master/docs/items/flip).
 
 From the root (`/flip`) folder, compile `.pug`:
 
@@ -90,7 +90,7 @@ and then they are used in `flip-comp.pug`.
 
 ## riot2
 
-[Here](http://github.com/Metabake/mbake-Advanced4/tree/master/riot2) is another example of an advanced `riot2` component.
+[Here](http://github.com/MetaBake/mbake-Advanced4/tree/master/riot2) is another example of an advanced `riot2` component.
 
 The `<yield>` component that is used here is a special riot core feature that allows you to inject and compile the content of any custom component inside its template in runtime.
 

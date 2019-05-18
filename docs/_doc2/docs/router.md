@@ -9,12 +9,12 @@ This project includes a JavaScript router named _SPA-router_.
 
 On navigating the app, the router only replaces content in the AppShell (`<div id='router'>`); this creates a 'rich client feel' and improves perceived performance. The router lets you have SPA events, which can be used for content transitions such as 'fade in' or 'fly left', that make your app indistinguishable from native Appstore apps.
 
-If you don't like this router, Metabake also supports Framework7, SmoothState or other similar SPA approaches.
+If you don't like this router, MetaBake also supports Framework7, SmoothState or other similar SPA approaches.
 
 
 The router and Hello World router is here:
 
- - [B-M-SPA/SPA/www/router](http://github.com/Metabake/B-M-SPA/tree/master/router)
+ - [B-M-SPA/SPA/www/router](http://github.com/MetaBake/B-M-SPA/tree/master/router)
 
 
 

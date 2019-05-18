@@ -1,4 +1,4 @@
 
-## Awesome low-code list of Metabake resources
+## Awesome low-code list of MetaBake resources
 
-- http://github.com/Metabake/Metabake -Docs/tree/master/awesomeReference
+- http://github.com/MetaBake/MetaBake -Docs/tree/master/awesomeReference
