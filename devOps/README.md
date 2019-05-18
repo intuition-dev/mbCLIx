@@ -103,7 +103,6 @@ These are 3 different things, but same vendor provides all 3, and waterfall:
 - http://monitis.com They do recording on FireFox
 
 Also: 
-- http://uptrends.com Step script
 - http://site24x7.com Native app recorder
 
 - Uptime status page
