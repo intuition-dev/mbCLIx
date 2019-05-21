@@ -7,7 +7,6 @@ Serverless means no (or few) back end developers and now Front End devs do DevOp
 Devs normally develops on Local, Dev and then release a branch to Staging. Staging has release.text in root.
 DevOps then zips the Staging and does:
 
-
       mbakeX --bakeP .
 
 The internal code will the recompile targeting the production endpoints. In general person that released to staging should not be the same that release to production.
@@ -21,7 +20,6 @@ And if there are bugs on staging, mostly a new git branch is made from MASTER.
 
 Bugs are reproduced in DEV on the branch and fixed in MASTER. Then the bug fixes is added to the branch (so fix is both in MASTER and the released production branch). Staging will then be 'rolled back' to the fixed production branch - that contains the fix. And tested in staging.
 Then ZIPed and copied to PROD: X --bakeP.
-
 
 
 ### Using
@@ -105,17 +103,8 @@ These are 3 different things, but same vendor provides all 3, and waterfall:
 Also: 
 - http://site24x7.com Native app recorder
 
-- Uptime status page
 
 # Gold LEVEL
-
-## Capacity / Preventive 2
-
-External browser load generators. Rather than you writing your 
-
-- LoadImpact is awesome. You may need to modify your code so it can be used.
-
-- But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
 
 ##  Native/Hybrid WebApps
 
@@ -127,6 +116,16 @@ Errors and RUM.
 
 ** ViewModel and QUnit script. The script will try to stress.
 Then open the QUnit test in a few browsers. So you triple the stress.
+
+
+## Capacity / Preventive 2
+
+External browser load generators. Rather than you writing your 
+
+- LoadImpact is awesome. You may need to modify your code so it can be used, eg: expose to get. ( back up http://locust.io )
+
+- But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
+
 
 #### CDN
 - Also get CDN traffic samples via API
