@@ -126,6 +126,7 @@ External browser load generators. Rather than you writing your
 
 - But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
 
+- Load testing: https://www.everystep-automation.com/pricing/
 
 #### CDN
 - Also get CDN traffic samples via API
