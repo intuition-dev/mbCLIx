@@ -2,7 +2,7 @@
 
 Serverless means no (or few) back end developers and now Front End devs do DevOps. 
 
-## REGULAR release to production.
+## Normal release to production.
 
 Devs normally develops on Local, Dev and then release a branch to Staging. Staging has release.text in root.
 DevOps then zips the Staging and does:
@@ -36,6 +36,8 @@ Don't have devOps code in random places.
  Fragment should be called devOps.pug, included before MASTERFrag.
 
 ## Levels of DevOps
+
+All levels include weekly backup to NAS.
 
 Make sure that devops files are disabled in local and DEV. They are only for Production. 
 
