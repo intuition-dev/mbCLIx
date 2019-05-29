@@ -82,8 +82,6 @@ Websites get registered with Google WebMaster tools
 
 - http://sentry.io
 
-- Errorception is also very nice but a bit smaller.
-
 Maybe use both. If there are errors reported, dev ops just adds them to issue tracker daily. Even if duplicate issue.
 
 
@@ -99,8 +97,6 @@ Testing services layer ot View has much less benefits.
 ## RUM and Page/Screen Loads 
 
 These are 3 different things, but same vendor provides all 3, and waterfall:
-
-- http://monitis.com They do recording on FireFox
 
 Also: 
 - http://site24x7.com Native app recorder
