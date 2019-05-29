@@ -67,8 +67,6 @@ This is only used for websites, not webapps.
 People often ask for Google Analytics. That is for full time marketing analysts only: whose jobs is full time use of it. 
 It is to be avoided.
 
-- http://simpleanalytics.io seems best
-
 - http://clicky.com seems OK, but may have EU user notification issues.
 
 
