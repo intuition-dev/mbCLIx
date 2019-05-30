@@ -1,4 +1,4 @@
-## Ops
+## DevOps
 
 Serverless means no (or few) back end developers and now Front End devs do DevOps. 
 
@@ -67,8 +67,6 @@ This is only used for websites, not webapps.
 People often ask for Google Analytics. That is for full time marketing analysts only: whose jobs is full time use of it. 
 It is to be avoided.
 
-- http://simpleanalytics.io seems best
-
 - http://clicky.com seems OK, but may have EU user notification issues.
 
 
@@ -81,8 +79,6 @@ Websites get registered with Google WebMaster tools
 ## Errors
 
 - http://sentry.io
-
-- Errorception is also very nice but a bit smaller.
 
 Maybe use both. If there are errors reported, dev ops just adds them to issue tracker daily. Even if duplicate issue.
 
@@ -99,8 +95,6 @@ Testing services layer ot View has much less benefits.
 ## RUM and Page/Screen Loads 
 
 These are 3 different things, but same vendor provides all 3, and waterfall:
-
-- http://monitis.com They do recording on FireFox
 
 Also: 
 - http://site24x7.com Native app recorder
