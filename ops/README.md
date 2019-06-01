@@ -67,7 +67,7 @@ This is only used for websites, not webapps.
 People often ask for Google Analytics. That is for full time marketing analysts only: whose jobs is full time use of it. 
 It is to be avoided.
 
-- http://clicky.com seems OK, but may have EU user notification issues.
+- http://clicky.com 
 
 ## Errors
 
@@ -81,6 +81,9 @@ If there are errors reported, dev ops just adds them to issue tracker daily. Eve
 
 Websites get registered with Google WebMaster tools
 
+##
+
+uptrends!
 
 ### QUnit
 
