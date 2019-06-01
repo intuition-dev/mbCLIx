@@ -69,18 +69,17 @@ It is to be avoided.
 
 - http://clicky.com seems OK, but may have EU user notification issues.
 
+## Errors
+
+- http://sentry.io
+If there are errors reported, dev ops just adds them to issue tracker daily. Even if duplicate issue.
+
 
 # Silver LEVEL
 
 ## SEO Console
 
 Websites get registered with Google WebMaster tools
-
-## Errors
-
-- http://sentry.io
-
-Maybe use both. If there are errors reported, dev ops just adds them to issue tracker daily. Even if duplicate issue.
 
 
 ### QUnit
@@ -104,7 +103,7 @@ Also:
 
 ##  Native/Hybrid WebApps
 
-Errors and RUM.
+ RUM.
 
 - Testing APIs
 
@@ -118,7 +117,7 @@ Then open the QUnit test in a few browsers. So you triple the stress.
 
 External browser load generators. Rather than you writing your 
 
-- LoadImpact is awesome. You may need to modify your code so it can be used, eg: expose to get. ( back up http://locust.io )
+- LoadImpact is awesome. You may need to modify your code so it can be used, eg: expose to get. 
 
 - But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
 
