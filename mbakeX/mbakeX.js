@@ -3,12 +3,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
-const Base_1 = require("./lib/Base");
-const Wa_1 = require("./lib/Wa");
-const Spider_1 = require("./lib/Spider");
-const Extra_1 = require("./lib/Extra");
-const FileOpsBase_1 = require("./lib/FileOpsBase");
-const FileOpsExtra_1 = require("./lib/FileOpsExtra");
+const Base_1 = require("mbake/lib/Base");
+const Wa_1 = require("mbake/lib/Wa");
+const Spider_1 = require("mbake/lib/Spider");
+const Extra_1 = require("mbake/lib/Extra");
+const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const cwd = process.cwd();
 function version() {
     console.info('mbakeX CLI version: ' + Base_1.Ver.ver());

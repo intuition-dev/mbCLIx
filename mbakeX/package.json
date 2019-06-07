@@ -1,7 +1,7 @@
 {
     "name": "mbake",
-    "version": "1.06.02",
-    "description": " Extra commands for mbake",
+    "version": "1.00.01",
+    "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
         "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
@@ -28,18 +28,20 @@
         "yarn": ">=1.16.0"
     },
     "dependencies": {
+        "mbake": "^6.6.3",
+        "execa": ">=1.0.0",
+
         "@firebase/app-types": ">=0.4.0",
-        "mbake": "^6.6.2",
         "node-firestore-import-export": ">=0.13.2",
         "riot-compiler": "^3.6.0",
-        "sharp": ">=0.22.1"
+        "sharp": ">=0.22.1",
+        "probe-image-size": ">=4.0.0"
     },
     "bundledDependencies": [
         "node-firestore-import-export",
         "firebase-admin"
     ],
     "devDependencies": {
-        "@firebase/app-types": ">=0.4.0",
         "@types/node": ">=12.0.7",
         "handbrake-js": ">=3.0.8",
         "ipinfo": ">=1.3.9",

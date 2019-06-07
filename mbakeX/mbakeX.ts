@@ -4,12 +4,12 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver,  MBake,  } from './lib/Base'
-import { Wa,  } from './lib/Wa'
-import { Map } from './lib/Spider'
-import { Resize, } from './lib/Extra'
-import { Dirs } from './lib/FileOpsBase'
-import { CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS, VersionNag  } from './lib/FileOpsExtra'
+import { Ver,  MBake,  } from 'mbake/lib/Base'
+import { Wa,  } from 'mbake/lib/Wa'
+import { Map } from 'mbake/lib/Spider'
+import { Resize, } from 'mbake/lib/Extra'
+import { Dirs } from 'mbake/lib/FileOpsBase'
+import { CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
