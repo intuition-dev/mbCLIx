@@ -26,25 +26,26 @@
         "yarn": ">=1.16.0"
     },
     "dependencies": {
-      "mbake": ">=6.6.5",
-
-      "@firebase/app-types": ">=0.4.0",
-      "execa": ">=1.0.0",
-      "node-firestore-import-export": ">=0.13.2",
-      "probe-image-size": ">=4.0.0",
-      "riot-compiler": "^3.6.0"
+        "@firebase/app-types": ">=0.4.0",
+        "execa": ">=1.0.0",
+        "mbake": ">=6.6.6",
+        "node-firestore-import-export": ">=0.13.2",
+        "probe-image-size": ">=4.0.0",
+        "riot-compiler": "^3.6.0"
     },
     "bundledDependencies": [
-      "mbake"
-      ,"node-firestore-import-export",
+        "mbake",
+        "node-firestore-import-export",
         "firebase-admin"
     ],
     "devDependencies": {
         "@types/node": ">=12.0.7",
         "handbrake-js": ">=3.0.8",
         "ipinfo": ">=1.3.9",
+        "limiter": ">=1.1.4",
         "sql-template-strings": ">=2.2.2",
         "sqlite": ">=3.0.3",
-        "limiter": ">=1.1.4"
+        "nyc": "^14.1.1"
+
       }
 }
