@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.00.09",
+    "version": "1.00.10",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
@@ -35,7 +35,8 @@
       "riot-compiler": "^3.6.0"
     },
     "bundledDependencies": [
-        "node-firestore-import-export",
+      "mbake"
+      ,"node-firestore-import-export",
         "firebase-admin"
     ],
     "devDependencies": {
