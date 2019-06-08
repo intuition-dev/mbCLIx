@@ -3,7 +3,7 @@
 
 export class Ver {
    static ver() {
-      return 'v1.00.01'
+      return 'v1.00.00'
    }
    static date(): string {
       return new Date().toISOString()

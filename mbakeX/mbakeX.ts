@@ -4,12 +4,14 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver,  MBake,  } from 'mbake/lib/Base'
-import { Wa,  } from 'mbake/lib/Wa'
+import { Ver, MBake,  } from 'mbake/lib/Base'
+import { Wa } from 'mbake/lib/Wa'
 import { Map } from 'mbake/lib/Spider'
-import { Resize, } from 'mbake/lib/Extra'
+import { Resize } from './lib/mbakeXX'
 import { Dirs } from 'mbake/lib/FileOpsBase'
-import { CSV2Json, DownloadFrag, GitDown, ExportFS, ImportFS, VersionNag  } from 'mbake/lib/FileOpsExtra'
+import { GitDown, ExportFS, ImportFS  } from './lib/mbakeXX'
+import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
+
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -39,7 +41,7 @@ function help() {
    console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .')
 
    console.info()
-   console.info('  Download fragment to setup the app devOps:                  mbake --ops .')
+   console.info('  Download fragment to setup the app devOps:                  mbakeX --ops .')
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
@@ -69,6 +71,7 @@ function help() {
    //TODO: check latest version via open of browser to npm
    console.info()
 
+   /*
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{
       if(!isCurrent_) 
@@ -79,6 +82,7 @@ function help() {
          console.log(err)
       }
    })// pro
+   */
 }//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////

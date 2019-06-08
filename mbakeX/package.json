@@ -1,6 +1,6 @@
 {
-    "name": "mbake",
-    "version": "1.00.01",
+    "name": "mbake-x",
+    "version": "1.00.00",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
@@ -28,9 +28,9 @@
         "yarn": ">=1.16.0"
     },
     "dependencies": {
-        "mbake": "^6.6.3",
-        "execa": ">=1.0.0",
+        "mbake": ">=6.6.5",
 
+        "execa": ">=1.0.0",
         "@firebase/app-types": ">=0.4.0",
         "node-firestore-import-export": ">=0.13.2",
         "riot-compiler": "^3.6.0",

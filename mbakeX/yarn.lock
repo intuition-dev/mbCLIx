@@ -3353,10 +3353,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@^6.6.3:
-  version "6.6.3"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.3.tgz#581e98f3732c17acbd9028ad3eeb4bfaaada10fa"
-  integrity sha512-Js02Tsp30C5yIyrF4F5nQMy4a1CGcuewNxK6TR+/0cFYmEBZuhd4lXqz+t5bGwOey9lRijjoG0FezY7QVrqx3w==
+mbake@^6.6.5:
+  version "6.6.5"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.5.tgz#cfc668bc20d9173728419d0b1448474ef94c3cfc"
+  integrity sha512-iQ+Xdu1Ir0Jk99rhxZLIg3vkNS0DceZdhGautM7dndNCrsjrqjwfPNdq9lRTTwAXZ7ey1T7X/b0TDsiUUEdkkw==
   dependencies:
     "@marp-team/marpit" ">=1.1.0"
     adm-zip ">=0.4.13"
@@ -3384,6 +3384,7 @@ mbake@^6.6.3:
     markdown-it-container ">=2.0.0"
     node-sass ">=4.12.0"
     open ">=6.3.0"
+    probe-image-size ">=4.0.0"
     pug ">=2.0.3"
     reload ">=3.0.1"
     riot-compiler "^3.6.0"

@@ -6,8 +6,9 @@ const commandLineArgs = require("command-line-args");
 const Base_1 = require("mbake/lib/Base");
 const Wa_1 = require("mbake/lib/Wa");
 const Spider_1 = require("mbake/lib/Spider");
-const Extra_1 = require("mbake/lib/Extra");
+const mbakeXX_1 = require("./lib/mbakeXX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const mbakeXX_2 = require("./lib/mbakeXX");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const cwd = process.cwd();
 function version() {
@@ -32,7 +33,7 @@ function help() {
     console.info('  To bake with staging ENV flag(2) in prod:                   mbakeX --bakeS .');
     console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .');
     console.info();
-    console.info('  Download fragment to setup the app devOps:                  mbake --ops .');
+    console.info('  Download fragment to setup the app devOps:                  mbakeX --ops .');
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .');
     console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .');
     console.info('  To process list.csv to list.json:                           mbakeX -l .');
@@ -54,17 +55,6 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbakeX -o');
     console.info('  For an example Ad:                                          mbakeX -a');
     console.info();
-    FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
-        try {
-            if (!isCurrent_)
-                console.log('There is a newer version of mbake CLI, please update.');
-            else
-                console.log('You have the current version of mbake CLI');
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
 }
 const optionDefinitions = [
     { name: 'mbakeX', defaultOption: true },
@@ -95,14 +85,14 @@ const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed.mbakeX;
 console.info();
 function git(arg) {
-    let gg = new FileOpsExtra_1.GitDown(arg);
+    let gg = new mbakeXX_2.GitDown(arg);
 }
 function exportFS(arg) {
-    let ef = new FileOpsExtra_1.ExportFS(arg);
+    let ef = new mbakeXX_2.ExportFS(arg);
     ef.export();
 }
 function importFS(arg) {
-    let ef = new FileOpsExtra_1.ImportFS(arg);
+    let ef = new mbakeXX_2.ImportFS(arg);
     ef.import();
 }
 function frag(arg) {
@@ -150,7 +140,7 @@ function map(arg) {
     new Spider_1.Map(arg).gen();
 }
 function img(arg) {
-    new Extra_1.Resize().do(arg);
+    new mbakeXX_1.Resize().do(arg);
 }
 function comps(arg) {
     let pro = new Base_1.MBake().compsNBake(arg, 0);
