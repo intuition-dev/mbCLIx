@@ -7,9 +7,9 @@ import commandLineArgs = require('command-line-args')
 import { Ver, MBake,  } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from 'mbake/lib/Spider'
-import { Resize } from './lib/mbakeXX'
+import { Resize } from './lib/mbakeX'
 import { Dirs } from 'mbake/lib/FileOpsBase'
-import { GitDown, ExportFS, ImportFS  } from './lib/mbakeXX'
+import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
 
@@ -17,42 +17,42 @@ import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 const cwd: string = process.cwd()
 
 function version() {
-   console.info('mbakeX CLI version: ' + Ver.ver()) // tsc
+   console.info('mbake-x CLI version: ' + Ver.ver()) // tsc
 }
 
 function help() {
    let b = new Ver()
    console.info()
-   console.info('mbakeX CLI version: ' + Ver.ver()) // tsc
+   console.info('mbake-x CLI version: ' + Ver.ver()) // tsc
    console.info('  your node version is ' + process.version)
    console.info('  from ' + __dirname)
    console.info()
    console.info('Usage: ')
    console.info('  For local watcher and server on port:')
-   console.info('    -p, --port to specify port for watcher:                   mbakeX -w . -p 8091 -r 9857')
+   console.info('    -p, --port to specify port for watcher:                   mbake-x -w . -p 8091 -r 9857')
    console.info('     (must be used with -r)')
-   console.info('    -r, --reload-port to specify port for live reload :       mbakeX -w . --port=8091 --reload-port=9857')
+   console.info('    -r, --reload-port to specify port for live reload :       mbake-x -w . --port=8091 --reload-port=9857')
    console.info()
 
-   console.info('  To process Pug and RIOT *-comp.pug components:              mbakeX -c .')
+   console.info('  To process Pug and RIOT *-comp.pug components:              mbake-x -c .')
    console.info('    -c also does regular mbake of Pug, not just comps.')
-   console.info('  To bake with dev. ENV flag(1) in prod(default is 0):        mbakeX --bakeD .')
-   console.info('  To bake with staging ENV flag(2) in prod:                   mbakeX --bakeS .')
-   console.info('  To bake with production ENV flag(3) in prod:                mbakeX --bakeP .')
+   console.info('  To bake with dev. ENV flag(1) in prod(default is 0):        mbake-x --bakeD .')
+   console.info('  To bake with staging ENV flag(2) in prod:                   mbake-x --bakeS .')
+   console.info('  To bake with production ENV flag(3) in prod:                mbake-x --bakeP .')
 
    console.info()
-   console.info('  Download fragment to setup the app devOps:                  mbakeX --ops .')
+   console.info('  Download fragment to setup the app devOps:                  mbake-x --ops .')
 
-   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbakeX -m .')
-   console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbakeX -i .')
-   console.info('  To process list.csv to list.json:                           mbakeX -l .')
-   console.info('  To download branch from git, in folder with gitdown.yaml:   mbakeX --gitDown GIT-PSWD')
+   console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbake-x -m .')
+   console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbake-x -i .')
+   console.info('  To process list.csv to list.json:                           mbake-x -l .')
+   console.info('  To download branch from git, in folder with gitdown.yaml:   mbake-x --gitDown GIT-PSWD')
    console.info('     passing the git password of gitdown user')
-   console.info('  To recursively remove source files:                         mbakeX --prod .')
+   console.info('  To recursively remove source files:                         mbake-x --prod .')
    console.info('  To export FiresStore data, it needs two arguments separated ')
-   console.info('   with ":" :                                                 mbakeX --exportFS serviceAccountKey:name_of_the_file')
+   console.info('   with ":" :                                                 mbake-x --exportFS serviceAccountKey:name_of_the_file')
    console.info('  To import FireStore data, it needs two arguments separated  ')
-   console.info('  with ":":                                                   mbakeX --importFS serviceAccountKey:name_of_the_json_exported_file')
+   console.info('  with ":":                                                   mbake-x --importFS serviceAccountKey:name_of_the_json_exported_file')
    console.info()
 
    console.info('    Note: . is current directory, or use any path instead of .')
@@ -60,13 +60,13 @@ function help() {
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter dash web-app:                                 mbakeX -d')
+   console.info('  For a starter dash web-app:                                 mbake-x -d')
 
-   console.info('  For example slides markdown:                                mbakeX -k')
+   console.info('  For example slides markdown:                                mbake-x -k')
 
-   console.info('  For a Electron(pre-PhoneGap) app:                           mbakeX -e')
-   console.info('  For a starter hybrid Phonegap app:                          mbakeX -o')
-   console.info('  For an example Ad:                                          mbakeX -a')
+   console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e')
+   console.info('  For a starter hybrid Phonegap app:                          mbake-x -o')
+   console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
 
@@ -86,7 +86,7 @@ function help() {
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
-   { name: 'mbakeX', defaultOption: true },
+   { name: 'mbake-x', defaultOption: true },
 
    { name: 'help', alias: 'h', type: Boolean },
    { name: 'version', alias: 'v', type: Boolean },
@@ -120,7 +120,7 @@ const optionDefinitions = [
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
-let arg: string = argsParsed.mbakeX
+let arg: string = argsParsed.mbake-x
 console.info()
 
 // ///////////////////////////////////////////////////////////////////////////////////////////

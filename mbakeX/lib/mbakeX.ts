@@ -10,7 +10,7 @@ export class Ver {
    }
 }
 
-//import sharp = require('sharp')
+import sharp = require('sharp')
 import probe = require('probe-image-size')
 import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
 import * as firebase from 'firebase-admin';
@@ -120,7 +120,6 @@ export class GitDown {
       fs.removeSync(dirTo)
    }
 
-
    async _getNEWRemoteBranch(branch) {
       const { stdout } = await execa('git', ['clone', this.remote])
 
@@ -181,7 +180,6 @@ export class GitDown {
 }//class
 
 
-
 export class Resize {
 
    do(dir) {
@@ -212,7 +210,7 @@ export class Resize {
       return false
    }
 
-   /*
+   
    smaller(file) {
       logger.info(file)
       if (!this.isWide(file)) return
@@ -236,11 +234,9 @@ export class Resize {
          .toFile(file + '.32.min.jpg')
 
    }//()
-   */
+
 
 }//class
-
-
 
 // //////////////////////////////////////////////////////////////////
 export class ExportFS {
@@ -262,7 +258,6 @@ export class ExportFS {
       this.collectionRef = firebase.firestore()
 
    }//()
-
 
    export() {
       let _this = this
@@ -287,13 +282,11 @@ export class ImportFS {
       this.pathToImportedFile = this.args[1]
       this.config = require(this.serviceAccountConfig + '.json');
 
-
       firebase.initializeApp({
          credential: firebase.credential.cert(this.config),
       });
 
       this.collectionRef = firebase.firestore()
-
    }//()
 
    import() {
