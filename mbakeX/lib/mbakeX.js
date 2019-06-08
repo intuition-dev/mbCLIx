@@ -9,14 +9,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class Verx {
     static ver() {
-        return 'v1.00.04';
+        return 'v1.00.09';
     }
     static date() {
         return new Date().toISOString();
     }
 }
 exports.Verx = Verx;
-const sharp = require("sharp");
 const probe = require("probe-image-size");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
 const firebase = __importStar(require("firebase-admin"));
@@ -80,7 +79,7 @@ class GitDown {
         fs.removeSync(dirR);
         console.log('removed', dirR);
         console.log();
-        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Ver.date() });
+        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Verx.date() });
         console.log('DONE!');
         console.log('Maybe time to make/bake', dirTo);
         console.log('and then point http server to', dirTo);
@@ -146,28 +145,6 @@ class Resize {
             return true;
         logger.info(file, ' is low res');
         return false;
-    }
-    smaller(file) {
-        logger.info(file);
-        if (!this.isWide(file))
-            return;
-        sharp(file + '.jpg')
-            .resize(1680 * 1.9)
-            .jpeg({
-            quality: 74,
-            progressive: true,
-            trellisQuantisation: true
-        })
-            .blur()
-            .toFile(file + '.2K.min.jpg');
-        sharp(file + '.jpg')
-            .resize(320 * 2)
-            .jpeg({
-            quality: 78,
-            progressive: true,
-            trellisQuantisation: true
-        })
-            .toFile(file + '.32.min.jpg');
     }
 }
 exports.Resize = Resize;
