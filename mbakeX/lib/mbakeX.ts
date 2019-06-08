@@ -1,16 +1,16 @@
 // All rights reserved by Metabake (Metabake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-export class Ver {
+export class Verx {
    static ver() {
-      return 'v1.00.03'
+      return 'v1.00.06'
    }
    static date(): string {
       return new Date().toISOString()
    }
 }
 
-import sharp = require('sharp')
+//import sharp = require('sharp')
 import probe = require('probe-image-size')
 import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
 import * as firebase from 'firebase-admin';
@@ -100,7 +100,7 @@ export class GitDown {
       console.log('removed', dirR)
       console.log()
 
-      fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Ver.date() })
+      fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Verx.date() })
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
@@ -210,7 +210,7 @@ export class Resize {
       return false
    }
 
-   
+   /*
    smaller(file) {
       logger.info(file)
       if (!this.isWide(file)) return
@@ -234,6 +234,7 @@ export class Resize {
          .toFile(file + '.32.min.jpg')
 
    }//()
+   */
 
 
 }//class

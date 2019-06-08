@@ -120,7 +120,7 @@ const optionDefinitions = [
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
-let arg: string = argsParsed.mbake-x
+let arg: string = argsParsed['mbake-x']
 console.info()
 
 // ///////////////////////////////////////////////////////////////////////////////////////////
