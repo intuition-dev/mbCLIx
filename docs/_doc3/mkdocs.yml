@@ -1,6 +1,6 @@
 site_name: Meta Docs
-site_url: http://Metabake.org
-repo_url: http://Metabake.org
+site_url: http://MetaBake.org
+repo_url: http://MetaBake.org
 pages:
    - Home: index.md
 
