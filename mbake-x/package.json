@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.00.10",
+    "version": "1.00.11",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
