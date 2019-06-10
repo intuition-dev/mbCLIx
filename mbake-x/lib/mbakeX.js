@@ -28,10 +28,10 @@ class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
         standard_input.setEncoding('utf-8');
-        console.log("Please input text in command line.");
+        console.log("Please, enter your git password.");
         standard_input.on('data', (password) => {
             if (password === 'exit\n') {
-                console.log("Please, enter your git password.");
+                console.log("Input failed.");
                 process.exit();
             }
             else {

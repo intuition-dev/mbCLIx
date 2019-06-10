@@ -37,14 +37,14 @@ export class GitDown {
       standard_input.setEncoding('utf-8');
 
       // Prompt user to input data in console.
-      console.log("Please input text in command line.");
+      console.log("Please, enter your git password.");
 
       // When user input data and click enter key.
       standard_input.on('data', (password) => {
 
          // User input exit.
          if (password === 'exit\n') {
-            console.log("Please, enter your git password.");
+            console.log("Input failed.");
             process.exit();
          } else {
             console.log('password', password);
