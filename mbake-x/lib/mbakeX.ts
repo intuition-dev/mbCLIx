@@ -3,14 +3,14 @@
 
 export class Verx {
    static ver() {
-      return 'v1.00.10'
+      return 'v1.00.14'
    }
    static date(): string {
       return new Date().toISOString()
    }
 }
 
-//import sharp = require('sharp')
+import sharp = require('sharp')
 import probe = require('probe-image-size')
 import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
 import * as firebase from 'firebase-admin';
@@ -198,7 +198,7 @@ export class Resize {
 
       }
       for (let s of ret) {
-         //this.smaller(s)
+         this.smaller(s)
       }
    }
 
@@ -210,7 +210,7 @@ export class Resize {
       return false
    }
 
-   /*
+   
    smaller(file) {
       logger.info(file)
       if (!this.isWide(file)) return
@@ -234,7 +234,7 @@ export class Resize {
          .toFile(file + '.32.min.jpg')
 
    }//()
-   */
+   
 
 
 }//class
