@@ -46,7 +46,7 @@ function help() {
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbake-x -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbake-x -i .')
    console.info('  To process list.csv to list.json:                           mbake-x -l .')
-   console.info('  To download branch from git, in folder with gitdown.yaml:   mbake-x --gitDown GIT-PSWD')
+   console.info('  To download branch from git, in folder with gitdown.yaml:   mbake-x --gitDown .')
    console.info('     passing the git password of gitdown user')
    console.info('  To recursively remove source files:                         mbake-x --prod .')
    console.info('  To export FiresStore data, it needs two arguments separated ')
