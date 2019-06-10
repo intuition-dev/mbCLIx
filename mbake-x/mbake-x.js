@@ -41,9 +41,9 @@ function help() {
     console.info('     passing the git password of gitdown user');
     console.info('  To recursively remove source files:                         mbake-x --prod .');
     console.info('  To export FiresStore data, it needs two arguments separated ');
-    console.info('   with ":" :                                                 mbake-x --exportFS serviceAccountKey:name_of_the_file');
+    console.info('   with ":" :                                                 mbake-x --exportFS serviceAccountKey:name_of_the_file_for_common_data:name_of_the_file_for_auth_data');
     console.info('  To import FireStore data, it needs two arguments separated  ');
-    console.info('  with ":":                                                   mbake-x --importFS serviceAccountKey:name_of_the_json_exported_file');
+    console.info('  with ":":                                                   mbake-x --importFS serviceAccountKey:name_of_the_common_data_exported_file:name_of_the_auth_data_exported_file');
     console.info();
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
@@ -89,11 +89,9 @@ function git(arg) {
 }
 function exportFS(arg) {
     let ef = new mbakeX_2.ExportFS(arg);
-    ef.export();
 }
 function importFS(arg) {
     let ef = new mbakeX_2.ImportFS(arg);
-    ef.import();
 }
 function frag(arg) {
     new FileOpsExtra_1.DownloadFrag(arg, true);

@@ -52,16 +52,16 @@ export class GitDown {
             const last = pass_.lastIndexOf('/')
             this.pass = password.replace(/\n/g, '');
             this.dir = pass_.substring(0, last);
-      
+
             this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
             console.log(this.dir, this.config.BRANCH)
             logger.trace(this.config)
-      
+
             this.remote = 'https://' + this.config.LOGINName + ':'
             this.remote += this.pass + '@'
             this.remote += this.config.REPO + '/'
             this.remote += this.config.PROJECT
-      
+
             this._emptyFolders();
             this.process();
          }
@@ -241,46 +241,82 @@ export class Resize {
 
 // //////////////////////////////////////////////////////////////////
 export class ExportFS {
-   args: string
-   serviceAccountConfig: string
-   collectionRef: any
-   name: string
-   config: string
+   args: string;
+   serviceAccountConfig: string;
+   collectionRef: any;
+   pathToDataExportFile: string;
+   pathToAuthExportFile: string;
+   config: string;
+   users: any = [];
+
    constructor(config) {
-      this.args = config.split(':')
-      this.serviceAccountConfig = this.args[0]
-      this.name = this.args[1]
+      this.args = config.split(':');
+      this.serviceAccountConfig = this.args[0];
+      this.pathToDataExportFile = this.args[1];
+      this.pathToAuthExportFile = this.args[2];
       this.config = require(this.serviceAccountConfig + '.json');
 
       firebase.initializeApp({
          credential: firebase.credential.cert(this.config),
       });
 
-      this.collectionRef = firebase.firestore()
+      this.collectionRef = firebase.firestore();
 
+      this.listAllUsers();
    }//()
 
    export() {
-      let _this = this
       firestoreExport(this.collectionRef)
          .then(data => {
             console.log(data)
-            fs.writeJsonSync(_this.name + '.json', data, 'utf8')
+            console.log(this.users)
+            fs.writeJsonSync(this.pathToDataExportFile + '.json', data, 'utf8');
+            fs.writeJsonSync(this.pathToAuthExportFile + '.json', this.users, 'utf8');
+            process.exit();
+         });
+   }
+
+   listAllUsers(nextPageToken?) {
+      const listUsersArguments = [1000];
+
+      if (nextPageToken) {
+         listUsersArguments.push(nextPageToken);
+      }
+
+      firebase.auth().listUsers(...listUsersArguments)
+         .then((listUsersResult) => {
+            listUsersResult.users.forEach(user => {
+               this.users.push(user.toJSON())
+            });
+            console.log('-------------------------- this.users', this.users)
+
+            if (listUsersResult.pageToken) {
+               this.listAllUsers(listUsersResult.pageToken);
+            } else {
+               this.export();
+            }
+         })
+         .catch(function (error) {
+            console.log(error);
+            process.exit();
          });
    }
 }
 
 export class ImportFS {
-   args: string
-   config: string
-   collectionRef: any
-   pathToData: string
-   serviceAccountConfig: string
-   pathToImportedFile: string
+   args: string;
+   config: string;
+   collectionRef: any;
+   pathToData: string;
+   serviceAccountConfig: string;
+   pathToDatabaseImportedFile: string;
+   pathToAuthImportedFile: string;
+
    constructor(config) {
-      this.args = config.split(':')
-      this.serviceAccountConfig = this.args[0]
-      this.pathToImportedFile = this.args[1]
+      this.args = config.split(':');
+      this.serviceAccountConfig = this.args[0];
+      this.pathToDatabaseImportedFile = this.args[1];
+      this.pathToAuthImportedFile = this.args[2];
       this.config = require(this.serviceAccountConfig + '.json');
 
       firebase.initializeApp({
@@ -288,15 +324,51 @@ export class ImportFS {
       });
 
       this.collectionRef = firebase.firestore()
+      this.import();
    }//()
 
    import() {
       let _this = this
-      fs.readJson(this.pathToImportedFile + '.json', function (err, result) {
+      fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, result) => {
+         console.log(err);
 
          firestoreImport(result, _this.collectionRef)
             .then(() => {
-               console.log('Data was imported.')
+               console.log('Data was imported.');
+
+               fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
+                  console.log(err);
+
+                  // Converting user passwords to buffers
+                  const users = result.map(user => {
+                     return { ...user, passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) }
+                  });
+
+                  firebase.auth().importUsers(users, {
+                     hash: {
+                        algorithm: 'STANDARD_SCRYPT',
+                        memoryCost: 1024,
+                        parallelization: 16,
+                        blockSize: 8,
+                        derivedKeyLength: 64
+                     }
+                  })
+                     .then((userImportResult) => {
+                        console.log('Users Data was imported.');
+
+                        userImportResult.errors.forEach((indexedError) => {
+                           console.log(' failed to import', indexedError.error);
+                        });
+                        process.exit();
+                     })
+                     .catch((error) => {
+                        console.log('error', error)
+                        process.exit();
+                     });
+               })
+            }).catch(e => {
+               console.log(e)
+               process.exit();
             });
       })
    }
@@ -304,5 +376,5 @@ export class ImportFS {
 
 
 module.exports = {
-    Resize,  ExportFS, ImportFS, GitDown
+   Resize, ExportFS, ImportFS, GitDown
 }

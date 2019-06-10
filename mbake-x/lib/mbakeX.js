@@ -150,21 +150,49 @@ class Resize {
 exports.Resize = Resize;
 class ExportFS {
     constructor(config) {
+        this.users = [];
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
-        this.name = this.args[1];
+        this.pathToDataExportFile = this.args[1];
+        this.pathToAuthExportFile = this.args[2];
         this.config = require(this.serviceAccountConfig + '.json');
         firebase.initializeApp({
             credential: firebase.credential.cert(this.config),
         });
         this.collectionRef = firebase.firestore();
+        this.listAllUsers();
     }
     export() {
-        let _this = this;
         node_firestore_import_export_1.firestoreExport(this.collectionRef)
             .then(data => {
             console.log(data);
-            fs.writeJsonSync(_this.name + '.json', data, 'utf8');
+            console.log(this.users);
+            fs.writeJsonSync(this.pathToDataExportFile + '.json', data, 'utf8');
+            fs.writeJsonSync(this.pathToAuthExportFile + '.json', this.users, 'utf8');
+            process.exit();
+        });
+    }
+    listAllUsers(nextPageToken) {
+        const listUsersArguments = [1000];
+        if (nextPageToken) {
+            listUsersArguments.push(nextPageToken);
+        }
+        firebase.auth().listUsers(...listUsersArguments)
+            .then((listUsersResult) => {
+            listUsersResult.users.forEach(user => {
+                this.users.push(user.toJSON());
+            });
+            console.log('-------------------------- this.users', this.users);
+            if (listUsersResult.pageToken) {
+                this.listAllUsers(listUsersResult.pageToken);
+            }
+            else {
+                this.export();
+            }
+        })
+            .catch(function (error) {
+            console.log(error);
+            process.exit();
         });
     }
 }
@@ -173,19 +201,51 @@ class ImportFS {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
-        this.pathToImportedFile = this.args[1];
+        this.pathToDatabaseImportedFile = this.args[1];
+        this.pathToAuthImportedFile = this.args[2];
         this.config = require(this.serviceAccountConfig + '.json');
         firebase.initializeApp({
             credential: firebase.credential.cert(this.config),
         });
         this.collectionRef = firebase.firestore();
+        this.import();
     }
     import() {
         let _this = this;
-        fs.readJson(this.pathToImportedFile + '.json', function (err, result) {
+        fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, result) => {
+            console.log(err);
             node_firestore_import_export_1.firestoreImport(result, _this.collectionRef)
                 .then(() => {
                 console.log('Data was imported.');
+                fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
+                    console.log(err);
+                    const users = result.map(user => {
+                        return Object.assign({}, user, { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
+                    });
+                    firebase.auth().importUsers(users, {
+                        hash: {
+                            algorithm: 'STANDARD_SCRYPT',
+                            memoryCost: 1024,
+                            parallelization: 16,
+                            blockSize: 8,
+                            derivedKeyLength: 64
+                        }
+                    })
+                        .then((userImportResult) => {
+                        console.log('Users Data was imported.');
+                        userImportResult.errors.forEach((indexedError) => {
+                            console.log(' failed to import', indexedError.error);
+                        });
+                        process.exit();
+                    })
+                        .catch((error) => {
+                        console.log('error', error);
+                        process.exit();
+                    });
+                });
+            }).catch(e => {
+                console.log(e);
+                process.exit();
             });
         });
     }

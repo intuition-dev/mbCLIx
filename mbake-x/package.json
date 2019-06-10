@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.00.12",
+    "version": "1.00.13",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
@@ -43,9 +43,8 @@
         "handbrake-js": ">=3.0.8",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
+        "nyc": "^14.1.1",
         "sql-template-strings": ">=2.2.2",
-        "sqlite": ">=3.0.3",
-        "nyc": "^14.1.1"
-
-      }
+        "sqlite": ">=3.0.3"
+    }
 }
