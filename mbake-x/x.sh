@@ -2,7 +2,7 @@
 clear
 tsc
 
-node mbake.js -c . 
+node mbake-x.js --add .:lib:lib2 
 
 # node mbake-x.js -c /Users/code/Documents/GitHub/mbakeCake/metaCake/surveryitem/comps
 

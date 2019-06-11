@@ -8,7 +8,7 @@ import { Ver, MBake,  } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from 'mbake/lib/Spider'
 import { Resize } from './lib/mbakeX'
-import { Dirs } from 'mbake/lib/FileOpsBase'
+import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
@@ -42,6 +42,9 @@ function help() {
 
    console.info()
    console.info('  Download fragment to setup the app devOps:                  mbake-x --ops .')
+   console.info('  Add|clone an item|page from:to :                            mbake-x --add dir:source:target')
+
+   console.info()
 
    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbake-x -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbake-x -i .')
@@ -56,7 +59,6 @@ function help() {
    console.info()
 
    console.info('    Note: . is current directory, or use any path instead of .')
-
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
@@ -70,7 +72,6 @@ function help() {
 
    console.info()
 
-   /*
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{
       if(!isCurrent_) 
@@ -81,7 +82,7 @@ function help() {
          console.log(err)
       }
    })// pro
-   */
+   
 }//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,6 +106,8 @@ const optionDefinitions = [
 
    { name: 'ops', type: Boolean },
    { name: 'gitDown', type: Boolean },
+   { name: 'add', type: Boolean },
+
    { name: 'exportFS', type: Boolean },
    { name: 'importFS', type: Boolean },
 
@@ -140,6 +143,13 @@ function importFS(arg) {
 function frag(arg) {
    new DownloadFrag(arg, true)
 }
+
+function add(arg) {
+   const args = arg.split(':')
+   const f = new FileOps(args[0])
+   f.clone(args[1], args[2])
+}
+
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
    let src: string = __dirname + '/PGap.zip'
@@ -284,6 +294,8 @@ if (argsParsed.comps) {
       frag(arg)
    else if (argsParsed.gitDown)
       git(arg)
+   else if (argsParsed.add)
+      add(arg)
    else if (argsParsed.exportFS)
       exportFS(arg)
    else if (argsParsed.importFS)
