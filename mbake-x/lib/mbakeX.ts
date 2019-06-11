@@ -306,6 +306,8 @@ export class ExportFS {
 export class ImportFS {
    args: string;
    config: string;
+   dir: string;
+   authConfig: any;
    collectionRef: any;
    pathToData: string;
    serviceAccountConfig: string;
@@ -315,9 +317,11 @@ export class ImportFS {
    constructor(config) {
       this.args = config.split(':');
       this.serviceAccountConfig = this.args[0];
+      this.dir = this.serviceAccountConfig.substr(0, this.serviceAccountConfig.lastIndexOf("/"));
       this.pathToDatabaseImportedFile = this.args[1];
       this.pathToAuthImportedFile = this.args[2];
       this.config = require(this.serviceAccountConfig + '.json');
+      // this.authConfig = require(this.dir + '/auth_key_salt_separator.json');
 
       firebase.initializeApp({
          credential: firebase.credential.cert(this.config),
@@ -329,10 +333,10 @@ export class ImportFS {
 
    import() {
       let _this = this
-      fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, result) => {
+      fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, importData) => {
          console.log(err);
 
-         firestoreImport(result, _this.collectionRef)
+         firestoreImport(importData, _this.collectionRef)
             .then(() => {
                console.log('Data was imported.');
 
@@ -341,11 +345,14 @@ export class ImportFS {
 
                   // Converting user passwords to buffers
                   const users = result.map(user => {
+                     // console.log(user.passwordSalt, this.authConfig.saltSeparator)
                      return { ...user, passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) }
                   });
 
                   firebase.auth().importUsers(users, {
                      hash: {
+                        // key: Buffer.from(this.authConfig.key, 'base64'),
+                        // saltSeparator: Buffer.from(this.authConfig.saltSeparator),
                         algorithm: 'STANDARD_SCRYPT',
                         memoryCost: 1024,
                         parallelization: 16,

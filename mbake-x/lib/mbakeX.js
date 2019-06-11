@@ -9,13 +9,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class Verx {
     static ver() {
-        return 'v1.00.10';
+        return 'v1.00.14';
     }
     static date() {
         return new Date().toISOString();
     }
 }
 exports.Verx = Verx;
+const sharp = require("sharp");
 const probe = require("probe-image-size");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
 const firebase = __importStar(require("firebase-admin"));
@@ -136,6 +137,7 @@ class Resize {
             ret.push(n);
         }
         for (let s of ret) {
+            this.smaller(s);
         }
     }
     isWide(file) {
@@ -145,6 +147,28 @@ class Resize {
             return true;
         logger.info(file, ' is low res');
         return false;
+    }
+    smaller(file) {
+        logger.info(file);
+        if (!this.isWide(file))
+            return;
+        sharp(file + '.jpg')
+            .resize(1680 * 1.9)
+            .jpeg({
+            quality: 74,
+            progressive: true,
+            trellisQuantisation: true
+        })
+            .blur()
+            .toFile(file + '.2K.min.jpg');
+        sharp(file + '.jpg')
+            .resize(320 * 2)
+            .jpeg({
+            quality: 78,
+            progressive: true,
+            trellisQuantisation: true
+        })
+            .toFile(file + '.32.min.jpg');
     }
 }
 exports.Resize = Resize;
@@ -201,6 +225,7 @@ class ImportFS {
     constructor(config) {
         this.args = config.split(':');
         this.serviceAccountConfig = this.args[0];
+        this.dir = this.serviceAccountConfig.substr(0, this.serviceAccountConfig.lastIndexOf("/"));
         this.pathToDatabaseImportedFile = this.args[1];
         this.pathToAuthImportedFile = this.args[2];
         this.config = require(this.serviceAccountConfig + '.json');
@@ -212,9 +237,9 @@ class ImportFS {
     }
     import() {
         let _this = this;
-        fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, result) => {
+        fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, importData) => {
             console.log(err);
-            node_firestore_import_export_1.firestoreImport(result, _this.collectionRef)
+            node_firestore_import_export_1.firestoreImport(importData, _this.collectionRef)
                 .then(() => {
                 console.log('Data was imported.');
                 fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
