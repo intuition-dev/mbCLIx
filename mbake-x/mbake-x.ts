@@ -4,10 +4,10 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import { Ver, MBake,  } from 'mbake/lib/Base'
+import {  MBake,  } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from 'mbake/lib/Spider'
-import { Resize } from './lib/mbakeX'
+import { Resize, Verx } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
@@ -17,13 +17,12 @@ import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 const cwd: string = process.cwd()
 
 function version() {
-   console.info('mbake-x CLI version: ' + Ver.ver()) // tsc
+   console.info('mbake-x CLI version: ' + Verx.ver()) // tsc
 }
 
 function help() {
-   let b = new Ver()
    console.info()
-   console.info('mbake-x CLI version: ' + Ver.ver()) // tsc
+   console.info('mbake-x CLI version: ' + Verx.ver()) // tsc
    console.info('  your node version is ' + process.version)
    console.info('  from ' + __dirname)
    console.info()
