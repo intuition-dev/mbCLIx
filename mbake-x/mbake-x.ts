@@ -146,7 +146,13 @@ function frag(arg) {
 
 function add(arg) {
    const args = arg.split(':')
-   const f = new FileOps(args[0])
+   let dir:string = args[0]
+   if(dir.endsWith('.')) {
+      dir = dir.slice(0, -1)
+   }
+
+   console.log(dir, args)
+   const f = new FileOps(dir)
    f.clone(args[1], args[2])
 }
 
@@ -156,7 +162,6 @@ function unzipG() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting a starter Phonegap app to ./PG')
-   process.exit()
 }
 function unzipE() {
    let src: string = __dirname + '/elect.zip'
@@ -171,7 +176,6 @@ function unzipD() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting an example ad  ./ad')
-   process.exit()
 }
 
 function unzipL() {
@@ -179,14 +183,12 @@ function unzipL() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting example of markdown slides to ./slidesEx')
-   process.exit()
 }
 function unzipH() {
    let src: string = __dirname + '/dash.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting an starter Dash web app to ./dash')
-   process.exit()
 }
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////

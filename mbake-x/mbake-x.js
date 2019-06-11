@@ -34,6 +34,8 @@ function help() {
     console.info('  To bake with production ENV flag(3) in prod:                mbake-x --bakeP .');
     console.info();
     console.info('  Download fragment to setup the app devOps:                  mbake-x --ops .');
+    console.info('  Add|clone an item|page from:to :                            mbake-x --add dir:source:target');
+    console.info();
     console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:      mbake-x -m .');
     console.info('  Compress 3200 or larger .jpg images to 2 sizes:             mbake-x -i .');
     console.info('  To process list.csv to list.json:                           mbake-x -l .');
@@ -55,6 +57,17 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
+    FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
+        try {
+            if (!isCurrent_)
+                console.log('There is a newer version of mbake CLI, please update.');
+            else
+                console.log('You have the current version of mbake CLI');
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
 }
 const optionDefinitions = [
     { name: 'mbake-x', defaultOption: true },
@@ -70,6 +83,7 @@ const optionDefinitions = [
     { name: 'bakeD', type: Boolean },
     { name: 'ops', type: Boolean },
     { name: 'gitDown', type: Boolean },
+    { name: 'add', type: Boolean },
     { name: 'exportFS', type: Boolean },
     { name: 'importFS', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
@@ -96,12 +110,21 @@ function importFS(arg) {
 function frag(arg) {
     new FileOpsExtra_1.DownloadFrag(arg, true);
 }
+function add(arg) {
+    const args = arg.split(':');
+    let dir = args[0];
+    if (dir.endsWith('.')) {
+        dir = dir.slice(0, -1);
+    }
+    console.log(dir, args);
+    const f = new FileOpsBase_1.FileOps(dir);
+    f.clone(args[1], args[2]);
+}
 function unzipG() {
     let src = __dirname + '/PGap.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting a starter Phonegap app to ./PG');
-    process.exit();
 }
 function unzipE() {
     let src = __dirname + '/elect.zip';
@@ -115,21 +138,18 @@ function unzipD() {
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting an example ad  ./ad');
-    process.exit();
 }
 function unzipL() {
     let src = __dirname + '/slidesEx.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting example of markdown slides to ./slidesEx');
-    process.exit();
 }
 function unzipH() {
     let src = __dirname + '/dash.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting an starter Dash web app to ./dash');
-    process.exit();
 }
 function csv2Json(arg) {
     new FileOpsExtra_1.CSV2Json(arg).convert();
@@ -228,6 +248,8 @@ else if (argsParsed.ops)
     frag(arg);
 else if (argsParsed.gitDown)
     git(arg);
+else if (argsParsed.add)
+    add(arg);
 else if (argsParsed.exportFS)
     exportFS(arg);
 else if (argsParsed.importFS)
