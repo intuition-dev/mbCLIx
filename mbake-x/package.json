@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.00.17",
+    "version": "1.00.18",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
@@ -31,8 +31,7 @@
         "mbake": ">=6.6.21",
         "node-firestore-import-export": ">=0.13.2",
         "probe-image-size": ">=4.0.0",
-        "riot-compiler": "^3.6.0",
-        "sharp": ">=0.22.1"
+        "riot-compiler": "^3.6.0"
     },
     "bundledDependencies": [
         "mbake",
@@ -53,6 +52,7 @@
         "datalib": "^1.9.2",
         "validate.js": "^0.12.0",
         "vega-transforms": "^4.1.0",
-        "vega-util": "^1.10.0"
+        "vega-util": "^1.10.0",
+        "sharp": ">=0.22.1"
       }
 }
