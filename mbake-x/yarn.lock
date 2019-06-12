@@ -5492,6 +5492,22 @@ setprototypeof@1.1.1:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
 
+sharp-vc@^0.22.1:
+  version "0.22.1"
+  resolved "https://registry.yarnpkg.com/sharp-vc/-/sharp-vc-0.22.1.tgz#765158c072406ce422f8840031b61621e367c9be"
+  integrity sha512-jB6fNg0eU9twXCElbKq+KJV85B/MiZw7EQUnBbAGIADICZZ/YLTJhjkAwNXTpNELSxVCl8kwM3NDPn/fSlKHsg==
+  dependencies:
+    color "^3.1.1"
+    detect-libc "^1.0.3"
+    fs-copy-file-sync "^1.1.1"
+    nan "^2.13.2"
+    npmlog "^4.1.2"
+    prebuild-install "^5.3.0"
+    semver "^6.0.0"
+    simple-get "^3.0.3"
+    tar "^4.4.8"
+    tunnel-agent "^0.6.0"
+
 sharp@>=0.22.1:
   version "0.22.1"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.22.1.tgz#a67c0e75567f03dd5a7861b901fec04072c5b0f4"
