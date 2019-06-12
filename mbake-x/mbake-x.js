@@ -12,12 +12,11 @@ const mbakeX_2 = require("./lib/mbakeX");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const cwd = process.cwd();
 function version() {
-    console.info('mbake-x CLI version: ' + Base_1.Ver.ver());
+    console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
 }
 function help() {
-    let b = new Base_1.Ver();
     console.info();
-    console.info('mbake-x CLI version: ' + Base_1.Ver.ver());
+    console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
     console.info('  your node version is ' + process.version);
     console.info('  from ' + __dirname);
     console.info();

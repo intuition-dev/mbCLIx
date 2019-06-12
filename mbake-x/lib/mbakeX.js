@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class Verx {
     static ver() {
-        return 'v1.00.15';
+        return 'v1.00.17';
     }
     static date() {
         return new Date().toISOString();
@@ -277,5 +277,5 @@ class ImportFS {
 }
 exports.ImportFS = ImportFS;
 module.exports = {
-    Resize, ExportFS, ImportFS, GitDown
+    Resize, ExportFS, ImportFS, GitDown, Verx
 };

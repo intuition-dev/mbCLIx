@@ -3,7 +3,7 @@
 
 export class Verx {
    static ver() {
-      return 'v1.00.15'
+      return 'v1.00.17'
    }
    static date(): string {
       return new Date().toISOString()
@@ -179,6 +179,7 @@ export class GitDown {
    }//()
 }//class
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export class Resize {
 
@@ -383,5 +384,5 @@ export class ImportFS {
 
 
 module.exports = {
-   Resize, ExportFS, ImportFS, GitDown
+   Resize, ExportFS, ImportFS, GitDown, Verx
 }

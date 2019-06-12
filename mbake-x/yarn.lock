@@ -3818,10 +3818,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.6.9:
-  version "6.6.9"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.9.tgz#ba65949d804aaa3e338686893749d1d9827ace34"
-  integrity sha512-pOjKY+LlUTXe8ThdeyXNK00yPgqVSjVL9TE1a3nQ2qEv0q3w4Xcdemoq9INimdXXYQupb1ev5ns070pnWRvgIQ==
+mbake@>=6.6.21:
+  version "6.6.21"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.21.tgz#a60adb86bd29eba357ce674034293a34674f5dbf"
+  integrity sha512-Y2vpr4yYCpeeklRhFXrOuknkWhH34FHHMDAwXA43sTEMWZ4GP/oeWc7EAVWZARO+14a9+06bKZCXAxU0BzzlIw==
   dependencies:
     "@marp-team/marpit" ">=1.1.0"
     adm-zip ">=0.4.13"

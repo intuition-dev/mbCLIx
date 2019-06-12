@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.00.15",
+    "version": "1.00.17",
     "description": " Extra commands for MetaBake's mbake CLI",
     "main": "mbakeX.js",
     "scripts": {
@@ -28,7 +28,7 @@
     "dependencies": {
         "@firebase/app-types": ">=0.4.0",
         "execa": ">=1.0.0",
-        "mbake": ">=6.6.9",
+        "mbake": ">=6.6.21",
         "node-firestore-import-export": ">=0.13.2",
         "probe-image-size": ">=4.0.0",
         "riot-compiler": "^3.6.0",
@@ -37,7 +37,8 @@
     "bundledDependencies": [
         "mbake",
         "node-firestore-import-export",
-        "firebase-admin"
+        "firebase-admin",
+        "sharp"
     ],
     "devDependencies": {
         "@types/node": ">=12.0.8",
