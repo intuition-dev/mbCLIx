@@ -28,7 +28,7 @@
     "dependencies": {
         "@firebase/app-types": ">=0.4.0",
         "execa": ">=1.0.0",
-        "mbake": ">=6.6.21",
+        "mbake": ">=6.6.22",
         "node-firestore-import-export": ">=0.13.2",
         "probe-image-size": ">=4.0.0",
         "riot-compiler": "^3.6.0",
