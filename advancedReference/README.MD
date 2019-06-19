@@ -40,7 +40,7 @@ S = sales, we = Foundation, II = B&M, III = Vista
 - [Navbar](http://github.com/thednp/navbar.js/)
 - [Simple Navbar](http://www.w3schools.com/css/css_navbar.asp)
 
-
+- [SQL]: https://booksite.elsevier.com/samplechapters/9780123820228/01~Front_Matter.pdf
 
 ## Electron and PG
 - [Tuts](https://electronjs.org/docs/tutorial)
