@@ -32,7 +32,13 @@
         "node-firestore-import-export": ">=0.13.2",
         "probe-image-size": ">=4.0.0",
         "riot-compiler": "^3.6.0",
-        "sharp-vc": "^0.22.1"
+        "sharp-vc": "^0.22.1",
+        "lunr": ">=2.3.6",
+        "axios": ">=0.19.0",
+        "sitemap": ">=2.2.0",
+        "traverse": ">=0.6.6",
+        "unfluff": ">=3.2.0"
+
     },
     "bundledDependencies": [
         "mbake",
@@ -54,6 +60,8 @@
         "sqlite": ">=3.0.3",
         "validate.js": "^0.13.1",
         "vega-transforms": "^4.1.0",
-        "vega-util": "^1.10.0"
+        "vega-util": "^1.10.0",
+        "riot-compiler": "^3.6.0",
+        "csvtojson": ">=2.0.8"
     }
 }
