@@ -3,10 +3,13 @@
 
 import { Dirs, FileOps, Dat} from 'mbake/lib/FileOpsBase'
 
-import probe = require('probe-image-size')
-
-import extractor = require('unfluff')//scrape
 import axios from 'axios'
+import probe = require('probe-image-size')
+import extractor = require('unfluff')//scrape
+
+import SummaryTool = require('node-summary')
+const Sentiment = require('sentiment')
+
 
 const logger = require('tracer').console()
 
@@ -199,6 +202,9 @@ export class Scrape {
 
                ret['title'] = Scrape.asci(ret['title'])
                ret['content_text'] = Scrape.asci(ret['content_text'])
+
+               
+
                resolve(ret)
             })
          } catch (err) {

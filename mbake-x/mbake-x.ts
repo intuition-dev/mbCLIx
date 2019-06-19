@@ -6,7 +6,7 @@ import commandLineArgs = require('command-line-args')
 
 import {  MBake,  } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
-import { Map } from 'mbake/lib/Spider'
+import { Map } from './lib/Spider'
 import { Resize, Verx } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
