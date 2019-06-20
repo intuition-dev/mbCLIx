@@ -8,6 +8,7 @@ import probe = require('probe-image-size')
 import extractor = require('unfluff')//scrape
 
 const SummarizerManager = require("node-summarizer").SummarizerManager
+const cheerio = require('cheerio')
 
 const logger = require('tracer').console()
 
@@ -172,7 +173,7 @@ export class Scrape {
       axios.defaults.responseType = 'document'
    }
 
-   //del me
+   //delete me
    tst() {
       const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421'
       this.s(u1).then(function(ret){
@@ -181,17 +182,43 @@ export class Scrape {
    }
 
    // most likely write to dat.yaml after folder is named
-   s(url) {
+   s(url:string, selector?:string) {
       return new Promise(function (resolve, reject) {
          try {
             console.info(url)
             //feed json items
             axios.get(url).then(function (response) {
-               let data = extractor.lazy(response.data)
                let ret = new Object()
+               const $ = cheerio.load(response.data)
+               if(!selector) selector = 'body'
+               const textTags = $(selector)
+               let full_text = textTags.text()
+               let img = []
+               $('img').each(function(){
+                 img.push($(this).attr('src'))
+               })
+               ret['img'] = img
+               let video = []
+               $('video').each(function(){
+                  video.push($(this).attr('src'))
+               })
+               ret['video'] = video
+               let a = []
+               $('a').each(function(){
+                 let href:string =  $(this).attr('href')
+                 if(href.includes('javascript:')) return
+                 if(href.includes('mailto:')) return
+                 var n = href.indexOf('?')
+                 if(n>0) 
+                    href = href.substring(0,n)
+                 a.push(href)
+               })
+               ret['href'] = a 
+
+               let data = extractor.lazy(response.data)
                ret['url'] = data.canonicalLink()
                ret['id'] = data.canonicalLink()
-               
+
                ret['title'] = data.softTitle()
                ret['content_text'] = data.text()
                ret['image'] = data.image()
@@ -205,12 +232,17 @@ export class Scrape {
                ret['title'] = Scrape.asci(ret['title'])
                ret['content_text'] = Scrape.asci(ret['content_text'])
                ret['description'] = Scrape.asci(ret['description'])
-               const all = ret['title'] +' '+  ret['content_text'] +' '+  ret['description']
+               full_text = Scrape.asci(full_text)
+
+               const all = ret['title'] +' '+  ret['content_text'] +' '+  ret['description'] +' '+ full_text
                const Summarizer = new SummarizerManager(all, 1)
                ret['sentiment'] = Summarizer.getSentiment()
 
                let summary = Summarizer.getSummaryByFrequency()
-               ret['summary'] = summary.summary
+               //fix to match feed.json
+               ret['content_text'] = Scrape.asci(data.description())
+               ret['description'] = summary.summary // use this for image tag
+               ret['word_count'] = Scrape.countWords(full_text) 
 
                //image size
                const iurl = ret['image']          
@@ -229,9 +261,13 @@ export class Scrape {
    }
 
    static getImageSize(iurl_) {
-      logger.info(iurl_)
       return probe(iurl_, {timeout: 3000})
    }
+
+   static countWords(str) {
+      return str.trim().split(/\s+/).length;
+   }
+
 
    static asci(str) {
       if (!str) return ''

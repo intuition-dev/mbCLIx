@@ -47,7 +47,6 @@
         "firebase-admin"
     ],
     "devDependencies": {
-      "querystring": ">=0.2.0",
       "@marp-team/marpit": ">=1.2.0",
       "@types/node": ">=12.0.8",
       "collect.js": "^4.12.5",

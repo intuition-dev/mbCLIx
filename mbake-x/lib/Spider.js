@@ -8,6 +8,7 @@ const axios_1 = __importDefault(require("axios"));
 const probe = require("probe-image-size");
 const extractor = require("unfluff");
 const SummarizerManager = require("node-summarizer").SummarizerManager;
+const cheerio = require('cheerio');
 const logger = require('tracer').console();
 const sm = require("sitemap");
 const traverse = require("traverse");
@@ -143,13 +144,41 @@ class Scrape {
             console.log(ret);
         });
     }
-    s(url) {
+    s(url, selector) {
         return new Promise(function (resolve, reject) {
             try {
                 console.info(url);
                 axios_1.default.get(url).then(function (response) {
-                    let data = extractor.lazy(response.data);
                     let ret = new Object();
+                    const $ = cheerio.load(response.data);
+                    if (!selector)
+                        selector = 'body';
+                    const textTags = $(selector);
+                    let full_text = textTags.text();
+                    let img = [];
+                    $('img').each(function () {
+                        img.push($(this).attr('src'));
+                    });
+                    ret['img'] = img;
+                    let video = [];
+                    $('video').each(function () {
+                        video.push($(this).attr('src'));
+                    });
+                    ret['video'] = video;
+                    let a = [];
+                    $('a').each(function () {
+                        let href = $(this).attr('href');
+                        if (href.includes('javascript:'))
+                            return;
+                        if (href.includes('mailto:'))
+                            return;
+                        var n = href.indexOf('?');
+                        if (n > 0)
+                            href = href.substring(0, n);
+                        a.push(href);
+                    });
+                    ret['href'] = a;
+                    let data = extractor.lazy(response.data);
                     ret['url'] = data.canonicalLink();
                     ret['id'] = data.canonicalLink();
                     ret['title'] = data.softTitle();
@@ -163,11 +192,14 @@ class Scrape {
                     ret['title'] = Scrape.asci(ret['title']);
                     ret['content_text'] = Scrape.asci(ret['content_text']);
                     ret['description'] = Scrape.asci(ret['description']);
-                    const all = ret['title'] + ' ' + ret['content_text'] + ' ' + ret['description'];
+                    full_text = Scrape.asci(full_text);
+                    const all = ret['title'] + ' ' + ret['content_text'] + ' ' + ret['description'] + ' ' + full_text;
                     const Summarizer = new SummarizerManager(all, 1);
                     ret['sentiment'] = Summarizer.getSentiment();
                     let summary = Summarizer.getSummaryByFrequency();
-                    ret['summary'] = summary.summary;
+                    ret['content_text'] = Scrape.asci(data.description());
+                    ret['description'] = summary.summary;
+                    ret['word_count'] = Scrape.countWords(full_text);
                     const iurl = ret['image'];
                     if (iurl) {
                         Scrape.getImageSize(iurl).then(function (sz) {
@@ -186,8 +218,10 @@ class Scrape {
         });
     }
     static getImageSize(iurl_) {
-        logger.info(iurl_);
         return probe(iurl_, { timeout: 3000 });
+    }
+    static countWords(str) {
+        return str.trim().split(/\s+/).length;
     }
     static asci(str) {
         if (!str)
