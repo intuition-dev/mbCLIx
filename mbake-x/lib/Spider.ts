@@ -205,22 +205,22 @@ export class Scrape {
                ret['content_text'] = Scrape.asci(ret['content_text'])
                ret['description'] = Scrape.asci(ret['description'])
                const all = ret['title'] +' '+  ret['content_text'] +' '+  ret['description']
-               const Summarizer = new SummarizerManager(all, 3)
+               console.log(all)
+               const Summarizer = new SummarizerManager(all, 2)
                ret['sentiment'] = Summarizer.getSentiment()
 
-               Summarizer.getSummaryByRank().then((summary)=>{
-                  console.log(summary)
-                  ret['summary'] = summary.summary
+               let summary = Summarizer.getSummaryByFrequency()
+               console.log(summary)
+               ret['summary'] = summary.summary
 
-                  //image size
-                  const iurl = ret['image']          
-                  if(iurl) {
-                     Scrape.getImageSize(iurl).then(function(sz){
-                        ret['image_sz'] = sz
-                        resolve(ret)
-                     })
-                  } else resolve(ret)
-               })// summary
+               //image size
+               const iurl = ret['image']          
+               if(iurl) {
+                  Scrape.getImageSize(iurl).then(function(sz){
+                     ret['image_sz'] = sz
+                     resolve(ret)
+                  })
+               } else resolve(ret)
             })
          } catch (err) {
             logger.warn(err)
