@@ -10,7 +10,6 @@ const mbakeX_1 = require("./lib/mbakeX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const mbakeX_2 = require("./lib/mbakeX");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
-const Spider_2 = require("./lib/Spider");
 const cwd = process.cwd();
 function version() {
     console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
@@ -52,12 +51,10 @@ function help() {
     console.info();
     console.info(' Starters:');
     console.info('  For a starter dash web-app:                                 mbake-x -d');
-    console.info('  For example slides markdown:                                mbake-x -k');
     console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e');
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
-    new Spider_2.Scrape().tst();
     FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
         try {
             if (!isCurrent_)
@@ -91,7 +88,6 @@ const optionDefinitions = [
     { name: 'img', alias: 'i', type: Boolean },
     { name: 'csv2Json', alias: 'l', type: Boolean },
     { name: 'dash', alias: 'd', type: Boolean },
-    { name: 'slides', alias: 'k', type: Boolean },
     { name: 'elect', alias: 'e', type: Boolean },
     { name: 'phonegap', alias: 'o', type: Boolean },
     { name: 'ad', alias: 'a', type: Boolean },
@@ -139,12 +135,6 @@ function unzipD() {
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting an example ad  ./ad');
-}
-function unzipL() {
-    let src = __dirname + '/slidesEx.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracting example of markdown slides to ./slidesEx');
 }
 function unzipH() {
     let src = __dirname + '/dash.zip';
@@ -235,8 +225,6 @@ else if (argsParsed.dash)
     unzipH();
 else if (argsParsed.map)
     map(arg);
-else if (argsParsed.slides)
-    unzipL();
 else if (argsParsed.prod)
     prod(arg);
 else if (argsParsed.bakeP)

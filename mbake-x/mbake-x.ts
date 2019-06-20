@@ -12,8 +12,6 @@ import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
-import { Scrape } from './lib/Spider'
-
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
 
@@ -64,15 +62,11 @@ function help() {
    console.info(' Starters:')
    console.info('  For a starter dash web-app:                                 mbake-x -d')
 
-   console.info('  For example slides markdown:                                mbake-x -k')
-
    console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e')
    console.info('  For a starter hybrid Phonegap app:                          mbake-x -o')
    console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
-
-   new Scrape().tst()
 
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{
@@ -118,7 +112,6 @@ const optionDefinitions = [
    { name: 'csv2Json', alias: 'l', type: Boolean },
 
    { name: 'dash', alias: 'd', type: Boolean },
-   { name: 'slides', alias: 'k', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'phonegap', alias: 'o', type: Boolean },
    { name: 'ad', alias: 'a', type: Boolean },
@@ -180,12 +173,6 @@ function unzipD() {
    console.info('Extracting an example ad  ./ad')
 }
 
-function unzipL() {
-   let src: string = __dirname + '/slidesEx.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracting example of markdown slides to ./slidesEx')
-}
 function unzipH() {
    let src: string = __dirname + '/dash.zip'
    let zip = new AdmZip(src)
@@ -284,8 +271,6 @@ if (argsParsed.comps) {
       unzipH()
    else if (argsParsed.map)
       map(arg)
-   else if (argsParsed.slides)
-      unzipL()
    else if (argsParsed.prod)
       prod(arg)
    else if (argsParsed.bakeP)
