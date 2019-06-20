@@ -34,7 +34,6 @@
         "mbake": ">=6.6.27",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
-        "nyc": ">=14.1.1",
         "probe-image-size": ">=4.0.0",
         "riot-compiler": "^3.6.0",
         "sharp-vc": ">=0.22.1",
