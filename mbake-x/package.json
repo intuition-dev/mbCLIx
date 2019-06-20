@@ -26,6 +26,7 @@
         "yarn": ">=1.16.0"
     },
     "dependencies": {
+      "cheerio": ">=1.0.0-rc.2",
         "@firebase/app-types": ">=0.4.0",
         "axios": ">=0.19.0",
         "execa": ">=1.0.0",
@@ -43,8 +44,7 @@
     "bundledDependencies": [
         "mbake",
         "node-firestore-import-export",
-        "firebase-admin",
-        "sharp"
+        "firebase-admin"
     ],
     "devDependencies": {
         "@marp-team/marpit": ">=1.2.0",
@@ -61,6 +61,8 @@
         "sharp": ">=0.22.1",
         "validate.js": "^0.13.1",
         "vega-transforms": "^4.1.0",
-        "vega-util": "^1.10.0"
+        "vega-util": "^1.10.0",
+        "ttypescript": ">=1.5.7"
+
     }
 }
