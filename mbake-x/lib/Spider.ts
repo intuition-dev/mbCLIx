@@ -7,9 +7,7 @@ import axios from 'axios'
 import probe = require('probe-image-size')
 import extractor = require('unfluff')//scrape
 
-import SummaryTool = require('node-summary')
-const Sentiment = require('sentiment')
-
+const SummarizerManager = require("node-summarizer").SummarizerManager
 
 const logger = require('tracer').console()
 
@@ -166,46 +164,63 @@ export class Map {
    }//()
 }// class
 
-
 // //////////////////////////////////////////////////////////////////////////////
 export class Scrape {
+
    constructor() {
       axios.defaults.responseType = 'document'
    }
 
-   // in a directory, create a clone of a page: but scrape the dat.yaml from a remote url
-   clone(dir, url, from, to) {
-      const f = new FileOps(dir)
-      f.clone(from, to)
-      let dat = new Dat(to)
-
-      let pro = this.s(url)
-      pro.then(function(scraped){ 
-         for (let [key, value] of Object.entries(scraped)) {
-            logger.trace(key, value)
-            dat.set(key, value)
-        }
-         dat.write()
+   //del me
+   tst() {
+      const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421'
+      this.s(u1).then(function(ret){
+         console.log(ret)
       })
    }
 
+   // most likely write to dat.yaml after folder is named
    s(url) {
       return new Promise(function (resolve, reject) {
          try {
             console.info(url)
+            //feed json items
             axios.get(url).then(function (response) {
                let data = extractor.lazy(response.data)
                let ret = new Object()
+               ret['url'] = data.canonicalLink()
+               ret['id'] = data.canonicalLink()
+               
                ret['title'] = data.softTitle()
-               ret['content_text'] = data.description()
+               ret['content_text'] = data.text()
                ret['image'] = data.image()
+               ret['date_published'] = data.date()
+               ret['author'] = data.author()
+               ret['attachments'] = data.videos()
+               ret['tags'] = data.tags()
+               ret['description'] = data.description()
 
+               // clean
                ret['title'] = Scrape.asci(ret['title'])
                ret['content_text'] = Scrape.asci(ret['content_text'])
+               ret['description'] = Scrape.asci(ret['description'])
+               const all = ret['title'] +' '+  ret['content_text'] +' '+  ret['description']
+               const Summarizer = new SummarizerManager(all, 3)
+               ret['sentiment'] = Summarizer.getSentiment()
 
-               
+               Summarizer.getSummaryByRank().then((summary)=>{
+                  console.log(summary)
+                  ret['summary'] = summary.summary
 
-               resolve(ret)
+                  //image size
+                  const iurl = ret['image']          
+                  if(iurl) {
+                     Scrape.getImageSize(iurl).then(function(sz){
+                        ret['image_sz'] = sz
+                        resolve(ret)
+                     })
+                  } else resolve(ret)
+               })// summary
             })
          } catch (err) {
             logger.warn(err)
@@ -214,14 +229,14 @@ export class Scrape {
       })//pro
    }
 
-   static __getImageSize(iurl_) {
+   static getImageSize(iurl_) {
       logger.info(iurl_)
       return probe(iurl_, {timeout: 3000})
    }
 
    static asci(str) {
       if (!str) return ''
-      const alpha_numeric = Array.from('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' + ' ')
+      const alpha_numeric = Array.from('\'"@,.?!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' + ' ')
       let filterd_string = ''
 
       for (let i = 0; i < str.length; i++) {
@@ -237,5 +252,5 @@ export class Scrape {
 }//class
 
 module.exports = {
-   Scrape
+   Scrape, Map
 }

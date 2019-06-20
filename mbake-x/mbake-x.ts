@@ -4,13 +4,16 @@
 import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
-import {  MBake,  } from 'mbake/lib/Base'
+import { MBake } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, Verx } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
+
+import { Scrape } from './lib/Spider'
+
 
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
@@ -69,6 +72,8 @@ function help() {
    console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
+
+   new Scrape().tst()
 
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{

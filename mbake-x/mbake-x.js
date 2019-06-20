@@ -5,11 +5,12 @@ const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
 const Base_1 = require("mbake/lib/Base");
 const Wa_1 = require("mbake/lib/Wa");
-const Spider_1 = require("mbake/lib/Spider");
+const Spider_1 = require("./lib/Spider");
 const mbakeX_1 = require("./lib/mbakeX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const mbakeX_2 = require("./lib/mbakeX");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const Spider_2 = require("./lib/Spider");
 const cwd = process.cwd();
 function version() {
     console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
@@ -56,6 +57,7 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
+    new Spider_2.Scrape().tst();
     FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
         try {
             if (!isCurrent_)
