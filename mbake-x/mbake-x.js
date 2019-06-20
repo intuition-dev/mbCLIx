@@ -10,6 +10,7 @@ const mbakeX_1 = require("./lib/mbakeX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const mbakeX_2 = require("./lib/mbakeX");
 const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const cov_1 = require("./lib/cov");
 const cwd = process.cwd();
 function version() {
     console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
@@ -55,6 +56,7 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
+    new cov_1.Cover().file();
     FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
         try {
             if (!isCurrent_)

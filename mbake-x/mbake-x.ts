@@ -12,6 +12,8 @@ import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
+import { Cover } from './lib/cov'
+
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
 
@@ -67,6 +69,8 @@ function help() {
    console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
+
+   new Cover().file()
 
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{
