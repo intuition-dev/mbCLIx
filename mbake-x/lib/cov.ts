@@ -1,6 +1,5 @@
 
-const recast = require('recast')
-const { Parser } = require('acorn')
+import * as recast from "recast"
 import fs = require('fs-extra')
 
 export class Cover {
@@ -16,7 +15,6 @@ export class Cover {
          return add(a,b)
       }
       
-      // test the code
       function incrementAndMultiply(a, b){
           function multiply(c, d){
             return c * d;
@@ -26,23 +24,30 @@ export class Cover {
           return multiply(a, b)
       }
       `
-      const ast = Parser.parse(f) // fs.readFileSync(fileName).toString())
-      
+
+      // fs.readFileSync(fileName).toString())
+      const ast = recast.parse(f, {
+         parser: require("acorn")
+       })
+
       const functionNames = []
 
-      recast.visit(ast, function(path){
+      recast.visit(ast) //, function(path){
+         /*
          var newPath = path.get('body')
  
          // sub-traversing
-         recast.visit(newPath, function(path){
+         recast.visit(newPath, ast.function(path){
            functionNames.push(path.node.id.name)
            return false
          })
        
          // return false to not look at other functions contained in this function
          // leave this role to the sub-traversing
-         return false;
-       })
+         return false
+         */
+
+       //})
        
       console.log(functionNames)
    }//()

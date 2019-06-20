@@ -1,7 +1,13 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const recast = require('recast');
-const { Parser } = require('acorn');
+const recast = __importStar(require("recast"));
 class Cover {
     file(dir, fileName) {
         const f = `function decrementAndAdd(a, b){
@@ -13,7 +19,6 @@ class Cover {
          return add(a,b)
       }
       
-      // test the code
       function incrementAndMultiply(a, b){
           function multiply(c, d){
             return c * d;
@@ -23,16 +28,12 @@ class Cover {
           return multiply(a, b)
       }
       `;
-        const ast = Parser.parse(f);
-        const functionNames = [];
-        recast.visit(ast, function (path) {
-            var newPath = path.get('body');
-            recast.visit(newPath, function (path) {
-                functionNames.push(path.node.id.name);
-                return false;
-            });
-            return false;
+        const ast = recast.parse(f, {
+            parser: require("acorn")
         });
+        const functionNames = [];
+        recast.visit(ast);
+        console.log(functionNames);
     }
 }
 exports.Cover = Cover;
