@@ -14,7 +14,6 @@ import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
 
 import { Scrape } from './lib/Spider'
 
-
 // imports done /////////////////////////////////////////////
 const cwd: string = process.cwd()
 

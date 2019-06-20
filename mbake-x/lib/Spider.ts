@@ -29,6 +29,7 @@ export class Map {
       if (!root || root.length < 1) {
          console.info('no path arg passed')
          return
+         
       }
       this._root = root
    }
