@@ -164,7 +164,6 @@ class Scrape {
                     ret['content_text'] = Scrape.asci(ret['content_text']);
                     ret['description'] = Scrape.asci(ret['description']);
                     const all = ret['title'] + ' ' + ret['content_text'] + ' ' + ret['description'];
-                    console.log(all);
                     const Summarizer = new SummarizerManager(all, 1);
                     ret['sentiment'] = Summarizer.getSentiment();
                     let summary = Summarizer.getSummaryByFrequency();

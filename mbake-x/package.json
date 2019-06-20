@@ -31,7 +31,7 @@
         "axios": ">=0.19.0",
         "execa": ">=1.0.0",
         "lunr": ">=2.3.6",
-        "mbake": ">=6.6.26",
+        "mbake": ">=6.6.27",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=4.0.0",
