@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.0",
+        "acorn": "^6.1.1",
         "axios": ">=0.19.0",
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=1.0.0",
@@ -35,6 +36,7 @@
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=4.0.0",
+        "recast": "^0.18.1",
         "riot-compiler": "^3.6.0",
         "sharp-vc": ">=0.22.1",
         "sitemap": ">=2.2.0",
@@ -58,11 +60,10 @@
         "limiter": ">=1.1.4",
         "neo-async": ">=2.6.1",
         "sharp": ">=0.22.1",
+        "ts-node": ">=8.3.0",
         "ttypescript": ">=1.5.7",
         "validate.js": ">=0.13.1",
         "vega-transforms": ">=4.1.0",
-        "vega-util": ">=1.10.0",
-        "ts-node": ">=8.3.0"
-
-      }
+        "vega-util": ">=1.10.0"
+    }
 }
