@@ -12,7 +12,7 @@ export class Cover {
     clear at start and end
    */
    clear() {
-      Cover.clazz=''
+      Cover.curClazz=''
       Cover.memeberList=[]
       
       Cover.ids = {}
@@ -67,34 +67,34 @@ export class Cover {
       console.log(Cover.memeberList)
    }//()
 
-   static clazz:string
+   static curClazz:string
    static memeberList=[]
    static _visitClass(node: ts.Node) {
       if (ts.isClassDeclaration(node)) 
-         Cover.clazz  = node.name.getText()
+         Cover.curClazz  = node.name.getText()
 
       if (ts.isMethodDeclaration(node)) 
          try {
             let s = node.name.getText() +':'+ node.modifiers[0].getText()
-            Cover.memeberList.push(Cover.clazz +':'+ s)
+            Cover.memeberList.push(Cover.curClazz +':'+ s)
          } catch(err){
             let s = node.name.getText()
-            Cover.memeberList.push(Cover.clazz +':'+ s)
+            Cover.memeberList.push(Cover.curClazz +':'+ s)
          }
       
       if (ts.isPropertyDeclaration(node)) 
          try {
             let s = node.name.getText() +':'+ node.modifiers[0].getText()
-            Cover.memeberList.push(Cover.clazz +':'+ s)
+            Cover.memeberList.push(Cover.curClazz +':'+ s)
          } catch(err){
             let s = node.name.getText() 
-            Cover.memeberList.push(Cover.clazz +':'+ s)
+            Cover.memeberList.push(Cover.curClazz +':'+ s)
          }
 
       node.forEachChild(Cover._visitClass)
     }
 
-   static filter (ar, node: ts.Node) {
+   static filter (set:Set<string>, node: ts.Node) {
 
    }//()
 }//class
