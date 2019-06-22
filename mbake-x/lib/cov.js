@@ -35,8 +35,10 @@ class Cover {
                 totalCount = totalCount + members.size;
                 const tests = Cover.tstList[key];
                 tstCount = tstCount + tests.size;
-            }
-            else {
+                let intersection = new Set([...members].filter(x => tests.has(x)));
+                logger.trace('Tested:', intersection);
+                let minus = new Set([...members].filter(x => !tests.has(x)));
+                logger.trace('Not Tested:', minus);
             }
         });
         console.log('REPORT:');

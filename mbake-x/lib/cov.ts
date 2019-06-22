@@ -21,13 +21,18 @@ export class Cover {
       Cover.ids = {}
       Cover.tstList= {}
    }
-
    static run(clazzDir, testsDir) {
       Cover.clear()
+
       Cover._cfile(clazzDir)
+
       Cover._tfile(testsDir)
 
-      // grade:
+
+      Cover._report()
+      Cover.clear()
+   }
+   static _report() {
       let tstCount = 0
       let totalCount = 0
       let tstClzCount = 0
@@ -42,13 +47,12 @@ export class Cover {
             const tests  :Set<string> = Cover.tstList[key]
             tstCount = tstCount + tests.size
 
-            //let intersection = new Set( [...a] .filter(x => b.has(x)))
-
-
-         } else { // Clz has not
-
-         }
-
+            //show
+            let intersection = new Set( [...members] .filter(x => tests.has(x)))
+            logger.trace('Tested:',intersection)
+            let minus =  new Set( [...members].filter(x => !tests.has(x)) )
+            logger.trace('Not Tested:', minus)
+         } //fi
       })//loop
 
       console.log('REPORT:')
@@ -57,9 +61,7 @@ export class Cover {
       console.log('Tested Class props:', totalCount )
       console.log('Tested props:', tstCount )
       console.log()
-
-      Cover.clear()
-   }
+   }//()
 
    /**
     Tester file
