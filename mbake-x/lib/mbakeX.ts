@@ -65,7 +65,7 @@ export class GitDown {
             this._emptyFolders();
             this.process();
          }
-      });
+      })
    }//()
 
    async process() {

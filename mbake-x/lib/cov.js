@@ -12,8 +12,9 @@ const fs = require("fs-extra");
 const ts = __importStar(require("typescript"));
 class Cover {
     clear() {
-        Cover.clazz = '';
-        Cover.memeberList = [];
+        Cover.clazzList = {};
+        Cover.curClazz = '';
+        Cover.memberList = [];
         Cover.ids = {};
         Cover.tstList = {};
     }
@@ -22,7 +23,7 @@ class Cover {
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
-        console.log(Cover.tstList);
+        logger.trace(Cover.tstList);
     }
     static _visitTst(node) {
         if (ts.isBinaryExpression(node))
@@ -48,37 +49,39 @@ class Cover {
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitClass(ast);
-        console.log(Cover.memeberList);
+        Cover.clazzList[Cover.curClazz] = Cover.memberList;
+        logger.trace(Cover.clazzList);
     }
     static _visitClass(node) {
         if (ts.isClassDeclaration(node))
-            Cover.clazz = node.name.getText();
+            Cover.curClazz = node.name.getText();
         if (ts.isMethodDeclaration(node))
             try {
                 let s = node.name.getText() + ':' + node.modifiers[0].getText();
-                Cover.memeberList.push(Cover.clazz + ':' + s);
+                Cover.memberList.push(Cover.curClazz + ':' + s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memeberList.push(Cover.clazz + ':' + s);
+                Cover.memberList.push(Cover.curClazz + ':' + s);
             }
         if (ts.isPropertyDeclaration(node))
             try {
                 let s = node.name.getText() + ':' + node.modifiers[0].getText();
-                Cover.memeberList.push(Cover.clazz + ':' + s);
+                Cover.memberList.push(Cover.curClazz + ':' + s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memeberList.push(Cover.clazz + ':' + s);
+                Cover.memberList.push(Cover.curClazz + ':' + s);
             }
         node.forEachChild(Cover._visitClass);
     }
-    static filter(ar, node) {
+    static filter(list, node) {
     }
 }
 Cover.ids = {};
 Cover.tstList = {};
-Cover.memeberList = [];
+Cover.clazzList = {};
+Cover.memberList = [];
 exports.Cover = Cover;
 module.exports = {
     Cover
