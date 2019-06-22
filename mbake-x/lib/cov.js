@@ -11,13 +11,30 @@ const logger = require('tracer').console();
 const fs = require("fs-extra");
 const ts = __importStar(require("typescript"));
 class Cover {
+    clear() {
+        Cover.clazz = '';
+        Cover.memeberList = [];
+        Cover.idList = [];
+        Cover.tstList = [];
+    }
     static tfile(fullFileName) {
+        console.log(fullFileName);
+        const f = fs.readFileSync(fullFileName).toString();
+        const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
+        Cover._visitTst(ast);
+        console.log(Cover.tstList);
+    }
+    static _visitTst(node) {
+        if (ts.isNewExpression(node)) {
+            console.log(node);
+        }
+        node.forEachChild(Cover._visitTst);
     }
     static cfile(fullFileName) {
         console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
-        const sourceFile = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
-        Cover._visitClass(sourceFile);
+        const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
+        Cover._visitClass(ast);
         console.log(Cover.memeberList);
     }
     static _visitClass(node) {
@@ -44,6 +61,8 @@ class Cover {
         node.forEachChild(Cover._visitClass);
     }
 }
+Cover.idList = [];
+Cover.tstList = [];
 Cover.memeberList = [];
 exports.Cover = Cover;
 module.exports = {

@@ -8,9 +8,35 @@ import * as ts from 'typescript'
  NOT MULTI INSTANCE or CONCURRENT
 **/
 export class Cover {
-   
+   /**
+    clear at start and end
+   */
+   clear() {
+      Cover.clazz=''
+      Cover.memeberList=[]
+      
+      Cover.idList=[]
+      Cover.tstList=[]
+   }
    static tfile(fullFileName) {
-   
+      console.log(fullFileName)
+      const f:string = fs.readFileSync(fullFileName).toString()
+      const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
+      
+      Cover._visitTst(ast)
+      console.log(Cover.tstList)
+   }
+
+   static idList=[]
+   static tstList=[]
+   static _visitTst(node: ts.Node) {
+      if (ts.isNewExpression(node)) {
+
+         console.log(node )
+
+      }
+
+      node.forEachChild(Cover._visitTst)
    }
 
    /**
@@ -20,9 +46,9 @@ export class Cover {
    static cfile(fullFileName) {
       console.log(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
-      const sourceFile = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
-      //console.log(sourceFile)
-      Cover._visitClass(sourceFile)
+      const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
+      
+      Cover._visitClass(ast)
       console.log(Cover.memeberList)
    }//()
 
