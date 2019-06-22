@@ -22,6 +22,7 @@ class Cover {
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
+        console.log(Cover.tstList);
     }
     static _visitTst(node) {
         if (ts.isBinaryExpression(node))
@@ -33,7 +34,11 @@ class Cover {
         if (ts.isPropertyAccessExpression(node)) {
             const left = node.expression.getText();
             if (left in Cover.ids) {
-                console.log(node.expression.getText(), node.name.getText());
+                const clazz = Cover.ids[left];
+                if (!(clazz in Cover.tstList))
+                    Cover.tstList[clazz] = new Set([]);
+                const val = Cover.tstList[clazz];
+                val.add(node.name.getText());
             }
         }
         node.forEachChild(Cover._visitTst);

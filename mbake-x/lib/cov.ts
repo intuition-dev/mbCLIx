@@ -15,8 +15,8 @@ export class Cover {
       Cover.clazz=''
       Cover.memeberList=[]
       
-      Cover.ids={}
-      Cover.tstList={}
+      Cover.ids = {}
+      Cover.tstList= {}
    }
    static tfile(fullFileName) {
       console.log(fullFileName)
@@ -24,11 +24,12 @@ export class Cover {
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       
       Cover._visitTst(ast)
-      //console.log(Cover.ids)
+      console.log(Cover.tstList)
    }
 
-   static ids={}
-   static tstList={}
+   static ids = {}
+   static tstList = {}
+
    static _visitTst(node: ts.Node) {
       // declared
       if (ts.isBinaryExpression(node)) 
@@ -42,7 +43,11 @@ export class Cover {
       if (ts.isPropertyAccessExpression(node)) {
          const left = node.expression.getText() 
          if(left in Cover.ids ) {
-            console.log(node.expression.getText(), node.name.getText())
+            const clazz = Cover.ids[left]
+            if( !(clazz in Cover.tstList)) 
+               Cover.tstList[clazz] = new Set([])
+            const val:Set<string> = Cover.tstList[clazz]
+            val.add(node.name.getText())
          }//inner
       }//outer
 
