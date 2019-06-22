@@ -25,9 +25,14 @@ class Cover {
         console.log(Cover.tstList);
     }
     static _visitTst(node) {
-        if (ts.isNewExpression(node)) {
-            console.log(node);
-        }
+        if (ts.isBinaryExpression(node))
+            if (ts.isNewExpression(node.right)) {
+                const cl = node.right.expression.getText();
+                if (cl.includes('ViewModel')) {
+                    console.log(node.left.getText());
+                    console.log(node.right.expression.getText());
+                }
+            }
         node.forEachChild(Cover._visitTst);
     }
     static cfile(fullFileName) {

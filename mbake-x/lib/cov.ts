@@ -30,17 +30,22 @@ export class Cover {
    static idList=[]
    static tstList=[]
    static _visitTst(node: ts.Node) {
-      if (ts.isNewExpression(node)) {
+      if (ts.isBinaryExpression(node)) 
+         if (ts.isNewExpression(node.right)) {
+            const cl = node.right.expression.getText()
+            if(cl.includes('ViewModel')) {
+               console.log(node.left.getText() )
+               console.log(node.right.expression.getText() )
 
-         console.log(node )
+            }//inner inner
+         } // inner
 
-      }
 
       node.forEachChild(Cover._visitTst)
    }
 
    /**
-     appends to array of method, including modifiers like private
+     appends to array, including modifiers like private
      @param fullFileName 
     */
    static cfile(fullFileName) {
