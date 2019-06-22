@@ -40,7 +40,6 @@
         "sharp-vc": ">=0.22.1",
         "sitemap": ">=2.2.0",
         "traverse": ">=0.6.6",
-        "ts-morph": ">=2.3.0",
         "typescript": ">=3.5.2",
         "unfluff": ">=3.2.0"
     },

@@ -1,15 +1,8 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
 const fs = require("fs-extra");
-const recast = __importStar(require("recast"));
+const ts_morph_1 = require("ts-morph");
 class Cover {
     constructor() {
         this.fns = [];
@@ -33,20 +26,13 @@ class Cover {
           return multiply(a, b)
       }
       `;
+        const project = new ts_morph_1.Project();
+        if (true)
+            return;
         const f = fs.readFileSync(fullFileName).toString();
-        const ast = recast.parse(f, {
-            parser: require("recast/parsers/acorn")
-        });
-        const THIZ = this;
-        recast.visit(ast, { visitFunctionDeclaration: function (path) {
-                let newPath = path.get('body');
-                recast.visit(newPath, { visitFunctionDeclaration: function (path) {
-                        console.log(path.node.id.name);
-                        THIZ.fns.push(path.node.id.name);
-                        return false;
-                    } });
-                return false;
-            } });
+        const sourceFile = project.addExistingSourceFile("path/to/file.ts");
+        const diagnostics = project.getPreEmitDiagnostics();
+        console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
     }
 }
 exports.Cover = Cover;
