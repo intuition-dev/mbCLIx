@@ -32,7 +32,7 @@
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=1.0.0",
         "lunr": ">=2.3.6",
-        "mbake": ">=6.6.27",
+        "mbake": ">=6.6.28",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=4.0.0",
@@ -51,7 +51,7 @@
     ],
     "devDependencies": {
         "@marp-team/marpit": ">=1.2.0",
-        "@types/node": ">=12.0.8",
+        "@types/node": ">=12.0.10",
         "collect.js": ">=4.12.5",
         "csvtojson": ">=2.0.8",
         "datalib": ">=1.9.2",
