@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const fs = require("fs-extra");
 const ts = __importStar(require("typescript"));
 class Cover {
-    clear() {
+    static clear() {
         Cover.clazzList = {};
         Cover.curClazz = '';
         Cover.memberList = [];
@@ -57,25 +57,27 @@ class Cover {
             Cover.curClazz = node.name.getText();
         if (ts.isMethodDeclaration(node))
             try {
-                let s = node.name.getText() + ':' + node.modifiers[0].getText();
-                Cover.memberList.push(Cover.curClazz + ':' + s);
+                const mod = node.modifiers[0].getText();
+                let s = node.name.getText();
+                if (!(mod.includes('pr')))
+                    Cover.memberList.push(s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memberList.push(Cover.curClazz + ':' + s);
+                Cover.memberList.push(s);
             }
         if (ts.isPropertyDeclaration(node))
             try {
-                let s = node.name.getText() + ':' + node.modifiers[0].getText();
-                Cover.memberList.push(Cover.curClazz + ':' + s);
+                const mod = node.modifiers[0].getText();
+                let s = node.name.getText();
+                if (!(mod.includes('pr')))
+                    Cover.memberList.push(s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memberList.push(Cover.curClazz + ':' + s);
+                Cover.memberList.push(s);
             }
         node.forEachChild(Cover._visitClass);
-    }
-    static filter(list, node) {
     }
 }
 Cover.ids = {};
