@@ -70,7 +70,7 @@ function help() {
 
    console.info()
 
-   new Cover().file()
+   new Cover().file('/Users/code/Documents/GitHub/alan/al-prod/assets/models/BuilderViewModel.ts')
 
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{

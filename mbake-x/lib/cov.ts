@@ -7,9 +7,9 @@ import * as recast from 'recast'
 export class Cover {
    fns =[]
 
-   file(dir?, fileName?) {
+   file(fullFileName) {
 
-      const f:string =`function decrementAndAdd(a, b){
+      const f0:string =`function decrementAndAdd(a, b){
          function add(c, d){
             return c + d;
          }
@@ -27,18 +27,22 @@ export class Cover {
           return multiply(a, b)
       }
       `
-      console.log('here')
-      // fs.readFileSync(fileName).toString())
+      const f:string = fs.readFileSync(fullFileName).toString()
       const ast = recast.parse(f, {
-         parser: require('acorn')
+         parser: require('recast/parsers/typescript')
       })
        
       const THIZ = this
       recast.visit(ast, { visitFunctionDeclaration: function(path) {
-         console.log(path.node.id.name)
-         THIZ.fns.push(path.node.id.name)
+         let newPath = path.get('body')
 
-         
+         // 2nd level only
+         recast.visit(newPath, { visitFunctionDeclaration: function(path) {
+            console.log(path.node.id.name)
+            THIZ.fns.push(path.node.id.name)
+            return false
+         }})   
+
          // return false to stop at this depth
          return false
        }})

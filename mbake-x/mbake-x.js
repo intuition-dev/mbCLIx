@@ -56,7 +56,7 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
-    new cov_1.Cover().file();
+    new cov_1.Cover().file('/Users/code/Documents/GitHub/alan/al-prod/assets/models/BuilderViewModel.ts');
     FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
         try {
             if (!isCurrent_)

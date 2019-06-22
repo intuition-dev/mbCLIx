@@ -8,13 +8,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
+const fs = require("fs-extra");
 const recast = __importStar(require("recast"));
 class Cover {
     constructor() {
         this.fns = [];
     }
-    file(dir, fileName) {
-        const f = `function decrementAndAdd(a, b){
+    file(fullFileName) {
+        const f0 = `function decrementAndAdd(a, b){
          function add(c, d){
             return c + d;
          }
@@ -32,15 +33,19 @@ class Cover {
           return multiply(a, b)
       }
       `;
-        console.log('here');
-        const ast = recast.parse(f, {
-            parser: require('acorn')
+        const f = fs.readFileSync(fullFileName).toString();
+        const ast = recast.parse(f0, {
+            parser: require('recast/parsers/typescript')
         });
         const THIZ = this;
         recast.visit(ast, { visitFunctionDeclaration: function (path) {
-                console.log(path.node.id.name);
-                THIZ.fns.push(path.node.id.name);
-                this.traverse(path);
+                let newPath = path.get('body');
+                recast.visit(newPath, { visitFunctionDeclaration: function (path) {
+                        console.log(path.node.id.name);
+                        THIZ.fns.push(path.node.id.name);
+                        return false;
+                    } });
+                return false;
             } });
     }
 }
