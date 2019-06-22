@@ -1,4 +1,7 @@
 
+const logger = require('tracer').console()
+
+
 import * as recast from "recast"
 import fs = require('fs-extra')
 
@@ -24,30 +27,29 @@ export class Cover {
           return multiply(a, b)
       }
       `
-
+      console.log('here')
       // fs.readFileSync(fileName).toString())
       const ast = recast.parse(f, {
          parser: require("acorn")
        })
 
       const functionNames = []
-
-      recast.visit(ast) //, function(path){
-         /*
-         var newPath = path.get('body')
- 
+      
+      recast.visit(ast , { visitNode: function(path) {
+        var newPath = path.get('body')
+         
          // sub-traversing
-         recast.visit(newPath, ast.function(path){
-           functionNames.push(path.node.id.name)
-           return false
-         })
-       
+         recast.visit(newPath, { visitNode: function(path) {
+            logger.trace(path.node)
+            functionNames.push(path.node)
+            return false
+         }})
+      
          // return false to not look at other functions contained in this function
          // leave this role to the sub-traversing
          return false
-         */
 
-       //})
+       }})
        
       console.log(functionNames)
    }//()

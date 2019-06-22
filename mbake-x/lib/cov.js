@@ -7,6 +7,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const logger = require('tracer').console();
 const recast = __importStar(require("recast"));
 class Cover {
     file(dir, fileName) {
@@ -28,11 +29,20 @@ class Cover {
           return multiply(a, b)
       }
       `;
+        console.log('here');
         const ast = recast.parse(f, {
             parser: require("acorn")
         });
         const functionNames = [];
-        recast.visit(ast);
+        recast.visit(ast, { visitNode: function (path) {
+                var newPath = path.get('body');
+                recast.visit(newPath, { visitNode: function (path) {
+                        logger.trace(path.node);
+                        functionNames.push(path.node);
+                        return false;
+                    } });
+                return false;
+            } });
         console.log(functionNames);
     }
 }
