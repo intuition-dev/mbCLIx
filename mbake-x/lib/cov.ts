@@ -2,7 +2,6 @@
 const logger = require('tracer').console()
 import fs = require('fs-extra')
 
-import * as recast from 'recast'
 
 export class Cover {
    fns =[]
@@ -28,24 +27,9 @@ export class Cover {
       }
       `
       const f:string = fs.readFileSync(fullFileName).toString()
-      const ast = recast.parse(f, {
-         parser: require('recast/parsers/typescript')
-      })
-       
-      const THIZ = this
-      recast.visit(ast, { visitFunctionDeclaration: function(path) {
-         let newPath = path.get('body')
+ 
 
-         // 2nd level only
-         recast.visit(newPath, { visitFunctionDeclaration: function(path) {
-            console.log(path.node.id.name)
-            THIZ.fns.push(path.node.id.name)
-            return false
-         }})   
-
-         // return false to stop at this depth
-         return false
-       }})
+      
    
    }//()
 
