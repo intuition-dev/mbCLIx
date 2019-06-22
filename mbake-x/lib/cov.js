@@ -1,40 +1,48 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
 const fs = require("fs-extra");
-const ts_morph_1 = require("ts-morph");
+const ts = __importStar(require("typescript"));
 class Cover {
-    constructor() {
-        this.fns = [];
-    }
-    file(fullFileName) {
-        const f0 = `function decrementAndAdd(a, b){
-         function add(c, d){
-            return c + d;
-         }
-         a--;
-         b = b - 1;
-         return add(a,b)
-      }
-      
-      function incrementAndMultiply(a, b){
-          function multiply(c, d){
-            return c * d;
-          }
-          a++;
-          b = b + 1;
-          return multiply(a, b)
-      }
-      `;
-        const project = new ts_morph_1.Project();
-        if (true)
-            return;
+    static cfile(fullFileName) {
+        console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
-        const sourceFile = project.addExistingSourceFile("path/to/file.ts");
-        const diagnostics = project.getPreEmitDiagnostics();
-        console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
+        const sourceFile = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
+        Cover._visitClass(sourceFile);
+        console.log(Cover.memeberList);
+    }
+    static _visitClass(node) {
+        if (ts.isClassDeclaration(node))
+            Cover.clazz = node.name.getText();
+        if (ts.isMethodDeclaration(node))
+            try {
+                let s = node.name.getText() + ':' + node.modifiers[0].getText();
+                Cover.memeberList.push(Cover.clazz + ':' + s);
+            }
+            catch (err) {
+                let s = node.name.getText();
+                Cover.memeberList.push(Cover.clazz + ':' + s);
+            }
+        if (ts.isPropertyDeclaration(node))
+            try {
+                let s = node.name.getText() + ':' + node.modifiers[0].getText();
+                Cover.memeberList.push(Cover.clazz + ':' + s);
+            }
+            catch (err) {
+                let s = node.name.getText();
+                Cover.memeberList.push(Cover.clazz + ':' + s);
+            }
+        node.forEachChild(Cover._visitClass);
     }
 }
+Cover.memeberList = [];
 exports.Cover = Cover;
 module.exports = {
     Cover

@@ -2,47 +2,48 @@
 const logger = require('tracer').console()
 import fs = require('fs-extra')
 
-import { Project } from 'ts-morph'
+import * as ts from 'typescript'
 
+/** 
+ NOT MULTI INSTANCE or CONCURRENT
+**/
 export class Cover {
-   fns =[]
      
-   file(fullFileName) {
-
-      const f0:string =`function decrementAndAdd(a, b){
-         function add(c, d){
-            return c + d;
-         }
-         a--;
-         b = b - 1;
-         return add(a,b)
-      }
-      
-      function incrementAndMultiply(a, b){
-          function multiply(c, d){
-            return c * d;
-          }
-          a++;
-          b = b + 1;
-          return multiply(a, b)
-      }
-      `
-   
-      const project = new Project();
-
-
-      if(true) return
-
+   static cfile(fullFileName) {
+      console.log(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
-      const sourceFile = project.addExistingSourceFile("path/to/file.ts")
-      
-      const diagnostics = project.getPreEmitDiagnostics()
-
-      console.log(project.formatDiagnosticsWithColorAndContext(diagnostics))
-
-      
-   
+      const sourceFile = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
+      //console.log(sourceFile)
+      Cover._visitClass(sourceFile)
+      console.log(Cover.memeberList)
    }//()
+
+   static clazz:string
+   static memeberList=[]
+   static _visitClass(node: ts.Node) {
+      if (ts.isClassDeclaration(node)) 
+         Cover.clazz  = node.name.getText()
+
+      if (ts.isMethodDeclaration(node)) 
+         try {
+            let s = node.name.getText() +':'+ node.modifiers[0].getText()
+            Cover.memeberList.push(Cover.clazz +':'+ s)
+         } catch(err){
+            let s = node.name.getText()
+            Cover.memeberList.push(Cover.clazz +':'+ s)
+         }
+      
+      if (ts.isPropertyDeclaration(node)) 
+         try {
+            let s = node.name.getText() +':'+ node.modifiers[0].getText()
+            Cover.memeberList.push(Cover.clazz +':'+ s)
+         } catch(err){
+            let s = node.name.getText() 
+            Cover.memeberList.push(Cover.clazz +':'+ s)
+         }
+
+      node.forEachChild(Cover._visitClass)
+    }
 
 }//class
 
