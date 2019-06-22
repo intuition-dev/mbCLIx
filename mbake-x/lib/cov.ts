@@ -8,7 +8,15 @@ import * as ts from 'typescript'
  NOT MULTI INSTANCE or CONCURRENT
 **/
 export class Cover {
-     
+   
+   static tfile(fullFileName) {
+   
+   }
+
+   /**
+     appends to array of method, including modifiers like private
+     @param fullFileName 
+    */
    static cfile(fullFileName) {
       console.log(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()

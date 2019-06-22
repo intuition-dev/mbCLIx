@@ -11,6 +11,8 @@ const logger = require('tracer').console();
 const fs = require("fs-extra");
 const ts = __importStar(require("typescript"));
 class Cover {
+    static tfile(fullFileName) {
+    }
     static cfile(fullFileName) {
         console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
