@@ -14,16 +14,45 @@ class Cover {
     static clear() {
         Cover.clazzList = {};
         Cover.curClazz = '';
-        Cover.memberList = [];
+        Cover.memberList = new Set([]);
         Cover.ids = {};
         Cover.tstList = {};
     }
-    static tfile(fullFileName) {
+    static run(clazzDir, testsDir) {
+        Cover.clear();
+        Cover._cfile(clazzDir);
+        Cover._tfile(testsDir);
+        let tstCount = 0;
+        let totalCount = 0;
+        let tstClzCount = 0;
+        let totalClzCount = 0;
+        Object.keys(Cover.clazzList).forEach(key => {
+            logger.trace(key);
+            totalClzCount++;
+            if (key in Cover.tstList) {
+                tstClzCount++;
+                const members = Cover.memberList[key];
+                logger.trace(Cover.memberList[key]);
+                totalCount = totalCount + members.size;
+                const tests = Cover.tstList[key];
+                logger.trace(tests);
+                tstCount = tstCount + tests.size;
+            }
+            else {
+            }
+        });
+        console.log('REPORT:');
+        console.log('Classes:', totalClzCount);
+        console.log('Tested Classes:', tstClzCount);
+        console.log('Tested Class props:', totalCount);
+        console.log('Tested props:', tstClzCount);
+        console.log();
+    }
+    static _tfile(fullFileName) {
         console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
-        logger.trace(Cover.tstList);
     }
     static _visitTst(node) {
         if (ts.isBinaryExpression(node))
@@ -44,13 +73,12 @@ class Cover {
         }
         node.forEachChild(Cover._visitTst);
     }
-    static cfile(fullFileName) {
+    static _cfile(fullFileName) {
         console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitClass(ast);
         Cover.clazzList[Cover.curClazz] = Cover.memberList;
-        logger.trace(Cover.clazzList);
     }
     static _visitClass(node) {
         if (ts.isClassDeclaration(node))
@@ -60,22 +88,22 @@ class Cover {
                 const mod = node.modifiers[0].getText();
                 let s = node.name.getText();
                 if (!(mod.includes('pr')))
-                    Cover.memberList.push(s);
+                    Cover.memberList.add(s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memberList.push(s);
+                Cover.memberList.add(s);
             }
         if (ts.isPropertyDeclaration(node))
             try {
                 const mod = node.modifiers[0].getText();
                 let s = node.name.getText();
                 if (!(mod.includes('pr')))
-                    Cover.memberList.push(s);
+                    Cover.memberList.add(s);
             }
             catch (err) {
                 let s = node.name.getText();
-                Cover.memberList.push(s);
+                Cover.memberList.add(s);
             }
         node.forEachChild(Cover._visitClass);
     }
@@ -83,7 +111,7 @@ class Cover {
 Cover.ids = {};
 Cover.tstList = {};
 Cover.clazzList = {};
-Cover.memberList = [];
+Cover.memberList = new Set([]);
 exports.Cover = Cover;
 module.exports = {
     Cover

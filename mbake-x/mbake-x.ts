@@ -70,10 +70,9 @@ function help() {
 
    console.info()
 
-   //Cover.tfile('/Users/code/Documents/GitHub/alan/al-prod/testing-dash/ScreensVMTest.js')
+   Cover.run('/Users/code/Documents/GitHub/alan/al-prod/assets/models/BuilderViewModel.ts', '/Users/code/Documents/GitHub/alan/al-prod/testing-dash/ScreensVMTest.js')
 
-   Cover.cfile('/Users/code/Documents/GitHub/alan/al-prod/assets/models/BuilderViewModel.ts')
-
+   
    VersionNag.isCurrent().then(function(isCurrent_:boolean){
       try{
       if(!isCurrent_) 
