@@ -1,15 +1,16 @@
 
 const logger = require('tracer').console()
+import fs = require('fs-extra')
 
 
 import * as recast from "recast"
-import fs = require('fs-extra')
+const types = recast.types
 
 export class Cover {
 
    file(dir?, fileName?) {
 
-      const f =`function decrementAndAdd(a, b){
+      const f:string =`function decrementAndAdd(a, b){
          function add(c, d){
             return c + d;
          }
@@ -32,26 +33,16 @@ export class Cover {
       const ast = recast.parse(f, {
          parser: require("acorn")
        })
-
-      const functionNames = []
-      
-      recast.visit(ast , { visitNode: function(path) {
-        var newPath = path.get('body')
-         
-         // sub-traversing
-         recast.visit(newPath, { visitNode: function(path) {
-            logger.trace(path.node)
-            functionNames.push(path.node)
-            return false
-         }})
-      
-         // return false to not look at other functions contained in this function
-         // leave this role to the sub-traversing
-         return false
-
-       }})
        
-      console.log(functionNames)
+      logger.trace(ast)
+      recast.visit(ast, { visitFunctionDeclaration: function(path) {
+         console.log(path)
+       
+         // return false to stop at this depth
+         return false;
+       }})
+
+   
    }//()
 
 }//class
