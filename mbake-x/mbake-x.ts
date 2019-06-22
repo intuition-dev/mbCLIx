@@ -70,7 +70,7 @@ function help() {
 
    console.info()
 
-   Cover.run('/Users/code/Documents/GitHub/alan/al-prod/assets/models/BuilderViewModel.ts', '/Users/code/Documents/GitHub/alan/al-prod/testing-dash/ScreensVMTest.js')
+   Cover.run('/Users/code/Documents/GitHub/alan/al-prod/assets/models', '/Users/code/Documents/GitHub/alan/al-prod/testing-dash')
 
    
    VersionNag.isCurrent().then(function(isCurrent_:boolean){

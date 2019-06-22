@@ -9,6 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
 const fs = require("fs-extra");
+const FileHound = require('filehound');
 const ts = __importStar(require("typescript"));
 class Cover {
     static clear() {
@@ -20,8 +21,26 @@ class Cover {
     }
     static run(clazzDir, testsDir) {
         Cover.clear();
-        Cover._cfile(clazzDir);
-        Cover._tfile(testsDir);
+        const memFiles = FileHound.create()
+            .paths(clazzDir)
+            .ext('ts')
+            .glob('*ViewModel.ts')
+            .findSync();
+        for (let f of memFiles) {
+            Cover._cfile(f);
+        }
+        const tstFiles = FileHound.create()
+            .paths(testsDir)
+            .ext('js')
+            .glob('*Test*')
+            .findSync();
+        for (let f of tstFiles) {
+            Cover._tfile(f);
+        }
+        Cover._report();
+        Cover.clear();
+    }
+    static _report() {
         let tstCount = 0;
         let totalCount = 0;
         let tstClzCount = 0;
@@ -47,7 +66,6 @@ class Cover {
         console.log('Tested Class props:', totalCount);
         console.log('Tested props:', tstCount);
         console.log();
-        Cover.clear();
     }
     static _tfile(fullFileName) {
         console.log(fullFileName);

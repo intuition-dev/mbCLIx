@@ -41,7 +41,8 @@
         "sitemap": ">=2.2.0",
         "traverse": ">=0.6.6",
         "typescript": ">=3.5.2",
-        "unfluff": ">=3.2.0"
+        "unfluff": ">=3.2.0",
+        "filehound": ">=1.17.0"
     },
     "bundledDependencies": [
         "mbake",

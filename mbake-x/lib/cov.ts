@@ -1,6 +1,7 @@
 
 const logger = require('tracer').console()
 import fs = require('fs-extra')
+const FileHound = require('filehound')
 
 import * as ts from 'typescript'
 
@@ -23,11 +24,22 @@ export class Cover {
    }
    static run(clazzDir, testsDir) {
       Cover.clear()
-
-      Cover._cfile(clazzDir)
-
-      Cover._tfile(testsDir)
-
+      const memFiles = FileHound.create() // hard coded but does not need to be:
+         .paths(clazzDir)
+         .ext('ts')
+         .glob('*ViewModel.ts')
+         .findSync()
+      for (let f of memFiles) {
+         Cover._cfile(f)
+      }
+      const tstFiles = FileHound.create() // hard coded but does not need to be:
+         .paths(testsDir)
+         .ext('js')
+         .glob('*Test*')
+         .findSync()
+      for (let f of tstFiles) {
+         Cover._tfile(f)
+      }
 
       Cover._report()
       Cover.clear()
