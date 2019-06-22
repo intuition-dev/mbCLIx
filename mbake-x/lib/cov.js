@@ -34,7 +34,7 @@ class Cover {
       }
       `;
         const f = fs.readFileSync(fullFileName).toString();
-        const ast = recast.parse(f0, {
+        const ast = recast.parse(f, {
             parser: require('recast/parsers/typescript')
         });
         const THIZ = this;
