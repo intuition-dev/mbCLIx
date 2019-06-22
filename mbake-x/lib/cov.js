@@ -15,14 +15,13 @@ class Cover {
         Cover.clazz = '';
         Cover.memeberList = [];
         Cover.ids = {};
-        Cover.tstList = [];
+        Cover.tstList = {};
     }
     static tfile(fullFileName) {
         console.log(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
-        console.log(Cover.ids);
     }
     static _visitTst(node) {
         if (ts.isBinaryExpression(node))
@@ -31,6 +30,12 @@ class Cover {
                 if (cl.includes('ViewModel'))
                     Cover.ids[node.left.getText()] = node.right.expression.getText();
             }
+        if (ts.isPropertyAccessExpression(node)) {
+            const left = node.expression.getText();
+            if (left in Cover.ids) {
+                console.log(node.expression.getText(), node.name.getText());
+            }
+        }
         node.forEachChild(Cover._visitTst);
     }
     static cfile(fullFileName) {
@@ -63,9 +68,11 @@ class Cover {
             }
         node.forEachChild(Cover._visitClass);
     }
+    static filter(ar, node) {
+    }
 }
 Cover.ids = {};
-Cover.tstList = [];
+Cover.tstList = {};
 Cover.memeberList = [];
 exports.Cover = Cover;
 module.exports = {
