@@ -15,7 +15,7 @@ export class Cover {
       Cover.clazz=''
       Cover.memeberList=[]
       
-      Cover.idList=[]
+      Cover.ids={}
       Cover.tstList=[]
    }
    static tfile(fullFileName) {
@@ -24,22 +24,18 @@ export class Cover {
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       
       Cover._visitTst(ast)
-      console.log(Cover.tstList)
+      console.log(Cover.ids)
    }
 
-   static idList=[]
+   static ids={}
    static tstList=[]
    static _visitTst(node: ts.Node) {
       if (ts.isBinaryExpression(node)) 
          if (ts.isNewExpression(node.right)) {
             const cl = node.right.expression.getText()
-            if(cl.includes('ViewModel')) {
-               console.log(node.left.getText() )
-               console.log(node.right.expression.getText() )
-
-            }//inner inner
+            if(cl.includes('ViewModel')) 
+               Cover.ids[node.left.getText()] = node.right.expression.getText()
          } // inner
-
 
       node.forEachChild(Cover._visitTst)
    }
