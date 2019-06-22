@@ -2,11 +2,10 @@
 const logger = require('tracer').console()
 import fs = require('fs-extra')
 
-
-import * as recast from "recast"
-const types = recast.types
+import * as recast from 'recast'
 
 export class Cover {
+   fns =[]
 
    file(dir?, fileName?) {
 
@@ -31,17 +30,18 @@ export class Cover {
       console.log('here')
       // fs.readFileSync(fileName).toString())
       const ast = recast.parse(f, {
-         parser: require("acorn")
-       })
+         parser: require('acorn')
+      })
        
-      logger.trace(ast)
+      const THIZ = this
       recast.visit(ast, { visitFunctionDeclaration: function(path) {
-         console.log(path)
-       
-         // return false to stop at this depth
-         return false;
-       }})
+         console.log(path.node.id.name)
+         THIZ.fns.push(path.node.id.name)
 
+         
+         // return false to stop at this depth
+         return false
+       }})
    
    }//()
 

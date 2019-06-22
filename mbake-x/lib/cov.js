@@ -9,8 +9,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const logger = require('tracer').console();
 const recast = __importStar(require("recast"));
-const types = recast.types;
 class Cover {
+    constructor() {
+        this.fns = [];
+    }
     file(dir, fileName) {
         const f = `function decrementAndAdd(a, b){
          function add(c, d){
@@ -32,12 +34,13 @@ class Cover {
       `;
         console.log('here');
         const ast = recast.parse(f, {
-            parser: require("acorn")
+            parser: require('acorn')
         });
-        logger.trace(ast);
+        const THIZ = this;
         recast.visit(ast, { visitFunctionDeclaration: function (path) {
-                console.log(path);
-                return false;
+                console.log(path.node.id.name);
+                THIZ.fns.push(path.node.id.name);
+                this.traverse(path);
             } });
     }
 }
