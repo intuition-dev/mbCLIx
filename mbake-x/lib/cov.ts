@@ -13,9 +13,9 @@ export class Cover {
    */
    static clear() {
       //classes
-      Cover.clazzList = {}
       Cover.curClazz=''
       Cover.memberList= new Set([])
+      Cover.clazzList = {}
       
       //tests
       Cover.ids = {}
@@ -37,11 +37,9 @@ export class Cover {
          totalClzCount ++
          if(key in Cover.tstList) { // Clz has
             tstClzCount ++
-            const members:Set<string> = Cover.memberList[key]
-            logger.trace(Cover.memberList[key])
+            const members:Set<string> = Cover.clazzList[key]
             totalCount = totalCount + members.size
             const tests  :Set<string> = Cover.tstList[key]
-            logger.trace(tests)
             tstCount = tstCount + tests.size
 
             //let intersection = new Set( [...a] .filter(x => b.has(x)))
@@ -57,10 +55,10 @@ export class Cover {
       console.log('Classes:', totalClzCount )
       console.log('Tested Classes:', tstClzCount )
       console.log('Tested Class props:', totalCount )
-      console.log('Tested props:', tstClzCount )
+      console.log('Tested props:', tstCount )
       console.log()
 
-      //Cover.clear()
+      Cover.clear()
    }
 
    /**
@@ -80,8 +78,8 @@ export class Cover {
       // declared
       if (ts.isBinaryExpression(node)) 
          if (ts.isNewExpression(node.right)) {
-            const cl = node.right.expression.getText()
-            if(cl.includes('ViewModel')) 
+            const cl:string = node.right.expression.getText()
+            if( cl in Cover.clazzList ) 
                Cover.ids[node.left.getText()] = node.right.expression.getText()
          } // inner
       // accessed

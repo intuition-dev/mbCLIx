@@ -12,9 +12,9 @@ const fs = require("fs-extra");
 const ts = __importStar(require("typescript"));
 class Cover {
     static clear() {
-        Cover.clazzList = {};
         Cover.curClazz = '';
         Cover.memberList = new Set([]);
+        Cover.clazzList = {};
         Cover.ids = {};
         Cover.tstList = {};
     }
@@ -31,11 +31,9 @@ class Cover {
             totalClzCount++;
             if (key in Cover.tstList) {
                 tstClzCount++;
-                const members = Cover.memberList[key];
-                logger.trace(Cover.memberList[key]);
+                const members = Cover.clazzList[key];
                 totalCount = totalCount + members.size;
                 const tests = Cover.tstList[key];
-                logger.trace(tests);
                 tstCount = tstCount + tests.size;
             }
             else {
@@ -45,8 +43,9 @@ class Cover {
         console.log('Classes:', totalClzCount);
         console.log('Tested Classes:', tstClzCount);
         console.log('Tested Class props:', totalCount);
-        console.log('Tested props:', tstClzCount);
+        console.log('Tested props:', tstCount);
         console.log();
+        Cover.clear();
     }
     static _tfile(fullFileName) {
         console.log(fullFileName);
@@ -58,7 +57,7 @@ class Cover {
         if (ts.isBinaryExpression(node))
             if (ts.isNewExpression(node.right)) {
                 const cl = node.right.expression.getText();
-                if (cl.includes('ViewModel'))
+                if (cl in Cover.clazzList)
                     Cover.ids[node.left.getText()] = node.right.expression.getText();
             }
         if (ts.isPropertyAccessExpression(node)) {
