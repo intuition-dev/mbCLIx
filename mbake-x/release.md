@@ -1,3 +1,6 @@
+### 1.00.22
+- added cover report
+
 ### 1.00.21
-- added scrape
+- added scrape, but only API ***
 - removed slides example
