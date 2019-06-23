@@ -9,6 +9,8 @@ import * as ts from 'typescript'
  NOT MULTI INSTANCE or CONCURRENT
 **/
 export class Cover {
+   // https://astexplorer.net
+   
    /**
     clear at start and end 
    */
