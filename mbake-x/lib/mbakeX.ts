@@ -3,7 +3,7 @@
 
 export class Verx {
    static ver() {
-      return 'v1.00.21'
+      return 'v1.00.22'
    }
    static date(): string {
       return new Date().toISOString()
