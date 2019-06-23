@@ -1759,9 +1759,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.164:
-  version "1.3.169"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.169.tgz#f9722d3f6a18a19c1fc1216bf9e1654daafab539"
-  integrity sha512-CxKt4ONON7m0ekVaFzvTZakHgGQsLMRH0J8W6h4lhyBNgskj3CIJz4bj+bh5+G26ztAe6dZjmYUeEW4u/VSnLQ==
+  version "1.3.170"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.170.tgz#2dc858f8a9bb51bbfe3a429312c11f565b456e61"
+  integrity sha512-vDEhHcwMogbM+WXDTh6ZktwQOqLcK7MJdCOM99UZXRI1ct3Y9OeYYJTrIHnswzv+IYwoXNj0Furh+K6UotcHVg==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -3531,10 +3531,10 @@ markdown-it@>=8.4.2, markdown-it@^8.4.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.6.28:
-  version "6.6.28"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.28.tgz#92427493722ee40671afe7987ebeb9c5833e12df"
-  integrity sha512-xpqnNxhNTmSeVW7ErX5FA8gSEkj2YVoLxDWiahbEzL83Gcnkv6Mk3zObj7L8DOZDb0hKQqme84W2YYqez2anCw==
+mbake@>=6.6.29:
+  version "6.6.29"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.6.29.tgz#16b70da9b9b672a85f9b01e19cd9ec4f88be3bc2"
+  integrity sha512-E16Pu1SJ8Eg4czvpRahNfHXLx0x7MBUBsX6v6s0EDymWPIZSgVS/jOcvrZhkyL6McFdMYAHtkD9G6Gbmh9x6pw==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.0"
@@ -5065,22 +5065,6 @@ setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
-
-sharp-vc@>=0.22.1:
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/sharp-vc/-/sharp-vc-0.22.1.tgz#765158c072406ce422f8840031b61621e367c9be"
-  integrity sha512-jB6fNg0eU9twXCElbKq+KJV85B/MiZw7EQUnBbAGIADICZZ/YLTJhjkAwNXTpNELSxVCl8kwM3NDPn/fSlKHsg==
-  dependencies:
-    color "^3.1.1"
-    detect-libc "^1.0.3"
-    fs-copy-file-sync "^1.1.1"
-    nan "^2.13.2"
-    npmlog "^4.1.2"
-    prebuild-install "^5.3.0"
-    semver "^6.0.0"
-    simple-get "^3.0.3"
-    tar "^4.4.8"
-    tunnel-agent "^0.6.0"
 
 sharp@>=0.22.1:
   version "0.22.1"

@@ -9,14 +9,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class Verx {
     static ver() {
-        return 'v1.00.22';
+        return 'v1.00.23';
     }
     static date() {
         return new Date().toISOString();
     }
 }
 exports.Verx = Verx;
-const sharp = require("sharp-vc");
+const sharp = require("sharp");
 const probe = require("probe-image-size");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
 const firebase = __importStar(require("firebase-admin"));

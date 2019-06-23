@@ -71,18 +71,7 @@ function help() {
    console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
-   
-   VersionNag.isCurrent().then(function(isCurrent_:boolean){
-      try{
-      if(!isCurrent_) 
-         console.log('There is a newer version of mbake CLI, please update.')
-      else
-         console.log('You have the current version of mbake CLI')
-      } catch(err) {
-         console.log(err)
-      }
-   })// 
-   
+
 }//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,3 +299,16 @@ if (argsParsed.comps) {
       help()
    else if (!arg)
       help()
+
+
+      
+VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
+   try{
+   if(!isCurrent_) 
+      console.log('There is a newer version of mbake CLI, please update.')
+   else
+      console.log('You have the current version of mbake CLI')
+   } catch(err) {
+      console.log(err)
+   }
+})// 

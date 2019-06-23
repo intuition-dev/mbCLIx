@@ -3,14 +3,14 @@
 
 export class Verx {
    static ver() {
-      return 'v1.00.22'
+      return 'v1.00.23'
    }
    static date(): string {
       return new Date().toISOString()
    }
 }
 
-import sharp = require('sharp-vc')
+import sharp = require('sharp')
 import probe = require('probe-image-size')
 import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
 import * as firebase from 'firebase-admin';

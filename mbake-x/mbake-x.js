@@ -58,17 +58,6 @@ function help() {
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
     console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
-    FileOpsExtra_1.VersionNag.isCurrent().then(function (isCurrent_) {
-        try {
-            if (!isCurrent_)
-                console.log('There is a newer version of mbake CLI, please update.');
-            else
-                console.log('You have the current version of mbake CLI');
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
 }
 const optionDefinitions = [
     { name: 'mbake-x', defaultOption: true },
@@ -261,3 +250,14 @@ else if (argsParsed.help)
     help();
 else if (!arg)
     help();
+FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.Verx.ver()).then(function (isCurrent_) {
+    try {
+        if (!isCurrent_)
+            console.log('There is a newer version of mbake CLI, please update.');
+        else
+            console.log('You have the current version of mbake CLI');
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
