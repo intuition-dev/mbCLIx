@@ -31,6 +31,7 @@ export class Cover {
          .findSync()
       for (let f of memFiles) {
          Cover._cfile(f)
+         Cover.memberList= new Set([]) //reset for next
       }
       const tstFiles = FileHound.create() // hard coded but does not need to be:
          .paths(testsDir)
@@ -49,28 +50,31 @@ export class Cover {
       let totalCount = 0
       let tstClzCount = 0
       let totalClzCount = 0
+      
       Object.keys(Cover.clazzList).forEach( key =>  {
-         logger.trace(key)
          totalClzCount ++
          if(key in Cover.tstList) { // Clz has
+            logger.trace('*',key)
             tstClzCount ++
             const members:Set<string> = Cover.clazzList[key]
             totalCount = totalCount + members.size
             const tests  :Set<string> = Cover.tstList[key]
             tstCount = tstCount + tests.size
 
-            //show
+            // using data structures, not AST:
             let intersection = new Set( [...members] .filter(x => tests.has(x)))
-            logger.trace('Tested:',intersection)
+            console.log('Tested:', Array.from(intersection).sort() )
             let minus =  new Set( [...members].filter(x => !tests.has(x)) )
-            logger.trace('Not Tested:', minus)
+            logger.trace('Not Tested:', Array.from(minus).sort() )
          } //fi
+         else logger.trace('** No tests for',key)
+
       })//loop
 
       console.log('REPORT:')
       console.log('Classes:', totalClzCount )
       console.log('Tested Classes:', tstClzCount )
-      console.log('Tested Class props:', totalCount )
+      console.log('Of tested Classes, their prop #:', totalCount )
       console.log('Tested props:', tstCount )
       console.log()
    }//()

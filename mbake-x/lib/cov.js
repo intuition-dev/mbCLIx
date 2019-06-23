@@ -28,6 +28,7 @@ class Cover {
             .findSync();
         for (let f of memFiles) {
             Cover._cfile(f);
+            Cover.memberList = new Set([]);
         }
         const tstFiles = FileHound.create()
             .paths(testsDir)
@@ -46,24 +47,26 @@ class Cover {
         let tstClzCount = 0;
         let totalClzCount = 0;
         Object.keys(Cover.clazzList).forEach(key => {
-            logger.trace(key);
             totalClzCount++;
             if (key in Cover.tstList) {
+                logger.trace('*', key);
                 tstClzCount++;
                 const members = Cover.clazzList[key];
                 totalCount = totalCount + members.size;
                 const tests = Cover.tstList[key];
                 tstCount = tstCount + tests.size;
                 let intersection = new Set([...members].filter(x => tests.has(x)));
-                logger.trace('Tested:', intersection);
+                console.log('Tested:', Array.from(intersection).sort());
                 let minus = new Set([...members].filter(x => !tests.has(x)));
-                logger.trace('Not Tested:', minus);
+                logger.trace('Not Tested:', Array.from(minus).sort());
             }
+            else
+                logger.trace('** No tests for', key);
         });
         console.log('REPORT:');
         console.log('Classes:', totalClzCount);
         console.log('Tested Classes:', tstClzCount);
-        console.log('Tested Class props:', totalCount);
+        console.log('Of tested Classes, their prop #:', totalCount);
         console.log('Tested props:', tstCount);
         console.log();
     }
