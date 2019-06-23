@@ -1,7 +1,7 @@
 {
     "name": "mbake-x",
     "version": "1.00.22",
-    "description": " Extra commands for MetaBake's mbake CLI",
+    "description": " Extra commands for MetaBake's mbake CLI. May need yarn global remove mbake-x before the yarn global add due to native lib sharp",
     "main": "mbakeX.js",
     "scripts": {
         "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
