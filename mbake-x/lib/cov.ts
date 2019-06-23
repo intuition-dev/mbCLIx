@@ -33,6 +33,7 @@ export class Cover {
          Cover._cfile(f)
          Cover.memberList= new Set([]) //reset for next
       }
+      console.log()
       const tstFiles = FileHound.create() // hard coded but does not need to be:
          .paths(testsDir)
          .ext('js')
@@ -50,8 +51,16 @@ export class Cover {
       let totalCount = 0
       let tstClzCount = 0
       let totalClzCount = 0
-      
+     
+      //sort keys
+      Object.keys(Cover.clazzList).sort().forEach(function(key) {
+         var value = Cover.clazzList[key];
+         delete Cover.clazzList[key];
+         Cover.clazzList[key] = value;
+     })
+
       Object.keys(Cover.clazzList).forEach( key =>  {
+         console.log()
          totalClzCount ++
          if(key in Cover.tstList) { // Clz has
             logger.trace('*',key)
@@ -71,6 +80,7 @@ export class Cover {
 
       })//loop
 
+      console.log()
       console.log('REPORT:')
       console.log('Classes:', totalClzCount )
       console.log('Tested Classes:', tstClzCount )

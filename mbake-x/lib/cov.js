@@ -30,6 +30,7 @@ class Cover {
             Cover._cfile(f);
             Cover.memberList = new Set([]);
         }
+        console.log();
         const tstFiles = FileHound.create()
             .paths(testsDir)
             .ext('js')
@@ -46,7 +47,13 @@ class Cover {
         let totalCount = 0;
         let tstClzCount = 0;
         let totalClzCount = 0;
+        Object.keys(Cover.clazzList).sort().forEach(function (key) {
+            var value = Cover.clazzList[key];
+            delete Cover.clazzList[key];
+            Cover.clazzList[key] = value;
+        });
         Object.keys(Cover.clazzList).forEach(key => {
+            console.log();
             totalClzCount++;
             if (key in Cover.tstList) {
                 logger.trace('*', key);
@@ -63,6 +70,7 @@ class Cover {
             else
                 logger.trace('** No tests for', key);
         });
+        console.log();
         console.log('REPORT:');
         console.log('Classes:', totalClzCount);
         console.log('Tested Classes:', tstClzCount);
