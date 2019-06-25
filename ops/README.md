@@ -43,6 +43,7 @@ Make sure that devops files are disabled in local and DEV. They are only for Pro
 
 # Bronze LEVEL
 
+- StatCounter.
 
 ## Waterfall
 
@@ -67,7 +68,7 @@ This is only used for websites, not webapps.
 People often ask for Google Analytics. That is for full time marketing analysts only: whose jobs is full time use of it. 
 It is to be avoided.
 
-- http://clicky.com 
+- http://clicky.com . Click and Monitis can also do pints.
 
 ## Errors
 
@@ -79,7 +80,7 @@ If there are errors reported, dev ops just adds them to issue tracker daily. Eve
 
 ## SEO Console
 
-Websites get registered with Google WebMaster tools
+Websites get registered with Google WebMaster tools, and Clicky advanced
 
 ##
 
@@ -98,8 +99,6 @@ Testing services layer ot View has much less benefits.
 
 These are 3 different things, but same vendor provides all 3, and waterfall:
 
-Also: 
-- http://site24x7.com Native app recorder
 
 
 # Gold LEVEL
@@ -125,6 +124,7 @@ External browser load generators. Rather than you writing your
 - But RUM, Synthetic transaction and Page/Screen Loads vendors provide load generators.
 
 - Load testing: https://www.everystep-automation.com/pricing/
+- LoadImpact.
 
 #### CDN
 - Also get CDN traffic samples via API
