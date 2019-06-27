@@ -65,5 +65,7 @@
         "validate.js": ">=0.13.1",
         "vega-transforms": ">=4.1.0",
         "vega-util": ">=1.10.0"
+        ,"bunyan": ">=1.8.12"
+
     }
 }
