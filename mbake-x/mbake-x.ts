@@ -305,9 +305,9 @@ if (argsParsed.comps) {
 VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
    try{
    if(!isCurrent_) 
-      console.log('There is a newer version of mbake CLI, please update.')
+      console.log('There is a newer version of mbake-x, please update.')
    else
-      console.log('You have the current version of mbake CLI')
+      console.log('You have the current version of mbake-x')
    } catch(err) {
       console.log(err)
    }
