@@ -1,3 +1,6 @@
+### 1.07.01
+- version bump of CLI
+
 ### 1.00.22
 - added cover report
 
