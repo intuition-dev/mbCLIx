@@ -253,9 +253,9 @@ else if (!arg)
 FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.Verx.ver()).then(function (isCurrent_) {
     try {
         if (!isCurrent_)
-            console.log('There is a newer version of mbake CLI, please update.');
+            console.log('There is a newer version of mbake-x, please update.');
         else
-            console.log('You have the current version of mbake CLI');
+            console.log('You have the current version of mbake-x');
     }
     catch (err) {
         console.log(err);
