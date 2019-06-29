@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.07.02",
+    "version": "1.07.03",
     "description": " Extra commands for MetaBake's mbake CLI. Install may need yarn global remove mbake-x before the yarn global add due to native lib sharp",
     "main": "mbakeX.js",
     "scripts": {
@@ -33,7 +33,7 @@
         "filehound": ">=1.17.0",
         "fs-extra": ">=8.1.0",
         "lunr": ">=2.3.6",
-        "mbake": ">=6.7.5",
+        "mbake": ">=6.7.7",
         "sharp": ">=0.22.1",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
