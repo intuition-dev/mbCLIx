@@ -42,9 +42,9 @@ export class Map {
       //menu done
       fs.writeFileSync(this._root + '/menu.json', jmenu)
 
-      this._sitemap = sm.createSitemap({
-         hostname: m['host']
-      })
+      
+      this._sitemap = sm.createSitemap ({ hostname: m['host'], urls:''} ) // this needs updates
+
 
       //build sitemap
       let leaves = traverse(m.menu).reduce(function (acc, x) {
