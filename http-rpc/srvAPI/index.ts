@@ -54,6 +54,7 @@ class Check implements iAuth {
 
    auth(user:string, pswd:string, resp?, ctx?):Promise<string> {
       return new Promise( function (resolve, reject) {
+         // check db to see if user and password match and then return level
          resolve('NO')
       })
    }//()
