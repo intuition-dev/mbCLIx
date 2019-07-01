@@ -20,11 +20,11 @@ serviceApp.handleRRoute('api', 'pageOne', (req, res) => { // post only
    const method = req.fields.method
    const params = JSON.parse( req.fields.params )
 
-   const resp:any= {} // new response
    if('multiply'==method) { // RPC for the page could handle several methods, eg one for each of CRUD
       let a = params.a
       let b = params.b
 
+      const resp:any= {} // new response
       resp.result = multiply(a,b)
 
       resp.type = ''//eg array
@@ -32,6 +32,8 @@ serviceApp.handleRRoute('api', 'pageOne', (req, res) => { // post only
       console.log(resp)
       res.json(resp)
    } else {
+      
+      const resp:any= {} // new response
       resp.errorLevel = -1
       resp.errorMessage = 'mismatch'
       console.log(resp)
