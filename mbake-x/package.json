@@ -43,7 +43,8 @@
         "traverse": ">=0.6.6",
         "typescript": ">=3.5.2",
         "unfluff": ">=3.2.0",
-        "is": ">=3.3.0"
+        "is": ">=3.3.0",
+        "perfy": ">=1.1.5"
     },
     "bundledDependencies": [
         "mbake",
