@@ -42,7 +42,8 @@
         "sitemap": ">=3.1.0",
         "traverse": ">=0.6.6",
         "typescript": ">=3.5.2",
-        "unfluff": ">=3.2.0"
+        "unfluff": ">=3.2.0",
+        "is": ">=3.3.0"
     },
     "bundledDependencies": [
         "mbake",
