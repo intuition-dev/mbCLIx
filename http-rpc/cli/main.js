@@ -13,7 +13,6 @@ const proErr = rpc.invoke('api','pageOne','multiplyXXX', {a:5, b:2})
 proErr.then(function(resp) {
   console.log(resp)
 }).catch(function (err) {
-  console.log('err')
-  console.log(err)
+    console.log('err', err)
 })
 */
