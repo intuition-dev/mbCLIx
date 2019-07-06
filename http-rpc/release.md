@@ -1,3 +1,6 @@
+### 1.7.5
+- added page to request
+
 ### 1.7.0
 - added required param for api path
 - removed file upload

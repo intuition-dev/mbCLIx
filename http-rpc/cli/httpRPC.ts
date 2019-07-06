@@ -48,6 +48,7 @@ class httpRPC {//
 
     formData.append('user', btoa(this.user))
     formData.append('pswd', btoa(this.pswd))
+    formData.append('page', window.location.pathname )
 
     formData.append('method', method)
 

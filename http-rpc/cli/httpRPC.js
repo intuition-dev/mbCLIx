@@ -5,8 +5,6 @@ var httpRPC = (function () {
         this.port = port;
         this.user = 'guest';
         console.log(this.httpOrs, this.host, this.port);
-        var srv = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-        console.log(srv);
     }
     httpRPC.prototype.setUser = function (user, pswd) {
         this.user = user;
@@ -17,6 +15,7 @@ var httpRPC = (function () {
         formData.append('params', JSON.stringify(params));
         formData.append('user', btoa(this.user));
         formData.append('pswd', btoa(this.pswd));
+        formData.append('page', window.location.pathname);
         formData.append('method', method);
         var THIZ = this;
         return new Promise(function (resolve, reject) {
