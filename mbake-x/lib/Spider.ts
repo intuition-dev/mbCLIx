@@ -43,7 +43,7 @@ export class Map {
       fs.writeFileSync(this._root + '/menu.json', jmenu)
 
       
-      this._sitemap = sm.createSitemap ({ hostname: m['host'], urls:''} ) // this needs updates
+      this._sitemap = sm.createSitemap ({ hostname: m['host']} ) // this needs updates
 
 
       //build sitemap

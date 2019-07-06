@@ -29,9 +29,7 @@ class Map {
             const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
             let jmenu = JSON.stringify(m.menu, null, 2);
             fs.writeFileSync(this._root + '/menu.json', jmenu);
-            this._sitemap = sm.createSitemap({
-                hostname: m['host']
-            });
+            this._sitemap = sm.createSitemap({ hostname: m['host'] });
             let leaves = traverse(m.menu).reduce(function (acc, x) {
                 if (this.isLeaf)
                     acc.push(x);
