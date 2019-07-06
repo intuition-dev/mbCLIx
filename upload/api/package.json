@@ -6,7 +6,7 @@
   "author": "",
   "license": "LGPL-3.0-only",
   "engines": {
-   "node": ">=12.4.0",
+   "node": ">=12.6.0",
    "yarn": ">=1.15.2",
    "mbake": ">=4.15.15"
 },
