@@ -88,6 +88,17 @@ const optionDefinitions = [
 const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed['mbake-x'];
 console.info();
+FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.Verx.ver()).then(function (isCurrent_) {
+    try {
+        if (!isCurrent_)
+            console.log('There is a newer version of mbake-x, please update.');
+        else
+            console.log('You have the current version of mbake-x');
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 function git(arg) {
     let gg = new mbakeX_2.GitDown(arg);
 }
@@ -250,14 +261,3 @@ else if (argsParsed.help)
     help();
 else if (!arg)
     help();
-FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.Verx.ver()).then(function (isCurrent_) {
-    try {
-        if (!isCurrent_)
-            console.log('There is a newer version of mbake-x, please update.');
-        else
-            console.log('You have the current version of mbake-x');
-    }
-    catch (err) {
-        console.log(err);
-    }
-});

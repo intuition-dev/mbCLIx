@@ -116,6 +116,19 @@ const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed['mbake-x']
 console.info()
 
+
+      
+VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
+   try{
+   if(!isCurrent_) 
+      console.log('There is a newer version of mbake-x, please update.')
+   else
+      console.log('You have the current version of mbake-x')
+   } catch(err) {
+      console.log(err)
+   }
+})// 
+
 // ///////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
    let gg = new GitDown(arg)
@@ -300,15 +313,3 @@ if (argsParsed.comps) {
    else if (!arg)
       help()
 
-
-      
-VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
-   try{
-   if(!isCurrent_) 
-      console.log('There is a newer version of mbake-x, please update.')
-   else
-      console.log('You have the current version of mbake-x')
-   } catch(err) {
-      console.log(err)
-   }
-})// 
