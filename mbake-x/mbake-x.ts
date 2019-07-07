@@ -132,7 +132,6 @@ VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
 // ///////////////////////////////////////////////////////////////////////////////////////////
 function git(arg) {
    let gg = new GitDown(arg)
-   // gg.process()
 }//()
 
 function cover(arg) {
@@ -178,7 +177,7 @@ function unzipE() {
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting a starter Electron app to ./elect')
-   process.exit()
+
 }
 
 function unzipD() {
