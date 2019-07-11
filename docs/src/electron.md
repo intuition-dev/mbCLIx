@@ -1,7 +1,7 @@
 # Electron SPA
 
 Electron is built on Chromium and the navigation model is pretty much the exact same as any other web browser.
-Electron needs ROOT, as / in electron means root of drive; not root of http server. There is no http server. Not having to go to a remote web server means loading pages in Electron should be pretty quick.
+Electron needs ROO T, as / in electron means root of drive; not root of http server. There is no http server. Not having to go to a remote web server means loading pages in Electron should be pretty quick.
 Electron has node and it lets you start Chrome. So you can build a Windows app, or an OSX app.
 Electron apps are normally SPA. Our example also in one page.
 

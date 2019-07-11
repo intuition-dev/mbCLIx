@@ -22,7 +22,7 @@ The router and Hello World router is here:
 
 We use Adobe PhoneGap version 8+ for cross platform development with a single code base based on Pug. Apps are built using http://build.phonegap.com. Before going to the PhoneGap section you need to have an S3 web app, mounted locally, as explained in mbake section, and it needs to be SPA.
 
-Before doing app store, make sure that you have mounted your web app to S3 and have copied the www folder to that mount. Then fix the CSS files in S3 (properties/metadata/Content-Type) to be text/css. The ROOT in each dat.yaml needs to point to the absolute path (ie: your http:// in the cloud) - use your IDE.the 'ROOT' step is important. Like this:
+Before doing app store, make sure that you have mounted your web app to S3 and have copied the www folder to that mount. Then fix the CSS files in S3 (properties/metadata/Content-Type) to be text/css. The ROO T in each dat.yaml needs to point to the absolute path (ie: your http:// in the cloud) - use your IDE.the 'ROO T' step is important. Like this:
 ```
    # extract sample single-codebase PhoneGap app to a mounted S3 directory.
    mbake -s
@@ -36,7 +36,7 @@ Before doing app store, make sure that you have mounted your web app to S3 and h
 
    # now open your S3 web-app, whatever the S3 url is and make sure everything looks OK for mobile size and that console.re above is working.
 
-   # now use your IDE to edit each dat.yaml. Change ROOT: '' to instead be the S3 URL from above.
+   # now use your IDE to edit each dat.yaml. Change ROO T: '' to instead be the S3 URL from above.
    mbake .
    # Check that the web app is OK.
 
