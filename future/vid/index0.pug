@@ -1,0 +1,44 @@
+
+extends  ../../_part/_shellA-base
+block head
+
+block content
+	p
+	.mui-container-fluid
+		style.
+
+			.homeCard {
+				width: 350px;
+				height: 250px;
+				border-radius: 3px;
+				overflow: hidden;
+				cursor: pointer;
+				box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+			}
+			.homeCard a, .homeCard a:visited,
+			.homeCard a:hover, .homeCard a:active {
+				text-decoration: none;
+			}
+			.hc--img {
+				height: 210px;
+				width: auto;
+				background-position: left top;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			.hc--headline {
+				padding: 6px;
+			}
+			.homeCard:hover {
+				box-shadow: 0 3px 4px rgba(0,0,0,0.7);
+			}
+
+		.homeCard
+			a(href='/post/app-shell/')
+				.hc--img(style='background-image: url("arc.jpg")')
+				.hc--headline Best Practices training
+
+	p
+
+block footer
+	include  ../../_part/_footer

@@ -1,0 +1,84 @@
+<head>
+	<script src='//code.jquery.com/jquery-3.2.1.min.js'></script>
+	<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+
+	<script src='gridList.js'></script>
+	<script src='jquery.gridList.js'></script>
+
+	<style>
+		.grid {
+			position: relative;
+			height: 100vh;
+			width:  100vw;
+			list-style: none;
+			background: blue;
+		}
+
+		.grid li {
+			position: absolute;
+			background: yellow;
+		}
+
+		.comp {
+			position: absolute;
+			border: 1px solid #bbb;
+			top: 0;
+			bottom: 5px;
+			left: 5px;
+			right: 0;
+			overflow: hidden;
+
+			background: green;
+		}
+
+</style>
+</head><body>
+
+<ul id='grid' class='grid'>
+
+</ul>
+
+<script> // use a spreadsheet and then test here first
+var i = 0
+
+$(window).resize(function() {
+  $('#grid').gridList('reflow');
+});
+
+$(function() {
+	console.log('oh hi')
+	// w/h x/y:
+	addComp( 10, 1, 0, 0)
+	addComp( 5,  4, 0, 1)
+	addComp( 10, 1, 0, 5)
+	addComp( 5,  4, 0, 6)
+	
+	addComp( 5,  4, 5, 1)
+	addComp( 5,  4, 5, 6)
+
+	$('#grid').gridList({//key
+ 		lanes: 11
+		//,widthHeightRatio: 1 / 1
+		,direction: 'vertical'
+	})
+
+	function addComp(w, h, x, y) {
+		$item = $(
+			'<li>' +
+			'<div class="comp">' +
+				i++ +' '+ w +'/'+ h +' '+ x +':'+ y  +
+			'</div>' +
+			'</li>'
+		)
+		$item.attr({
+			 'data-w': w
+			,'data-h': h
+			,'data-x': x
+			,'data-y': y
+		})
+		$('#grid').append($item)
+	}//()
+
+})
+</script>
+</body>

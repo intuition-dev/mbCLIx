@@ -1,0 +1,105 @@
+swiper
+	.swiper-container
+		#wrap.swiper-wrapper
+
+			.swiper-slide
+					.cars
+						car-swipe
+						car-swipe
+						car-swipe
+
+	script.
+		function addSlide(i, items) {// offset
+			var wrapN = document.getElementById('wrap')
+			
+			var slide = document.createElement('div')
+			slide.className = 'swiper-slide'
+
+			var cars = document.createElement('div')
+			cars.className = 'cars'
+			slide.appendChild(cars)
+
+			for (var j = 0; j <= 2; j++) {
+				var num =  3*i+j
+				var item = items[num]
+				if(item == null) break
+				var title = item.title
+				if(title = null || title.length < 5) continue
+				var link = item.link
+				if(link = null || link.length < 5) continue
+				Logger.log(num, item.title )
+
+				var tag = document.createElement('car-swipe')
+				cars.appendChild(tag)
+				riot.mount(tag, 'car-swipe', item)
+
+			}//for
+				wrapN.appendChild(slide)
+				Logger.log(' .')
+		}//()
+
+		this.on('mount', function(){
+			Logger.log('swiper mount')
+			parse()
+		})// on mount
+
+		var swiper
+		function initSwiper() {
+			Logger.log('swiper init')
+			
+			swiper = app.swiper.create('.swiper-container', {
+				direction: 'vertical',
+				spaceBetween: 1,
+				pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+				}
+			})
+			return swiper
+		}//()
+
+		function clearWrap() {
+			var wrapN = document.getElementById('wrap')
+			while (wrapN.firstChild) {
+				wrapN.removeChild(wrapN.firstChild)
+			}
+		}
+
+		function parse() {
+			parser.parseURL(access(), function(err, feed) {
+				Logger.log(feed.items.length) // we have data
+
+				clearWrap()
+
+				var count = feed.items.length
+				count = count /3
+				for (var c = 0; c <= count; c++) {
+					addSlide(c, feed.items)
+				}
+
+				initSwiper() 
+
+			})//parse
+		}//()
+
+	style.
+		.swiper-container {
+			margin-top: 57px;
+			height: calc(100vh - 106px); 
+		}
+
+		.cars {
+			height: 100%;
+			background: #ccc;
+			display: flex;
+			flex-direction: column;
+			j0ustify-content: flex-end;
+			a0lign-items: flex-end;
+			padding-top: 0px;
+		}
+
+		car-swipe {
+			margin: auto;
+			overflow: hidden;
+			width: 100%;
+		}

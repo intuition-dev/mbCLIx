@@ -1,0 +1,54 @@
+car-swipe
+	.list
+		ul
+			// "swipeout" class on li
+			li.swipeout
+				.swipeout-content
+
+					.card
+						.card-header { title }
+						.card-content.card-content-padding { opts.contentSnippet }
+						.card-footer Slide left for more ...
+
+				// swipeout part
+				.swipeout-actions-right
+						a(href='#') Read more? ...
+
+	script.
+		this.on('mount', function(){
+			//Logger.log(Object.keys(opts))
+
+			this.title = opts.title
+			this.link = opts.link
+			this.content = opts.content
+			this.update()
+
+			$$('.swipeout', this.root).on('swipeout:open', function () {
+
+				act('updateStory', opts )
+				app.panel.open('right', true)
+			})// on open
+
+		})// on mount
+
+	style.
+		car-swipe .list {
+			margin: 1px !important;
+		}
+
+		.list ul:before {
+			width: 0px !important;
+		}
+		.list ul:after {
+			width: 0px !important;
+		}
+
+		.card-content {
+			height: 50px;
+			overflow: hidden;
+			padding-top: 4px;
+		}
+		.card-footer {
+			font-size: 11px;
+			min-height: 15px;
+		}

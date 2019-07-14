@@ -1,0 +1,74 @@
+template#xhome-card
+	style.
+		.home-card, #dhome-card {
+			height: 250px;
+			width: 350px;
+			border-radius: 3px;
+			background-color: gray;
+			overflow: hidden;
+			cursor: pointer;
+			box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+			display: inline-table;
+			margin: 7px;
+		}
+
+		.homeCard a, .homeCard a:visited,
+		.homeCard a:hover, .homeCard a:active {
+			text-decoration: none;
+		}
+
+		.hc--img {
+			height: 210px;
+			width: 350px;
+			background-position: left top;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+		.hc--headline {
+			padding: 6px;
+			background-color: white;
+		}
+
+		home-card:hover{
+			box-shadow: 0 3px 4px rgba(0,0,0,0.7);
+		}
+	
+	#dhome-card.homeCard
+
+script#shome-card(type='text/x-dot-template').
+	<a href='{{=it.ref}}')> 
+		<div class='hc--img' style='background-image:url({{=it.img }})'></div>
+		<div class='hc--headline'>{{=it.headline}}</div>
+	</a>
+
+script.
+	var HomeCard = Object.create(HTMLElement.prototype)
+	HomeCard.createdCallback = function() {
+		var shadow = TW.attachShadow(this, '#xhome-card')
+
+		var headline = this.getAttribute('headline')
+		var ref = this.getAttribute('ref')
+		var img = this.getAttribute('img')
+
+		var tpl1 = document.getElementById('shome-card').text
+		var data = {'ref': ref, 'headline': headline, 'img': img}
+		var res = TW.bind(tpl1,data)
+
+		var d = shadow.getElementById('dhome-card')//ctx
+		d.innerHTML=res
+		//console.info(d)
+
+		var i = $('a', shadow)
+		i.click(function (e) {//prevent
+			console.info('2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+			var $anchor = $(e.currentTarget)
+			var href = $anchor.prop('href')
+			e.stopPropagation()
+			e.preventDefault()
+			TT.loadPg(href)
+		})//()
+
+	}//()
+
+
