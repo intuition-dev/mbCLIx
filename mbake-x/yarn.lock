@@ -1134,10 +1134,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-collect.js@>=4.12.8:
-  version "4.12.8"
-  resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.12.8.tgz#2c92ac2cbb8f564f955e64f4719b02d3e1f2f57d"
-  integrity sha512-hYjFw0O/97zUv7nD+uvkX4/EAByDnDQ2u+W4f1f5HRDpDQBt3vowt92URoT09F+vOCLcOr6uorSRL+82ORACDg==
+collect.js@>=4.12.9:
+  version "4.12.9"
+  resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.12.9.tgz#7a6406bdaa0493b4970979dab70d2bb4d1e9a9e8"
+  integrity sha512-pwuaPG1WxpIrGxQtTF+05gmICwzqNvj3Au/m60A64OqNEG9IV8c9iZ07zwU6kO3kGdmEKjty0Y52zl8viFfFSQ==
 
 color-convert@^1.9.0, color-convert@^1.9.1:
   version "1.9.3"
@@ -3592,7 +3592,18 @@ markdown-it-front-matter@^0.1.2:
   resolved "https://registry.yarnpkg.com/markdown-it-front-matter/-/markdown-it-front-matter-0.1.2.tgz#e50bf56e77e6a4f5ac4ffa894d4d45ccd9896b20"
   integrity sha1-5Qv1bnfmpPWsT/qJTU1FzNmJayA=
 
-markdown-it@>=9.0.0, markdown-it@^9.0.0:
+markdown-it@>=9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-9.0.1.tgz#aafe363c43718720b6575fd10625cde6e4ff2d47"
+  integrity sha512-XC9dMBHg28Xi7y5dPuLjM61upIGPJG8AiHNHYqIaXER2KNnn7eKnM5/sF0ImNnyoV224Ogn9b1Pck8VH4k0bxw==
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
+markdown-it@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-9.0.0.tgz#804e9285d2a0e2457216ed6a1d96e219483f2fb1"
   integrity sha512-bUVTYGt/K/mYr3HlE+PBe6TOTyWghcpSZqOD9t+NFRlwJMhp9Kp6WQ8fJ26I6v1Xo71UmPYt1S4Hc9Lq8GZx2Q==
@@ -3603,10 +3614,10 @@ markdown-it@>=9.0.0, markdown-it@^9.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.22:
-  version "6.7.22"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.22.tgz#41b27af14d0f5ef183ea25de9387e58c40da907a"
-  integrity sha512-RlxYrWSYBbtY8qzKiJMuwimO1qk+pzozl2xFnY798sD+Wl5g41C5T2xRxhgh2ZdD+dM7ktRJbUMZt3VoWS2jug==
+mbake@>=6.7.24:
+  version "6.7.24"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.24.tgz#ac1e7bc4a499a5b7e32637a44f4f03362c42fe8f"
+  integrity sha512-QE3WxgIBtYkuj/TNySFeEpBditqHTWVyhSVctHS+beIgxsoDgkLevU/DhnIJ/AYmH/K1SJePNjkPVCUxA88Xpw==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.1"
@@ -3627,7 +3638,7 @@ mbake@>=6.7.22:
     is ">=3.3.0"
     javascript-obfuscator ">=0.18.1"
     js-yaml ">=3.13.1"
-    markdown-it ">=9.0.0"
+    markdown-it ">=9.0.1"
     markdown-it-container ">=2.0.0"
     node-sass ">=4.12.0"
     open ">=6.4.0"
@@ -4499,10 +4510,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-probe-image-size@>=4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-4.1.0.tgz#36b4da008c17345b8e3972f8f3ab3640284bcbb0"
-  integrity sha512-JCe7Kxaq6va09jPgc1AhxaTlPpnpLDYYGMEeoDxel882LN3mkLUjSsFKVjjisERYiGQvdthYd3W+36sFdBO7Gw==
+probe-image-size@>=4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-4.1.1.tgz#c836c53154b6dd04dbcf66af2bbd50087b15e1dc"
+  integrity sha512-42LqKZqTLxH/UvAZ2/cKhAsR4G/Y6B7i7fI2qtQu9hRBK4YjS6gqO+QRtwTjvojUx4+/+JuOMzLoFyRecT9qRw==
   dependencies:
     any-promise "^1.3.0"
     deepmerge "^4.0.0"
