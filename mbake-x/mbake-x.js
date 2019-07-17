@@ -138,7 +138,6 @@ function unzipE() {
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd, true);
     console.info('Extracting a starter Electron app to ./elect');
-    process.exit();
 }
 function unzipD() {
     let src = __dirname + '/ad.zip';

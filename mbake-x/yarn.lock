@@ -318,10 +318,15 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
-"@types/node@*", "@types/node@>=12.6.2":
+"@types/node@*":
   version "12.6.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
   integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
+
+"@types/node@>=12.6.8":
+  version "12.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
+  integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
 
 "@types/node@^10.0.3", "@types/node@^10.1.0":
   version "10.14.12"
@@ -1134,10 +1139,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-collect.js@>=4.12.9:
-  version "4.12.9"
-  resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.12.9.tgz#7a6406bdaa0493b4970979dab70d2bb4d1e9a9e8"
-  integrity sha512-pwuaPG1WxpIrGxQtTF+05gmICwzqNvj3Au/m60A64OqNEG9IV8c9iZ07zwU6kO3kGdmEKjty0Y52zl8viFfFSQ==
+collect.js@>=4.12.11:
+  version "4.12.11"
+  resolved "https://registry.yarnpkg.com/collect.js/-/collect.js-4.12.11.tgz#b667a23add4dea8f5f371d8a7265f2c5f5e377e2"
+  integrity sha512-naWAIaa+YTjD6WskyP/FeOF/x890teer8kEmF6bV1Gl3X/PwWKYVjBa3wrz7ukz4uvRHWjlWLAXIm3wThJfAYA==
 
 color-convert@^1.9.0, color-convert@^1.9.1:
   version "1.9.3"
@@ -2132,10 +2137,10 @@ filehound@=1.17.0:
     moment "^2.22.1"
     unit-compare "^1.0.1"
 
-filehound@>=1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/filehound/-/filehound-1.17.1.tgz#0f2d625abf78fe11a10f4aa53f6d37aeadfe7564"
-  integrity sha512-ejYjUWy9wAjNaxLeTtcVddJ0MNFZc0z90mDpmhGZ7JNtiuhTY8YyiBT/mWOPNVRyysWdQNvGk6mF+/cjWhTQpg==
+filehound@>=1.17.3:
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/filehound/-/filehound-1.17.3.tgz#a4ab3d48dba13875ff9571127e09cb536a0d18f5"
+  integrity sha512-xBgV3RtLU8JDLaS77etzeEeJa+M3mfpMZV1YJgpUAXeZx4OdUYml9eCeT8DFFDR5XyqbSt/npdJRDcLm7zuJLg==
   dependencies:
     bluebird "^3.5.1"
     file-js "0.3.0"
@@ -3614,10 +3619,10 @@ markdown-it@^9.0.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mbake@>=6.7.24:
-  version "6.7.24"
-  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.24.tgz#ac1e7bc4a499a5b7e32637a44f4f03362c42fe8f"
-  integrity sha512-QE3WxgIBtYkuj/TNySFeEpBditqHTWVyhSVctHS+beIgxsoDgkLevU/DhnIJ/AYmH/K1SJePNjkPVCUxA88Xpw==
+mbake@>=6.7.25:
+  version "6.7.25"
+  resolved "https://registry.yarnpkg.com/mbake/-/mbake-6.7.25.tgz#1cd92e5ab1a28504ec88dce49088c8cd13f886fd"
+  integrity sha512-qoZbXFE1zMd1EqfkhgzkxtzaAxF2hi5gYGLtxiHg3bsu5V/ku/b+sDtS6FHLoQxMTyg2BOuB8tHB0KXc1cFHOg==
   dependencies:
     adm-zip ">=0.4.13"
     autoprefixer ">=9.6.1"

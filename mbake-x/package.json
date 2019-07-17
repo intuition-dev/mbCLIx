@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.07.06",
+    "version": "1.07.17",
     "description": " Extra commands for MetaBake's mbake CLI. Install may need yarn global remove mbake-x before the yarn global add due to native lib sharp",
     "main": "mbakeX.js",
     "scripts": {
@@ -30,10 +30,10 @@
         "axios": ">=0.19.0",
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=2.0.3",
-        "filehound": ">=1.17.1",
+        "filehound": ">=1.17.3",
         "fs-extra": ">=8.1.0",
         "lunr": ">=2.3.6",
-        "mbake": ">=6.7.24",
+        "mbake": ">=6.7.25",
         "sharp": ">=0.22.1",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
@@ -54,8 +54,8 @@
     "devDependencies": {
       "ip": ">=1.1.5",
         "@marp-team/marpit": ">=1.3.0",
-        "@types/node": ">=12.6.2",
-        "collect.js": ">=4.12.9",
+        "@types/node": ">=12.6.8",
+        "collect.js": ">=4.12.11",
         "csvtojson": ">=2.0.10",
         "datalib": ">=1.9.2",
         "handbrake-js": ">=4.0.0",

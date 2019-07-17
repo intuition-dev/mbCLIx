@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class Verx {
     static ver() {
-        return 'v1.07.06';
+        return 'v1.07.17';
     }
     static date() {
         return new Date().toISOString();
