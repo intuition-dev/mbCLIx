@@ -1,0 +1,93 @@
+head
+   meta(name='viewport', content='width=device-width, initial-scale=1')
+   link(href= 'spectreTop.css', rel='stylesheet')
+   link(href= 'spectre.css', rel='stylesheet')
+   script(src='//cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js')
+
+   link(href= 'nav.css', rel='stylesheet')
+
+body
+   .c-offcanvas-content-wrap
+
+      //-top
+      header.flex.edge
+         .left.white
+            .navbar-brand.mr-2
+               h2#navBarHead MetaBake.org
+
+         .right.white
+            .hide-lg
+               a.btn.btn-link(href='#') ABOUT
+               a.btn.btn-link(href='#') TEAM
+               a.btn.btn-link(href='#') BLOG
+               a.btn.btn-link(href='#') CONTACT US
+               a.btn.btn-link(href='#') CLIENT LOGIN
+
+            a#off-cbut.js-offcanvas-trigger( href='#navOpen')
+               .white
+                  svg.bord.featherSVG(viewBox='0 0 24 24')
+                     line(x1='3', y1='12', x2='21', y2='12')
+                     line(x1='3', y1='6',  x2='21', y2='6')
+                     line(x1='3', y1='18', x2='21', y2='18')
+
+      //-main
+      #router
+         p 
+         p oh hi
+
+   //-side
+   #navOpen
+      ul.nav.navBarOpen(style='border-style: solid')
+
+         h3#navBarOpenHead.navBarOpenHea.navbar-brand MetaBake.org
+
+         li.nav-item
+            a(href='#') Elements
+         li.nav-item
+            a(href='#') Layout
+            ul.nav
+               li.nav-item
+               a(href='#') Flexbox grid
+               li.nav-item
+               a(href='#') Responsive
+               li.nav-item
+               a(href='#') Navbar
+               li.nav-item
+               a(href='#') Empty states
+         li.nav-item.active
+            a(href='#') Components
+         li.nav-item
+            a(href='#') Utilities
+
+   script.
+      
+      depp.define({ 'pre': [
+         '//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js'
+         , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_js/js-offcanvas.pkgd.js'
+         , '//cdn.jsdelivr.net/npm/js-offcanvas@1.2.8/dist/_css/prefixed/js-offcanvas.css'
+         ]
+      })
+      
+      depp.require(['pre'], onLoaded)
+
+      function onLoaded() {
+      
+         $('#navOpen').offcanvas({
+            triggerButton: '#off-cbut' //- btn to open offcanvas
+         })
+       
+         let offcanvas = $('#navOpen').data('offcanvas-component')
+
+         $('#off-cbut').click(function () {
+            console.info('#offItems')
+            offcanvas.open()
+         })
+
+         $('#navOpen').click(function () {
+            console.info('#navOpen')
+            offcanvas.close()
+         })
+
+
+      }//*()
+
