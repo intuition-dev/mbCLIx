@@ -7,7 +7,7 @@ npm publish
 # if changed node version do this:
 # sudo 
 
-yarn global add mbake-x
+npm i -g mbake-x
 mbake-x
 
 # find . -type f -name 'package-lock.json' 

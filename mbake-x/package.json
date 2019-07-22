@@ -3,9 +3,6 @@
     "version": "1.07.22",
     "description": " Extra commands for MetaBake's mbake CLI. Install may need yarn global remove mbake-x before the yarn global add due to native lib sharp",
     "main": "mbakeX.js",
-    "scripts": {
-        "pre11install": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, NPM is not supported')\""
-    },
     "bin": {
         "mbake-x": "mbake-x.js"
     },
