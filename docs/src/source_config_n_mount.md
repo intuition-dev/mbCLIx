@@ -4,24 +4,7 @@
 
 1. Setup a Web IDE account, e.g. [CodeAnywhere](http://codeanywhere.com).
 
-1. Install yarn, mbake, typescript
-
-1. Install Caddy with webDAV plugin, eg:
-
-        $ curl https://getcaddy.com | bash -s personal http.webdav
-
-1. Add `Caddyfile` to the root folder and config it, eg:
-
-        :8080 {  #cdn would go to this 
-            root /root/www
-            gzip
-            mime .css text/css
-            # set user for the /webdav path
-            basicauth /webdav admin 123123 
-            webdav /webdav 
-            
-            log ../log1
-            errors ../err1
+errors ../err1
         }
 
 1. Create folder `www` and in this folder download CMS source:
@@ -39,21 +22,6 @@
         $ cd CMS
         $ mbake -i .
 
-1. Run Caddy server, from the root folder where Caddyfile is:
-    
-        $ caddy -conf Caddyfile 
-        // or 
-        $ caddy 
-        // or (to leave caddy server running after you'll quit the terminal or close the CA tab)
-        $ nohup caddy &
-
-1. In browser open the url, change ip address to your ip address, the site should work:
-
-        http://0.0.0.0:8080/
-
-1. Install on Mac [Mountain Duck](http://mountainduck.io) you may choose a different _webDAV mount_ software. Mount replaces FTP.
-
-1. In Mountain Duck, create a new `webDAV (HTTP)` connection. Fill the fields for `server` and `username`, `path` -- `/webdav/www` and port with your credentials, then click `connect`, it will ask for username and password from the Caddyfile webDAV config. You have mounted folder of your site from remote environment on your local PC and you can edit it.
 
 1. Create an account on [CDN77](http://www.cdn77.com/) if you don't already have one.
 

@@ -34,9 +34,8 @@ See [Resources](/res/) for related projects.
 From a command line such as PowerShell, type:
 
 ```
-   $ yarn global add mbake
+   $ npm i -gmbake
 ```
-That's it! If you don't have Yarn installed, first go [here](http://yarnpkg.com/lang/en/docs/install/#windows-stable).
 
 ## How to create a Hello World app with mbake
 
@@ -98,7 +97,6 @@ To go extreme serverless, we show how to use mbake with
 
 ### Go extreme serverless following the steps (Tutorials):
 
-- [Caddy Config with webDAV and Mountain Duck mount](/source_config_n_mount/)
 - [Mount webDAV on linux](/webdav_linux_mount/)
 - [Social SEO](/seo/)
 - [AMP](/amp/)
@@ -112,11 +110,10 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake .
 ## tl;dr
 
 ```
-   $ yarn global add mbake
+   $ npm i -gmbake
    $ mbake
    $ mbake -v
    $ cd ModelView
    $ mbake .
 ```
 
-NEXT: Go to [Caddy Config with webDAV and Mountain Duck mount](/source_config_n_mount/).

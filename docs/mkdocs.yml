@@ -4,8 +4,6 @@ nav:
 
    - Home: index.md
 
-   - Caddy Config with webDAV and Mountain Duck mount: source_config_n_mount.md
-   - Mount webDAV on linux: webdav_linux_mount.md
    - Social SEO: seo.md
    - AMP: amp.md
    - Components: tags.md

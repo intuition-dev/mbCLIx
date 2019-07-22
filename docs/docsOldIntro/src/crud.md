@@ -22,7 +22,7 @@ Firestore is free for up to 50,000 reads and 20,000 writes per day. See more det
 		$ mbakeX -s .
 		$ mbakeX -n .
 
-	In a browser, open the Endpoint-URL. You should see the CRUD App served by Caddy & webDav server OR if you're running locally on your PC use the mbake watcher to run the app (eg: 0.0.0.0:8080):
+
 
 		$ mbakeX -w .
 

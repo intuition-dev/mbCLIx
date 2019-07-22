@@ -34,7 +34,6 @@ CMS App was configured to make operations to some another site (eg: mounted CMS)
 
 1. in folder `/cms/CMS` run command to install node_modules, compile them and run node:
     ```sh
-    $ yarn
     $ tsc
 
     $ node index.js 

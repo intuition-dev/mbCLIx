@@ -26,7 +26,7 @@ We see Pug as a declarative 4th generation language (4GL). As we went from secon
 
 ### Steps
 
-We assume that you have already installed mbake with `$ yarn global add mbake` as described [here](/#how-to-install-mbake).
+We assume that you have already installed mbake with `$ npm i -gmbake` as described [here](/#how-to-install-mbake).
 
 1. Watch [Do you even Jade bro](http://youtube.com/watch?v=wzAWI9h3q18) as an intro about Pug (it used to be called Jade).
 

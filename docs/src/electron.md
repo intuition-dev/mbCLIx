@@ -11,7 +11,7 @@ Electron apps are normally SPA. Our example also in one page.
 
 1. From the `/elect` folder install node modules:
 
-        $ yarn
+        $ npm update
 
 1. Compile `.pug` in `/elect/app/www` folder and `.scss/.sass` in `/elect/app/www/assets`, eg:
 
