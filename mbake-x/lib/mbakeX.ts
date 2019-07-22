@@ -2,7 +2,7 @@
 // NOTE: You can extend these classes!
 
 export class Verx {
-   static ver() {
+   static verx() {
       return 'v1.07.23'
    }
    static date(): string {

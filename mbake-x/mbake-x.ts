@@ -64,11 +64,9 @@ function help() {
    console.info(' -------------------------------------------------------------')
    console.info()
    console.info(' Starters:')
-   console.info('  For a starter dash web-app:                                 mbake-x -d')
 
    console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e')
    console.info('  For a starter hybrid Phonegap app:                          mbake-x -o')
-   console.info('  For an example Ad:                                          mbake-x -a')
 
    console.info()
 
@@ -106,10 +104,8 @@ const optionDefinitions = [
    { name: 'img', alias: 'i', type: Boolean },
    { name: 'csv2Json', alias: 'l', type: Boolean },
 
-   { name: 'dash', alias: 'd', type: Boolean },
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'phonegap', alias: 'o', type: Boolean },
-   { name: 'ad', alias: 'a', type: Boolean },
 ]
 
 const argsParsed = commandLineArgs(optionDefinitions)
@@ -118,7 +114,7 @@ console.info()
 
 
       
-VersionNag.isCurrent('mbakex', Verx.ver() ).then(function(isCurrent_:boolean){
+VersionNag.isCurrent('mbakex', Verx.verx() ).then(function(isCurrent_:boolean){
    try{
    if(!isCurrent_) 
       console.log('There is a newer version of mbake-x, please update.')
@@ -172,26 +168,13 @@ function unzipG() {
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting a starter Phonegap app to ./PG')
 }
+
 function unzipE() {
    let src: string = __dirname + '/elect.zip'
    let zip = new AdmZip(src)
    zip.extractAllTo(cwd, /*overwrite*/true)
    console.info('Extracting a starter Electron app to ./elect')
 
-}
-
-function unzipD() {
-   let src: string = __dirname + '/ad.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracting an example ad  ./ad')
-}
-
-function unzipH() {
-   let src: string = __dirname + '/dash.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracting an starter Dash web app to ./dash')
 }
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -271,18 +254,17 @@ if (argsParsed.comps) {
       unzipE()
    else if (argsParsed.phonegap)
       unzipG()
-   else if (argsParsed.ad)
-      unzipD()
+
    else if (argsParsed.csv2Json)
       csv2Json(arg)
+
    else if (argsParsed.watcher) {
       Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
    }
    else if (argsParsed.img) {
       img(arg)
    }
-   else if (argsParsed.dash)
-      unzipH()
+
    else if (argsParsed.map)
       map(arg)
    else if (argsParsed.prod)
