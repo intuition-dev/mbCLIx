@@ -6,6 +6,9 @@
     "bin": {
         "mbake-x": "mbake-x.js"
     },
+    "scripts": {
+        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
+    },
     "license": "LGPL-3.0-only",
     "author": "http://www.MetaBake.org",
     "homepage": "http://www.MetaBake.org",
@@ -19,7 +22,8 @@
         "riotjs"
     ],
     "engines": {
-        "node": ">=10.16.0"
+        "node": ">=12.6.0",
+        "npm": ">=6.10.1"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.1",
