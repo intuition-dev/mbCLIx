@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // All rights reserved by MetaBake.org | Cekvenich, licensed under LGPL 3.0
 
-import AdmZip = require('adm-zip')
 import commandLineArgs = require('command-line-args')
 
 import { MBake } from 'mbake/lib/Base'
@@ -10,7 +9,7 @@ import { Map } from './lib/Spider'
 import { Resize, Verx } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
-import { CSV2Json, DownloadFrag, VersionNag  } from 'mbake/lib/FileOpsExtra'
+import { CSV2Json, DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
 
@@ -163,18 +162,13 @@ function add(arg) {
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
-   let src: string = __dirname + '/PGap.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracting a starter Phonegap app to ./PG')
+   new Download('phoneGap', __dirname).auto()
+   console.info('Extracted a starter PhoneGap app')
 }
 
 function unzipE() {
-   let src: string = __dirname + '/elect.zip'
-   let zip = new AdmZip(src)
-   zip.extractAllTo(cwd, /*overwrite*/true)
-   console.info('Extracting a starter Electron app to ./elect')
-
+   new Download('electron', __dirname).auto()
+   console.info('Extracted a starter Electron app')
 }
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
