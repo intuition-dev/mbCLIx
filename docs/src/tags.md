@@ -118,7 +118,7 @@ The idea of this component is to use it, without knowing or investigating which 
 
     type='sum', text='Check Sum!'
 
-And the component will do all calculation, depending only on this parameters that are being passed. Ideally even not a programmer can use it. It is a next level of productivity, since components are more productive.
+And the component will do all calculation, depending only on this parameters that are being passed. Ideally even a non-programmer can use it. It is a next level of productivity, since components are more productive.
 
 In the [next tutorial ](/cms/) you will learn about CMS.
 NEXT: Go to [Editor CMS](/cms/).

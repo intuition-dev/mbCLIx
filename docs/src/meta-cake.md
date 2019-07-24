@@ -4,6 +4,6 @@
 
 - It is also a domain specific language, specific component to your app.
 
-- Ideally not a programmer can use it.
+- Ideally a non-programmer can use it.
 
 - And Meta Cake is the next level of productivity, since components are more productive.
