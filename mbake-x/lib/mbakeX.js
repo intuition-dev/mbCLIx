@@ -7,15 +7,43 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class Verx {
-    static ver() {
+class MBakeX {
+    static verx() {
         return 'v1.07.23';
     }
     static date() {
         return new Date().toISOString();
     }
+    clearSrc(path_) {
+        return new Promise(function (resolve, reject) {
+            if (!path_ || path_.length < 1) {
+                console.info('no path_ arg passed');
+                reject(('no path_ arg passed'));
+            }
+            try {
+                console.info(' Clearing ' + path_);
+                let dir = FileOpsBase_1.Dirs.slash(path_);
+                const rec = FileHound.create()
+                    .paths(dir)
+                    .ext(['pug', 'yaml', 'js', 'ts', 'scss', 'sass', 'md'])
+                    .findSync();
+                rec.forEach(file => {
+                    const min = file.split('.')[file.split('.').length - 2] === 'min';
+                    if (!min) {
+                        console.info(' Removing ' + file);
+                        fs.removeSync(file);
+                    }
+                });
+            }
+            catch (err) {
+                logger.warn(err);
+                reject(err);
+            }
+            resolve('OK');
+        });
+    }
 }
-exports.Verx = Verx;
+exports.MBakeX = MBakeX;
 const sharp = require("sharp");
 const probe = require("probe-image-size");
 const node_firestore_import_export_1 = require("node-firestore-import-export");
@@ -25,6 +53,7 @@ const logger = require('tracer').console();
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");
+const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
@@ -80,7 +109,7 @@ class GitDown {
         fs.removeSync(dirR);
         console.log('removed', dirR);
         console.log();
-        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Verx.date() });
+        fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
         console.log('DONE!');
         console.log('Maybe time to make/bake', dirTo);
         console.log('and then point http server to', dirTo);
@@ -277,5 +306,5 @@ class ImportFS {
 }
 exports.ImportFS = ImportFS;
 module.exports = {
-    Resize, ExportFS, ImportFS, GitDown, Verx
+    Resize, ExportFS, ImportFS, GitDown, MBakeX
 };

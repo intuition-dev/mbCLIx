@@ -1,13 +1,46 @@
 // All rights reserved by MetaBake (MetaBake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-export class Verx {
+export class MBakeX {
    static verx() {
       return 'v1.07.23'
    }
    static date(): string {
       return new Date().toISOString()
    }
+
+   clearSrc(path_): Promise<string> {
+      return new Promise(function (resolve, reject) {
+         if (!path_ || path_.length < 1) {
+            console.info('no path_ arg passed')
+            reject(('no path_ arg passed'))
+         }
+         try {
+
+            console.info(' Clearing ' + path_)
+            let dir = Dirs.slash(path_)
+
+            const rec = FileHound.create() //recursive
+               .paths(dir)
+               .ext(['pug', 'yaml', 'js', 'ts', 'scss', 'sass', 'md'])
+               .findSync()
+
+            rec.forEach(file => {
+               const min = file.split('.')[file.split('.').length - 2] === 'min';
+
+               if (!min) {
+                  console.info(' Removing ' + file)
+                  fs.removeSync(file)
+               }
+            });
+         } catch (err) {
+            logger.warn(err)
+            reject(err)
+         }
+         resolve('OK')
+      })
+   }
+
 }
 
 import sharp = require('sharp')
@@ -22,6 +55,7 @@ const logger = require('tracer').console()
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
+import { Dirs } from 'mbake/lib/FileOpsBase';
 
 // //////////////////////////////////////////////////////////////////
 export class GitDown {
@@ -100,7 +134,7 @@ export class GitDown {
       console.log('removed', dirR)
       console.log()
 
-      fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: Verx.date() })
+      fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() })
       console.log('DONE!')
       console.log('Maybe time to make/bake', dirTo)
       console.log('and then point http server to', dirTo)
@@ -380,5 +414,5 @@ export class ImportFS {
 }
 
 module.exports = {
-   Resize, ExportFS, ImportFS, GitDown, Verx
+   Resize, ExportFS, ImportFS, GitDown, MBakeX
 }

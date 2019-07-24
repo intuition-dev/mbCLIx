@@ -6,7 +6,7 @@ import commandLineArgs = require('command-line-args')
 import { MBake } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from './lib/Spider'
-import { Resize, Verx } from './lib/mbakeX'
+import { Resize, MBakeX } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
@@ -17,12 +17,12 @@ import { Cover } from './lib/cov'
 const cwd: string = process.cwd()
 
 function version() {
-   console.info('mbake-x CLI version: ' + Verx.ver()) // tsc
+   console.info('mbake-x CLI version: ' + MBakeX.verx()) // tsc
 }
 
 function help() {
    console.info()
-   console.info('mbake-x CLI version: ' + Verx.ver()) // tsc
+   console.info('mbake-x CLI version: ' + MBakeX.verx()) // tsc
    console.info('  your node version is ' + process.version)
    console.info('  from ' + __dirname)
    console.info()
@@ -52,7 +52,7 @@ function help() {
    console.info('     passing the git password of gitdown user')
    console.info()
    console.info('  To get a test coverage report of ViewModel and Test classes: mbake-x --cover ViewModelDir:TestDir')
-   console.info('  To recursively remove source files:                          mbake-x --prod .')
+   console.info('  To recursively remove source files:                          mbake-x --src .')
    console.info('  To export FiresStore data, it needs two arguments separated ')
    console.info('   with ":" :                                                  mbake-x --exportFS serviceAccountKey:name_of_the_file:name_of_the_file_for_auth_data')
    console.info('  To import FireStore data, it needs two arguments separated  ')
@@ -83,7 +83,7 @@ const optionDefinitions = [
    { name: 'port', alias: 'p', type: String },
    { name: 'reload-port', alias: 'r', type: String },
 
-   { name: 'prod', type: Boolean },
+   { name: 'src', type: Boolean },
    { name: 'comps', alias: 'c', type: Boolean },
 
    { name: 'bakeP', type: Boolean },
@@ -113,7 +113,7 @@ console.info()
 
 
       
-VersionNag.isCurrent('mbakex', Verx.verx() ).then(function(isCurrent_:boolean){
+VersionNag.isCurrent('mbakex', MBakeX.verx() ).then(function(isCurrent_:boolean){
    try{
    if(!isCurrent_) 
       console.log('There is a newer version of mbake-x, please update.')
@@ -192,9 +192,9 @@ function comps(arg) {
    })
 }
 
-function prod(arg) {
-   new MBake().clearToProd(arg)
-   process.exit()
+function src(arg) {
+   new MBakeX().clearSrc(arg)
+
 }
 function bakeP(arg) {
    let pro: Promise<string> = new MBake().bake(arg, 3)
@@ -261,8 +261,8 @@ if (argsParsed.comps) {
 
    else if (argsParsed.map)
       map(arg)
-   else if (argsParsed.prod)
-      prod(arg)
+   else if (argsParsed.src)
+      src(arg)
    else if (argsParsed.bakeP)
       bakeP(arg)
    else if (argsParsed.bakeS)

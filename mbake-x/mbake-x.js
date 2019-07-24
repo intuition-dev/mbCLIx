@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const AdmZip = require("adm-zip");
 const commandLineArgs = require("command-line-args");
 const Base_1 = require("mbake/lib/Base");
 const Wa_1 = require("mbake/lib/Wa");
@@ -13,11 +12,11 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const cov_1 = require("./lib/cov");
 const cwd = process.cwd();
 function version() {
-    console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
+    console.info('mbake-x CLI version: ' + mbakeX_1.MBakeX.verx());
 }
 function help() {
     console.info();
-    console.info('mbake-x CLI version: ' + mbakeX_1.Verx.ver());
+    console.info('mbake-x CLI version: ' + mbakeX_1.MBakeX.verx());
     console.info('  your node version is ' + process.version);
     console.info('  from ' + __dirname);
     console.info();
@@ -43,7 +42,7 @@ function help() {
     console.info('     passing the git password of gitdown user');
     console.info();
     console.info('  To get a test coverage report of ViewModel and Test classes: mbake-x --cover ViewModelDir:TestDir');
-    console.info('  To recursively remove source files:                          mbake-x --prod .');
+    console.info('  To recursively remove source files:                          mbake-x --src .');
     console.info('  To export FiresStore data, it needs two arguments separated ');
     console.info('   with ":" :                                                  mbake-x --exportFS serviceAccountKey:name_of_the_file:name_of_the_file_for_auth_data');
     console.info('  To import FireStore data, it needs two arguments separated  ');
@@ -53,10 +52,8 @@ function help() {
     console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');
-    console.info('  For a starter dash web-app:                                 mbake-x -d');
     console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e');
     console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
-    console.info('  For an example Ad:                                          mbake-x -a');
     console.info();
 }
 const optionDefinitions = [
@@ -66,7 +63,7 @@ const optionDefinitions = [
     { name: 'watcher', alias: 'w', type: Boolean },
     { name: 'port', alias: 'p', type: String },
     { name: 'reload-port', alias: 'r', type: String },
-    { name: 'prod', type: Boolean },
+    { name: 'src', type: Boolean },
     { name: 'comps', alias: 'c', type: Boolean },
     { name: 'bakeP', type: Boolean },
     { name: 'bakeS', type: Boolean },
@@ -80,15 +77,13 @@ const optionDefinitions = [
     { name: 'map', alias: 'm', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
     { name: 'csv2Json', alias: 'l', type: Boolean },
-    { name: 'dash', alias: 'd', type: Boolean },
     { name: 'elect', alias: 'e', type: Boolean },
     { name: 'phonegap', alias: 'o', type: Boolean },
-    { name: 'ad', alias: 'a', type: Boolean },
 ];
 const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed['mbake-x'];
 console.info();
-FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.Verx.ver()).then(function (isCurrent_) {
+FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(function (isCurrent_) {
     try {
         if (!isCurrent_)
             console.log('There is a newer version of mbake-x, please update.');
@@ -128,28 +123,12 @@ function add(arg) {
     f.clone(args[1], args[2]);
 }
 function unzipG() {
-    let src = __dirname + '/PGap.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracting a starter Phonegap app to ./PG');
+    new FileOpsExtra_1.Download('phoneGap', __dirname).auto();
+    console.info('Extracted a starter PhoneGap app');
 }
 function unzipE() {
-    let src = __dirname + '/elect.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracting a starter Electron app to ./elect');
-}
-function unzipD() {
-    let src = __dirname + '/ad.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracting an example ad  ./ad');
-}
-function unzipH() {
-    let src = __dirname + '/dash.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd, true);
-    console.info('Extracting an starter Dash web app to ./dash');
+    new FileOpsExtra_1.Download('electron', __dirname).auto();
+    console.info('Extracted a starter Electron app');
 }
 function csv2Json(arg) {
     new FileOpsExtra_1.CSV2Json(arg).convert();
@@ -167,9 +146,8 @@ function comps(arg) {
         process.exit();
     });
 }
-function prod(arg) {
-    new Base_1.MBake().clearToProd(arg);
-    process.exit();
+function src(arg) {
+    new mbakeX_1.MBakeX().clearSrc(arg);
 }
 function bakeP(arg) {
     let pro = new Base_1.MBake().bake(arg, 3);
@@ -220,8 +198,6 @@ else if (argsParsed.elect)
     unzipE();
 else if (argsParsed.phonegap)
     unzipG();
-else if (argsParsed.ad)
-    unzipD();
 else if (argsParsed.csv2Json)
     csv2Json(arg);
 else if (argsParsed.watcher) {
@@ -230,12 +206,10 @@ else if (argsParsed.watcher) {
 else if (argsParsed.img) {
     img(arg);
 }
-else if (argsParsed.dash)
-    unzipH();
 else if (argsParsed.map)
     map(arg);
-else if (argsParsed.prod)
-    prod(arg);
+else if (argsParsed.src)
+    src(arg);
 else if (argsParsed.bakeP)
     bakeP(arg);
 else if (argsParsed.bakeS)
