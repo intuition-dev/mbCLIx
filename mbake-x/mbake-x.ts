@@ -188,7 +188,7 @@ function comps(arg) {
    let pro: Promise<string> = new MBake().compsNBake(arg, 0)
    pro.then(function (val) {
       console.log(val)
-      process.exit()
+      
    })
 }
 
@@ -200,21 +200,21 @@ function bakeP(arg) {
    let pro: Promise<string> = new MBake().bake(arg, 3)
    pro.then(function (val) {
       console.log(val)
-      process.exit()
+      
    })
 }
 function bakeS(arg) {
    let pro: Promise<string> = new MBake().bake(arg, 2)
    pro.then(function (val) {
       console.log(val)
-      process.exit()
+      
    })
 }
 function bakeD(arg) {
    let pro: Promise<string> = new MBake().bake(arg, 1)
    pro.then(function (val) {
       console.log(val)
-      process.exit()
+      
    })
 }
 
