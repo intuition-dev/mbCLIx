@@ -143,7 +143,6 @@ function comps(arg) {
     let pro = new Base_1.MBake().compsNBake(arg, 0);
     pro.then(function (val) {
         console.log(val);
-        process.exit();
     });
 }
 function src(arg) {
@@ -153,21 +152,18 @@ function bakeP(arg) {
     let pro = new Base_1.MBake().bake(arg, 3);
     pro.then(function (val) {
         console.log(val);
-        process.exit();
     });
 }
 function bakeS(arg) {
     let pro = new Base_1.MBake().bake(arg, 2);
     pro.then(function (val) {
         console.log(val);
-        process.exit();
     });
 }
 function bakeD(arg) {
     let pro = new Base_1.MBake().bake(arg, 1);
     pro.then(function (val) {
         console.log(val);
-        process.exit();
     });
 }
 if (arg) {
