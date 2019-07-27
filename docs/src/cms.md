@@ -90,7 +90,7 @@ CMS App consists of two parts: Admin App and Editors App.
 
 In the Editors App there is functionality for editing `.md` and `.yaml` files, creating new post, uploading files and seting a post date, which converts from human readable format to epoch format and is written to `dat.yaml`.
 
-1. If you will inspect `CMS/www/editors/edit/index.pug` you'll see that there is an instance of `Posts()` class:
+1. If you will inspect `CMS/www/edit/edit/index.pug` you'll see that there is an instance of `Posts()` class:
 
         let posts = new Posts();
 
