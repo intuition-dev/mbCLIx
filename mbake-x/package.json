@@ -23,7 +23,7 @@
     ],
     "engines": {
         "node": ">=12.6.0",
-        "npm": ">=6.10.1"
+        "npm": ">=6.10.2"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.1",

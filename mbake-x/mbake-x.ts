@@ -162,12 +162,12 @@ function add(arg) {
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
-   new Download('phoneGap', __dirname).auto()
+   new Download('phoneGap', __dirname).autoUZ()
    console.info('Extracted a starter PhoneGap app')
 }
 
 function unzipE() {
-   new Download('electron', __dirname).auto()
+   new Download('electron', __dirname).autoUZ()
    console.info('Extracted a starter Electron app')
 }
 
@@ -248,17 +248,14 @@ if (argsParsed.comps) {
       unzipE()
    else if (argsParsed.phonegap)
       unzipG()
-
    else if (argsParsed.csv2Json)
       csv2Json(arg)
-
    else if (argsParsed.watcher) {
       Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
    }
    else if (argsParsed.img) {
       img(arg)
    }
-
    else if (argsParsed.map)
       map(arg)
    else if (argsParsed.src)
