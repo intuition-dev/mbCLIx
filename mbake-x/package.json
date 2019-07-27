@@ -22,7 +22,7 @@
         "riotjs"
     ],
     "engines": {
-        "node": ">=12.6.0",
+        "node": ">=12.7.0",,
         "npm": ">=6.10.2"
     },
     "dependencies": {
