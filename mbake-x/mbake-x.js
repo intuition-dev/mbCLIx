@@ -123,11 +123,11 @@ function add(arg) {
     f.clone(args[1], args[2]);
 }
 function unzipG() {
-    new FileOpsExtra_1.Download('phoneGap', __dirname).auto();
+    new FileOpsExtra_1.Download('phoneGap', __dirname).autoUZ();
     console.info('Extracted a starter PhoneGap app');
 }
 function unzipE() {
-    new FileOpsExtra_1.Download('electron', __dirname).auto();
+    new FileOpsExtra_1.Download('electron', __dirname).autoUZ();
     console.info('Extracted a starter Electron app');
 }
 function csv2Json(arg) {

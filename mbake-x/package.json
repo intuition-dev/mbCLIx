@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.07.29",
+    "version": "1.08.01",
     "description": " Extra commands for MetaBake's mbake CLI.",
     "main": "mbakeX.js",
     "bin": {
@@ -33,8 +33,8 @@
         "filehound": ">=1.17.3",
         "fs-extra": ">=8.1.0",
         "lunr": ">=2.3.6",
-        "mbake": ">=6.7.32",
-        "sharp": ">=0.22.1",
+        "mbake": ">=6.8.1",
+        "sharp": ">=0.23.0",
         "node-firestore-import-export": ">=0.13.2",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=4.1.1",
