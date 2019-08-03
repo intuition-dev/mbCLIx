@@ -1,12 +1,11 @@
 
-# MetaBake X
+# MetaBake X extra
 
-These are the advanced / extra command for mbake CLI
+Are you sure you should do advanced?
 
-- Full CLI Docs: [metabake.github.io/mbCLI](http://metabake.github.io/mbCLI)
-- [MetaBake.org](https://www.INTUITION.DEV)
-- [blog.MetaBake.net](http://blog.MetaBake.net)
-- [Github](http://git.MetaBake.org)
 
-#### Please star our main project here:
-- https://github.com/metabake/mbIntuition
+[Git Repo](http://git.mbake.org)
+
+[Pug example](https://pug.mbake.org)
+
+[INTUITION.DEV Home Page](https://www.INTU.DEV)

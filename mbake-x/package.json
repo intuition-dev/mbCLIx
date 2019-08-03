@@ -1,7 +1,7 @@
 {
     "name": "mbake-x",
     "version": "1.08.2",
-    "description": " Extra commands for MetaBake's mbake CLI.",
+    "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "main": "mbakeX.js",
     "bin": {
         "mbake-x": "mbake-x.js"
