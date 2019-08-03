@@ -17,9 +17,10 @@
         "url": "https://github.com/MetaBake"
     },
     "keywords": [
+        "pug",
         "static gen",
         "low-code",
-        "riotjs"
+        "CRUD"
     ],
     "engines": {
         "node": ">=12.7.0",
