@@ -10,11 +10,11 @@
         "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
     },
     "license": "LGPL-3.0-only",
-    "author": "http://www.INTUITION.DEV",
-    "homepage": "http://www.INTUITION.DEV",
+    "author": "https://www.INTUITION.DEV",
+    "homepage": "https://www.INTUITION.DEV",
     "repository": {
         "type": "git",
-        "url": "https://github.com/MetaBake"
+        "url": "https://git.mbake.org"
     },
     "keywords": [
         "pug",
