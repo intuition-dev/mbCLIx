@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.08.3",
+    "version": "1.08.4",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "main": "mbakeX.js",
     "bin": {
