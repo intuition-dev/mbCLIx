@@ -12,7 +12,7 @@
     "cors": ">=2.8.5",
     "express": ">=4.17.1",
     "express-fileupload": ">=1.1.5",
-    "mbake": "^6.7.24"
+    "mbake": ">=6.7.24"
   },
   "devDependencies": {
     "@types/node": ">=12.6.2"
