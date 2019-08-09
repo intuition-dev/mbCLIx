@@ -1,7 +1,6 @@
 # zip up the sample apps, update Base.ts version
 # ncu -u
 tsc
-rm node_modules
 # node mbake-x.js
 npm publish
 #sudo npm i -g mbake --unsafe-perm=true --allow-root
