@@ -137,7 +137,7 @@ all of them triggers on appropriate buttons click.
 
 
 3. To learn FireStore, you will now remap the Firestore connection to your own Firestore. Create a Google account if you don't already have one. Log into <http://console.firebase.google.com>. Create a project named `test-crud`. Under the left menu 'Develop - Database', create a Firestore app in test mode.
-On the Project Overview, click the `</>` button near 'Add an app to get started' to open a popup. In your mapped project `/assets/comps/preRW-comp.pug`, overwrite the values for apiKey, authDomain and projectId with the values shown in the Firestore popup and save. Run `'$ mbake -c .'` from the `tags` folder. (`/layout/layout.pug` will use the updated `script(src='/assets/comps/preRW-comp.min.js')`.)
+On the Project Overview, click the `</>` button near 'Add an app to get started' to open a popup. In your mapped project `/assets/custEl/preRW-comp.pug`, overwrite the values for apiKey, authDomain and projectId with the values shown in the Firestore popup and save. Run `'$ mbake -c .'` from the `tags` folder. (`/layout/layout.pug` will use the updated `script(src='/assets/custEl/preRW-comp.min.js')`.)
 
 7. We will now secure the database. In the Firestore Console, on the Rules tab in 'Develop - Database', replace:
 

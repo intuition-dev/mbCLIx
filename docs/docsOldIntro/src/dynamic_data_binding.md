@@ -14,7 +14,7 @@ We assume that you have already installed the example `website` project as descr
 
 3. Application routes are defined with `a href` tags. Inspect `/layout/navJBar.pug` for examples. When a user clicks on a link, the URL in the browser changes and the respective content, such as `/landing/why/index.html` is returned. Users can bookmark individual URLs. The browser maintains a navigation history so that using its 'Back' button yields the expected result.
 
-4. We use [Riot.js](http://riot.js.org/) for custom tags. We use it when we need a new component or want to hide functions and vars. To learn how Riot components are written and used in Pug, inspect `/riotFirst/comps/first-comp.pug`. It looks something like this:
+4. We use [Riot.js](http://riot.js.org/) for custom tags. We use it when we need a new component or want to hide functions and vars. To learn how Riot components are written and used in Pug, inspect `/riotFirst/custEl/first-comp.pug`. It looks something like this:
 
         first-comp
             p Dynamic Data:
