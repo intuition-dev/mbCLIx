@@ -10,7 +10,7 @@ We'll be mounting using `davfs2` — a Linux file system driver that allows to m
 		$ sudo apt-get update
 		$ sudo apt install -y davfs2
 
-1. Reconfigure `davfs2` to enable to use `davfs` under unprivileged users
+1. Reconfigure `davfs2` to enable to use `davfs` under unprivileged end-users
 
     	$ sudo dpkg-reconfigure davfs2
 

@@ -37,7 +37,7 @@ This section is about _Meta_, your bespoke cloud-based admin and build infrastru
 
 For a developer, _Meta_ is akin to a build server like Jenkins. For others, _Meta_ is akin to a custom WordPress or Shopify admin console.
 
-When using _Meta_ in the cloud, you no longer have to mount to S3 buckets locally. You would use the _Meta_ admin UI to 'edit' code. For examples your users could use the bespoke Meta admin UI. These features should allow you to achieve additional productivity gains for your development team.
+When using _Meta_ in the cloud, you no longer have to mount to S3 buckets locally. You would use the _Meta_ admin UI to 'edit' code. For examples your end-users could use the bespoke Meta admin UI. These features should allow you to achieve additional productivity gains for your development team.
 
 Developers would use CodeAnywhere or a similar IDE; no need for local development environment. Instead you use CodeAnywhere and Meta admin/build as a group; all in the cloud.
 

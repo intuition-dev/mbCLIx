@@ -6,7 +6,7 @@ There is git example Full Websites, and other examples.
 ### Exceptions 
 
 Sometimes, rarely, you write your own back end service.
-Make the API public on the client-side, not server-side. This way, if protocols change it minimizes impact on the API users's web apps.
+Make the API public on the client-side, not server-side. This way, if protocols change it minimizes impact on the API end-users's web apps.
 
 ### Benchmark - Pillar 10
 
