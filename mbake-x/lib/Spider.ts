@@ -19,8 +19,9 @@ import yaml = require('js-yaml')
 
 import fs = require('fs-extra')
 import FileHound = require('filehound')
-import { Sitemap } from 'sitemap';
+import { createSitemap } from 'sitemap';
 
+const format = require('xml-formatter')
 
 export class Map {
    _sitemap
@@ -40,15 +41,15 @@ export class Map {
 
       const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'))
 
-      this._sitemap = new Sitemap( { hostname: m['hostname']}  ) 
+      this._sitemap = createSitemap ( { hostname: m['hostname']}  ) 
       
       const hostname = m['hostname']
       console.log(hostname)
 
       const rec = FileHound.create() //recursive
-      .paths(this._root)
-      .match('dat.yaml')
-      .findSync()
+         .paths(this._root)
+         .match('dat.yaml')
+         .findSync()
 
       for (let val of rec) {// todo try{}
          val = Dirs.slash(val)
@@ -59,7 +60,6 @@ export class Map {
             continue
          
          val  = val.substring(this._rootLen)
-         logger.trace(val, this._rootLen)
 
          let pg = {url:val}
          logger.trace(pg)
@@ -67,7 +67,8 @@ export class Map {
    
       }//for
     
-      const xml = this._sitemap.toXML()
+      let xml = this._sitemap.toXML()
+      xml = format(xml)
       fs.writeFileSync(this._root + '/sitemap.xml', xml)
       console.info(' Sitemap ready', xml)
 

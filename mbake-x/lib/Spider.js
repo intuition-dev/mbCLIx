@@ -14,6 +14,7 @@ const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
 const sitemap_1 = require("sitemap");
+const format = require('xml-formatter');
 class Map {
     constructor(root) {
         if (!root || root.length < 1) {
@@ -25,7 +26,7 @@ class Map {
     }
     gen() {
         const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
-        this._sitemap = new sitemap_1.Sitemap({ hostname: m['hostname'] });
+        this._sitemap = sitemap_1.createSitemap({ hostname: m['hostname'] });
         const hostname = m['hostname'];
         console.log(hostname);
         const rec = FileHound.create()
@@ -40,12 +41,12 @@ class Map {
             if (!('priority' in keys))
                 continue;
             val = val.substring(this._rootLen);
-            logger.trace(val, this._rootLen);
             let pg = { url: val };
             logger.trace(pg);
             this._sitemap.add(pg);
         }
-        const xml = this._sitemap.toXML();
+        let xml = this._sitemap.toXML();
+        xml = format(xml);
         fs.writeFileSync(this._root + '/sitemap.xml', xml);
         console.info(' Sitemap ready', xml);
     }
