@@ -47,7 +47,7 @@ function help() {
 
    console.info()
 
-   console.info('  To map map.yaml to menu.json, sitemap.xml                    mbake-x -m .')
+   console.info('  To map map.yaml to sitemap.xml                               mbake-x -m .')
    console.info('  Compress 3200 or larger .jpg images to 2 sizes:              mbake-x -i .')
    console.info()
 
