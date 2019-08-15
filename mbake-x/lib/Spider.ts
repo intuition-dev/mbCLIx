@@ -15,7 +15,6 @@ const logger = require('tracer').console()
 // map
 import sm = require('sitemap')
 import traverse = require('traverse')
-import lunr = require('lunr')
 
 import yaml = require('js-yaml')
 
@@ -34,16 +33,16 @@ export class Map {
       }
       this._root = root
    }
-   gen():Promise<string> {
-      return new Promise(function (resolve, reject) {
+   
+   gen() { //:Promise<string> {
+      //return new Promise(function (resolve, reject) {
 
       const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'))
-      let jmenu = JSON.stringify(m.menu, null, 2)
-      //menu done
-      fs.writeFileSync(this._root + '/menu.json', jmenu)
 
-      
-      this._sitemap = sm.createSitemap ({ hostname: m['host']} ) // this needs updates
+      //let jmenu = JSON.stringify(m.menu, null, 2)
+      //fs.writeFileSync(this._root + '/menu.json', jmenu)
+
+      this._sitemap = sm.createSitemap ({ hostname: m['hostname']} ) 
 
 
       //build sitemap
@@ -111,8 +110,8 @@ export class Map {
          thiz._map(leaves)
 
       })// to XML write
-      resolve('OK')
-      })
+     // resolve('OK')
+     //})
    }//map()
 
    _map(leaves) {
@@ -147,21 +146,7 @@ export class Map {
          } catch (err) {logger.info(err)}
       }//for
 
-      //fts index
-      logger.info(documents.length)
-      let idx = lunr(function () {
-         this.ref('id')
-         this.field('body')
-
-         documents.forEach(function (doc) {
-            this.add(doc)
-         }, this)
-      })//idx
-
-      const jidx = JSON.stringify(idx)
-      fs.writeFileSync(this._root + '/FTS.idx', jidx)
-
-      console.info(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in ' + this._root)
+      console.info(' Map generated in ' + this._root)
 
    }//()
 }// class
