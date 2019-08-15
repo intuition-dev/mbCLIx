@@ -41,9 +41,8 @@ class Map {
             if (!('priority' in keys))
                 continue;
             val = val.substring(this._rootLen);
-            let pg = { url: val };
-            logger.trace(pg);
-            this._sitemap.add(pg);
+            keys.url = val;
+            this._sitemap.add(keys);
         }
         let xml = this._sitemap.toXML();
         xml = format(xml);

@@ -61,9 +61,8 @@ export class Map {
          
          val  = val.substring(this._rootLen)
 
-         let pg = {url:val}
-         logger.trace(pg)
-         this._sitemap.add(pg)
+         keys.url = val
+         this._sitemap.add(keys)
    
       }//for
     

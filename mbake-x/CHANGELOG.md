@@ -1,10 +1,8 @@
 
 
-## 
+### 1.08.15
 - updated sitemap
 - FTS is no longer client side, it assumes SQLite memory DB
-
-
 
 ### 1.08.9
 - update packages
