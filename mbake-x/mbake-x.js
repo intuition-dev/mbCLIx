@@ -28,6 +28,7 @@ function help() {
     console.info();
     console.info('  To process Pug and RIOT *-comp.pug components:               mbake-x -c .');
     console.info('    -c also does regular mbake of Pug, not just comps.');
+    console.info();
     console.info('  To bake with dev. ENV flag(1) in prod(default is 0):         mbake-x --bakeD .');
     console.info('  To bake with staging ENV flag(2) in prod:                    mbake-x --bakeS .');
     console.info('  To bake with production ENV flag(3) in prod:                 mbake-x --bakeP .');
@@ -35,14 +36,17 @@ function help() {
     console.info('  Download fragment to setup the app devOps:                   mbake-x --ops .');
     console.info('  Add|clone an item|page from:to :                             mbake-x --add dir:source:target');
     console.info();
-    console.info('  To map map.yaml to menu.json, sitemap.xml and FTS.idx:       mbake-x -m .');
+    console.info('  To map map.yaml to sitemap.xml                               mbake-x -m .');
     console.info('  Compress 3200 or larger .jpg images to 2 sizes:              mbake-x -i .');
+    console.info();
     console.info('  To process list.csv to list.json:                            mbake-x -l .');
     console.info('  To download branch from git, in folder with gitdown.yaml:    mbake-x --gitDown .');
     console.info('     passing the git password of gitdown user');
     console.info();
     console.info('  To get a test coverage report of ViewModel and Test classes: mbake-x --cover ViewModelDir:TestDir');
+    console.info();
     console.info('  To recursively remove source files:                          mbake-x --src .');
+    console.info();
     console.info('  To export FiresStore data, it needs two arguments separated ');
     console.info('   with ":" :                                                  mbake-x --exportFS serviceAccountKey:name_of_the_file:name_of_the_file_for_auth_data');
     console.info('  To import FireStore data, it needs two arguments separated  ');

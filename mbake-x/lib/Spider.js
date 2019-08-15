@@ -10,12 +10,10 @@ const extractor = require("unfluff");
 const SummarizerManager = require("node-summarizer").SummarizerManager;
 const cheerio = require('cheerio');
 const logger = require('tracer').console();
-const sm = require("sitemap");
-const traverse = require("traverse");
-const lunr = require("lunr");
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
+const sitemap_1 = require("sitemap");
 class Map {
     constructor(root) {
         if (!root || root.length < 1) {
@@ -23,112 +21,33 @@ class Map {
             return;
         }
         this._root = root;
+        this._rootLen = root.length;
     }
     gen() {
-        return new Promise(function (resolve, reject) {
-            const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
-            let jmenu = JSON.stringify(m.menu, null, 2);
-            fs.writeFileSync(this._root + '/menu.json', jmenu);
-            this._sitemap = sm.createSitemap({ hostname: m['host'] });
-            let leaves = traverse(m.menu).reduce(function (acc, x) {
-                if (this.isLeaf)
-                    acc.push(x);
-                return acc;
-            }, []);
-            let itemsRoot = m['itemsRoot'];
-            if (itemsRoot) {
-                const d = new FileOpsBase_1.Dirs(this._root + itemsRoot);
-                leaves = leaves.concat(d.getFolders());
-            }
-            let arrayLength = leaves.length;
-            logger.info(arrayLength);
-            for (let i = 0; i < arrayLength; i++) {
-                try {
-                    let path = leaves[i];
-                    if (path.includes(this._root))
-                        path = path.replace(this._root, '');
-                    let fullPath = this._root + path;
-                    let dat = new FileOpsBase_1.Dat(fullPath);
-                    let props = dat.getAll();
-                    logger.info(path);
-                    let priority = props['priority'];
-                    if (!priority)
-                        priority = 0.3;
-                    let image = props['image'];
-                    if (!image) {
-                        this._sitemap.add({
-                            url: path,
-                            changefreq: m['changefreq'],
-                            priority: priority
-                        });
-                    }
-                    else {
-                        this._sitemap.add({
-                            url: path,
-                            changefreq: m['changefreq'],
-                            priority: priority,
-                            img: [{
-                                    url: image,
-                                    title: props['title'],
-                                    caption: props['title']
-                                }]
-                        });
-                    }
-                }
-                catch (err) {
-                    logger.info(err);
-                }
-            }
-            const thiz = this;
-            this._sitemap.toXML(function (err, xml) {
-                fs.writeFileSync(thiz._root + '/sitemap.xml', xml);
-                console.info(' Sitemap ready');
-                thiz._map(leaves);
-            });
-            resolve('OK');
-        });
-    }
-    _map(leaves) {
-        let documents = [];
-        let arrayLength = leaves.length;
-        for (let i = 0; i < arrayLength; i++) {
-            try {
-                let path = leaves[i];
-                if (path.includes(this._root))
-                    path = path.replace(this._root, '');
-                let fullPath = this._root + path;
-                const rec = FileHound.create()
-                    .paths(fullPath)
-                    .ext('md')
-                    .findSync();
-                let text = '';
-                for (let val of rec) {
-                    val = FileOpsBase_1.Dirs.slash(val);
-                    console.info(val);
-                    let txt1 = fs.readFileSync(val, "utf8");
-                    text = text + ' ' + txt1;
-                }
-                const row = {
-                    id: path,
-                    body: text
-                };
-                documents.push(row);
-            }
-            catch (err) {
-                logger.info(err);
-            }
+        const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
+        this._sitemap = new sitemap_1.Sitemap({ hostname: m['hostname'] });
+        const hostname = m['hostname'];
+        console.log(hostname);
+        const rec = FileHound.create()
+            .paths(this._root)
+            .match('dat.yaml')
+            .findSync();
+        for (let val of rec) {
+            val = FileOpsBase_1.Dirs.slash(val);
+            val = val.slice(0, -9);
+            let dat = new FileOpsBase_1.Dat(val);
+            let keys = dat.getAll();
+            if (!('priority' in keys))
+                continue;
+            val = val.substring(this._rootLen);
+            logger.trace(val, this._rootLen);
+            let pg = { url: val };
+            logger.trace(pg);
+            this._sitemap.add(pg);
         }
-        logger.info(documents.length);
-        let idx = lunr(function () {
-            this.ref('id');
-            this.field('body');
-            documents.forEach(function (doc) {
-                this.add(doc);
-            }, this);
-        });
-        const jidx = JSON.stringify(idx);
-        fs.writeFileSync(this._root + '/FTS.idx', jidx);
-        console.info(' Map generated menu.json, sitemap.xml and FTS.idx(json) index in ' + this._root);
+        const xml = this._sitemap.toXML();
+        fs.writeFileSync(this._root + '/sitemap.xml', xml);
+        console.info(' Sitemap ready', xml);
     }
 }
 exports.Map = Map;

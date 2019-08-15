@@ -1,7 +1,7 @@
 // All rights reserved by MetaBake (MetaBake.org) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-import { Dirs, FileOps, Dat} from 'mbake/lib/FileOpsBase'
+import { Dirs, Dat} from 'mbake/lib/FileOpsBase'
 
 import axios from 'axios'
 import probe = require('probe-image-size')
@@ -14,23 +14,25 @@ const logger = require('tracer').console()
 
 // map
 import sm = require('sitemap')
-import traverse = require('traverse')
 
 import yaml = require('js-yaml')
 
 import fs = require('fs-extra')
 import FileHound = require('filehound')
+import { Sitemap } from 'sitemap';
 
 
 export class Map {
    _sitemap
    _root
+   _rootLen:number
    constructor(root) {
       if (!root || root.length < 1) {
          console.info('no path arg passed')
          return
       }
       this._root = root
+      this._rootLen =  root.length
    }
    
    gen() { //:Promise<string> {
@@ -38,28 +40,37 @@ export class Map {
 
       const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'))
 
-      this._sitemap = sm.createSitemap ({ hostname: m['hostname']} ) 
+      this._sitemap = new Sitemap( { hostname: m['hostname']}  ) 
+      
+      const hostname = m['hostname']
+      console.log(hostname)
 
       const rec = FileHound.create() //recursive
       .paths(this._root)
-      .ext('yaml')
+      .match('dat.yaml')
       .findSync()
 
-      for (let val of rec) {//clean the strings
+      for (let val of rec) {// todo try{}
          val = Dirs.slash(val)
-         console.info(val)
-         let txt1 = fs.readFileSync(val, "utf8")
+         val = val.slice(0, -9)
+         let dat = new Dat(val)
+         let keys:any = dat.getAll()
+         if(!('priority' in keys))
+            continue
+         
+         val  = val.substring(this._rootLen)
+         logger.trace(val, this._rootLen)
+
+         let pg = {url:val}
+         logger.trace(pg)
+         this._sitemap.add(pg)
+   
       }//for
     
-      //validate and write
-      const thiz = this
+      const xml = this._sitemap.toXML()
+      fs.writeFileSync(this._root + '/sitemap.xml', xml)
+      console.info(' Sitemap ready', xml)
 
-      this._sitemap.toXML(function (err, xml) {
-
-         fs.writeFileSync(thiz._root + '/sitemap.xml', xml)
-         console.info(' Sitemap ready')
-
-      })// to XML write
      // resolve('OK')
      //})
    }//()
