@@ -1,7 +1,7 @@
 
 
 - <a href='http://youtu.be/CMUiPC0YtYA' target='_blank'>WebIDE video</a>
-- <a href='http://doc.MetaBake.org/meta/' target='_blank'>Click for 'THE' Meta docs</a>
+- <a href='http://doc.INTUITION.DEV/meta/' target='_blank'>Click for 'THE' Meta docs</a>
 
 ## low-code = 10X quicker web app development.
 ### With MetaBake 's modern development approach, it is not about replacing your tech stack with another tech stack -- it is about eliminating it!
@@ -9,7 +9,7 @@
 
 # About MetaBake 
 
-MetaBake.org is a development productivity suite. It should allow you to deliver 10 times quicker then legacy development stacks/methodologies. We have found that - with MetaBake.org; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
+INTUITION.DEV is a development productivity suite. It should allow you to deliver 10 times quicker then legacy development stacks/methodologies. We have found that - with INTUITION.DEV; - the work of 6 developers over 6 months can be done by 3 developers in 3 weeks. We expect you to achieve the same productivity gains.
 
 How does open source MetaBake deliver 10X quicker and cheaper web app development? Not enough organizations are fully leveraging the new Serverless. With Serverless services like Firestore and S3 you get rid of **ALL** server-side and middleware development and operations. This is where up to 2/3 of your time and cost used to go. Gone!
 
@@ -17,7 +17,7 @@ On the client-side (browser apps and mobile apps) MetaBake does something simila
 
 The MetaBake approach has 10 pillars that are the foundation for achieving mind-blowing development productivity gains. I'll just mention one more pillar here: automatic programming. You've probably heard of 'static site generators' like Hugo or Jekyll that people use to generate their web site or a CMS. Automatic programming means using a similar generator to write your web app! This can get you to yet another level of productivity.
 
-To learn more about the MetaBake approach, including all 10 pillars and full examples, go to MetaBake.org. Or, to dive in right away, use the 'mbake CLI' from github.com/MetaBake as the first step into 10X quicker web app development.
+To learn more about the MetaBake approach, including all 10 pillars and full examples, go to INTUITION.DEV. Or, to dive in right away, use the 'mbake CLI' from github.com/MetaBake as the first step into 10X quicker web app development.
 
 #### MetaBake productivity is based on three modules:
 

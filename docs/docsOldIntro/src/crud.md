@@ -162,7 +162,7 @@ Definitely look at:
 
 - <a href='http://github.com/MetaBake/_mbake/tree/master/awesomeReference' target='_blank'>Awesome list of MetaBake resources</a>
 
-- <http://git.MetaBake.org>.
+- <http://git.INTUITION.DEV>.
 
 
 In the [next tutorial](/model/), we cover a _view-model pattern_.
