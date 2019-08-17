@@ -1,4 +1,5 @@
-
+###
+- FireBase and Riot are now undocumented features
 
 ### 1.08.15
 - updated sitemap
