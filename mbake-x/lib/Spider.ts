@@ -21,8 +21,6 @@ import fs = require('fs-extra')
 import FileHound = require('filehound')
 import { createSitemap } from 'sitemap';
 
-const format = require('xml-formatter')
-
 export class Map {
    _sitemap
    _root
@@ -66,8 +64,7 @@ export class Map {
    
       }//for
     
-      let xml = this._sitemap.toXML()
-      xml = format(xml)
+      let xml = this._sitemap.toString(true)
       fs.writeFileSync(this._root + '/sitemap.xml', xml)
       console.info(' Sitemap ready', xml)
 

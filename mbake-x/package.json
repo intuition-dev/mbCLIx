@@ -34,17 +34,16 @@
         "filehound": ">=1.17.3",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.8.18",
+        "mbake": ">=6.8.21",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
         "perfy": ">=1.1.5",
         "probe-image-size": ">=4.1.1",
         "riot-compiler": "^3.6.0",
         "sharp": ">=0.23.0",
-        "sitemap": ">=4.0.2",
+        "sitemap": ">=4.1.1",
         "typescript": ">=3.5.3",
-        "unfluff": ">=3.2.0",
-        "xml-formatter": ">=1.1.0"
+        "unfluff": ">=3.2.0"
     },
     "bundledDependencies": [
         "mbake",
