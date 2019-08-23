@@ -5,7 +5,7 @@ tsc
 # node mbake-x.js --add .:lib:lib2 
 
 
-node mbake-x.js -m /Users/code/Documents/GitHub/IntuitionDocs/site
+node mbake-x.js -i .
 
 
 # node mbake-x.js -w /Users/code/Documents/GitHub/metaCake/metaCake/webC

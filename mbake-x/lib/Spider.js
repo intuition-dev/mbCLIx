@@ -14,7 +14,6 @@ const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
 const sitemap_1 = require("sitemap");
-const format = require('xml-formatter');
 class Map {
     constructor(root) {
         if (!root || root.length < 1) {
@@ -44,8 +43,7 @@ class Map {
             keys.url = val;
             this._sitemap.add(keys);
         }
-        let xml = this._sitemap.toXML();
-        xml = format(xml);
+        let xml = this._sitemap.toString(true);
         fs.writeFileSync(this._root + '/sitemap.xml', xml);
         console.info(' Sitemap ready', xml);
     }
