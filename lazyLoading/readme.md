@@ -1,22 +1,7 @@
 
 # Relative performance of Webpack vs modern lazy loading w/JAMstack approaches, and future of 'import'
 
-
-### A Webpack example
-
-<img src="us.png" width="80%"/>
-
-Notice that it loads a 600kb and 700kb files
-
-#### Modern lazy loading JAMStack
-
-<img src="in.png" width="80%"/>
-
-Notice it loads 3k and 4k files first.
-
-
-
-## How to measure perforamnce:
+## How to measure performance:
 Performance is important - and more important for mobile users where they have limited bandwidth of how much can be loaded at once.
 I am surprised by how many programmers are not levering the built into browsers tools: the network tab. The browsers developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience on their development machine.
 
@@ -45,27 +30,47 @@ You can see how tightly we can control what gets loaded when. So now that we can
 
 ## Comparison:
 
+It is a bit hard to find examples of application done both ways, but here are two examples, one of each:
 
-## Future of 'import' 
+### A Webpack example:
+
+<img src="us.png" width="80%"/>
+
+Notice that it loads a 600kb and 700kb files
+
+#### Modern lazy loading JAMStack:
+
+<img src="in.png" width="80%"/>
+
+Notice it loads 3k and 4k files first.
+
+
+## Future of 'import':
 
 Best practice
 
 
-### Can we have today use the future functionality of import? YES!
+## Can we have today use the future functionality of import? YES!:
 
 
 
 
-## Recommendation:
+## Summary:
 
 As a manager you need to look at the app in the Developer Tools network Tab.
 And when you check the app on mobile: Don't use WiFi. 
 If you monitor the little things, the big things will take care of themselves. 
+And I would also consider converting an older Webpack webapp to JAMstack lazy loading to get the performance benefits.
+
+
+# Details:
+
+Here are a few recommendations:
 
 ## Recipe:
 There are two things we need: data loading and ui loading. They are loaded in parallel, but we'll look at them one at a time.
 
-UI-loading:
+### UI-loading:
 
 1. For UI, you want to in head load the smallest CSS: that does the layout and will avoid layout jank.
 Leave the fonts out, since: the fonts have not loaded yet! 
@@ -96,7 +101,7 @@ loading their stuff before I even loaded my fonts.
 9. Now you can load DOM libs and interaction libs. There are no interactions that a user can do while page is still rendering. So don't load any of it ahead of FML.
 That is for UI-loading.
 
-Data-loading:
+### Data-loading:
 
 1. At the same time UI assets are loading, I'm loading things so I can do my fetch( or Ajax)
 It is important to start the fetch in head!
