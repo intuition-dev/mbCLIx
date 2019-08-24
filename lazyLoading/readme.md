@@ -1,5 +1,5 @@
 
-# Relative performance of Webpack vs modern lazy loading w/JAMstack approaches, and future of 'import'
+# Relative performance of Webpack vs modern lazy loading w/JAMstack approaches; and future of 'import'
 
 ## How to measure performance:
 Performance is important - and more important for mobile users where they have limited bandwidth of how much can be loaded at once.
@@ -30,29 +30,42 @@ You can see how tightly we can control what gets loaded when. So now that we can
 
 ## Comparison:
 
-It is a bit hard to find examples of application done both ways, but here are two examples, one of each:
+It is a bit hard to find examples of application done both ways, but here are two examples, one of each. Both are using the development tools Network Tab. Best way to
+improve legibility is to in browser click the image and 'Open Image in new tab', or just run the test in your own browser. 
 
 ### A Webpack example:
 
 <img src="us.png" width="80%"/>
 
-Notice that it loads a 600kb and 700kb files
+Notice that it (https://ustadium.com) loads a 600kb and 700kb files first. Rendering can't start for 6 seconds when used with 4g.
 
 #### Modern lazy loading JAMStack:
 
 <img src="in.png" width="80%"/>
 
-Notice it loads 3k and 4k files first.
-
+Notice that it (https://www.INTUITION.DEV/landing/low/) loads 3k and 4k files first.
+And that any 3rd party .js is loaded after everything that I need.
 
 ## Future of 'import':
 
-Best practice
+Best practice would be to use an import that works on a CDN, and can delay instantiating a class until requirements are ready.
+But that is not how imports work today. Fortunately, the spec writers are planing on an improved import spec coming out. 
+Once the new spec is set, we can start leveraging that. 
 
 
 ## Can we have today use the future functionality of import? YES!:
 
+We can today start using CDN loading dependencies, I do in my projects that leverage www.INTUITION.DEV. We use a factory pattern, here is how:
 
+1. You must disable the constructor so it can't work externally. Throw an error.
+Instead create another static method to 'create', for example inst(). 
+
+2. You static method must return a promise! In the static method you can depp.require() anything you need, and wait for it to resolve. 
+
+3. Once your static method resolved: return the new instance of the class (in a promise). Force the constructor to work and return the new instance. 
+
+
+[Example source code ](https://github.com/intuition-dev/INTUITION/blob/master/examples/CRUD/www/models/CRUD1ViewModel.ts)
 
 
 ## Summary:
@@ -120,8 +133,7 @@ So you see how you need to optimize both, ui-loading and data-loading to insure 
 
 
 
-
-
+PS; If you have a webpack application that you are considering improving, you can reach out to me at www.MetaBake.NET. 
 
 
 
