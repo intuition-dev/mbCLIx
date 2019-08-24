@@ -1,14 +1,14 @@
 
 # Relative performance of Webpack vs modern lazy loading w/JAMstack approaches, and future of 'import'
 
-3
+1
 
 ![10% ](us.png)
 
 * 
 2
 
-<img src="in.png" width="400"/>
+<img src="in.png" width="80%"/>
 
 
 ## How to measure perforamnce:
