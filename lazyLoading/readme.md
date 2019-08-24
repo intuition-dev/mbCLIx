@@ -1,7 +1,7 @@
 
 # Relative performance of Webpack vs modern lazy loading w/JAMstack approaches, and future of 'import'
 
-1
+3
 
 ![10% ](us.png)
 
