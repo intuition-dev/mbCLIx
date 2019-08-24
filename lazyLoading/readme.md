@@ -1,15 +1,15 @@
 
-# Relative performance of Webpack vs modern lazy loading w/JAMstack approaches; and future of 'import'
+# Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
 
-## How to measure performance:
+### How to measure performance:
 Performance is important - and more important for mobile users where they have limited bandwidth of how much can be loaded at once.
 I am surprised by how many programmers are not levering the built into browsers tools: the network tab. The browsers developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience on their development machine.
 
-## Champion:
+### Champion:
 We developers have been using Webpack for about 5-10 years, we used it to replace <script src="main.js"></script> all over the place. 
 IMO, Webpack approach is getting long on the tooth. Even when you try to mimic lazy load with Webpack you are much slower than apps using modern approaches.
 
-## Challenger:
+### Challenger:
 JAMstack is a newer approach to developing, among other things leveraging edge/CDN. (One benefit of JAMstack: the https handshake that takes 4-6 round 
 trips is at the edge, and much closer to each end user; thus improving performance of each connection. Also, edge is much cheaper than origin - faster and cheaper works for me). For lazy loading dependencies I use depp.require(), from a tool released just last year ( https://github.com/muicss/johnnydepp/releases ).
 
@@ -28,32 +28,34 @@ depp.require('a', function() {
 
 You can see how tightly we can control what gets loaded when. So now that we can control loading, how should we maximite the performance of the 'first meaningful paint'(FML)?
 
-## Comparison:
+### Comparison:
 
 It is a bit hard to find examples of application done both ways, but here are two examples, one of each. Both are using the development tools Network Tab. Best way to
 improve legibility is to in browser click the image and 'Open Image in new tab', or just run the test in your own browser. 
 
-### A Webpack example:
+##### A Webpack example:
 
 <img src="us.png" width="80%"/>
 
 Notice that it (https://ustadium.com) loads a 600kb and 700kb files first. Rendering can't start for 6 seconds when used with 4g.
 
-#### Modern lazy loading JAMStack:
+##### Modern lazy loading JAMStack:
 
 <img src="in.png" width="80%"/>
 
 Notice that it (https://www.INTUITION.DEV/landing/low/) loads 3k and 4k files first.
 And that any 3rd party .js is loaded after everything that I need.
 
-## Future of 'import':
+Again, not apples to apples, but it gives you the idea of how they would differ in preformance.
+
+### Future of 'import':
 
 Best practice would be to use an import that works on a CDN, and can delay instantiating a class until requirements are ready.
 But that is not how imports work today. Fortunately, the spec writers are planing on an improved import spec coming out. 
 Once the new spec is set, we can start leveraging that. 
 
 
-## Can we have today use the future functionality of import? YES!:
+### Can we have today use the future functionality of import? YES!:
 
 We can today start using CDN loading dependencies, I do in my projects that leverage www.INTUITION.DEV. We use a factory pattern, here is how:
 
@@ -64,11 +66,10 @@ Instead create another static method to 'create', for example inst().
 
 3. Once your static method resolved: return the new instance of the class (in a promise). Force the constructor to work and return the new instance. 
 
+[Example source code  ](https://github.com/intuition-dev/INTUITION/blob/master/examples/CRUD/www/models/CRUD1ViewModel.ts)
 
-[Example source code ](https://github.com/intuition-dev/INTUITION/blob/master/examples/CRUD/www/models/CRUD1ViewModel.ts)
 
-
-## Summary:
+### Summary:
 
 As a manager you need to look at the app in the Developer Tools network Tab.
 And when you check the app on mobile: Don't use WiFi. 
@@ -76,14 +77,14 @@ If you monitor the little things, the big things will take care of themselves.
 And I would also consider converting an older Webpack webapp to JAMstack lazy loading to get the performance benefits.
 
 
-# Details:
+## Deeper dive:
 
 Here are a few recommendations:
 
-## Recipe:
+### Recipe:
 There are two things we need: data loading and ui loading. They are loaded in parallel, but we'll look at them one at a time.
 
-### UI-loading:
+#### UI-loading:
 
 1. For UI, you want to in head load the smallest CSS: that does the layout and will avoid layout jank.
 Leave the fonts out, since: the fonts have not loaded yet! 
@@ -114,7 +115,7 @@ loading their stuff before I even loaded my fonts.
 9. Now you can load DOM libs and interaction libs. There are no interactions that a user can do while page is still rendering. So don't load any of it ahead of FML.
 That is for UI-loading.
 
-### Data-loading:
+#### Data-loading:
 
 1. At the same time UI assets are loading, I'm loading things so I can do my fetch( or Ajax)
 It is important to start the fetch in head!
