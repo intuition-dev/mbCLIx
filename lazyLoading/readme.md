@@ -1,6 +1,8 @@
 
 # Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
 
+(story linked from https://medium.com/@uptimevic_21812/relative-performance-of-webpack-vs-modern-lazy-loading-w-jamstack-approach-and-future-of-d203ace8eee4?sk=edcadb65ebf9d3e6e1467cf03c245c60 )
+
 ### How to measure performance:
 Performance is important especially mobile users where they have limited bandwidth of how much can be loaded at once. And majority of users are using the web on their mobile 4g device.
 I am surprised by how many programmers are not leveraging the built into browsers tools: the network tab. The browser's developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience, based on their development machine. So lets look at the two approaches as distinct.
