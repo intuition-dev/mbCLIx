@@ -3,7 +3,7 @@
 
 1
 
-![70% center](us.png)
+![10% ](us.png)
 
 * 
 2
