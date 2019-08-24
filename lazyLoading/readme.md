@@ -2,30 +2,30 @@
 # Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
 
 ### How to measure performance:
-Performance is important - and more important for mobile users where they have limited bandwidth of how much can be loaded at once.
-I am surprised by how many programmers are not levering the built into browsers tools: the network tab. The browsers developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience on their development machine.
+Performance is important especially mobile users where they have limited bandwidth of how much can be loaded at once. And majority of users are using the web on their mobile 4g device.
+I am surprised by how many programmers are not leveraging the built into browsers tools: the network tab. The browser's developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience, based on their development machine. So lets look at the two approaches as distinct.
 
 ### Champion:
-We developers have been using Webpack for about 5-10 years, we used it to replace <script src="main.js"></script> all over the place. 
+We developers have been using Webpack for about 5-10 years, we used it to replace ```<script src="main.js"></script>``` all over the place. 
 IMO, Webpack approach is getting long on the tooth. Even when you try to mimic lazy load with Webpack you are much slower than apps using modern approaches.
 
 ### Challenger:
-JAMstack is a newer approach to developing, among other things leveraging edge/CDN. (One benefit of JAMstack: the https handshake that takes 4-6 round 
-trips is at the edge, and much closer to each end user; thus improving performance of each connection. Also, edge is much cheaper than origin - faster and cheaper works for me). For lazy loading dependencies I use depp.require(), from a tool released just last year ( https://github.com/muicss/johnnydepp/releases ).
+JAMstack is a newer approach to developing, among other things using the edge by leveraging a CDN. (One benefit of JAMstack: the https handshake that takes 4-6 round 
+trips is at the edge, and much closer to each end user; thus improving performance of each connection. Also, edge traffic is cheaper than origin - faster and cheaper works for me). For lazy loading dependencies I use ```depp.require()```, from a tool released just last year ( https://github.com/muicss/johnnydepp/releases ).
 
 Sample runtime code:
-
-depp.define({
-	'a': 'https://jsdeliver.com/libs/a.js'
-	'b': '/b.js'
-})
-depp.require('a', function() {
-	// we can do A
-	depp.require('b', function() {
-		// we can do B
+```
+	depp.define({
+		'a': 'https://jsdeliver.com/libs/a.js'
+		'b': '/b.js'
 	})
-})
-
+	depp.require('a', function() {
+		// we can do A
+		depp.require('b', function() {
+			// we can do B
+		})
+	})
+```
 You can see how tightly we can control what gets loaded when. So now that we can control loading, how should we maximite the performance of the 'first meaningful paint'(FML)?
 
 ### Comparison:
@@ -50,12 +50,12 @@ Again, not apples to apples, but it gives you the idea of how they would differ 
 
 ### Future of 'import':
 
-Best practice would be to use an import that works on a CDN, and can delay instantiating a class until requirements are ready.
+A best practice would be to use an import that works on a CDN, and can delay instantiating a class until requirements are ready.
 But that is not how imports work today. Fortunately, the spec writers are planing on an improved import spec coming out. 
 Once the new spec is set, we can start leveraging that. 
 
 
-### Can we have today use the future functionality of import? YES!:
+### Can we have *today* use the future functionality of import? YES!:
 
 We can today start using CDN loading dependencies, I do in my projects that leverage www.INTUITION.DEV. We use a factory pattern, here is how:
 
@@ -68,16 +68,18 @@ Instead create another static method to 'create', for example inst().
 
 [Example source code  ](https://github.com/intuition-dev/INTUITION/blob/master/examples/CRUD/www/models/CRUD1ViewModel.ts)
 
+<b>Best practice: each file should load it's own resources, but the popular source definitions can be centralized</b>
+
 
 ### Summary:
 
-As a manager you need to look at the app in the Developer Tools network Tab.
-And when you check the app on mobile: Don't use WiFi. 
-If you monitor the little things, the big things will take care of themselves. 
-And I would also consider converting an older Webpack Web App to JAMstack lazy loading to get the performance benefits.
+As a manager you need to look at the app in the Developer Tools network tab.
+And when you QA the app on mobile: Don't use WiFi!
+If you monitor the little things, the big things will take care of themselves performance wise.
+Also consider converting an older Webpack Web App to JAMstack lazy loading to get the performance benefits.
 
 
-## Deeper dive recipe:
+## Deeper dive recipe/tips:
 There are two things we need: data loading and ui loading. They are loaded in parallel, but we'll look at them one at a time.
 
 #### UI-loading:
@@ -128,9 +130,7 @@ Once both are done you can bind/show the data.
 So you see how you need to optimize both, ui-loading and data-loading to insure user experiences high performance.
 
 
-
-
-PS; If you have a webpack application that you are considering improving, you can reach out to me at www.MetaBake.NET. 
+<i>ps: If you have a webpack application that you are considering improving, you can reach out to me at www.MetaBake.NET</i>. 
 
 
 
