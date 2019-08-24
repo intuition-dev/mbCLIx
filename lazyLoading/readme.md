@@ -1,6 +1,16 @@
 
 # Relative performance of Webpack vs modern lazy loading w/JAMstack approaches, and future of 'import'
 
+1
+
+![70% center](us.png)
+
+* 
+2
+
+<img src="in.png" width="400"/>
+
+
 ## How to measure perforamnce:
 Performance is important - and more important for mobile users where they have limited bandwidth of how much can be loaded at once.
 I am surprised by how many programmers are not levering the built into browsers tools: the network tab. The browsers developer tools network tab will show you the performance of your application that the end user on a mobile device would have. To often programmers use their own experience on their development machine.
