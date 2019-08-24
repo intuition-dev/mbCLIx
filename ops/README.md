@@ -63,7 +63,7 @@ Of course everyone tests locally on IE 11, FF, iOS, Safari, Android, etc.
 
 ## Site tracking (Marketing)
 
-This is only used for websites, not webapps.
+This is only used for websites, not Web Apps.
 
 People often ask for Google Analytics. That is for full time marketing analysts only: whose jobs is full time use of it. 
 It is to be avoided.
@@ -103,7 +103,7 @@ These are 3 different things, but same vendor provides all 3, and waterfall:
 
 # Gold LEVEL
 
-##  Native/Hybrid WebApps
+##  Native/Hybrid Web Apps
 
  RUM.
 

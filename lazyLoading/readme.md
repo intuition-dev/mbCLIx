@@ -39,7 +39,7 @@ improve legibility is to in browser click the image and 'Open Image in new tab',
 
 Notice that it (https://ustadium.com) loads a 600kb and 700kb files first. Rendering can't start for 6 seconds when used with 4g.
 
-##### Modern lazy loading JAMStack:
+##### Modern lazy loading JAMStack example:
 
 <img src="in.png" width="80%"/>
 
@@ -74,14 +74,10 @@ Instead create another static method to 'create', for example inst().
 As a manager you need to look at the app in the Developer Tools network Tab.
 And when you check the app on mobile: Don't use WiFi. 
 If you monitor the little things, the big things will take care of themselves. 
-And I would also consider converting an older Webpack webapp to JAMstack lazy loading to get the performance benefits.
+And I would also consider converting an older Webpack Web App to JAMstack lazy loading to get the performance benefits.
 
 
-## Deeper dive:
-
-Here are a few recommendations:
-
-### Recipe:
+## Deeper dive recipe:
 There are two things we need: data loading and ui loading. They are loaded in parallel, but we'll look at them one at a time.
 
 #### UI-loading:

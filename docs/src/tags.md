@@ -43,7 +43,7 @@ Other:
 - component does update() (using virtual DOM as is current fad)
 - When possible make component as much attribute or dom based. eg yield, and again ... attributes over .js
 - CSS style could be scoped -  Scoped CSS :scope
-- Could be used in another webapps. eg: contact us.
+- Could be used in another Web Apps. eg: contact us.
 - There could be multiple instance of a component on a page.
 - Leverage component lifecycle events (eg mount) as needed.
 - Avoid component mixins. 

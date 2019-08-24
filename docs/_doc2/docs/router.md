@@ -34,7 +34,7 @@ Before doing app store, make sure that you have mounted your web app to S3 and h
    # and build
    mbake .
 
-   # now open your S3 web-app, whatever the S3 url is and make sure everything looks OK for mobile size and that console.re above is working.
+   # now open your S3 Web App, whatever the S3 url is and make sure everything looks OK for mobile size and that console.re above is working.
 
    # now use your IDE to edit each dat.yaml. Change ROO T: '' to instead be the S3 URL from above.
    mbake .

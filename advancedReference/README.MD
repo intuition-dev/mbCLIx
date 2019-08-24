@@ -52,6 +52,6 @@ S = sales, we = Foundation, II = B&M, III = Vista
 - [PhoneGap](http://docs.phonegap.com/references/phonegap-cli/create/)
 
 ## How to be a designer?!:
-- Please show me a website/webapp you like?
+- Please show me a website/Web App you like?
 The end, now use it as an inspiration.
 

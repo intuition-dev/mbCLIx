@@ -9,7 +9,7 @@
 
 2. Make sure your ROO T in dat.yaml points to the url. Also make sure you bring patience, PhoneGap takes a bit of time to get going the first time you learn it - like anything new.
 
-3. Now that you have build.phonegap.com ready AND you have an SPA web-app running in the cloud, you can deploy your custom web-app.
+3. Now that you have build.phonegap.com ready AND you have an SPA Web App running in the cloud, you can deploy your custom Web App.
 
 ```
    Zip the web app with the config.xml. Upload to build.phonegap.com

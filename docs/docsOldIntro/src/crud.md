@@ -1,5 +1,5 @@
 
-# Generate a serverless CRUD web-app.
+# Generate a serverless CRUD Web App.
 
 CRUD stands for create-read-update-delete. 
 
