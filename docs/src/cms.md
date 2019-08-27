@@ -32,14 +32,14 @@ CMS App was configured to make operations to some another site (eg: mounted CMS)
     - Copy file `config.yaml.example` in the folder `/cms/CMS`, rename it to `config.yaml`, it is necessarily change `appMount` field value to the path to your mounted folder with site from CDN. You can also change ports or admin password (optional).
 
 
-1. in folder `/cms/CMS` run command to install node_modules, compile them and run node:
+1. in folder `/cms/CMS` run command to install node_modules, compile them and run node.js:
     ```sh
     $ tsc
 
     $ node index.js 
     // or: 
     // $ nohup node index.js & 
-    // if you want node running after the terminal will be closed
+    // if you want node.js running after the terminal will be closed
     ```
 1. In folders `/cms/CMS/www` and `/cms/CMS/wwwAdmin` accordingly run command to compile pug:
     ```sh
@@ -95,7 +95,7 @@ In the Editors App there is functionality for editing `.md` and `.yaml` files, c
         let posts = new Posts();
 
     which is declared in `CMS/www/assets/js/general.js` file.
-    From this file we address to the `CMS/www/assets/js/services.js` file in which there are api requests to the node backend.
+    From this file we address to the `CMS/www/assets/js/services.js` file in which there are api requests to the node.js backend.
 
 
 In the [next tutorial ](/electron/) you will learn about Electron SPA.
