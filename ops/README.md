@@ -1,6 +1,6 @@
 ## DevOps
 
-Serverless means no (or few) back end developers and now Front End devs do DevOps. 
+Serverless means no (or few) back-end developers and now Front End devs do DevOps. 
 
 ## Normal release to production.
 

@@ -82,7 +82,7 @@ CMS App consists of two parts: Admin App and Editors App.
 
 ### Admin App
 
-1. In Admin App there is a functionality of CRUD end-users. It has front end in the `wwwAdmin` folder and backend written on Node Express.
+1. In Admin App there is a functionality of CRUD end-users. It has front-end in the `wwwAdmin` folder and backend written on Node Express.
 
 
 

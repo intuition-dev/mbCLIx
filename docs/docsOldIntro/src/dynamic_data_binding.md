@@ -2,7 +2,7 @@
 
 A Web App is just a dynamic website. This tutorial helps you understand an example of a serverless website. Whether you plan to build a Web App or not, this tutorial is a good foundation. 
 
-In this tutorial we cover these key concepts: appshell, includes, routes, custom tags, link lists, content lists, dependency management and serverless email. This includes dynamic databinding, where the browser ('client') uses data from a JSON response to dynamically render content _client-side_.
+In this tutorial we cover these key concepts: appshell, includes, routes, custom tags, link lists, content lists, dependency management and serverless email. This includes dynamic databinding, where the browser ('client') uses data from a JSON response to dynamically render content _front-end_.
 
 We assume that you have already installed the example `website` project as described [here](/pug_static_data/); generated with `$ mbake -s` and running on S3. 
 

@@ -18,5 +18,5 @@ dat.yaml has dual usage.
    cd CMS
    mbake -i .
 ```
-That generates an items.json file that you can client-side fetch(| axios), and bind dynamically.
+That generates an items.json file that you can front-end fetch(| axios), and bind dynamically.
 
