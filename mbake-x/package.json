@@ -23,8 +23,8 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.8.1",
-        "npm": ">=6.10.3"
+        "node": ">=12.9.1",
+        "npm": ">=6.11.2"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.3",
