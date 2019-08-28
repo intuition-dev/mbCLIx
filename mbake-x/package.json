@@ -1,6 +1,6 @@
 {
     "name": "mbake-x",
-    "version": "1.08.18",
+    "version": "1.08.28",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "main": "mbakeX.js",
     "bin": {
@@ -35,7 +35,7 @@
         "firebase-admin": "^8.4.0",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.8.21",
+        "mbake": ">=6.8.28",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
         "perfy": ">=1.1.5",
@@ -43,7 +43,7 @@
         "riot-compiler": "^3.6.0",
         "sharp": ">=0.23.0",
         "sitemap": ">=4.1.1",
-        "typescript": ">=3.5.3",
+        "typescript": ">=3.6.2",
         "unfluff": ">=3.2.0"
     },
     "bundledDependencies": [
@@ -64,8 +64,8 @@
         "ts-node": ">=8.3.0",
         "ttypescript": ">=1.5.7",
         "validate.js": ">=0.13.1",
-        "vega-transforms": ">=4.1.0",
-        "vega-util": ">=1.10.0",
+        "vega-transforms": ">=4.2.0",
+        "vega-util": ">=1.11.0",
         "bunyan": ">=1.8.12"
     }
 }
