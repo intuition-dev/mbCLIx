@@ -131,6 +131,9 @@ b) the ui is ready
 Once both are done you can bind/show the data.
 So you see how you need to optimize both, ui-loading and data-loading to insure user experiences high performance.
 
+### Full example:
+A full example of UI-loading and data-loading including syncing the two source code:
+- https://github.com/intuition-dev/INTUITION/tree/master/examples/CRUD/www
 
 <i>ps: If you have a webpack application that you are considering improving, you can reach out to me at www.MetaBake.NET</i>. 
 
