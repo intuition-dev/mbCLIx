@@ -70,7 +70,7 @@ Electron apps are normally SPA. Our example also in one page.
 
             script.
                 loadjs.ready(['services'], function () {
-                    let apiService = new ApiService();
+                    let apiService = new APIService();
                     apiService.getFeedData()
                     .then(feed => {
                         //console.info('feed.data.articles', feed.data.articles);
