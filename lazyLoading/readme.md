@@ -1,7 +1,8 @@
 
 # Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
 
-(story linked from https://medium.com/@uptimevic_21812/relative-performance-of-webpack-vs-modern-lazy-loading-w-jamstack-approach-and-future-of-d203ace8eee4?sk=edcadb65ebf9d3e6e1467cf03c245c60 )
+#### Please star our main project here:
+- https://github.com/intuition-dev/INTUITION
 
 ### How to measure performance:
 Performance is important especially mobile users where they have limited bandwidth of how much can be loaded at once. And majority of users are using the web on their mobile 4g device.
