@@ -69,6 +69,7 @@ People often ask for Google Analytics. That is for full time marketing analysts 
 It is to be avoided.
 
 - http://clicky.com . Click and Monitis can also do pints.
+- https://www.monitis.com . Here available Uptime monitors, to check if app is down.
 
 ## Errors
 
