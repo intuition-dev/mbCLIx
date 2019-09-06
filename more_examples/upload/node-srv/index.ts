@@ -3,6 +3,7 @@
 //declare let console: Console;
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
@@ -23,16 +24,16 @@ app.post('/upload', function (req, resp) {
 
    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
    let sampleFile = req.files.sampleFile;
-   uploadPath = 'tmp/' + sampleFile.name;
+   console.log('sampleFile: ', sampleFile, sampleFile.name, sampleFile.path);
+   uploadPath = __dirname + '/uploads/' + sampleFile.name
+   console.log('uploadPath: ', uploadPath);
 
    // Use the mv() method to place the file somewhere on your server
    sampleFile.mv(uploadPath, function (err) {
-      if (err)
+      if (err) 
          return resp.status(500).send(err);
-
-      resp.send('File uploaded!');
+      resp.send({status: "OK"});
    })
-
 });
 
 

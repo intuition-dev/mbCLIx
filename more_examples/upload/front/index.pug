@@ -6,30 +6,46 @@ html(lang='en')
       meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
       meta(name='title', content='Upload File')
 
-      script(src='https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js')
-      script(src='./assets/js/service.js')
+      link(rel='stylesheet', href= '//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.css')
+
       script(src='//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js')
+      script(src='//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.js')
    body
       h1 File Upload
-      form(action='upload', method="post", encType="multipart/form-data")#file-upload.dropzone
-         | Select file:
-         input(type='file', name='sampleFile', multiple='', id="file-upload-input")
-         input(type='submit')
+      .js-file-upload
 
       script.
-         let service = new Service()
 
+         initUpload();
 
-         $('#file-upload').on('submit', function(ev){
-            ev.preventDefault()
+         function initUpload() {
+            console.log('initUpload')
+            const uppy = Uppy.Core({
+                     debug: true,
+                     autoProceed: false,
+                     restrictions: {
+                        maxFileSize: 1000000,
+                        maxNumberOfFiles: 10,
+                        minNumberOfFiles: 1,
+                        allowedFileTypes: ['image/*', 'video/*']
+                     }
+               })
+               .use(Uppy.Dashboard, {
+                     inline: true,
+                     target: '.js-file-upload',
+                     metaFields: [
+                        { id: 'name', name: 'Name', placeholder: 'file name' },
+                        { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
+                     ],
+                     browserBackButtonClose: true
+               })
+               .use(Uppy.XHRUpload, { 
+                     endpoint: 'http://localhost:3001/upload',
+                     formData: true,
+                     fieldName: 'sampleFile'
+               });
 
-            let input = $('#file-upload-input')[0].files[0]
-            service.uploadFile(input)
-         })
-
-      style.
-         .dropzone {
-            border: 1px solid #d2d1d1;
-            padding: 16px;
-            border-radius: 4px;
+            uppy.on('complete', (result) => {
+               console.log('Upload complete! Files uploaded:', result.successful)
+            })
          }
