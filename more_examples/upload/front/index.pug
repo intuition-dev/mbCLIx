@@ -19,7 +19,9 @@ html(lang='en')
          initUpload();
 
          function initUpload() {
-            console.log('initUpload')
+            console.log('initUpload');
+            var endpointOrigin = window.location.protocol + '//' + window.location.hostname;
+
             const uppy = Uppy.Core({
                      debug: true,
                      autoProceed: false,
@@ -40,7 +42,7 @@ html(lang='en')
                      browserBackButtonClose: true
                })
                .use(Uppy.XHRUpload, { 
-                     endpoint: 'http://localhost:3001/upload',
+                     endpoint: endpointOrigin + ':3001/upload',
                      formData: true,
                      fieldName: 'sampleFile'
                });

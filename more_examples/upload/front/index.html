@@ -1,1 +1,52 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta content='width=device-width,initial-scale=1,shrink-to-fit=no' name='viewport'><meta content='Upload File' name='title'><link href='//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.css' rel='stylesheet'><script src='//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js'></script><script src='//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.js'></script></head><body><h1>File Upload</h1><div class='js-file-upload'></div><script>function initUpload(){Uppy.Core({debug:!0,autoProceed:!1,restrictions:{maxFileSize:1e6,maxNumberOfFiles:10,minNumberOfFiles:1,allowedFileTypes:['image/*','video/*']}}).use(Uppy.Dashboard,{inline:!0,target:'.js-file-upload',metaFields:[{id:'name',name:'Name',placeholder:'file name'},{id:'caption',name:'Caption',placeholder:'describe what the image is about'}],browserBackButtonClose:!0}).use(Uppy.XHRUpload,{endpoint:'http://localhost:3001/upload',formData:!0,fieldName:'sampleFile'}).on('complete',e=>{})}initUpload()</script><!-- mB v6.08.13 on 2019-09-06T13:54:10.655Z --></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Upload File">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.css">
+    <script src="//cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.slim.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/uppy@1.4.0/dist/uppy.min.js"></script>
+  </head>
+  <body>
+    <h1>File Upload</h1>
+    <div class="js-file-upload"></div>
+    <script>
+      initUpload();
+      
+      function initUpload() {
+         console.log('initUpload');
+         var endpointOrigin = window.location.protocol + '//' + window.location.hostname;
+      
+         const uppy = Uppy.Core({
+                  debug: true,
+                  autoProceed: false,
+                  restrictions: {
+                     maxFileSize: 1000000,
+                     maxNumberOfFiles: 10,
+                     minNumberOfFiles: 1,
+                     allowedFileTypes: ['image/*', 'video/*']
+                  }
+            })
+            .use(Uppy.Dashboard, {
+                  inline: true,
+                  target: '.js-file-upload',
+                  metaFields: [
+                     { id: 'name', name: 'Name', placeholder: 'file name' },
+                     { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
+                  ],
+                  browserBackButtonClose: true
+            })
+            .use(Uppy.XHRUpload, { 
+                  endpoint: endpointOrigin + ':3001/upload',
+                  formData: true,
+                  fieldName: 'sampleFile'
+            });
+      
+         uppy.on('complete', (result) => {
+            console.log('Upload complete! Files uploaded:', result.successful)
+         })
+      }
+    </script>
+  <!-- mB v6.08.13 on 2019-09-06T14:39:15.357Z --></body>
+</html>
