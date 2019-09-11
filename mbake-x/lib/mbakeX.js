@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.08.28';
+        return 'v1.09.11';
     }
     static date() {
         return new Date().toISOString();
@@ -274,7 +274,7 @@ class ImportFS {
                 fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
                     console.log(err);
                     const users = result.map(user => {
-                        return Object.assign(Object.assign({}, user), { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
+                        return Object.assign({}, user, { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
                     });
                     firebase.auth().importUsers(users, {
                         hash: {

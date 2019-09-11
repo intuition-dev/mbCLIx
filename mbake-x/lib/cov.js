@@ -138,11 +138,11 @@ class Cover {
         node.forEachChild(Cover._visitClass);
     }
 }
-exports.Cover = Cover;
 Cover.ids = {};
 Cover.tstList = {};
 Cover.clazzList = {};
 Cover.memberList = new Set([]);
+exports.Cover = Cover;
 module.exports = {
     Cover
 };
