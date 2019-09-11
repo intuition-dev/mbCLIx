@@ -23,7 +23,7 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.9.1",
+        "node": ">=12.10.0",
         "npm": ">=6.11.3"
     },
     "dependencies": {
