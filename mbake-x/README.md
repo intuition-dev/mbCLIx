@@ -1,18 +1,17 @@
 
-# MetaBake X extra
+# MetaBake X extras
 
 Are you sure you should do advanced?
 
 
-[Git Repo](http://git.mbake.org)
+## Install
+```sh
+yarn global add mbake-x
+```
 
-[Pug example](http://pug.mbake.org)
+
+[Git Repo](http://git.mbake.org)
 
 [INTUITION.DEV Home Page](https://www.INTUITION.DEV)
 
 
-# Release
-   - Update Version in package.json
-   - CHANGELOG.md
-   - `sh publish.sh`
-   - update versions.yaml after publish in https://github.com/intuition-dev/mbCLI

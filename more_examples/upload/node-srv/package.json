@@ -6,7 +6,8 @@
   "author": "",
   "license": "LGPL-3.0-only",
   "engines": {
-    "node": ">=12.10.0"
+    "node": ">=12.10.0",
+    "yarn": ">=1.17.3"
   },
   "dependencies": {
     "cors": ">=2.8.5",
