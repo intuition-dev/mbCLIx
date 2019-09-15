@@ -1,5 +1,5 @@
 
-# Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
+# Relative performance of Webpack, vs/ modern lazy loading w/JAMstack, w/ Pug approach; and future of 'import'
 
 #### Please star our main project here:
 - https://github.com/intuition-dev/INTUITION
@@ -13,7 +13,7 @@ We developers have been using Webpack for about 5-10 years, we used it to replac
 IMO, Webpack approach is getting long on the tooth. Even when you try to mimic lazy load with Webpack you are much slower than apps using modern approaches.
 
 ### Challenger:
-JAMstack is a newer approach to developing, among other things using the edge by leveraging a CDN. (One benefit of JAMstack: the https handshake that takes 4-6 round 
+JAMstack, w/ Pug is a newer approach to developing, among other things using the edge by leveraging a CDN. (One benefit of JAMstack, w/ Pug: the https handshake that takes 4-6 round 
 trips is at the edge, and much closer to each end user; thus improving performance of each connection. Also, edge traffic is cheaper than origin - faster and cheaper works for me). For lazy loading dependencies I use ```depp.require()```, from a tool released just last year ( https://github.com/muicss/johnnydepp/releases ).
 
 Sample runtime code:
@@ -79,7 +79,7 @@ Instead create another static method to 'create', for example inst().
 As a manager you need to look at the app in the Developer Tools network tab.
 And when you QA the app on mobile: Don't use WiFi!
 If you monitor the little things, the big things will take care of themselves performance wise.
-Also consider converting an older Webpack Web App to JAMstack lazy loading to get the performance benefits.
+Also consider converting an older Webpack Web App to JAMstack, w/ Pug lazy loading to get the performance benefits.
 
 
 ## Deeper dive recipe/tips:
@@ -98,7 +98,7 @@ loading the background image. I save 100ms by starting the load now.
 
 3. Also in head you need to load the spinner - in my case the spinner is built into BootStrap. I can show it if needed.
 And that's it, we can go to the body!
-Since JAMstack is static - the screen content is already at the edge. Also from SEO POV, SEO is graded on performance so we get a nice SEO score boost.
+Since JAMstack, w/ Pug is static - the screen content is already at the edge. Also from SEO POV, SEO is graded on performance so we get a nice SEO score boost.
 The body load should be very quick and we have our first FML.  (And I have not loaded fonts yet, font glyphs are quite large)
 
 4. If I'm using a component library or need poly fills - I load that in head. 

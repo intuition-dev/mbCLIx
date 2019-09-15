@@ -1,11 +1,11 @@
 
 
-Relative performance of Webpack, vs/ modern lazy loading w/JAMstack approach; and future of 'import'
+Relative performance of Webpack, vs/ modern lazy loading w/JAMstack, w/ Pug approach; and future of 'import'
 
 I wrote an article on the above topic in github, here is the link
 https://lazy.mbake.org
 
-In the article I compare performance of Webpack vs modern lazy loading w/JAMstack approach.
+In the article I compare performance of Webpack vs modern lazy loading w/JAMstack, w/ Pug approach.
 And I touch future of 'import' and show an advanced example of lazy loading. Plus I give tips on how to optimize performance.
 
 
