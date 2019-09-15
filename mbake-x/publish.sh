@@ -5,7 +5,9 @@ tsc
 npm publish
 #sudo npm i -g mbake --unsafe-perm=true --allow-root
 # if changed node version do this:
-# sudo 
+# sudo yarn global remove mbake-x
+
+
 
 # npm i -g mbake-x
 # mbake-x

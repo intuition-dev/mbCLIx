@@ -1,4 +1,4 @@
-### 1.09.11
+### 1.09.16
 - bump
 
 ### 1.08.18
@@ -18,7 +18,6 @@
 - prod is now --src
 
 ### 1.07.20
-- deprecate yarn: use npm
 - version bump of CLI
 
 ### 1.00.22

@@ -1,13 +1,13 @@
 {
     "name": "mbake-x",
-    "version": "1.09.11",
+    "version": "1.09.16",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "main": "mbakeX.js",
     "bin": {
         "mbake-x": "mbake-x.js"
     },
     "scripts": {
-        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install, yarn is not supported')\""
+        "preinstall11": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""
     },
     "license": "LGPL-3.0-only",
     "author": "http://www.INTUITION.DEV",
@@ -24,7 +24,7 @@
     ],
     "engines": {
         "node": ">=12.10.0",
-        "npm": ">=6.11.3"
+        "yarn": ">=1.17.3"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.3",
@@ -35,22 +35,18 @@
         "firebase-admin": "^8.5.0",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.9.15",
+        "mbake": ">=6.9.16",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
+        "node-sass": ">=4.12.0",
         "perfy": ">=1.1.5",
-        "probe-image-size": ">=4.1.1",
+        "probe-image-size": ">=5.0.0",
         "riot-compiler": "^3.6.0",
         "sharp": ">=0.23.0",
         "sitemap": ">=4.1.1",
         "typescript": ">=3.6.3",
         "unfluff": ">=3.2.0"
     },
-    "bundledDependencies": [
-        "mbake",
-        "node-firestore-import-export",
-        "firebase-admin"
-    ],
     "devDependencies": {
         "ip": ">=1.1.5",
         "@marp-team/marpit": ">=1.4.0",
