@@ -1,17 +1,14 @@
 
-# MetaBake X extras
-
-Are you sure you should do advanced?
+# MetaBake CLI X extras
 
 
 ## Install
 ```sh
-yarn global add mbake-x
+yarn global add mbakex
 ```
 
 
 [Git Repo](http://git.mbake.org)
 
-[INTUITION.DEV Home Page](https://www.INTUITION.DEV)
 
 

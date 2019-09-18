@@ -1,10 +1,9 @@
 {
-    "name": "mbake-x",
+    "name": "mbakex",
     "version": "1.09.16",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
-    "main": "mbakeX.js",
     "bin": {
-        "mbake-x": "mbake-x.js"
+        "mbakex": "mbakex.js"
     },
     "scripts": {
         "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""

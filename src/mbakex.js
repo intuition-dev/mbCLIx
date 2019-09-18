@@ -12,48 +12,48 @@ const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
 const cov_1 = require("./lib/cov");
 const cwd = process.cwd();
 function version() {
-    console.info('mbake-x CLI version: ' + mbakeX_1.MBakeX.verx());
+    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx());
 }
 function help() {
     console.info();
-    console.info('mbake-x CLI version: ' + mbakeX_1.MBakeX.verx());
+    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx());
     console.info('  your node version is ' + process.version);
     console.info('  from ' + __dirname);
     console.info();
     console.info('Usage: ');
     console.info('  For local watcher and server on port:');
-    console.info('    -p, --port to specify port for watcher:                    mbake-x -w . -p 8091 -r 9857');
+    console.info('    -p, --port to specify port for watcher:                    mbakex -w . -p 8091 -r 9857');
     console.info('     (must be used with -r)');
-    console.info('    -r, --reload-port to specify port for live reload :        mbake-x -w . --port=8091 --reload-port=9857');
+    console.info('    -r, --reload-port to specify port for live reload :        mbakex -w . --port=8091 --reload-port=9857');
     console.info();
-    console.info('  To bake with dev. ENV flag(1) in prod(default is 0):         mbake-x --bakeD .');
-    console.info('  To bake with staging ENV flag(2) in prod:                    mbake-x --bakeS .');
-    console.info('  To bake with production ENV flag(3) in prod:                 mbake-x --bakeP .');
+    console.info('  To bake with dev. ENV flag(1) in prod(default is 0):         mbakex --bakeD .');
+    console.info('  To bake with staging ENV flag(2) in prod:                    mbakex --bakeS .');
+    console.info('  To bake with production ENV flag(3) in prod:                 mbakex --bakeP .');
     console.info();
-    console.info('  Download fragment to setup the app devOps:                   mbake-x --ops .');
-    console.info('  Add|clone an item|page from:to :                             mbake-x --add dir:source:target');
+    console.info('  Download fragment to setup the app devOps:                   mbakex --ops .');
+    console.info('  Add|clone an item|page from:to :                             mbakex --add dir:source:target');
     console.info();
-    console.info('  To map map.yaml to sitemap.xml                               mbake-x -m .');
-    console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbake-x -i .');
+    console.info('  To map map.yaml to sitemap.xml                               mbakex -m .');
+    console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .');
     console.info();
-    console.info('  To process list.csv to list.json:                            mbake-x -l .');
-    console.info('  To download branch from git, in folder with gitdown.yaml:    mbake-x --gitDown .');
+    console.info('  To process list.csv to list.json:                            mbakex -l .');
+    console.info('  To download branch from git, in folder with gitdown.yaml:    mbakex --gitDown .');
     console.info('     passing the git password of gitdown user');
     console.info();
-    console.info('  To get a test coverage report of ViewModel and Test classes: mbake-x --cover ViewModelDir:TestDir');
+    console.info('  To get a test coverage report of ViewModel and Test classes: mbakex --cover ViewModelDir:TestDir');
     console.info();
-    console.info('  To recursively remove source files:                          mbake-x --src .');
+    console.info('  To recursively remove source files:                          mbakex --src .');
     console.info();
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
     console.info(' Starters:');
-    console.info('  For a Electron(pre-PhoneGap) app:                           mbake-x -e');
-    console.info('  For a starter hybrid Phonegap app:                          mbake-x -o');
+    console.info('  For a Electron(pre-PhoneGap) app:                           mbakex -e');
+    console.info('  For a starter hybrid Phonegap app:                          mbakex -o');
     console.info();
 }
 const optionDefinitions = [
-    { name: 'mbake-x', defaultOption: true },
+    { name: 'mbakex', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
     { name: 'version', alias: 'v', type: Boolean },
     { name: 'watcher', alias: 'w', type: Boolean },
@@ -77,12 +77,12 @@ const optionDefinitions = [
     { name: 'phonegap', alias: 'o', type: Boolean },
 ];
 const argsParsed = commandLineArgs(optionDefinitions);
-let arg = argsParsed['mbake-x'];
+let arg = argsParsed['mbakex'];
 console.info();
 FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(function (isCurrent_) {
     try {
         if (!isCurrent_)
-            console.log('There is a newer version of mbake-x, please update.');
+            console.log('There is a newer version of mbakex, please update.');
     }
     catch (err) {
         console.log(err);
