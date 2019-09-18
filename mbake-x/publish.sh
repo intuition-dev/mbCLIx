@@ -3,13 +3,13 @@
 tsc
 # node mbake-x.js
 npm publish
-#sudo npm i -g mbake --unsafe-perm=true --allow-root
+#sudo yarn global add  mbake --unsafe-perm=true --allow-root
 # if changed node version do this:
 # sudo yarn global remove mbake-x
 
 
 
-# npm i -g mbake-x
+# yarn global add  mbake-x
 # mbake-x
 
 # find . -type f -name 'package-lock.json' 

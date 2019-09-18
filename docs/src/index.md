@@ -34,7 +34,7 @@ See [Resources](/res/) for related projects.
 From a command line such as PowerShell, type:
 
 ```
-   $ npm i -gmbake
+   $ yarn global add mbake
 ```
 
 ## How to create a Hello World app with mbake
@@ -110,7 +110,7 @@ Serverless/Cloud V2, Mount and Pug are some of the pillars of MetaBake .
 ## tl;dr
 
 ```
-   $ npm i -gmbake
+   $ yarn global add mbake
    $ mbake
    $ mbake -v
    $ cd ModelView
