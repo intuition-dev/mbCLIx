@@ -9,7 +9,7 @@ npm publish
 
 
 
-# yarn global add  mbakex
-# mbakex
+yarn global add  mbakex
+mbakex
 
 # find . -type f -name 'package-lock.json' 
