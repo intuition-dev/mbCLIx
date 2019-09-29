@@ -1,6 +1,6 @@
 {
     "name": "mbakex",
-    "version": "1.09.16",
+    "version": "1.09.25",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
@@ -26,7 +26,7 @@
         "yarn": ">=1.17.3"
     },
     "dependencies": {
-        "@firebase/app-types": ">=0.4.3",
+        "@firebase/app-types": ">=0.4.4",
         "axios": ">=0.19.0",
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=2.0.4",
@@ -34,14 +34,14 @@
         "firebase-admin": ">=8.6.0",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.9.17",
+        "mbake": ">=6.9.25",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
         "node-sass": ">=4.12.0",
         "perfy": ">=1.1.5",
         "probe-image-size": ">=5.0.0",
         "riot-compiler": "^3.6.0",
-        "sharp": ">=0.23.0",
+        "sharp": ">=0.23.1",
         "sitemap": ">=4.1.1",
         "typescript": ">=3.6.3",
         "unfluff": ">=3.2.0"
@@ -49,7 +49,7 @@
     "devDependencies": {
         "ip": ">=1.1.5",
         "@marp-team/marpit": ">=1.4.0",
-        "@types/node": ">=12.7.5",
+        "@types/node": ">=12.7.8",
         "collect.js": ">=4.16.6",
         "csvtojson": ">=2.0.10",
         "datalib": ">=1.9.2",

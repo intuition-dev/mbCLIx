@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.09.16';
+        return 'v1.09.25';
     }
     static date() {
         return new Date().toISOString();
