@@ -97,7 +97,6 @@ To go extreme serverless, we show how to use mbake with
 
 ### Go extreme serverless following the steps (Tutorials):
 
-- [Mount webDAV on linux](/webdav_linux_mount/)
 - [Social SEO](/seo/)
 - [AMP](/amp/)
 - [Components](/tags/)
