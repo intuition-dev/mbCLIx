@@ -1,0 +1,24 @@
+
+<head>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <script src="/src/jquery.quicksilver.js"></script>
+  <script src="/src/jquery.simpleFAQ.js"></script>
+</head>
+<body>
+  <ul id="faqs">
+    <li>
+      <!-- Note that you MUST have the "question", "answer", and "tags" classes on these nodes-->
+      <p class="question">This is a question?</p>
+      <div class="answer">This is the answer.</div>
+      <p class="tags">tags, help, searching</p>
+    </li>
+  </ul>
+  <script>
+    $('#faqs').simpleFAQ({
+       slideSpeed: 100
+       }
+    )
+    
+  </script>
+  <link rel="stylesheet" href="/src/jquery.simpleFAQ.css"/>
+<!-- mB v4.16.12 on 2019-02-23T19:03:41.786Z --></body>

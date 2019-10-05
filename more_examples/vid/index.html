@@ -1,0 +1,81 @@
+
+<head>
+  <script>
+    var _start = Date.now()
+    window.ENV = '0' // for comps, but it is also in scape for Pug for ENV logic
+    
+  </script>
+  <title></title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <script src="//cdn.jsdelivr.net/npm/johnnydepp@0.1.0/dist/depp.min.js"></script>
+  <style>
+    html { touch-action: manipulation; }
+    .delayShowing { opacity: 0; }
+    .blur { -webkit-filter:blur(2px);filter:blur(2px); }
+    
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/metabake/metaCake@v2.0.5/toolBelt/toolBelt.min.js"></script>
+  <!--script(src='toolBelt.js')-->
+  <!--script(src='other.js')-->
+</head>
+<body>
+  <div id="vvid1">
+    <video id="vid1" preload="auto" loop="" muted=""></video>
+  </div>
+  <div id="vvid2">
+    <video id="vid2" preload="auto" loop="" muted=""></video>
+  </div>
+  <script>
+    depp.require(['hoverIntent', 'poly-wcomp', 'mediaelement'], function() {
+       console.log('vid?')
+       vid()
+    })
+    
+    function vid() {
+    
+       var player1 = new MediaElementPlayer('vid1', {
+          pauseOtherPlayers: false,
+          hideVideoControlsOnLoad: true,
+          hideVideoControlsOnPause: true,
+          controlsTimeoutMouseEnter: 500,
+          controlsTimeoutMouseLeave: 200,
+          success: function(media, node, instance) {
+             console.log('ready10')
+             instance.setSrc('small.mp4')
+             instance.play()
+          }//suc
+       })//play
+       $('#vvid1').hoverIntent(function(e){
+          console.log(11)
+          player1.setCurrentTime(0)
+          player1.play()
+       }, function(e){
+          console.log(10)
+          player1.pause()
+       })
+    
+       var player2 = new MediaElementPlayer('vid2', {
+          pauseOtherPlayers: false,
+          hideVideoControlsOnLoad: true,
+          hideVideoControlsOnPause: true,
+          controlsTimeoutMouseEnter: 500,
+          controlsTimeoutMouseLeave: 200,
+          success: function(media, node, instance) {
+             console.log('ready20')
+             instance.setSrc('small.mp4')
+             instance.play()
+          }//suc
+       })//play
+       $('#vvid2').hoverIntent(function(e){
+          console.log(21)
+          player2.setCurrentTime(0)
+          player2.play()
+       }, function(e){
+          console.log(20)
+          player2.pause()
+       })
+    
+    }//()
+  </script>
+<!-- mB v6.07.21 on 2019-07-19T12:52:58.587Z --></body>
