@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.09.25';
+        return 'v1.10.0';
     }
     static date() {
         return new Date().toISOString();
@@ -60,12 +60,11 @@ class GitDown {
         standard_input.setEncoding('utf-8');
         console.log("Please, enter your git password.");
         standard_input.on('data', (password) => {
-            if (password === 'exit\n') {
+            if (password == 'exit\n') {
                 console.log("Input failed.");
                 process.exit();
             }
             else {
-                console.log('password', password);
                 const last = pass_.lastIndexOf('/');
                 this.pass = password.replace(/\n/g, '');
                 this.dir = pass_.substring(0, last);
@@ -274,7 +273,7 @@ class ImportFS {
                 fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
                     console.log(err);
                     const users = result.map(user => {
-                        return Object.assign({}, user, { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
+                        return Object.assign(Object.assign({}, user), { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
                     });
                     firebase.auth().importUsers(users, {
                         hash: {

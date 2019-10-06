@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.09.25'
+      return 'v1.10.0'
    }
    static date(): string {
       return new Date().toISOString()
@@ -74,14 +74,13 @@ export class GitDown {
       console.log("Please, enter your git password.");
 
       // When user input data and click enter key.
-      standard_input.on('data', (password) => {
+      standard_input.on('data', (password:string) => {
 
          // User input exit.
-         if (password === 'exit\n') {
+         if (password == 'exit\n') {
             console.log("Input failed.");
             process.exit();
          } else {
-            console.log('password', password);
 
             const last = pass_.lastIndexOf('/')
             this.pass = password.replace(/\n/g, '');

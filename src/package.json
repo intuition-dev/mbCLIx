@@ -1,6 +1,6 @@
 {
     "name": "mbakex",
-    "version": "1.09.25",
+    "version": "1.10.0",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
@@ -23,7 +23,7 @@
     ],
     "engines": {
         "node": ">=12.11.0",
-        "yarn": ">=1.19.0"
+        "yarn": ">=1.17.3"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.4",
@@ -34,7 +34,7 @@
         "firebase-admin": ">=8.6.0",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.9.30",
+        "mbake": ">=6.10.0",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
         "node-sass": ">=4.12.0",
