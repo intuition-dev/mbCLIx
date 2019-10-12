@@ -1,8 +1,6 @@
 {
   "name": "MonitorSrv",
-  
-  "main": "index.js",
-
+ 
   "author": "MetaBake LLC",
 
   "engines": {

@@ -3,9 +3,14 @@ const URL = require('url')
 
 // from mbake
 import { BaseRPCMethodHandler, ExpressRPC } from "mbake/lib/Serv"
+import { MDB } from "./MDB"
 
+const m = new MDB()
+
+m.tst()
 
 // makes a configured express instance
+
 const serviceApp = new ExpressRPC()
 serviceApp.makeInstance(['*'])
 
@@ -21,4 +26,4 @@ serviceApp.routeRPC('monitor', 'monitor', (req, res) => {
 })
 
 
-serviceApp.listen(8888)
+// serviceApp.listen(8888)
