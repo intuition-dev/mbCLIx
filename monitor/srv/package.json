@@ -1,0 +1,20 @@
+{
+  "name": "MonitorSrv",
+  
+  "main": "index.js",
+
+  "author": "MetaBake LLC",
+
+  "engines": {
+      "node": ">=12.11.0",
+      "yarn": ">=1.19.0"
+    },
+
+  "dependencies": {
+    "mbake": ">=6.10.3"
+  },
+
+  "devDependencies": {
+    "@types/node": ">=12.7.12"
+  }
+}
