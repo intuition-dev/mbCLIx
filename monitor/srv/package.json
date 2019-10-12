@@ -12,6 +12,8 @@
 
   "dependencies": {
     "mbake": ">=6.10.3"
+    , "mysql2": ">=1.7.0"
+
   },
 
   "devDependencies": {
