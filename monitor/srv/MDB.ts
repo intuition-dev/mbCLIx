@@ -1,41 +1,35 @@
 
 
+
 export class MDB {
 
-    static mysql = require('mysql2/promise')
+    static pool
 
-    static pool 
+    static uuid = require('uuid/v4')
 
     constructor() {
-        MDB.pool = MDB.mysql.createPool({
-            host: 'localhost',
-            user: 'root',
-            password : '123123',
-            database: 'db1',
-
-            waitForConnections: true,
-            connectionLimit: 10,
-            queueLimit: 0
-        })
+   
+   
     }
 
-    schema() {
+    schema() { `
+// using C locale
+CREATE UNLOGGED TABLE mon2 (
+    guid        UUID NOT NULL,
+    data        jsonb NOT NULL,
+    dt          TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (guid)
+)
 
-    }
+CREATE INDEX ihostd ON mon1((data->>'host'), dt) 
+
+`    }
 
     async tst() {
 
-        const ret = await MDB.pool.execute('SELECT 1 + 1 AS solution')
 
-        const rows = ret[0]
-
-        const row = rows[0]
-
-        console.log(row)
-        console.log(Object.keys(row))
 
         console.log('OK')
-
         process.exit()
     }
 }//()
