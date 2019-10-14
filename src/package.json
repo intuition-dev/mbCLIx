@@ -26,15 +26,15 @@
         "yarn": ">=1.17.3"
     },
     "dependencies": {
-        "@firebase/app-types": ">=0.4.4",
+        "@firebase/app-types": ">=0.4.5",
         "axios": ">=0.19.0",
         "cheerio": ">=1.0.0-rc.2",
-        "execa": ">=2.0.5",
+        "execa": ">=2.1.0",
         "filehound": ">=1.17.3",
         "firebase-admin": ">=8.6.0",
         "fs-extra": ">=8.1.0",
         "is": ">=3.3.0",
-        "mbake": ">=6.10.0",
+        "mbake": ">=6.10.5",
         "node-firestore-import-export": ">=0.14.0",
         "node-summarizer": ">=1.0.7",
         "node-sass": ">=4.12.0",
@@ -42,15 +42,15 @@
         "probe-image-size": ">=5.0.0",
         "riot-compiler": "^3.6.0",
         "sharp": ">=0.23.1",
-        "sitemap": ">=4.1.1",
-        "typescript": ">=3.6.3",
+        "sitemap": ">=5.0.0",
+        "typescript": ">=3.6.4",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {
         "ip": ">=1.1.5",
         "@marp-team/marpit": ">=1.4.0",
-        "@types/node": ">=12.7.11",
-        "collect.js": ">=4.16.6",
+        "@types/node": ">=12.7.12",
+        "collect.js": ">=4.18.1",
         "csvtojson": ">=2.0.10",
         "datalib": ">=1.9.2",
         "handbrake-js": ">=4.0.0",
@@ -59,8 +59,8 @@
         "ts-node": ">=8.4.1",
         "ttypescript": ">=1.5.7",
         "validate.js": ">=0.13.1",
-        "vega-transforms": ">=4.4.0",
-        "vega-util": ">=1.11.2",
+        "vega-transforms": ">=4.4.2",
+        "vega-util": ">=1.12.0",
         "bunyan": ">=1.8.12"
     }
 }
