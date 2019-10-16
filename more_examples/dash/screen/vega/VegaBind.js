@@ -12,7 +12,7 @@ class VegaBind {
       Promise.all([this.vegaViewModel.read()])
          .then(function () {
 
-            const data = new Array.from(_this.vegaViewModel.getViewChart());
+            const data = _this.vegaViewModel.getViewChart();
 
             depp.require(['vega'], function () {
 
@@ -32,6 +32,8 @@ class VegaBind {
    }
 
    getSpec() {
+      //config of vega
+      //consist of 5 main groups: data, signals, scales, axes and marks
       return {
          "width": 600,
          "height": 200,
@@ -41,6 +43,7 @@ class VegaBind {
                "name": "table",
                "values": []
             }],
+         //signals is dynamic variables that helps setup click, hover etc.
          "signals": [
             {
                "name": "tooltip",
@@ -55,15 +58,32 @@ class VegaBind {
                      "update": "{}"
                   }
                ]
-            }
+            },
+            {
+               "name": "clickBar",
+               "value": "category",
+               "on": [
+                  {
+                     "events": "click!",
+                     "update": "invert('xscale', x())"
+                  }
+               ]
+            },
          ],
+         //scales map data values(number, categories, etc.) to visual values(pixels)
          "scales": [
             {
-               "name": "xscale",
+               "name": "xscale", //x axes
                "type": "band",
                "domain": {
                   "data": "table",
                   "field": "category"
+                  //the name of the field in data
+                  /*
+                  {
+                     "category": "A",
+                     "amount": 28
+                  },*/
                },
                "range": "width",
                "padding": 0.05,
@@ -79,6 +99,8 @@ class VegaBind {
                "range": "height"
             }
          ],
+
+         //setting up the axes
          "axes": [
             {
                "orient": "bottom",
@@ -89,12 +111,18 @@ class VegaBind {
                "scale": "yscale"
             }
          ],
+
+         //Graphical marks visually encode data using geometric primitives such as rectangles, lines etc.
          "marks": [
             {
-               "type": "rect",
+               "type": "rect", //describing the rectangle
                "from": {
-                  "data": "table"
+                  "data": "table" //where this data - > table (line 41)
                },
+
+               //Each mark supports a set of visual encoding properties that determine the position and appearance of mark
+               //enter is the basic styling
+               //update reacts to clicks
                "encode": {
                   "enter": {
                      "x": {
@@ -112,21 +140,24 @@ class VegaBind {
                      "y2": {
                         "scale": "yscale",
                         "value": 0
-                     }
-                  },
-                  "update": {
+                     },
                      "fill": {
                         "value": "steelblue"
                      }
                   },
+                  "update": {
+                     "fill": {
+                        "signal": "clickBar == datum.category ? 'black': 'steelblue'"
+                     }
+                  },
                   "hover": {
                      "fill": {
-                        "value": "red"
+                        "value": "#2f6089"
                      }
                   }
                }
             },
-            {
+            {  //mark of the text, that will describe how it will be shown on the chart: position, color, etc
                "type": "text",
                "encode": {
                   "enter": {
