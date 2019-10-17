@@ -22,8 +22,8 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.11.0",
-        "yarn": ">=1.17.3"
+        "node": ">=12.12.0",
+        "yarn": ">=1.19.1"
     },
     "dependencies": {
         "@firebase/app-types": ">=0.4.5",
