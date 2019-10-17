@@ -135,8 +135,7 @@ export class GitDown {
 
       fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() })
       console.log('DONE!')
-      console.log('Maybe time to make/bake', dirTo)
-      console.log('and then point http server to', dirTo)
+
       console.log()
       process.exit()
    }
