@@ -1,12 +1,12 @@
 {
     "name": "mbakex",
-    "version": "1.10.1",
+    "version": "1.10.2",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
     },
     "scripts": {
-        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""
+        "p1reinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use yarn to install, npm is not supported')\""
     },
     "license": "LGPL-3.0-only",
     "author": "http://www.INTUITION.DEV",
