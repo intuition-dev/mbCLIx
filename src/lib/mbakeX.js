@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.10.0';
+        return 'v1.10.1';
     }
     static date() {
         return new Date().toISOString();
@@ -110,8 +110,6 @@ class GitDown {
         console.log();
         fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
         console.log('DONE!');
-        console.log('Maybe time to make/bake', dirTo);
-        console.log('and then point http server to', dirTo);
         console.log();
         process.exit();
     }

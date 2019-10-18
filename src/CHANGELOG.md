@@ -1,6 +1,6 @@
 - new version of execa. This may affect gitdown
 
-### 1.10.0
+### 1.10.1
 - bump
 
 ### 1.09.16
