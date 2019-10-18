@@ -3,6 +3,13 @@
 # Likely backup to a mounted NAS as tar.gz. 
 # In addition this may make your git password visible to other users of the computer you run gitdown command on.
 
+# with repo_owner
+REPO: 'github.com/ckvenich'
+PROJECT: rev
+# * Irregular flow would be that you have a bug in prod, but you don't want a new full release, just that bug fixed. So staging shoulb be the old production branch.
+# And dev then is the staging new staging branch - allowing QA of both the new features, and bugs so that production does not regress.
+
+
 # This folder will be deleted. And replaced with fresh code from the specified branch
 LOCALFolder: 'adminA'
 # LOCALFolder: 'dashB'
@@ -23,9 +30,3 @@ REPOFolder: 'al-admin'
 # used to deploy in cloud, no use in local dev env.
 LOGINName: 'ckvenich'
 # LOGINName: 'mlikyants'
-
-# with repo_owner
-REPO: 'github.com/ckvenich'
-PROJECT: rev
-# * Irregular flow would be that you have a bug in prod, but you don't want a new full release, just that bug fixed. So staging shoulb be the old production branch.
-# And dev then is the staging new staging branch - allowing QA of both the new features, and bugs so that production does not regress.
