@@ -1,4 +1,5 @@
 - new version of execa. This may affect gitdown
+- removed firebase
 
 ### 1.10.2
 - bump

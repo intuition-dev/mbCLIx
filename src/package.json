@@ -48,13 +48,11 @@
         "@marp-team/marpit": ">=1.4.1",
         "@types/node": ">=12.11.1",
         "csvtojson": ">=2.0.10",
-        "datalib": ">=1.9.2",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
         "ts-node": ">=8.4.1",
         "ttypescript": ">=1.5.7",
         "validate.js": ">=0.13.1",
-
         "bunyan": ">=1.8.12"
     }
 }
