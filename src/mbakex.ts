@@ -8,7 +8,7 @@ import { Wa } from 'mbake/lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, MBakeX } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
-import { GitDown, ExportFS, ImportFS  } from './lib/mbakeX'
+import { GitDown  } from './lib/mbakeX'
 import { CSV2Json, DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
@@ -69,8 +69,7 @@ function help() {
 
 
    /* undocumented features
-   console.info('  To process Pug and RIOT *-comp.pug components:               mbakex -c .')
-   console.info('    -c also does regular mbake of Pug, not just comps.')
+
    console.info()
    console.info('  To export FiresStore data, it needs two arguments separated ')
    console.info('   with ":" :                                                  mbakex --exportFS serviceAccountKey:name_of_the_file:name_of_the_file_for_auth_data')
@@ -145,13 +144,6 @@ function cover(arg) {
    Cover.run(VMdir, TestDir)
 }
 
-function exportFS(arg) {
-   let ef = new ExportFS(arg)
-}//()
-
-function importFS(arg) {
-   let ef = new ImportFS(arg)
-}//()
 
 function frag(arg) {
    new DownloadFrag(arg, true)
@@ -281,10 +273,6 @@ if (argsParsed.comps) {
       git(arg)
    else if (argsParsed.add)
       add(arg)
-   else if (argsParsed.exportFS)
-      exportFS(arg)
-   else if (argsParsed.importFS)
-      importFS(arg)
    else if (argsParsed.cover)
       cover(arg)
    else if (argsParsed.version)

@@ -1,11 +1,4 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
@@ -46,8 +39,6 @@ class MBakeX {
 exports.MBakeX = MBakeX;
 const sharp = require("sharp");
 const probe = require("probe-image-size");
-const node_firestore_import_export_1 = require("node-firestore-import-export");
-const firebase = __importStar(require("firebase-admin"));
 const execa = require('execa');
 const logger = require('tracer').console();
 const FileHound = require("filehound");
@@ -198,110 +189,6 @@ class Resize {
     }
 }
 exports.Resize = Resize;
-class ExportFS {
-    constructor(config) {
-        this.users = [];
-        this.args = config.split(':');
-        this.serviceAccountConfig = this.args[0];
-        this.pathToDataExportFile = this.args[1];
-        this.pathToAuthExportFile = this.args[2];
-        this.config = require(this.serviceAccountConfig + '.json');
-        firebase.initializeApp({
-            credential: firebase.credential.cert(this.config),
-        });
-        this.collectionRef = firebase.firestore();
-        this.listAllUsers();
-    }
-    export() {
-        node_firestore_import_export_1.firestoreExport(this.collectionRef)
-            .then(data => {
-            console.log(data);
-            console.log(this.users);
-            fs.writeJsonSync(this.pathToDataExportFile + '.json', data, 'utf8');
-            fs.writeJsonSync(this.pathToAuthExportFile + '.json', this.users, 'utf8');
-            process.exit();
-        });
-    }
-    listAllUsers(nextPageToken) {
-        const listUsersArguments = [1000];
-        if (nextPageToken) {
-            listUsersArguments.push(nextPageToken);
-        }
-        firebase.auth().listUsers(...listUsersArguments)
-            .then((listUsersResult) => {
-            listUsersResult.users.forEach(user => {
-                this.users.push(user.toJSON());
-            });
-            console.log('-------------------------- this.users', this.users);
-            if (listUsersResult.pageToken) {
-                this.listAllUsers(listUsersResult.pageToken);
-            }
-            else {
-                this.export();
-            }
-        })
-            .catch(function (error) {
-            console.log(error);
-            process.exit();
-        });
-    }
-}
-exports.ExportFS = ExportFS;
-class ImportFS {
-    constructor(config) {
-        this.args = config.split(':');
-        this.serviceAccountConfig = this.args[0];
-        this.dir = this.serviceAccountConfig.substr(0, this.serviceAccountConfig.lastIndexOf("/"));
-        this.pathToDatabaseImportedFile = this.args[1];
-        this.pathToAuthImportedFile = this.args[2];
-        this.config = require(this.serviceAccountConfig + '.json');
-        firebase.initializeApp({
-            credential: firebase.credential.cert(this.config),
-        });
-        this.collectionRef = firebase.firestore();
-        this.import();
-    }
-    import() {
-        let _this = this;
-        fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, importData) => {
-            console.log(err);
-            node_firestore_import_export_1.firestoreImport(importData, _this.collectionRef)
-                .then(() => {
-                console.log('Data was imported.');
-                fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
-                    console.log(err);
-                    const users = result.map(user => {
-                        return Object.assign(Object.assign({}, user), { passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) });
-                    });
-                    firebase.auth().importUsers(users, {
-                        hash: {
-                            algorithm: 'STANDARD_SCRYPT',
-                            memoryCost: 1024,
-                            parallelization: 16,
-                            blockSize: 8,
-                            derivedKeyLength: 64
-                        }
-                    })
-                        .then((userImportResult) => {
-                        console.log('Users Data was imported.');
-                        userImportResult.errors.forEach((indexedError) => {
-                            console.log(' failed to import', indexedError.error);
-                        });
-                        process.exit();
-                    })
-                        .catch((error) => {
-                        console.log('error', error);
-                        process.exit();
-                    });
-                });
-            }).catch(e => {
-                console.log(e);
-                process.exit();
-            });
-        });
-    }
-}
-exports.ImportFS = ImportFS;
 module.exports = {
-    Resize, ExportFS, ImportFS, GitDown, MBakeX
+    Resize, GitDown, MBakeX
 };

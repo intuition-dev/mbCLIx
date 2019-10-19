@@ -45,8 +45,7 @@ export class MBakeX {
 
 import sharp = require('sharp')
 import probe = require('probe-image-size')
-import { firestoreExport, firestoreImport } from 'node-firestore-import-export';
-import * as firebase from 'firebase-admin';
+
 
 const execa = require('execa')
 
@@ -269,148 +268,7 @@ export class Resize {
 
 }//class
 
-// //////////////////////////////////////////////////////////////////
-export class ExportFS {
-   args: string;
-   serviceAccountConfig: string;
-   collectionRef: any;
-   pathToDataExportFile: string;
-   pathToAuthExportFile: string;
-   config: string;
-   users: any = [];
-
-   constructor(config) {
-      this.args = config.split(':');
-      this.serviceAccountConfig = this.args[0];
-      this.pathToDataExportFile = this.args[1];
-      this.pathToAuthExportFile = this.args[2];
-      this.config = require(this.serviceAccountConfig + '.json');
-
-      firebase.initializeApp({
-         credential: firebase.credential.cert(this.config),
-      });
-
-      this.collectionRef = firebase.firestore();
-
-      this.listAllUsers();
-   }//()
-
-   export() {
-      firestoreExport(this.collectionRef)
-         .then(data => {
-            console.log(data)
-            console.log(this.users)
-            fs.writeJsonSync(this.pathToDataExportFile + '.json', data, 'utf8');
-            fs.writeJsonSync(this.pathToAuthExportFile + '.json', this.users, 'utf8');
-            process.exit();
-         });
-   }
-
-   listAllUsers(nextPageToken?) {
-      const listUsersArguments = [1000];
-
-      if (nextPageToken) {
-         listUsersArguments.push(nextPageToken);
-      }
-
-      firebase.auth().listUsers(...listUsersArguments)
-         .then((listUsersResult) => {
-            listUsersResult.users.forEach(user => {
-               this.users.push(user.toJSON())
-            });
-            console.log('-------------------------- this.users', this.users)
-
-            if (listUsersResult.pageToken) {
-               this.listAllUsers(listUsersResult.pageToken);
-            } else {
-               this.export();
-            }
-         })
-         .catch(function (error) {
-            console.log(error);
-            process.exit();
-         });
-   }
-}
-
-export class ImportFS {
-   args: string;
-   config: string;
-   dir: string;
-   authConfig: any;
-   collectionRef: any;
-   pathToData: string;
-   serviceAccountConfig: string;
-   pathToDatabaseImportedFile: string;
-   pathToAuthImportedFile: string;
-
-   constructor(config) {
-      this.args = config.split(':');
-      this.serviceAccountConfig = this.args[0];
-      this.dir = this.serviceAccountConfig.substr(0, this.serviceAccountConfig.lastIndexOf("/"));
-      this.pathToDatabaseImportedFile = this.args[1];
-      this.pathToAuthImportedFile = this.args[2];
-      this.config = require(this.serviceAccountConfig + '.json');
-      // this.authConfig = require(this.dir + '/auth_key_salt_separator.json');
-
-      firebase.initializeApp({
-         credential: firebase.credential.cert(this.config),
-      });
-
-      this.collectionRef = firebase.firestore()
-      this.import();
-   }//()
-
-   import() {
-      let _this = this
-      fs.readJson(this.pathToDatabaseImportedFile + '.json', (err, importData) => {
-         console.log(err);
-
-         firestoreImport(importData, _this.collectionRef)
-            .then(() => {
-               console.log('Data was imported.');
-
-               fs.readJson(this.pathToAuthImportedFile + '.json', (err, result) => {
-                  console.log(err);
-
-                  // Converting user passwords to buffers
-                  const users = result.map(user => {
-                     // console.log(user.passwordSalt, this.authConfig.saltSeparator)
-                     return { ...user, passwordHash: Buffer.from(user.passwordHash), passwordSalt: Buffer.from(user.passwordSalt) }
-                  });
-
-                  firebase.auth().importUsers(users, {
-                     hash: {
-                        // key: Buffer.from(this.authConfig.key, 'base64'),
-                        // saltSeparator: Buffer.from(this.authConfig.saltSeparator),
-                        algorithm: 'STANDARD_SCRYPT',
-                        memoryCost: 1024,
-                        parallelization: 16,
-                        blockSize: 8,
-                        derivedKeyLength: 64
-                     }
-                  })
-                     .then((userImportResult) => {
-                        console.log('Users Data was imported.');
-
-                        userImportResult.errors.forEach((indexedError) => {
-                           console.log(' failed to import', indexedError.error);
-                        });
-                        process.exit();
-                     })
-                     .catch((error) => {
-                        console.log('error', error)
-                        process.exit();
-                     });
-               })
-            }).catch(e => {
-               console.log(e)
-               process.exit();
-            });
-      })
-   }
-}
 
 module.exports = {
-   Resize, ExportFS, ImportFS, GitDown, MBakeX
+   Resize, GitDown, MBakeX
 }

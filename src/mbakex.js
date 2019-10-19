@@ -97,12 +97,6 @@ function cover(arg) {
     const TestDir = res[1];
     cov_1.Cover.run(VMdir, TestDir);
 }
-function exportFS(arg) {
-    let ef = new mbakeX_2.ExportFS(arg);
-}
-function importFS(arg) {
-    let ef = new mbakeX_2.ImportFS(arg);
-}
 function frag(arg) {
     new FileOpsExtra_1.DownloadFrag(arg, true);
 }
@@ -212,10 +206,6 @@ else if (argsParsed.gitDown)
     git(arg);
 else if (argsParsed.add)
     add(arg);
-else if (argsParsed.exportFS)
-    exportFS(arg);
-else if (argsParsed.importFS)
-    importFS(arg);
 else if (argsParsed.cover)
     cover(arg);
 else if (argsParsed.version)
