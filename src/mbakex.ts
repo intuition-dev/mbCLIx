@@ -67,17 +67,6 @@ function help() {
 
    console.info()
 
-
-   /* undocumented features
-
-   console.info()
-   console.info('  To export FiresStore data, it needs two arguments separated ')
-   console.info('   with ":" :                                                  mbakex --exportFS serviceAccountKey:name_of_the_file:name_of_the_file_for_auth_data')
-   console.info('  To import FireStore data, it needs two arguments separated  ')
-   console.info('  with ":":                                                    mbakex --importFS serviceAccountKey:name_of_exported_file:name_of_the_auth_data_exported_file')
-   console.info()
-
-   */
 }//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +82,6 @@ const optionDefinitions = [
    { name: 'reload-port', alias: 'r', type: String },
 
    { name: 'src', type: Boolean },
-   { name: 'comps', alias: 'c', type: Boolean },
 
    { name: 'bakeP', type: Boolean },
    { name: 'bakeS', type: Boolean },
@@ -185,13 +173,6 @@ function img(arg) {
    new Resize().do(arg)
 }
 
-function comps(arg) {
-   let pro: Promise<string> = new MBake().compsNBake(arg, 0)
-   pro.then(function (val) {
-      console.log(val)
-      
-   })
-}
 
 function src(arg) {
    new MBakeX().clearSrc(arg)
@@ -238,14 +219,7 @@ if (arg) {
 }
 
 // start: /////////////////////////////////////////////////////////////////////////////////////
-if (argsParsed.comps) {
-   try {
-      comps(arg)
-   } catch (err) {
-      console.info(err)
-   }
-} else
-   if (argsParsed.elect)
+if (argsParsed.elect)
       unzipE()
    else if (argsParsed.phonegap)
       unzipG()

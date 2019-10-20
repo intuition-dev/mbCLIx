@@ -60,7 +60,6 @@ const optionDefinitions = [
     { name: 'port', alias: 'p', type: String },
     { name: 'reload-port', alias: 'r', type: String },
     { name: 'src', type: Boolean },
-    { name: 'comps', alias: 'c', type: Boolean },
     { name: 'bakeP', type: Boolean },
     { name: 'bakeS', type: Boolean },
     { name: 'bakeD', type: Boolean },
@@ -127,12 +126,6 @@ function map(arg) {
 function img(arg) {
     new mbakeX_1.Resize().do(arg);
 }
-function comps(arg) {
-    let pro = new Base_1.MBake().compsNBake(arg, 0);
-    pro.then(function (val) {
-        console.log(val);
-    });
-}
 function src(arg) {
     new mbakeX_1.MBakeX().clearSrc(arg);
 }
@@ -170,15 +163,7 @@ if (arg) {
         arg = cwd + '/' + arg;
     }
 }
-if (argsParsed.comps) {
-    try {
-        comps(arg);
-    }
-    catch (err) {
-        console.info(err);
-    }
-}
-else if (argsParsed.elect)
+if (argsParsed.elect)
     unzipE();
 else if (argsParsed.phonegap)
     unzipG();
