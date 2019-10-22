@@ -1,7 +1,6 @@
-base lib
+ lib
 package,
 change notes
 versions
-
 
 Note: if changed node version you may need to do this first:  `yarn global remove mbakex`

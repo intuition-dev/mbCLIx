@@ -1,3 +1,6 @@
+### 1.10.4
+- bump
+
 ### 1.10.3
 - new version of execa. This may affect gitdown
 - removed firebase
