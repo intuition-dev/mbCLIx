@@ -60,6 +60,7 @@ class Scrape {
         });
     }
     s(url, selector) {
+        const THIZ = this;
         return new Promise(function (resolve, reject) {
             try {
                 console.info(url);
@@ -72,17 +73,17 @@ class Scrape {
                     let full_text = textTags.text();
                     let img = [];
                     $('img').each(function () {
-                        img.push($(this).attr('src'));
+                        img.push($(THIZ).attr('src'));
                     });
                     ret['img'] = img;
                     let video = [];
                     $('video').each(function () {
-                        video.push($(this).attr('src'));
+                        video.push($(THIZ).attr('src'));
                     });
                     ret['video'] = video;
                     let a = [];
                     $('a').each(function () {
-                        let href = $(this).attr('href');
+                        let href = $(THIZ).attr('href');
                         if (href.includes('javascript:'))
                             return;
                         if (href.includes('mailto:'))

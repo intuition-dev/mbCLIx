@@ -92,6 +92,7 @@ export class Scrape {
 
    // most likely write to dat.yaml after folder is named
    s(url:string, selector?:string) {
+      const THIZ:Scrape = this
       return new Promise(function (resolve, reject) {
          try {
             console.info(url)
@@ -104,17 +105,17 @@ export class Scrape {
                let full_text = textTags.text()
                let img = []
                $('img').each(function(){
-                 img.push($(this).attr('src'))
+                 img.push($(THIZ).attr('src'))
                })
                ret['img'] = img
                let video = []
                $('video').each(function(){
-                  video.push($(this).attr('src'))
+                  video.push($(THIZ).attr('src'))
                })
                ret['video'] = video
                let a = []
                $('a').each(function(){
-                 let href:string =  $(this).attr('href')
+                 let href:string =  $(THIZ).attr('href')
                  if(href.includes('javascript:')) return
                  if(href.includes('mailto:')) return
                  var n = href.indexOf('?')
