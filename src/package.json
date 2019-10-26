@@ -1,11 +1,10 @@
 {
     "name": "mbakex",
-    "version": "1.10.4",
+    "version": "1.10.5",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
     },
-
     "license": "LGPL-3.0-only",
     "author": "http://www.INTUITION.DEV",
     "homepage": "http://www.INTUITION.DEV",
@@ -20,7 +19,7 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.13.0"
+        "node": ">=13.0.1"
     },
     "dependencies": {
         "axios": ">=0.19.0",
@@ -33,21 +32,20 @@
         "node-summarizer": ">=1.0.7",
         "perfy": ">=1.1.5",
         "probe-image-size": ">=5.0.0",
-        "sharp": ">=0.23.1",
         "sitemap": ">=5.0.1",
         "typescript": ">=3.6.4",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {
-        "ip": ">=1.1.5",
         "@marp-team/marpit": ">=1.4.1",
         "@types/node": ">=12.11.7",
+        "bunyan": ">=1.8.12",
         "csvtojson": ">=2.0.10",
+        "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
         "ts-node": ">=8.4.1",
         "ttypescript": ">=1.5.7",
-        "validate.js": ">=0.13.1",
-        "bunyan": ">=1.8.12"
+        "validate.js": ">=0.13.1"
     }
 }

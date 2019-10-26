@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.10.4'
+      return 'v1.10.5'
    }
    static date(): string {
       return new Date().toISOString()
@@ -43,7 +43,8 @@ export class MBakeX {
 
 }
 
-import sharp = require('sharp')
+// import sharp = require('sharp')
+
 import probe = require('probe-image-size')
 
 
@@ -242,7 +243,9 @@ export class Resize {
       return false
    }
 
+
    smaller(file) {
+      /*
       logger.info(file)
       if (!this.isWide(file)) return
       sharp(file + '.jpg')
@@ -264,6 +267,7 @@ export class Resize {
          })
          .toFile(file + '.32.min.jpg')
 
+   */
    }//()
 
 }//class

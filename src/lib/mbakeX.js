@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.10.4';
+        return 'v1.10.5';
     }
     static date() {
         return new Date().toISOString();
@@ -37,7 +37,6 @@ class MBakeX {
     }
 }
 exports.MBakeX = MBakeX;
-const sharp = require("sharp");
 const probe = require("probe-image-size");
 const execa = require('execa');
 const logger = require('tracer').console();
@@ -166,26 +165,6 @@ class Resize {
         return false;
     }
     smaller(file) {
-        logger.info(file);
-        if (!this.isWide(file))
-            return;
-        sharp(file + '.jpg')
-            .resize(1680 * 1.9)
-            .jpeg({
-            quality: 74,
-            progressive: true,
-            trellisQuantisation: true
-        })
-            .blur()
-            .toFile(file + '.2K.min.jpg');
-        sharp(file + '.jpg')
-            .resize(320 * 2)
-            .jpeg({
-            quality: 78,
-            progressive: true,
-            trellisQuantisation: true
-        })
-            .toFile(file + '.32.min.jpg');
     }
 }
 exports.Resize = Resize;
