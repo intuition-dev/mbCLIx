@@ -42,7 +42,7 @@ export class Map {
       this._sitemap = createSitemap ( { hostname: m['hostname']}  ) 
       
       const hostname = m['hostname']
-      console.log(hostname)
+      logger.trace(hostname)
 
       const rec = FileHound.create() //recursive
          .paths(this._root)
@@ -86,7 +86,7 @@ export class Scrape {
    tst() {
       const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421'
       this.s(u1).then(function(ret){
-         console.log(ret)
+         logger.trace(ret)
       })
    }
 

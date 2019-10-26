@@ -48,10 +48,10 @@ class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
         standard_input.setEncoding('utf-8');
-        console.log("Please, enter your git password.");
+        logger.trace("Please, enter your git password.");
         standard_input.on('data', (password) => {
             if (password == 'exit\n') {
-                console.log("Input failed.");
+                logger.trace("Input failed.");
                 process.exit();
             }
             else {
@@ -59,7 +59,7 @@ class GitDown {
                 this.pass = password.replace(/\n/g, '');
                 this.dir = pass_.substring(0, last);
                 this.config = yaml.load(fs.readFileSync('gitdown.yaml'));
-                console.log(this.dir, this.config.BRANCH);
+                logger.trace(this.dir, this.config.BRANCH);
                 logger.trace(this.config);
                 this.remote = 'https://' + this.config.LOGINName + ':';
                 this.remote += this.pass + '@';
@@ -74,7 +74,7 @@ class GitDown {
         try {
             let b = this.config.BRANCH;
             await this._branchExists(b);
-            console.log(this.exists);
+            logger.trace(this.exists);
             if (this.exists)
                 await this._getEXISTINGRemoteBranch(b);
             else
@@ -91,26 +91,26 @@ class GitDown {
         dir = this.dir + '/' + dir + '/' + this.config.REPOFolder;
         let dirTo = this.config.PROJECT;
         dirTo = this.dir + '/' + this.config.LOCALFolder;
-        console.log(dir, dirTo);
+        logger.trace(dir, dirTo);
         fs.moveSync(dir, dirTo);
         let dirR = this.config.PROJECT;
         dirR = this.dir + '/' + dirR;
         fs.removeSync(dirR);
-        console.log('removed', dirR);
-        console.log();
+        logger.trace('removed', dirR);
+        logger.trace();
         fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
-        console.log('DONE!');
-        console.log();
+        logger.trace('DONE!');
+        logger.trace();
         process.exit();
     }
     _emptyFolders() {
         let dirR = this.config.PROJECT;
         dirR = this.dir + '/' + dirR;
-        console.log('remove', dirR);
+        logger.trace('remove', dirR);
         fs.removeSync(dirR);
         let dirTo = this.config.PROJECT;
         dirTo = this.dir + '/' + this.config.LOCALFolder;
-        console.log('remove', dirTo);
+        logger.trace('remove', dirTo);
         fs.removeSync(dirTo);
     }
     async _getNEWRemoteBranch(branch) {
@@ -126,7 +126,7 @@ class GitDown {
         let dir = this.config.PROJECT;
         dir = this.dir + '/' + dir;
         const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir });
-        console.log(dir, branch);
+        logger.trace(dir, branch);
     }
     async _branchExists(branch) {
         let cmd = this.remote;

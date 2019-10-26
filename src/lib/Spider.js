@@ -27,7 +27,7 @@ class Map {
         const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
         this._sitemap = sitemap_1.createSitemap({ hostname: m['hostname'] });
         const hostname = m['hostname'];
-        console.log(hostname);
+        logger.trace(hostname);
         const rec = FileHound.create()
             .paths(this._root)
             .match('dat.yaml')
@@ -56,7 +56,7 @@ class Scrape {
     tst() {
         const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421';
         this.s(u1).then(function (ret) {
-            console.log(ret);
+            logger.trace(ret);
         });
     }
     s(url, selector) {

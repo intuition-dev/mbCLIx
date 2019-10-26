@@ -35,7 +35,7 @@ export class Cover {
          Cover._cfile(f)
          Cover.memberList= new Set([]) //reset for next
       }
-      console.log()
+      logger.trace()
       const tstFiles = FileHound.create() // hard coded but does not need to be:
          .paths(testsDir)
          .ext('js')
@@ -62,7 +62,7 @@ export class Cover {
      })
 
       Object.keys(Cover.clazzList).forEach( key =>  {
-         console.log()
+         logger.trace()
          totalClzCount ++
          if(key in Cover.tstList) { // Clz has
             logger.trace('*',key)
@@ -74,7 +74,7 @@ export class Cover {
 
             // using data structures, not AST:
             let intersection = new Set( [...members] .filter(x => tests.has(x)))
-            console.log('Tested:', Array.from(intersection).sort() )
+            logger.trace('Tested:', Array.from(intersection).sort() )
             let minus =  new Set( [...members].filter(x => !tests.has(x)) )
             logger.trace('Not Tested:', Array.from(minus).sort() )
          } //fi
@@ -82,13 +82,13 @@ export class Cover {
 
       })//loop
 
-      console.log()
-      console.log('REPORT:')
-      console.log('Classes:', totalClzCount )
-      console.log('Tested Classes:', tstClzCount )
-      console.log('Of tested Classes, their prop #:', totalCount )
-      console.log('Tested props:', tstCount )
-      console.log()
+      logger.trace()
+      logger.trace('REPORT:')
+      logger.trace('Classes:', totalClzCount )
+      logger.trace('Tested Classes:', tstClzCount )
+      logger.trace('Of tested Classes, their prop #:', totalCount )
+      logger.trace('Tested props:', tstCount )
+      logger.trace()
    }//()
 
    /**
@@ -96,7 +96,7 @@ export class Cover {
    @param fullFileName 
     */
    static _tfile(fullFileName) {
-      console.log(fullFileName)
+      logger.trace(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       Cover._visitTst(ast)
@@ -130,7 +130,7 @@ export class Cover {
      @param fullFileName 
     *****************/
    static _cfile(fullFileName) {
-      console.log(fullFileName)
+      logger.trace(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       Cover._visitClass(ast)
