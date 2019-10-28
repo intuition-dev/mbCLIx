@@ -1,6 +1,6 @@
 {
     "name": "mbakex",
-    "version": "1.10.5",
+    "version": "1.10.6",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
@@ -19,8 +19,8 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=13.0.1"
-    },
+      "node": ">=12.13.0"
+   },
     "dependencies": {
         "axios": ">=0.19.0",
         "cheerio": ">=1.0.0-rc.2",
@@ -33,6 +33,7 @@
         "perfy": ">=1.1.5",
         "probe-image-size": ">=5.0.0",
         "sitemap": ">=5.0.1",
+        "sharp": ">=0.23.2",
         "typescript": ">=3.6.4",
         "unfluff": ">=3.2.0"
     },

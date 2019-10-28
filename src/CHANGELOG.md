@@ -1,5 +1,5 @@
-### 1.10.5
-- removed temp         "sharp": ">=0.23.1",
+### 1.10.6
+- bump for node v13+
 
 ### 1.10.4
 - bump
