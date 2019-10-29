@@ -9,7 +9,8 @@ const probe = require("probe-image-size");
 const extractor = require("unfluff");
 const SummarizerManager = require("node-summarizer").SummarizerManager;
 const cheerio = require('cheerio');
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
 const FileHound = require("filehound");
@@ -27,7 +28,7 @@ class Map {
         const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
         this._sitemap = sitemap_1.createSitemap({ hostname: m['hostname'] });
         const hostname = m['hostname'];
-        logger.trace(hostname);
+        log.info(hostname);
         const rec = FileHound.create()
             .paths(this._root)
             .match('dat.yaml')
@@ -56,7 +57,7 @@ class Scrape {
     tst() {
         const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421';
         this.s(u1).then(function (ret) {
-            logger.trace(ret);
+            log.info(ret);
         });
     }
     s(url, selector) {
@@ -128,7 +129,7 @@ class Scrape {
                 });
             }
             catch (err) {
-                logger.warn(err);
+                log.warn(err);
                 reject(err);
             }
         });

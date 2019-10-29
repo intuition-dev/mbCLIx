@@ -29,7 +29,7 @@ class MBakeX {
                 });
             }
             catch (err) {
-                logger.warn(err);
+                log.warn(err);
                 reject(err);
             }
             resolve('OK');
@@ -40,7 +40,8 @@ exports.MBakeX = MBakeX;
 const sharp = require("sharp");
 const probe = require("probe-image-size");
 const execa = require('execa');
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");
@@ -49,10 +50,10 @@ class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
         standard_input.setEncoding('utf-8');
-        logger.trace("Please, enter your git password.");
+        log.info("Please, enter your git password.");
         standard_input.on('data', (password) => {
             if (password == 'exit\n') {
-                logger.trace("Input failed.");
+                log.info("Input failed.");
                 process.exit();
             }
             else {
@@ -60,8 +61,8 @@ class GitDown {
                 this.pass = password.replace(/\n/g, '');
                 this.dir = pass_.substring(0, last);
                 this.config = yaml.load(fs.readFileSync('gitdown.yaml'));
-                logger.trace(this.dir, this.config.BRANCH);
-                logger.trace(this.config);
+                log.info(this.dir, this.config.BRANCH);
+                log.info(this.config);
                 this.remote = 'https://' + this.config.LOGINName + ':';
                 this.remote += this.pass + '@';
                 this.remote += this.config.REPO + '/';
@@ -75,7 +76,7 @@ class GitDown {
         try {
             let b = this.config.BRANCH;
             await this._branchExists(b);
-            logger.trace(this.exists);
+            log.info(this.exists);
             if (this.exists)
                 await this._getEXISTINGRemoteBranch(b);
             else
@@ -92,26 +93,26 @@ class GitDown {
         dir = this.dir + '/' + dir + '/' + this.config.REPOFolder;
         let dirTo = this.config.PROJECT;
         dirTo = this.dir + '/' + this.config.LOCALFolder;
-        logger.trace(dir, dirTo);
+        log.info(dir, dirTo);
         fs.moveSync(dir, dirTo);
         let dirR = this.config.PROJECT;
         dirR = this.dir + '/' + dirR;
         fs.removeSync(dirR);
-        logger.trace('removed', dirR);
-        logger.trace();
+        log.info('removed', dirR);
+        log.info();
         fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
-        logger.trace('DONE!');
-        logger.trace();
+        log.info('DONE!');
+        log.info();
         process.exit();
     }
     _emptyFolders() {
         let dirR = this.config.PROJECT;
         dirR = this.dir + '/' + dirR;
-        logger.trace('remove', dirR);
+        log.info('remove', dirR);
         fs.removeSync(dirR);
         let dirTo = this.config.PROJECT;
         dirTo = this.dir + '/' + this.config.LOCALFolder;
-        logger.trace('remove', dirTo);
+        log.info('remove', dirTo);
         fs.removeSync(dirTo);
     }
     async _getNEWRemoteBranch(branch) {
@@ -127,21 +128,21 @@ class GitDown {
         let dir = this.config.PROJECT;
         dir = this.dir + '/' + dir;
         const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir });
-        logger.trace(dir, branch);
+        log.info(dir, branch);
     }
     async _branchExists(branch) {
         let cmd = this.remote;
         cmd += '.git';
-        logger.info(cmd);
+        log.info(cmd);
         const { stdout } = await execa('git', ['ls-remote', cmd]);
         this.exists = stdout.includes(branch);
-        logger.trace(stdout);
+        log.info(stdout);
     }
 }
 exports.GitDown = GitDown;
 class Resize {
     do(dir) {
-        logger.info(dir);
+        log.info(dir);
         const rec = FileHound.create()
             .paths(dir)
             .ext('jpg')
@@ -162,11 +163,11 @@ class Resize {
         let p = probe.sync(data);
         if (p.width && p.width > 3200)
             return true;
-        logger.info(file, ' is low res');
+        log.info(file, ' is low res');
         return false;
     }
     smaller(file) {
-        logger.info(file);
+        log.info(file);
         if (!this.isWide(file))
             return;
         sharp(file + '.jpg')

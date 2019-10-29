@@ -34,7 +34,7 @@ export class MBakeX {
                }
             });
          } catch (err) {
-            logger.warn(err)
+            log.warn(err)
             reject(err)
          }
          resolve('OK')
@@ -51,7 +51,8 @@ import probe = require('probe-image-size')
 const execa = require('execa')
 
 // OK
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
@@ -71,14 +72,14 @@ export class GitDown {
       standard_input.setEncoding('utf-8');
 
       // Prompt user to input data in console.
-      logger.trace("Please, enter your git password.");
+      log.info("Please, enter your git password.");
 
       // When user input data and click enter key.
       standard_input.on('data', (password:string) => {
 
          // User input exit.
          if (password == 'exit\n') {
-            logger.trace("Input failed.");
+            log.info("Input failed.");
             process.exit();
          } else {
 
@@ -87,8 +88,8 @@ export class GitDown {
             this.dir = pass_.substring(0, last);
 
             this.config = yaml.load(fs.readFileSync('gitdown.yaml'))
-            logger.trace(this.dir, this.config.BRANCH)
-            logger.trace(this.config)
+            log.info(this.dir, this.config.BRANCH)
+            log.info(this.config)
 
             this.remote = 'https://' + this.config.LOGINName + ':'
             this.remote += this.pass + '@'
@@ -105,7 +106,7 @@ export class GitDown {
       try {
          let b = this.config.BRANCH
          await this._branchExists(b)
-         logger.trace(this.exists)
+         log.info(this.exists)
 
          if (this.exists) await this._getEXISTINGRemoteBranch(b)
          else await this._getNEWRemoteBranch(b)
@@ -123,32 +124,32 @@ export class GitDown {
 
       let dirTo = this.config.PROJECT
       dirTo = this.dir + '/' + this.config.LOCALFolder
-      logger.trace(dir, dirTo)
+      log.info(dir, dirTo)
 
       fs.moveSync(dir, dirTo)
 
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
       fs.removeSync(dirR)
-      logger.trace('removed', dirR)
-      logger.trace()
+      log.info('removed', dirR)
+      log.info()
 
       fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() })
-      logger.trace('DONE!')
+      log.info('DONE!')
 
-      logger.trace()
+      log.info()
       process.exit()
    }
 
    _emptyFolders() {
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
-      logger.trace('remove', dirR)
+      log.info('remove', dirR)
       fs.removeSync(dirR)
 
       let dirTo = this.config.PROJECT
       dirTo = this.dir + '/' + this.config.LOCALFolder
-      logger.trace('remove', dirTo)
+      log.info('remove', dirTo)
       fs.removeSync(dirTo)
    }
 
@@ -166,7 +167,7 @@ export class GitDown {
       /* list history of the new branch TODO
       await execa('git', ['fetch'], {cwd: dir})
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
-      logger.trace('history', stdout10)
+      log.info('history', stdout10)
       /*
       git clone https://cekvenich:PASS@github.com/cekvenich/alan
       cd folder
@@ -182,12 +183,12 @@ export class GitDown {
       let dir = this.config.PROJECT
       dir = this.dir + '/' + dir
       const { stdout2 } = await execa('git', ['checkout', branch], { cwd: dir })
-      logger.trace(dir, branch)
+      log.info(dir, branch)
 
       /* list history of the branch TODO
       await execa('git', ['fetch'], {cwd: dir})
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
-      logger.trace('history', stdout10)
+      log.info('history', stdout10)
       /*
       git clone https://cekvenich:PASS@github.com/cekvenich/alan
       cd folder
@@ -199,12 +200,12 @@ export class GitDown {
    async _branchExists(branch) {
       let cmd = this.remote
       cmd += '.git'
-      logger.info(cmd)
+      log.info(cmd)
 
       const { stdout } = await execa('git', ['ls-remote', cmd])
       this.exists = stdout.includes(branch)
 
-      logger.trace(stdout)
+      log.info(stdout)
       /*
       git ls-remote https://cekvenich:PASS@github.com/cekvenich/alan.git
       */
@@ -216,7 +217,7 @@ export class GitDown {
 export class Resize {
 
    do(dir) {
-      logger.info(dir)
+      log.info(dir)
 
       const rec = FileHound.create() //recursive
          .paths(dir)
@@ -239,13 +240,13 @@ export class Resize {
       let data = fs.readFileSync(file + '.jpg')
       let p = probe.sync(data)
       if (p.width && p.width > 3200) return true
-      logger.info(file, ' is low res')
+      log.info(file, ' is low res')
       return false
    }
 
 
    smaller(file) {
-      logger.info(file)
+      log.info(file)
       if (!this.isWide(file)) return
       sharp(file + '.jpg')
          .resize(1680 * 1.9)

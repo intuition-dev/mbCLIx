@@ -10,7 +10,8 @@ import extractor = require('unfluff')//scrape
 const SummarizerManager = require("node-summarizer").SummarizerManager
 const cheerio = require('cheerio')
 
-const logger = require('tracer').console()
+const bunyan = require('bunyan')
+const log = bunyan.createLogger({name: "class name"})
 
 // map
 import sm = require('sitemap')
@@ -42,7 +43,7 @@ export class Map {
       this._sitemap = createSitemap ( { hostname: m['hostname']}  ) 
       
       const hostname = m['hostname']
-      logger.trace(hostname)
+      log.info(hostname)
 
       const rec = FileHound.create() //recursive
          .paths(this._root)
@@ -86,7 +87,7 @@ export class Scrape {
    tst() {
       const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421'
       this.s(u1).then(function(ret){
-         logger.trace(ret)
+         log.info(ret)
       })
    }
 
@@ -164,7 +165,7 @@ export class Scrape {
                } else resolve(ret)
             })
          } catch (err) {
-            logger.warn(err)
+            log.warn(err)
             reject(err)
          }
       })//pro

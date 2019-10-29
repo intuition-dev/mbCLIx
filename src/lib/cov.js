@@ -7,7 +7,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const logger = require('tracer').console();
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({ name: "class name" });
 const fs = require("fs-extra");
 const FileHound = require('filehound');
 const ts = __importStar(require("typescript"));
@@ -30,7 +31,7 @@ class Cover {
             Cover._cfile(f);
             Cover.memberList = new Set([]);
         }
-        logger.trace();
+        log.info();
         const tstFiles = FileHound.create()
             .paths(testsDir)
             .ext('js')
@@ -53,33 +54,33 @@ class Cover {
             Cover.clazzList[key] = value;
         });
         Object.keys(Cover.clazzList).forEach(key => {
-            logger.trace();
+            log.info();
             totalClzCount++;
             if (key in Cover.tstList) {
-                logger.trace('*', key);
+                log.info('*', key);
                 tstClzCount++;
                 const members = Cover.clazzList[key];
                 totalCount = totalCount + members.size;
                 const tests = Cover.tstList[key];
                 tstCount = tstCount + tests.size;
                 let intersection = new Set([...members].filter(x => tests.has(x)));
-                logger.trace('Tested:', Array.from(intersection).sort());
+                log.info('Tested:', Array.from(intersection).sort());
                 let minus = new Set([...members].filter(x => !tests.has(x)));
-                logger.trace('Not Tested:', Array.from(minus).sort());
+                log.info('Not Tested:', Array.from(minus).sort());
             }
             else
-                logger.trace('** No tests for', key);
+                log.info('** No tests for', key);
         });
-        logger.trace();
-        logger.trace('REPORT:');
-        logger.trace('Classes:', totalClzCount);
-        logger.trace('Tested Classes:', tstClzCount);
-        logger.trace('Of tested Classes, their prop #:', totalCount);
-        logger.trace('Tested props:', tstCount);
-        logger.trace();
+        log.info();
+        log.info('REPORT:');
+        log.info('Classes:', totalClzCount);
+        log.info('Tested Classes:', tstClzCount);
+        log.info('Of tested Classes, their prop #:', totalCount);
+        log.info('Tested props:', tstCount);
+        log.info();
     }
     static _tfile(fullFileName) {
-        logger.trace(fullFileName);
+        log.info(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
@@ -104,7 +105,7 @@ class Cover {
         node.forEachChild(Cover._visitTst);
     }
     static _cfile(fullFileName) {
-        logger.trace(fullFileName);
+        log.info(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitClass(ast);
