@@ -47,12 +47,11 @@ import sharp = require('sharp')
 
 import probe = require('probe-image-size')
 
-
 const execa = require('execa')
 
 // OK
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "class name"})
+const log = bunyan.createLogger({src: true, name: "x"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
