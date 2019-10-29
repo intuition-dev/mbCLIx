@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.10.6'
+      return 'v1.10.8'
    }
    static date(): string {
       return new Date().toISOString()
@@ -52,7 +52,7 @@ const execa = require('execa')
 
 // OK
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({name: "class name"})
+const log = bunyan.createLogger({src: true, name: "class name"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
