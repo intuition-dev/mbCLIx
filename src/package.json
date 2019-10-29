@@ -26,11 +26,9 @@
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=3.2.0",
         "filehound": ">=1.17.3",
-        "fs-extra": ">=8.1.0",
         
         "mbake": ">=6.10.16",
         "node-summarizer": ">=1.0.7",
-        "perfy": ">=1.1.5",
         "probe-image-size": ">=5.0.0",
         "sitemap": ">=5.0.1",
         "sharp": ">=0.23.2",
@@ -40,8 +38,6 @@
     "devDependencies": {
         "@marp-team/marpit": ">=1.4.1",
         "@types/node": ">=12.11.7",
-        "bunyan": ">=1.8.12",
-        "csvtojson": ">=2.0.10",
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
