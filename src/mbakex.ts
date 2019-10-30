@@ -9,7 +9,7 @@ import { Map } from './lib/Spider'
 import { Resize, MBakeX } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown  } from './lib/mbakeX'
-import { CSV2Json, DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
+import { DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
 
@@ -46,7 +46,6 @@ function help() {
    console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .')
    console.info()
 
-   console.info('  To process list.csv to list.json:                            mbakex -l .')
    console.info('  To download branch from git, in folder with gitdown.yaml:    mbakex --gitDown .')
    console.info('     passing the git password of gitdown user')
    console.info()
@@ -93,7 +92,6 @@ const optionDefinitions = [
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
-   { name: 'csv2Json', alias: 'l', type: Boolean },
 
    { name: 'elect', alias: 'e', type: Boolean },
    { name: 'phonegap', alias: 'o', type: Boolean },
@@ -103,8 +101,6 @@ const argsParsed = commandLineArgs(optionDefinitions)
 let arg: string = argsParsed['mbakex']
 console.info()
 
-
-      
 VersionNag.isCurrent('mbakex', MBakeX.verx() ).then(function(isCurrent_:boolean){
    try{
    if(!isCurrent_) 
@@ -156,9 +152,6 @@ function unzipE() {
 }
 
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
-function csv2Json(arg) {
-   new CSV2Json(arg).convert()
-}
 
 function map(arg) {
    new Map(arg).gen()
@@ -218,8 +211,6 @@ if (argsParsed.elect)
       unzipE()
    else if (argsParsed.phonegap)
       unzipG()
-   else if (argsParsed.csv2Json)
-      csv2Json(arg)
    else if (argsParsed.watcher) {
       Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
    }
