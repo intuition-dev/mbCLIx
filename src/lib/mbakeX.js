@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.10.8';
+        return 'v1.10.9';
     }
     static date() {
         return new Date().toISOString();
@@ -41,7 +41,9 @@ const sharp = require("sharp");
 const probe = require("probe-image-size");
 const execa = require('execa');
 const bunyan = require('bunyan');
-const log = bunyan.createLogger({ name: "class name" });
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'short' });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "x" });
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");

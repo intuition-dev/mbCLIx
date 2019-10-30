@@ -8,7 +8,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const bunyan = require('bunyan');
-const log = bunyan.createLogger({ name: "class name" });
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'short' });
+const log = bunyan.createLogger({ src: true, stream: formatOut, name: "cov" });
 const fs = require("fs-extra");
 const FileHound = require('filehound');
 const ts = __importStar(require("typescript"));
