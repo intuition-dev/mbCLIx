@@ -11,7 +11,9 @@ const SummarizerManager = require("node-summarizer").SummarizerManager
 const cheerio = require('cheerio')
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "spider"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "spider"})
 
 // map
 import sm = require('sitemap')

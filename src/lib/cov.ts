@@ -1,6 +1,8 @@
 
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "cov"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "cov"})
 import fs = require('fs-extra')
 const FileHound = require('filehound')
 

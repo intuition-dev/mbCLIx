@@ -51,7 +51,9 @@ const execa = require('execa')
 
 // OK
 const bunyan = require('bunyan')
-const log = bunyan.createLogger({src: true, name: "x"})
+const bformat = require('bunyan-format')  
+const formatOut = bformat({ outputMode: 'short' })
+const log = bunyan.createLogger({src: true, stream: formatOut, name: "x"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
