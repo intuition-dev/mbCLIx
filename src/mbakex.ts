@@ -42,7 +42,6 @@ function help() {
    console.info('  Add|clone an item|page from:to :                             mbakex --add dir:source:target')
 
    console.info()
-
    console.info('  To map map.yaml to sitemap.xml                               mbakex -m .')
    console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .')
    console.info()
@@ -66,7 +65,6 @@ function help() {
    console.info('  For a starter hybrid Phonegap app:                          mbakex -o')
 
    console.info()
-
 }//()
 
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,9 +90,6 @@ const optionDefinitions = [
    { name: 'add', type: Boolean },
 
    { name: 'cover', type: Boolean },
-
-   { name: 'exportFS', type: Boolean },
-   { name: 'importFS', type: Boolean },
 
    { name: 'map', alias: 'm', type: Boolean },
    { name: 'img', alias: 'i', type: Boolean },
