@@ -30,14 +30,14 @@
         "mbake": ">=6.10.19",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=5.0.0",
-        "sitemap": ">=5.0.1",
+        "sitemap": ">=5.1.0",
         "sharp": ">=0.23.2",
         "typescript": ">=3.6.4",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {
         "@marp-team/marpit": ">=1.4.1",
-        "@types/node": ">=12.12.3",
+        "@types/node": ">=12.12.5",
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
