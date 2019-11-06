@@ -36,7 +36,6 @@ function help() {
     console.info('  To map map.yaml to sitemap.xml                               mbakex -m .');
     console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .');
     console.info();
-    console.info('  To process list.csv to list.json:                            mbakex -l .');
     console.info('  To download branch from git, in folder with gitdown.yaml:    mbakex --gitDown .');
     console.info('     passing the git password of gitdown user');
     console.info();
@@ -67,11 +66,8 @@ const optionDefinitions = [
     { name: 'gitDown', type: Boolean },
     { name: 'add', type: Boolean },
     { name: 'cover', type: Boolean },
-    { name: 'exportFS', type: Boolean },
-    { name: 'importFS', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
-    { name: 'csv2Json', alias: 'l', type: Boolean },
     { name: 'elect', alias: 'e', type: Boolean },
     { name: 'phonegap', alias: 'o', type: Boolean },
 ];
@@ -116,9 +112,6 @@ function unzipG() {
 function unzipE() {
     new FileOpsExtra_1.Download('electron', __dirname).autoUZ();
     console.info('Extracted a starter Electron app');
-}
-function csv2Json(arg) {
-    new FileOpsExtra_1.CSV2Json(arg).convert();
 }
 function map(arg) {
     new Spider_1.Map(arg).gen();
@@ -167,8 +160,6 @@ if (argsParsed.elect)
     unzipE();
 else if (argsParsed.phonegap)
     unzipG();
-else if (argsParsed.csv2Json)
-    csv2Json(arg);
 else if (argsParsed.watcher) {
     Wa_1.Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
 }
