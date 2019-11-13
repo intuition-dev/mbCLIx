@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.11.1';
+        return 'v1.11.2';
     }
     static date() {
         return new Date().toISOString();
@@ -52,7 +52,7 @@ class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
         standard_input.setEncoding('utf-8');
-        log.info("Please, enter your git password.");
+        console.log("Please, enter your git password.");
         standard_input.on('data', (password) => {
             if (password == 'exit\n') {
                 log.info("Input failed.");
