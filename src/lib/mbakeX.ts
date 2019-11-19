@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.11.5'
+      return 'v1.11.6'
    }
    static date(): string {
       return new Date().toISOString()
@@ -97,7 +97,7 @@ export class GitDown {
             this.remote += this.config.REPO + '/'
             this.remote += this.config.PROJECT
 
-            this._emptyFolders();
+            //this._emptyFolders();
             this.process();
 
             if (typeof(this.config.LOCALFolder) !== 'undefined')
@@ -146,6 +146,7 @@ export class GitDown {
       process.exit()
    }
 
+   /*
    _emptyFolders() {
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
@@ -156,7 +157,7 @@ export class GitDown {
       dirTo = this.dir + '/' + this.config.REPOFolder
       log.info('remove', dirTo)
       fs.removeSync(dirTo)
-   }
+   } */
 
    async _getNEWRemoteBranch(branch) {
       const { stdout } = await execa('git', ['clone', this.remote])

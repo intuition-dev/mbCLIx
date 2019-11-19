@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.11.5';
+        return 'v1.11.6';
     }
     static date() {
         return new Date().toISOString();
@@ -52,7 +52,7 @@ class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
         standard_input.setEncoding('utf-8');
-        console.log("Please, enter your git password.");
+        console.log("Please, enter your git password:");
         standard_input.on('data', (password) => {
             if (password == 'exit\n') {
                 log.info("Input failed.");
@@ -69,8 +69,9 @@ class GitDown {
                 this.remote += this.pass + '@';
                 this.remote += this.config.REPO + '/';
                 this.remote += this.config.PROJECT;
-                this._emptyFolders();
                 this.process();
+                if (typeof (this.config.LOCALFolder) !== 'undefined')
+                    log.info('LOCALFolder is not used, will use REPOfolder, please remove from gitdown.yaml');
             }
         });
     }
@@ -94,7 +95,7 @@ class GitDown {
         let dir = this.config.PROJECT;
         dir = this.dir + '/' + dir + '/' + this.config.REPOFolder;
         let dirTo = this.config.PROJECT;
-        dirTo = this.dir + '/' + this.config.LOCALFolder;
+        dirTo = this.dir + '/' + this.config.REPOFolder;
         log.info(dir, dirTo);
         fs.moveSync(dir, dirTo);
         let dirR = this.config.PROJECT;
@@ -106,16 +107,6 @@ class GitDown {
         log.info('DONE!');
         log.info();
         process.exit();
-    }
-    _emptyFolders() {
-        let dirR = this.config.PROJECT;
-        dirR = this.dir + '/' + dirR;
-        log.info('remove', dirR);
-        fs.removeSync(dirR);
-        let dirTo = this.config.PROJECT;
-        dirTo = this.dir + '/' + this.config.LOCALFolder;
-        log.info('remove', dirTo);
-        fs.removeSync(dirTo);
     }
     async _getNEWRemoteBranch(branch) {
         const { stdout } = await execa('git', ['clone', this.remote]);
