@@ -70,18 +70,18 @@ export class GitDown {
       var standard_input = process.stdin;
 
       // Set input character encoding.
-      standard_input.setEncoding('utf-8');
+      standard_input.setEncoding('utf-8')
 
       // Prompt user to input data in console.
-      console.log("Please, enter your git password.");
+      console.log("Please, enter your git password: ")
 
       // When user input data and click enter key.
       standard_input.on('data', (password:string) => {
 
          // User input exit.
          if (password == 'exit\n') {
-            log.info("Input failed.");
-            process.exit();
+            log.info("Input failed.")
+            process.exit()
          } else {
 
             const last = pass_.lastIndexOf('/')
