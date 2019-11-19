@@ -1,4 +1,6 @@
 
+- removed LOCALFolder in gitdown, uses REPOfolder
+
 ### 1.11.5
 - moved DB sql here from mbake
 

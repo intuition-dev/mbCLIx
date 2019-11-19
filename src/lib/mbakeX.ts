@@ -99,6 +99,10 @@ export class GitDown {
 
             this._emptyFolders();
             this.process();
+
+            if (typeof(this.config.LOCALFolder) !== 'undefined')
+               log.info('LOCALFolder is not used, will use REPOfolder, please remove from gitdown.yaml')
+
          }
       })
    }//()
@@ -124,7 +128,7 @@ export class GitDown {
       dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
 
       let dirTo = this.config.PROJECT
-      dirTo = this.dir + '/' + this.config.LOCALFolder
+      dirTo = this.dir + '/' + this.config.REPOFolder
       log.info(dir, dirTo)
 
       fs.moveSync(dir, dirTo)
@@ -149,7 +153,7 @@ export class GitDown {
       fs.removeSync(dirR)
 
       let dirTo = this.config.PROJECT
-      dirTo = this.dir + '/' + this.config.LOCALFolder
+      dirTo = this.dir + '/' + this.config.REPOFolder
       log.info('remove', dirTo)
       fs.removeSync(dirTo)
    }
