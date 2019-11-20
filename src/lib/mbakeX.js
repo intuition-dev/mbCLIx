@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.11.7';
+        return 'v1.11.8';
     }
     static date() {
         return new Date().toISOString();
@@ -69,6 +69,7 @@ class GitDown {
                 this.remote += this.pass + '@';
                 this.remote += this.config.REPO + '/';
                 this.remote += this.config.PROJECT;
+                this._emptyFolder();
                 this.process();
                 if (typeof (this.config.LOCALFolder) !== 'undefined')
                     log.info('LOCALFolder is not used, will use REPOfolder, please remove from gitdown.yaml');
@@ -84,21 +85,33 @@ class GitDown {
                 await this._getEXISTINGRemoteBranch(b);
             else
                 await this._getNEWRemoteBranch(b);
-            this._writeJson(b);
+            this._write(b);
         }
         catch (err) {
             log.error(err);
             process.exit();
         }
     }
-    _writeJson(branch) {
+    _write(branch) {
         let dir = this.config.PROJECT;
         dir = this.dir + '/' + dir + '/' + this.config.REPOFolder;
         let dirTo = this.dir + '/' + this.config.REPOFolder;
+        log.info(dir, dirTo);
+        fs.copySync(dir, dirTo);
+        let dirR = this.config.PROJECT;
+        dirR = this.dir + '/' + dirR;
+        fs.removeSync(dirR);
+        log.info('removed temp', dirR);
         fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
         log.info('DONE!');
         log.info();
         process.exit();
+    }
+    _emptyFolder() {
+        let dirR = this.config.PROJECT;
+        dirR = this.dir + '/' + dirR;
+        log.info('remove', dirR);
+        fs.removeSync(dirR);
     }
     async _getNEWRemoteBranch(branch) {
         const { stdout } = await execa('git', ['clone', this.remote]);

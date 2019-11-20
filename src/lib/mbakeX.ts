@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.11.7'
+      return 'v1.11.8'
    }
    static date(): string {
       return new Date().toISOString()
@@ -97,7 +97,7 @@ export class GitDown {
             this.remote += this.config.REPO + '/'
             this.remote += this.config.PROJECT
 
-            //this._emptyFolders();
+            this._emptyFolder();
             this.process();
 
             if (typeof(this.config.LOCALFolder) !== 'undefined')
@@ -116,35 +116,27 @@ export class GitDown {
          if (this.exists) await this._getEXISTINGRemoteBranch(b)
          else await this._getNEWRemoteBranch(b)
 
-         this._writeJson(b)
+         this._write(b)
       } catch (err) {
          log.error(err);
          process.exit();
       }
    }
 
-   _writeJson(branch) { // move to folder
+   _write(branch) { // move to folder
+
       let dir = this.config.PROJECT
       dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
 
       let dirTo = this.dir + '/' + this.config.REPOFolder
-
-      /*
-      let dir = this.config.PROJECT
-      dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
-
-      let dirTo = this.config.PROJECT
-      dirTo = this.dir + '/' + this.config.REPOFolder
       log.info(dir, dirTo)
 
-      fs.moveSync(dir, dirTo)
+      fs.copySync(dir, dirTo)
 
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
       fs.removeSync(dirR)
-      log.info('removed', dirR)
-      log.info()
-      */
+      log.info('removed temp', dirR)
 
       fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() })
       log.info('DONE!')
@@ -153,18 +145,13 @@ export class GitDown {
       process.exit()
    }
 
-   /*
-   _emptyFolders() {
+   
+   _emptyFolder() {
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
       log.info('remove', dirR)
       fs.removeSync(dirR)
-
-      let dirTo = this.config.PROJECT
-      dirTo = this.dir + '/' + this.config.REPOFolder
-      log.info('remove', dirTo)
-      fs.removeSync(dirTo)
-   } */
+   }
 
    async _getNEWRemoteBranch(branch) {
       const { stdout } = await execa('git', ['clone', this.remote])

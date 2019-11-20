@@ -1,6 +1,6 @@
 {
     "name": "mbakex",
-    "version": "1.11.7",
+    "version": "1.11.8",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
