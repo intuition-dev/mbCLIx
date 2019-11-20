@@ -149,7 +149,7 @@ export class GitDown {
    _emptyFolder() {
       let dirR = this.config.PROJECT
       dirR = this.dir + '/' + dirR
-      log.info('remove', dirR)
+      log.info('clean temp', dirR)
       fs.removeSync(dirR)
    }
 
