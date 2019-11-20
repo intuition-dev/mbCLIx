@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v1.11.6'
+      return 'v1.11.7'
    }
    static date(): string {
       return new Date().toISOString()
@@ -51,7 +51,7 @@ const execa = require('execa')
 
 // OK
 const bunyan = require('bunyan')
-const bformat = require('bunyan-format')  
+const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
 const log = bunyan.createLogger({src: true, stream: formatOut, name: "x"})
 import FileHound = require('filehound')
@@ -116,14 +116,20 @@ export class GitDown {
          if (this.exists) await this._getEXISTINGRemoteBranch(b)
          else await this._getNEWRemoteBranch(b)
 
-         this._moveTo(b)
+         this._writeJson(b)
       } catch (err) {
-         console.error(err);
+         log.error(err);
          process.exit();
       }
    }
 
-   _moveTo(branch) { // move to folder
+   _writeJson(branch) { // move to folder
+      let dir = this.config.PROJECT
+      dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
+
+      let dirTo = this.dir + '/' + this.config.REPOFolder
+
+      /*
       let dir = this.config.PROJECT
       dir = this.dir + '/' + dir + '/' + this.config.REPOFolder
 
@@ -138,6 +144,7 @@ export class GitDown {
       fs.removeSync(dirR)
       log.info('removed', dirR)
       log.info()
+      */
 
       fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() })
       log.info('DONE!')

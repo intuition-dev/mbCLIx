@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.11.6';
+        return 'v1.11.7';
     }
     static date() {
         return new Date().toISOString();
@@ -41,7 +41,7 @@ const sharp = require("sharp");
 const probe = require("probe-image-size");
 const execa = require('execa');
 const bunyan = require('bunyan');
-const bformat = require('bunyan-format');
+const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "x" });
 const FileHound = require("filehound");
@@ -84,25 +84,17 @@ class GitDown {
                 await this._getEXISTINGRemoteBranch(b);
             else
                 await this._getNEWRemoteBranch(b);
-            this._moveTo(b);
+            this._writeJson(b);
         }
         catch (err) {
-            console.error(err);
+            log.error(err);
             process.exit();
         }
     }
-    _moveTo(branch) {
+    _writeJson(branch) {
         let dir = this.config.PROJECT;
         dir = this.dir + '/' + dir + '/' + this.config.REPOFolder;
-        let dirTo = this.config.PROJECT;
-        dirTo = this.dir + '/' + this.config.REPOFolder;
-        log.info(dir, dirTo);
-        fs.moveSync(dir, dirTo);
-        let dirR = this.config.PROJECT;
-        dirR = this.dir + '/' + dirR;
-        fs.removeSync(dirR);
-        log.info('removed', dirR);
-        log.info();
+        let dirTo = this.dir + '/' + this.config.REPOFolder;
         fs.writeJsonSync(dirTo + '/branch.json', { branch: branch, syncedOn: MBakeX.date() });
         log.info('DONE!');
         log.info();
