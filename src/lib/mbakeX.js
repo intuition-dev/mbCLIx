@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v1.11.8';
+        return 'v1.11.10';
     }
     static date() {
         return new Date().toISOString();
@@ -110,7 +110,7 @@ class GitDown {
     _emptyFolder() {
         let dirR = this.config.PROJECT;
         dirR = this.dir + '/' + dirR;
-        log.info('remove', dirR);
+        log.info('clean temp', dirR);
         fs.removeSync(dirR);
     }
     async _getNEWRemoteBranch(branch) {

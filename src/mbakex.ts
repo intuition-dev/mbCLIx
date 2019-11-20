@@ -9,7 +9,7 @@ import { Map } from './lib/Spider'
 import { Resize, MBakeX } from './lib/mbakeX'
 import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
 import { GitDown  } from './lib/mbakeX'
-import { DownloadFrag, VersionNag, Download  } from 'mbake/lib/FileOpsExtra'
+import { DownloadFrag, VersionNag, DownloadC  } from 'mbake/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
 
@@ -142,12 +142,12 @@ function add(arg) {
 
 // unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
-   new Download('phoneGap', __dirname).autoUZ()
+   new DownloadC('phoneGap', __dirname).autoUZ()
    console.info('Extracted a starter PhoneGap app')
 }
 
 function unzipE() {
-   new Download('electron', __dirname).autoUZ()
+   new DownloadC('electron', __dirname).autoUZ()
    console.info('Extracted a starter Electron app')
 }
 

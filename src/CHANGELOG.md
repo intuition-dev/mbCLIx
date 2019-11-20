@@ -1,5 +1,5 @@
 
-### 1.11.8
+### 1.11.10
 - gitdown no longer removes the folder: it just adds.
 - removed LOCALFolder in gitdown, uses REPOfolder
 
