@@ -1,5 +1,6 @@
 {
     "name": "mbakex",
+    "preferGlobal": true,
     "version": "1.11.11",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
