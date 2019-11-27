@@ -1,3 +1,5 @@
+## 2.11.15
+- Bump, RPC signature
 
 ### 1.11.11
 - gitdown no longer removes the folder: it just adds.

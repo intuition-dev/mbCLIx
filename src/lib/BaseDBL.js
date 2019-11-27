@@ -63,7 +63,7 @@ class BaseDBL {
     }
     async backup(newName) {
         await this._db.backup(newName, { progress({ totalPages: t, remainingPages: r }) {
-                log.trace(r);
+                log.info(r);
             } });
     }
 }
