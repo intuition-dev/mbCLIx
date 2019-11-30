@@ -1,7 +1,7 @@
 {
     "name": "mbakex",
     "preferGlobal": true,
-    "version": "2.11.16",
+    "version": "2.11.20",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
@@ -20,21 +20,22 @@
         "CRUD"
     ],
     "engines": {
-      "node": ">=12.13.1"
-   },
+        "node": ">=12.13.1"
+    },
     "dependencies": {
         "axios": ">=0.19.0",
+        "better-sqlite3": ">=5.4.3",
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=3.4.0",
         "filehound": ">=1.17.3",
-        "mbake": ">=7.11.16",
+        "http-rpc": ">=0.1.0",
+        "luxon": ">=1.21.3",
+        "mbake": ">=7.11.20",
         "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=5.0.0",
-        "sitemap": ">=5.1.0",
         "sharp": ">=0.23.3",
-        "unfluff": ">=3.2.0",
-        "better-sqlite3": ">=5.4.3",
-        "luxon": ">=1.21.3"
+        "sitemap": ">=5.1.0",
+        "unfluff": ">=3.2.0"
     },
     "devDependencies": {
         "@marp-team/marpit": ">=1.4.2",
