@@ -1,7 +1,7 @@
 {
     "name": "mbakex",
     "preferGlobal": true,
-    "version": "2.11.20",
+    "version": "2.11.21",
     "description": " Extra commands for INTUITION.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
@@ -28,7 +28,6 @@
         "cheerio": ">=1.0.0-rc.2",
         "execa": ">=3.4.0",
         "filehound": ">=1.17.3",
-        "http-rpc": ">=0.1.0",
         "luxon": ">=1.21.3",
         "mbake": ">=7.11.20",
         "node-summarizer": ">=1.0.7",
@@ -43,7 +42,6 @@
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.4",
-        "ts-node": ">=8.5.4",
         "ttypescript": ">=1.5.8",
         "validate.js": ">=0.13.1"
     }
