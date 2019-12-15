@@ -25,13 +25,18 @@ export class BaseDBL {
 
       this._db.pragma('synchronous=OFF')
       this._db.pragma('count_changes=OFF')
-      this._db.pragma('journal_mode=MEMORY')
+      this._db.pragma('journal_mode=DELETE') // set to memory as needed
       this._db.pragma('temp_store=MEMORY')
 
-      //this._db.pragma('locking_mode=EXCLUSIVE')
       log.info(this._db.pragma('locking_mode', { simple: true }))
 
       this._db.pragma('automatic_index=false')
+      log.info(this._db.pragma('foreign_keys=false'))
+      log.info(this._db.pragma('secure_delete=false'))
+ 
+      // for speed set this and memory, memory only gets you 20% faster. Large inserts gets you more
+      // this._db.pragma('locking_mode=EXCLUSIVE') // no 3rd party connection. 
+ 
    }
 
    tableExists(tab): boolean { 
