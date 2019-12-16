@@ -14,10 +14,12 @@ class BaseDBL {
         log.info(this._db.pragma('cache_size', { simple: true }));
         this._db.pragma('synchronous=OFF');
         this._db.pragma('count_changes=OFF');
-        this._db.pragma('journal_mode=MEMORY');
+        this._db.pragma('journal_mode=DELETE');
         this._db.pragma('temp_store=MEMORY');
         log.info(this._db.pragma('locking_mode', { simple: true }));
         this._db.pragma('automatic_index=false');
+        log.info(this._db.pragma('foreign_keys=false'));
+        log.info(this._db.pragma('secure_delete=false'));
     }
     tableExists(tab) {
         try {
