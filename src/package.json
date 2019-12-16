@@ -2,13 +2,13 @@
     "name": "mbakex",
     "preferGlobal": true,
     "version": "2.12.1",
-    "description": " Extra commands for INTUITION.DEV's mbake CLI.",
+    "description": " Extra commands for INTU.DEV's mbake CLI.",
     "bin": {
         "mbakex": "mbakex.js"
     },
     "license": "LGPL-3.0-only",
-    "author": "http://www.INTUITION.DEV",
-    "homepage": "http://www.INTUITION.DEV",
+    "author": "http://www.INTU.DEV",
+    "homepage": "http://www.INTU.DEV",
     "repository": {
         "type": "git",
         "url": "http://git.mbake.org"

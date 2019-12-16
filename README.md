@@ -8,4 +8,4 @@ Are you sure you should do advanced?
 
 [Pug example](http://pug.mbake.org)
 
-[INTUITION.DEV Home Page](https://www.INTUITION.DEV)
+[INTU.DEV Home Page](https://www.INTU.DEV)
