@@ -34,7 +34,7 @@ export class BaseDBL {
       log.info(this._db.pragma('foreign_keys=false'))
       log.info(this._db.pragma('secure_delete=false'))
  
-      // for speed set this and memory, memory only gets you 20% faster. Large inserts gets you more
+      // set this and memory, memory only gets you 20% faster. Large inserts gets you more in batch
       // this._db.pragma('locking_mode=EXCLUSIVE') // no 3rd party connection. 
  
    }
