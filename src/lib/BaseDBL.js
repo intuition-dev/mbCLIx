@@ -16,10 +16,11 @@ class BaseDBL {
         this._db.pragma('count_changes=OFF');
         this._db.pragma('journal_mode=DELETE');
         this._db.pragma('temp_store=MEMORY');
-        log.info(this._db.pragma('locking_mode', { simple: true }));
         this._db.pragma('automatic_index=false');
-        log.info(this._db.pragma('foreign_keys=false'));
-        log.info(this._db.pragma('secure_delete=false'));
+        this._db.pragma('foreign_keys=false');
+        this._db.pragma('secure_delete=false');
+        this._db.pragma('locking_mode=EXCLUSIVE');
+        log.info(this._db.pragma('locking_mode', { simple: true }));
     }
     tableExists(tab) {
         try {
