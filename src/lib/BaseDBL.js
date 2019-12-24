@@ -19,6 +19,10 @@ class BaseDBL {
         this._db.pragma('automatic_index=false');
         this._db.pragma('foreign_keys=false');
         this._db.pragma('secure_delete=false');
+        this._db.pragma('read_uncommitted=true');
+        this._db.pragma('cache_spill=false');
+        this._db.pragma('busy_timeout=60000');
+        this._db.pragma('mmap_size=102400000');
         this._db.pragma('locking_mode=EXCLUSIVE');
         log.info(this._db.pragma('locking_mode', { simple: true }));
     }

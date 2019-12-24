@@ -4,8 +4,8 @@
 Are you sure you should do advanced?
 
 
-[Git Repo](http://git.mbake.org)
+[Git Repo](http://git.metabake.net)
 
-[Pug example](http://pug.mbake.org)
+[Pug example](http://pug.metabake.net)
 
-[INTU.DEV Home Page](https://www.INTU.DEV)
+[INTUITION.DEV Home Page](https://www.INTUITION.DEV)
