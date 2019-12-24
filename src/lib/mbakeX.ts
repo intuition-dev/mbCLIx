@@ -1,9 +1,9 @@
-// All rights reserved by MetaBake (INTU.DEV) | Cekvenich, licensed under LGPL 3.0
+// All rights reserved by MetaBake (INTUITION.DEV) | Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
 export class MBakeX {
    static verx() {
-      return 'v2.12.1'
+      return 'v2.12.2'
    }
    static date(): string {
       return new Date().toISOString()
