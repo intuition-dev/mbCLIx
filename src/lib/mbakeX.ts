@@ -1,4 +1,4 @@
-// All rights reserved by MetaBake (INTUITION.DEV) | Cekvenich, licensed under LGPL 3.0
+// All rights reserved by CekvenichINTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
 export class MBakeX {
@@ -169,9 +169,9 @@ export class GitDown {
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
       log.info('history', stdout10)
       /*
-      git clone https://cekvenich:PASS@github.com/cekvenich/alan
+      git clone https:// Cekvenich:PASS@github.com/ Cekvenich/alan
       cd folder
-      git remote add test2 https://cekvenich:PASS@github.com/cekvenich/alan
+      git remote add test2 https:// Cekvenich:PASS@github.com/ Cekvenich/alan
       git checkout -b test2
       git push -u origin test2
       */
@@ -190,7 +190,7 @@ export class GitDown {
       const {stdout10} = await execa('git', ['log', '-8', '--oneline', 'origin/'+branch], {cwd: dir})
       log.info('history', stdout10)
       /*
-      git clone https://cekvenich:PASS@github.com/cekvenich/alan
+      git clone https:// Cekvenich:PASS@github.com/ Cekvenich/alan
       cd folder
       git checkout test2
       */
@@ -207,7 +207,7 @@ export class GitDown {
 
       log.info(stdout)
       /*
-      git ls-remote https://cekvenich:PASS@github.com/cekvenich/alan.git
+      git ls-remote https:// Cekvenich:PASS@github.com/ Cekvenich/alan.git
       */
    }//()
 }//class

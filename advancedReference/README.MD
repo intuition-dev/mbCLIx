@@ -3,20 +3,20 @@
 
 
 
-To get an overview of MetaBake pillars:
+To get an overview of INTUITION pillars:
 
-- [MetaBake Quick Demo](http://youtu.be/WyCdSFTUIvM)
+- [INTUITION Quick Demo](http://youtu.be/WyCdSFTUIvM)
 - <a href='http://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- [MetaBake Sales Summary](http://www.youtube.com/watch?v=OK-cJNSkQII)
+- [INTUITION Sales Summary](http://www.youtube.com/watch?v=OK-cJNSkQII)
 
 
 
 ## Videos:
 S = sales, we = Foundation, II = B&M, III = Vista
 - S <a href='http://vimeo.com/282034037' target='_blank'>Meetup Video</a>
-- S [MetaBake Sales Summary](http://www.youtube.com/watch?v=OK-cJNSkQII)
+- S [INTUITION Sales Summary](http://www.youtube.com/watch?v=OK-cJNSkQII)
 
-- we [MetaBake Quick Demo](http://youtu.be/WyCdSFTUIvM)
+- we [INTUITION Quick Demo](http://youtu.be/WyCdSFTUIvM)
 - we [mbake CLI](http://youtu.be/-KkPfAnEXyk)
 - we [Pug on Youtube](http://youtube.com/watch?v=wzAWI9h3q18)
 
