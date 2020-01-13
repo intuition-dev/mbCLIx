@@ -12,16 +12,15 @@ class BaseDBL {
         this._db = new BaseDBL.Database(this._fn);
         this._db.pragma('cache_size = 5000');
         log.info(this._db.pragma('cache_size', { simple: true }));
+        this._db.pragma('busy_timeout=120000');
         this._db.pragma('synchronous=OFF');
-        this._db.pragma('count_changes=OFF');
-        this._db.pragma('journal_mode=DELETE');
+        this._db.pragma('journal_mode=TRUNCATE');
         this._db.pragma('temp_store=MEMORY');
         this._db.pragma('automatic_index=false');
         this._db.pragma('foreign_keys=false');
         this._db.pragma('secure_delete=false');
         this._db.pragma('read_uncommitted=true');
         this._db.pragma('cache_spill=false');
-        this._db.pragma('busy_timeout=60000');
         this._db.pragma('mmap_size=102400000');
         this._db.pragma('locking_mode=EXCLUSIVE');
         log.info(this._db.pragma('locking_mode', { simple: true }));
