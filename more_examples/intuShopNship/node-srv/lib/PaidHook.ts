@@ -29,7 +29,7 @@ export class PaidHook {
 
             await this.ship.ship(intentId)
 
-            res.json("OK"); //res is the response object, and it passes info back to client-side
+            res.json("OK"); //res is the response object, and it passes info back to Client side
         } else if ('checkout.session.completed'==method) {
             console.log('checkout.session.completed')
             res.json("OK")
