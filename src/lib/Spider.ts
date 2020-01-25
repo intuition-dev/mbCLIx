@@ -7,7 +7,7 @@ import axios from 'axios'
 import probe = require('probe-image-size')
 import extractor = require('unfluff')//scrape
 
-const SummarizerManager = require("node-summarizer").SummarizerManager
+// const SummarizerManager = require("node-summarizer").SummarizerManager
 const cheerio = require('cheerio')
 
 const bunyan = require('bunyan')
@@ -148,13 +148,13 @@ export class Scrape {
                full_text = Scrape.asci(full_text)
 
                const all = ret['title'] +' '+  ret['content_text'] +' '+  ret['description'] +' '+ full_text
-               const Summarizer = new SummarizerManager(all, 1)
-               ret['sentiment'] = Summarizer.getSentiment()
+               //const Summarizer = new SummarizerManager(all, 1)
+               //ret['sentiment'] = Summarizer.getSentiment()
 
-               let summary = Summarizer.getSummaryByFrequency()
+               //let summary = Summarizer.getSummaryByFrequency()
                //fix to match feed.json
                ret['content_text'] = Scrape.asci(data.description())
-               ret['description'] = summary.summary // use this for image tag
+               //ret['description'] = summary.summary // use this for image tag
                ret['word_count'] = Scrape.countWords(full_text) 
 
                //image size

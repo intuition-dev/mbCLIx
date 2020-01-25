@@ -29,7 +29,6 @@
         "http-rpc": ">=1.1.1",
         "luxon": ">=1.21.3",
         "mbake": ">=7.12.100",
-        "node-summarizer": ">=1.0.7",
         "probe-image-size": ">=5.0.0",
         "sharp": ">=0.24.0",
         "sitemap": ">=5.1.0",
@@ -38,6 +37,7 @@
     "devDependencies": {
         "@marp-team/marpit": ">=1.5.0",
         "@types/node": ">=13.5.0",
+        "node-summarizer": ">=1.0.7",
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.5",
