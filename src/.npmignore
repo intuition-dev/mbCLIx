@@ -7,3 +7,7 @@ node_modules/
 .DS_Store
 
 gitdown.yaml
+
+pacakge-lock.json
+
+.yarn

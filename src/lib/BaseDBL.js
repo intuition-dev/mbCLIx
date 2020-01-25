@@ -14,7 +14,7 @@ class BaseDBL {
         log.info(this._db.pragma('cache_size', { simple: true }));
         this._db.pragma('busy_timeout=120000');
         this._db.pragma('synchronous=OFF');
-        this._db.pragma('journal_mode=TRUNCATE');
+        this._db.pragma('journal_mode=WAL');
         this._db.pragma('temp_store=MEMORY');
         this._db.pragma('automatic_index=false');
         this._db.pragma('foreign_keys=false');

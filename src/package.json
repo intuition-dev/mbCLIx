@@ -1,7 +1,7 @@
 {
     "name": "mbakex",
     "preferGlobal": true,
-    "version": "2.12.100",
+    "version": "2.12.102",
     "description": " Extra commands for INTUITION.DEV's mbake CLI, including SQLite helper.",
     "bin": "mbakex.js",
     "license": "LGPL-3.0-only",
@@ -26,9 +26,9 @@
         "cheerio": ">=1.0.0-rc.3",
         "execa": ">=4.0.0",
         "filehound": ">=1.17.3",
-        "http-rpc": ">=1.1.1",
+        "http-rpc": ">=1.1.2",
         "luxon": ">=1.21.3",
-        "mbake": ">=7.12.100",
+        "mbake": ">=7.12.102",
         "probe-image-size": ">=5.0.0",
         "sharp": ">=0.24.0",
         "sitemap": ">=5.1.0",
@@ -37,7 +37,6 @@
     "devDependencies": {
         "@marp-team/marpit": ">=1.5.0",
         "@types/node": ">=13.5.0",
-        "node-summarizer": ">=1.0.7",
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.5",

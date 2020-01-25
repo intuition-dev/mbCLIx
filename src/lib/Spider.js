@@ -7,7 +7,6 @@ const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const axios_1 = __importDefault(require("axios"));
 const probe = require("probe-image-size");
 const extractor = require("unfluff");
-const SummarizerManager = require("node-summarizer").SummarizerManager;
 const cheerio = require('cheerio');
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
@@ -113,11 +112,7 @@ class Scrape {
                     ret['description'] = Scrape.asci(ret['description']);
                     full_text = Scrape.asci(full_text);
                     const all = ret['title'] + ' ' + ret['content_text'] + ' ' + ret['description'] + ' ' + full_text;
-                    const Summarizer = new SummarizerManager(all, 1);
-                    ret['sentiment'] = Summarizer.getSentiment();
-                    let summary = Summarizer.getSummaryByFrequency();
                     ret['content_text'] = Scrape.asci(data.description());
-                    ret['description'] = summary.summary;
                     ret['word_count'] = Scrape.countWords(full_text);
                     const iurl = ret['image'];
                     if (iurl) {

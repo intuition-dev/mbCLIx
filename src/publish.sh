@@ -3,13 +3,13 @@
 tsc
 # node mbakex.js
 npm publish
-#sudo yarn global add  mbake --unsafe-perm=true --allow-root
+#sudo npm i -g  mbake --unsafe-perm=true --allow-root
 # if changed node version do this:
 # sudo yarn global remove mbakex
 
 
 
-yarn global add  mbakex
+npm i -g  mbakex
 mbakex
 
 # find . -type f -name 'package-lock.json' 
