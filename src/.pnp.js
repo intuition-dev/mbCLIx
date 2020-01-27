@@ -97,7 +97,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ip", "npm:1.1.5"],
             ["ipinfo", "npm:1.3.9"],
             ["limiter", "npm:1.1.5"],
-            ["luxon", "npm:1.21.3"],
+            ["luxon", "npm:1.22.0"],
             ["mbake", "npm:7.12.102"],
             ["node-gyp", "npm:6.1.0"],
             ["probe-image-size", "npm:5.0.0"],
@@ -3832,10 +3832,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["luxon", [
-        ["npm:1.21.3", {
-          "packageLocation": "./.yarn/cache/luxon-npm-1.21.3-95b245cfb0-1.zip/node_modules/luxon/",
+        ["npm:1.22.0", {
+          "packageLocation": "./.yarn/cache/luxon-npm-1.22.0-5d9959f2b9-1.zip/node_modules/luxon/",
           "packageDependencies": [
-            ["luxon", "npm:1.21.3"]
+            ["luxon", "npm:1.22.0"]
           ],
           "linkType": "HARD"
         }]
@@ -3967,7 +3967,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ip", "npm:1.1.5"],
             ["ipinfo", "npm:1.3.9"],
             ["limiter", "npm:1.1.5"],
-            ["luxon", "npm:1.21.3"],
+            ["luxon", "npm:1.22.0"],
             ["mbake", "npm:7.12.102"],
             ["node-gyp", "npm:6.1.0"],
             ["probe-image-size", "npm:5.0.0"],

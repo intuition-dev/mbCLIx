@@ -36,7 +36,7 @@ export class BaseDBL {
       this._db.pragma('cache_spill=false')
       this._db.pragma('mmap_size=102400000') // 100meg in B
 
-      this._db.pragma('locking_mode=EXCLUSIVE') // 3rd party connection, or NORMAL
+      this._db.pragma('locking_mode=NORMAL') // 3rd party connection, or  EXCLUSIVE
       log.info(this._db.pragma('locking_mode', { simple: true }))
  
    }
