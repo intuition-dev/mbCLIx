@@ -22,7 +22,7 @@ class BaseDBL {
         this._db.pragma('read_uncommitted=true');
         this._db.pragma('cache_spill=false');
         this._db.pragma('mmap_size=102400000');
-        this._db.pragma('locking_mode=EXCLUSIVE');
+        this._db.pragma('locking_mode=NORMAL');
         log.info(this._db.pragma('locking_mode', { simple: true }));
     }
     tableExists(tab) {
