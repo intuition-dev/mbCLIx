@@ -13,19 +13,27 @@ export class BaseDBL {
    static Database = require('better-sqlite3')
 
    /**
-   connect with defaults, not using RAM
-   */
-   defCon(path,  fn) {
+    * connect with defaults, not using RAM as default
+    * @param path    
+    * @param fn 
+    * @param mem  defaults to 512000000000 // 500 meg in cache and file map
+    */
+   defCon(path,  fn, mem?:string) {
       this._fn = path + fn
       log.info(this._fn)
       this._db = new BaseDBL.Database(this._fn)
 
-      this._db.pragma('cache_size = 5000')//20meg in 4K
+      if(!mem) mem = '512000000000'
+      this._db.pragma('cache_size = -'+mem)//
       log.info(this._db.pragma('cache_size', { simple: true }))
 
       this._db.pragma('busy_timeout=120000') // 2 minutes
+
+      this._db.pragma('mmap_size='+mem)// 
+
       this._db.pragma('synchronous=OFF')
-      this._db.pragma('journal_mode=WAL') 
+      this._db.pragma('journal_mode=MEMORY') // or WAL
+      this._db.pragma('wal_checkpoint=TRUNCATE') // release memory used for rollback
       this._db.pragma('temp_store=MEMORY')
 
       this._db.pragma('automatic_index=false')
@@ -34,12 +42,10 @@ export class BaseDBL {
 
       this._db.pragma('read_uncommitted=true') // no locking
       this._db.pragma('cache_spill=false')
-      this._db.pragma('mmap_size=102400000') // 100meg in B
 
-      this._db.pragma('locking_mode=NORMAL') // 3rd party connection, or  EXCLUSIVE
+      this._db.pragma('locking_mode=EXCLUSIVE') // 3rd party connection,  NORMAL or EXCLUSIVE
       log.info(this._db.pragma('locking_mode', { simple: true }))
- 
-   }
+   }//()
 
    tableExists(tab): boolean { 
       try {

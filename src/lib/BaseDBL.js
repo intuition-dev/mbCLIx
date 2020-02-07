@@ -6,23 +6,26 @@ const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "Base DB" });
 const fs = require('fs-extra');
 class BaseDBL {
-    defCon(path, fn) {
+    defCon(path, fn, mem) {
         this._fn = path + fn;
         log.info(this._fn);
         this._db = new BaseDBL.Database(this._fn);
-        this._db.pragma('cache_size = 5000');
+        if (!mem)
+            mem = '512000000000';
+        this._db.pragma('cache_size = -' + mem);
         log.info(this._db.pragma('cache_size', { simple: true }));
         this._db.pragma('busy_timeout=120000');
+        this._db.pragma('mmap_size=' + mem);
         this._db.pragma('synchronous=OFF');
-        this._db.pragma('journal_mode=WAL');
+        this._db.pragma('journal_mode=MEMORY');
+        this._db.pragma('wal_checkpoint=TRUNCATE');
         this._db.pragma('temp_store=MEMORY');
         this._db.pragma('automatic_index=false');
         this._db.pragma('foreign_keys=false');
         this._db.pragma('secure_delete=false');
         this._db.pragma('read_uncommitted=true');
         this._db.pragma('cache_spill=false');
-        this._db.pragma('mmap_size=102400000');
-        this._db.pragma('locking_mode=NORMAL');
+        this._db.pragma('locking_mode=EXCLUSIVE');
         log.info(this._db.pragma('locking_mode', { simple: true }));
     }
     tableExists(tab) {
