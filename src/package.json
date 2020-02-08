@@ -1,7 +1,7 @@
 {
     "name": "mbakex",
     "preferGlobal": true,
-    "version": "2.14.2",
+    "version": "2.14.3",
     "description": " Extra commands for INTUITION.DEV's mbake CLI, including SQLite helper.",
     "bin": "mbakex.js",
     "license": "LGPL-3.0-only",
