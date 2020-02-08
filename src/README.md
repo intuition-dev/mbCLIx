@@ -21,3 +21,14 @@ Notes:
 
 [Git Repo](http://git.metabake.net)
 
+## npm trouble?
+
+This may help:
+
+disable se linux:
+/usr/sbin/getenforce
+
+npm i -g --unsafe-perm=true --allow-root mbakex
+
+https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x
+
