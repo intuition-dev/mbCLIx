@@ -1,34 +1,44 @@
 
-# INTUITION  CLI X extras
+# INTUITION  mbakex CLI X extras
+
+
+This page has extra mbake features, used by INTUITION. 
 
 
 [INTUITION.DEV Home Page](https://www.INTUITION.DEV)
 
 ## Install
 
+Note: Some of the upstream packages we user are native, so you need to : apt-get install build-essential or similar to get the platfrom C compiler. 
+
 ```sh
+    apt-get install build-essential
     npm i -g npm@next
     npm i -g node-gyp@latest 
-    npm i -g mbakex
+    npm i -g --unsafe-perm=true --allow-root mbakex
 ```
-
-Note: We use a native sqlite driver. It likely needs `npm i -g node-gyp@latest`.
-
-Notes: 
-- It is best to install node via via nvm (https://github.com/nvm-sh/nvm)
-- If node version changed, you may need to do this first:  `npm uninstall -g mbakex`
-
 
 [Git Repo](http://git.metabake.net)
 
-## npm trouble?
 
-This may help:
+## npm install troubles?
 
-disable se linux:
-/usr/sbin/getenforce
+Due to native upstream modules, when chaning version of node, you may have issues. It helps to install node via nvm. 
 
-npm i -g --unsafe-perm=true --allow-root mbakex
 
+While doing the updates, and get the error 
+> Node Sass could not find a binding for your current environment
+
+
+To solve it, within the folder where `mbake` globally located need to run:
+`npm rebuild node-sass`
+
+Or you may to do a fully remove all node, this fixes any issue:
 https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x
 
+
+You may need to disable SE in linux:
+` /usr/sbin/getenforce `
+
+
+Or even manage the firewall: https://github.com/intuition-dev/intuServices/tree/master/src/node-srv/fw
