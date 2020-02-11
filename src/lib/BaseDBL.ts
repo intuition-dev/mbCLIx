@@ -16,14 +16,14 @@ export class BaseDBL {
     * connect with defaults, not using RAM as default
     * @param path    
     * @param fn 
-    * @param mem  defaults to 512000000000 // 500 meg in cache and file map
+    * @param mem  defaults to 256000000000 // 256 meg in cache and file map
     */
    defCon(path,  fn, mem?:string) {
       this._fn = path + fn
       log.info(this._fn)
       this._db = new BaseDBL.Database(this._fn)
 
-      if(!mem) mem = '512000000000'
+      if(!mem) mem = '256000000000'
       this._db.pragma('cache_size = -'+mem)//
       log.info(this._db.pragma('cache_size', { simple: true }))
 

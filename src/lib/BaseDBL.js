@@ -11,7 +11,7 @@ class BaseDBL {
         log.info(this._fn);
         this._db = new BaseDBL.Database(this._fn);
         if (!mem)
-            mem = '512000000000';
+            mem = '256000000000';
         this._db.pragma('cache_size = -' + mem);
         log.info(this._db.pragma('cache_size', { simple: true }));
         this._db.pragma('busy_timeout=120000');
