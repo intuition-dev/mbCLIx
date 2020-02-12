@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v2.14.6'
+      return 'v2.14.8'
    }
    static date(): string {
       return new Date().toISOString()
@@ -57,7 +57,7 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "x"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import yaml = require('js-yaml')
-import { Dirs } from 'mbake/lib/FileOpsBase';
+import { Dirs} from 'agentg/lib/FileOpsExtra'
 
 // //////////////////////////////////////////////////////////////////
 export class GitDown {

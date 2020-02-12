@@ -7,8 +7,9 @@ const Wa_1 = require("mbake/lib/Wa");
 const Spider_1 = require("./lib/Spider");
 const mbakeX_1 = require("./lib/mbakeX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const mbakeX_2 = require("./lib/mbakeX");
-const FileOpsExtra_1 = require("mbake/lib/FileOpsExtra");
+const FileOpsExtra_2 = require("agentg/lib/FileOpsExtra");
 const cov_1 = require("./lib/cov");
 const cwd = process.cwd();
 function version() {
@@ -74,7 +75,7 @@ const optionDefinitions = [
 const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed['mbakex'];
 console.info();
-FileOpsExtra_1.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(function (isCurrent_) {
+FileOpsExtra_2.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(function (isCurrent_) {
     try {
         if (!isCurrent_)
             console.log('There is a newer version of mbakex, please update.');
@@ -93,7 +94,7 @@ function cover(arg) {
     cov_1.Cover.run(VMdir, TestDir);
 }
 function frag(arg) {
-    new FileOpsExtra_1.DownloadFrag(arg, true);
+    new FileOpsExtra_2.DownloadFrag(arg, true);
 }
 function add(arg) {
     const args = arg.split(':');
@@ -106,11 +107,11 @@ function add(arg) {
     f.clone(args[1], args[2]);
 }
 function unzipG() {
-    new FileOpsExtra_1.DownloadC('phoneGap', __dirname).autoUZ();
+    new FileOpsExtra_2.DownloadC('phoneGap', __dirname).autoUZ();
     console.info('Extracted a starter PhoneGap app');
 }
 function unzipE() {
-    new FileOpsExtra_1.DownloadC('electron', __dirname).autoUZ();
+    new FileOpsExtra_2.DownloadC('electron', __dirname).autoUZ();
     console.info('Extracted a starter Electron app');
 }
 function map(arg) {
@@ -141,13 +142,13 @@ function bakeD(arg) {
     });
 }
 if (arg) {
-    arg = FileOpsBase_1.Dirs.slash(arg);
+    arg = FileOpsExtra_1.Dirs.slash(arg);
     if (arg.startsWith('/')) {
     }
     else if (arg.startsWith('..')) {
         arg = arg.substring(2);
         let d = cwd;
-        d = FileOpsBase_1.Dirs.slash(d);
+        d = FileOpsExtra_1.Dirs.slash(d);
         let n = d.lastIndexOf('/');
         d = d.substring(0, n);
         arg = d + arg;

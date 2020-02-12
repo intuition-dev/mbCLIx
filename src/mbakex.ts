@@ -7,9 +7,12 @@ import { MBake } from 'mbake/lib/Base'
 import { Wa } from 'mbake/lib/Wa'
 import { Map } from './lib/Spider'
 import { Resize, MBakeX } from './lib/mbakeX'
-import { Dirs, FileOps } from 'mbake/lib/FileOpsBase'
+import { FileOps } from 'mbake/lib/FileOpsBase'
+
+import { Dirs} from 'agentg/lib/FileOpsExtra'
+
 import { GitDown  } from './lib/mbakeX'
-import { DownloadFrag, VersionNag, DownloadC  } from 'mbake/lib/FileOpsExtra'
+import { DownloadFrag, VersionNag, DownloadC  } from 'agentg/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
 

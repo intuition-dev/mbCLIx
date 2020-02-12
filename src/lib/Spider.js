@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const axios_1 = __importDefault(require("axios"));
 const probe = require("probe-image-size");
 const extractor = require("unfluff");
@@ -35,7 +36,7 @@ class Map {
             .match('dat.yaml')
             .findSync();
         for (let val of rec) {
-            val = FileOpsBase_1.Dirs.slash(val);
+            val = FileOpsExtra_1.Dirs.slash(val);
             val = val.slice(0, -9);
             let dat = new FileOpsBase_1.Dat(val);
             let keys = dat.getAll();

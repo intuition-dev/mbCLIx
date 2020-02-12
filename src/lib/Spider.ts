@@ -1,7 +1,9 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 
-import { Dirs, Dat} from 'mbake/lib/FileOpsBase'
+import { Dat} from 'mbake/lib/FileOpsBase'
+
+import { Dirs} from 'agentg/lib/FileOpsExtra'
 
 import axios from 'axios'
 import probe = require('probe-image-size')

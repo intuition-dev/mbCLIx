@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v2.14.6';
+        return 'v2.14.8';
     }
     static date() {
         return new Date().toISOString();
@@ -15,7 +15,7 @@ class MBakeX {
             }
             try {
                 console.info(' Clearing ' + path_);
-                let dir = FileOpsBase_1.Dirs.slash(path_);
+                let dir = FileOpsExtra_1.Dirs.slash(path_);
                 const rec = FileHound.create()
                     .paths(dir)
                     .ext(['pug', 'yaml', 'js', 'ts', 'scss', 'sass', 'md'])
@@ -47,7 +47,7 @@ const log = bunyan.createLogger({ src: true, stream: formatOut, name: "x" });
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");
-const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
+const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 class GitDown {
     constructor(pass_) {
         var standard_input = process.stdin;
