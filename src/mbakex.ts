@@ -11,7 +11,6 @@ import { FileOps } from 'mbake/lib/FileOpsBase'
 
 import { Dirs} from 'agentg/lib/FileOpsExtra'
 
-import { GitDown  } from './lib/mbakeX'
 import { DownloadFrag, VersionNag, DownloadC  } from 'agentg/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
@@ -49,9 +48,6 @@ function help() {
    console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .')
    console.info()
 
-   console.info('  To download branch from git, in folder with gitdown.yaml:    mbakex --gitDown .')
-   console.info('     passing the git password of gitdown user')
-   console.info()
    console.info('  To get a test coverage report of ViewModel and Test classes: mbakex --cover ViewModelDir:TestDir')
    console.info()
    
@@ -88,7 +84,6 @@ const optionDefinitions = [
    { name: 'bakeD', type: Boolean },
 
    { name: 'ops', type: Boolean },
-   { name: 'gitDown', type: Boolean },
    { name: 'add', type: Boolean },
 
    { name: 'cover', type: Boolean },
@@ -115,9 +110,6 @@ VersionNag.isCurrent('mbakex', MBakeX.verx() ).then(function(isCurrent_:boolean)
 })// 
 
 // ///////////////////////////////////////////////////////////////////////////////////////////
-function git(arg) {
-   let gg = new GitDown(arg)
-}//()
 
 function cover(arg) {
    var res = arg.split(':')
@@ -232,8 +224,6 @@ if (argsParsed.elect)
       bakeD(arg)
    else if (argsParsed.ops)
       frag(arg)
-   else if (argsParsed.gitDown)
-      git(arg)
    else if (argsParsed.add)
       add(arg)
    else if (argsParsed.cover)

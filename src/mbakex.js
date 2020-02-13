@@ -8,7 +8,6 @@ const Spider_1 = require("./lib/Spider");
 const mbakeX_1 = require("./lib/mbakeX");
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
-const mbakeX_2 = require("./lib/mbakeX");
 const FileOpsExtra_2 = require("agentg/lib/FileOpsExtra");
 const cov_1 = require("./lib/cov");
 const cwd = process.cwd();
@@ -37,9 +36,6 @@ function help() {
     console.info('  To map map.yaml to sitemap.xml                               mbakex -m .');
     console.info('  Compress 3200px or larger .jpg images to 2 sizes:            mbakex -i .');
     console.info();
-    console.info('  To download branch from git, in folder with gitdown.yaml:    mbakex --gitDown .');
-    console.info('     passing the git password of gitdown user');
-    console.info();
     console.info('  To get a test coverage report of ViewModel and Test classes: mbakex --cover ViewModelDir:TestDir');
     console.info();
     console.info('  To recursively remove source files:                          mbakex --src .');
@@ -64,7 +60,6 @@ const optionDefinitions = [
     { name: 'bakeS', type: Boolean },
     { name: 'bakeD', type: Boolean },
     { name: 'ops', type: Boolean },
-    { name: 'gitDown', type: Boolean },
     { name: 'add', type: Boolean },
     { name: 'cover', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
@@ -84,9 +79,6 @@ FileOpsExtra_2.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(funct
         console.log(err);
     }
 });
-function git(arg) {
-    let gg = new mbakeX_2.GitDown(arg);
-}
 function cover(arg) {
     var res = arg.split(':');
     const VMdir = res[0];
@@ -179,8 +171,6 @@ else if (argsParsed.bakeD)
     bakeD(arg);
 else if (argsParsed.ops)
     frag(arg);
-else if (argsParsed.gitDown)
-    git(arg);
 else if (argsParsed.add)
     add(arg);
 else if (argsParsed.cover)
