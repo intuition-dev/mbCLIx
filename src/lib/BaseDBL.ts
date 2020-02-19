@@ -7,6 +7,8 @@ const log = bunyan.createLogger({src: true, stream: formatOut, name: "Base DB"})
 const fs = require('fs-extra')
 
 export class BaseDBL {
+   static MAXINT:number = 9223372036854775807 
+
    protected _fn
    protected _db
 
@@ -27,7 +29,7 @@ export class BaseDBL {
       this._db.pragma('cache_size = -'+mem)//
       log.info(this._db.pragma('cache_size', { simple: true }))
 
-      this._db.pragma('busy_timeout=120000') // 2 minutes
+      this._db.pragma('busy_timeout='+120*1000) // 2 minutes
 
       this._db.pragma('mmap_size='+mem)// 
 
@@ -43,7 +45,7 @@ export class BaseDBL {
       this._db.pragma('read_uncommitted=true') // no locking
       this._db.pragma('cache_spill=false')
 
-      this._db.pragma('locking_mode=EXCLUSIVE') // 3rd party connection,  NORMAL or EXCLUSIVE
+      this._db.pragma('locking_mode=NORMAL') // 3rd party connection,  NORMAL or EXCLUSIVE
       log.info(this._db.pragma('locking_mode', { simple: true }))
    }//()
 
