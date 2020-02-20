@@ -14,7 +14,7 @@ class BaseDBL {
             mem = '256000000000';
         this._db.pragma('cache_size = -' + mem);
         log.info(this._db.pragma('cache_size', { simple: true }));
-        this._db.pragma('busy_timeout=120000');
+        this._db.pragma('busy_timeout=' + 120 * 1000);
         this._db.pragma('mmap_size=' + mem);
         this._db.pragma('synchronous=OFF');
         this._db.pragma('journal_mode=MEMORY');
@@ -25,7 +25,7 @@ class BaseDBL {
         this._db.pragma('secure_delete=false');
         this._db.pragma('read_uncommitted=true');
         this._db.pragma('cache_spill=false');
-        this._db.pragma('locking_mode=EXCLUSIVE');
+        this._db.pragma('locking_mode=NORMAL');
         log.info(this._db.pragma('locking_mode', { simple: true }));
     }
     tableExists(tab) {
@@ -77,6 +77,7 @@ class BaseDBL {
     }
 }
 exports.BaseDBL = BaseDBL;
+BaseDBL.MAXINT = 9223372036854775807;
 BaseDBL.Database = require('better-sqlite3');
 module.exports = {
     BaseDBL
