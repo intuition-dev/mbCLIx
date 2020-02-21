@@ -52,7 +52,3 @@ export class Stripe extends BaseRPCMethodHandler {
       this.ret(resp, session, null, null)
    }
 }
-
-module.exports = {
-   Stripe
-}

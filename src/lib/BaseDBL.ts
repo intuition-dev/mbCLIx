@@ -107,6 +107,3 @@ export class BaseDBL {
 
 }//class
 
-module.exports = {
-   BaseDBL
-}

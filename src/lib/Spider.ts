@@ -201,6 +201,3 @@ export class Scrape {
 
 }//class
 
-module.exports = {
-   Scrape, Map
-}

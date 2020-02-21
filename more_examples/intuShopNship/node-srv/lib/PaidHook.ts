@@ -42,6 +42,3 @@ export class PaidHook {
     }
 }
 
-module.exports = {
-    PaidHook
-}

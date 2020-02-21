@@ -115,7 +115,3 @@ export class Resize {
 
 }//class
 
-
-module.exports = {
-   Resize, MBakeX
-}

@@ -36,7 +36,3 @@ export class SDB extends BaseDB {
         return rows[0];
     }
 }//class
-
-module.exports = {
-    SDB
-}

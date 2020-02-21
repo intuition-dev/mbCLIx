@@ -170,6 +170,3 @@ export class Cover {
     }
 }//class
 
-module.exports = {
-   Cover
-}
