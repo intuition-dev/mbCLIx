@@ -1,3 +1,7 @@
+
+## 8.2.0
+- es5 droped
+
 ## 2.14.15
 - agentg imports
 

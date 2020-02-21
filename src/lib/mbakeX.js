@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v2.14.15';
+        return 'v8.2.0';
     }
     static date() {
         return new Date().toISOString();
