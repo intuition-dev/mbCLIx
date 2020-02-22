@@ -3,16 +3,19 @@
 const bunyan = require('bunyan')
 const bformat = require('bunyan-format2')  
 const formatOut = bformat({ outputMode: 'short' })
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "Base DB"})
+
 const fs = require('fs-extra')
 
 export class BaseDBL {
+
+   log = bunyan.createLogger({src: true, stream: formatOut, name: this.constructor.name })
+
    static MAXINT:number = 9223372036854775807 
 
    protected _fn
    protected _db
 
-   static Database = require('better-sqlite3')
+   BDatabase = require('better-sqlite3')
 
    /**
     * connect with defaults, not using RAM as default
@@ -22,12 +25,12 @@ export class BaseDBL {
     */
    defCon(path,  fn, mem?:string) {
       this._fn = path + fn
-      log.info(this._fn)
-      this._db = new BaseDBL.Database(this._fn)
+      this.log.info(this._fn)
+      this._db = new this.BDatabase(this._fn)
 
       if(!mem) mem = '256000000000'
       this._db.pragma('cache_size = -'+mem)//
-      log.info(this._db.pragma('cache_size', { simple: true }))
+      this.log.info(this._db.pragma('cache_size', { simple: true }))
 
       this._db.pragma('busy_timeout='+120*1000) // 2 minutes
 
@@ -46,7 +49,7 @@ export class BaseDBL {
       this._db.pragma('cache_spill=false')
 
       this._db.pragma('locking_mode=NORMAL') // 3rd party connection,  NORMAL or EXCLUSIVE
-      log.info(this._db.pragma('locking_mode', { simple: true }))
+      this.log.info(this._db.pragma('locking_mode', { simple: true }))
    }//()
 
    tableExists(tab): boolean { 
@@ -95,13 +98,13 @@ export class BaseDBL {
          fs.removeSync(this._fn)
 
       } catch(err) {
-         log.warn(err)
+         this.log.warn(err)
       }
   }//()
 
   async backup(newName:string) {
       await this._db.backup(newName, {progress({ totalPages: t, remainingPages: r }) {
-         log.info(r)
+         this.log.info(r)
       }})
    }//()
 
