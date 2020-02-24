@@ -2,7 +2,7 @@
 # INTUITION  mbakex CLI X extras
 
 
-This page has extra mbake features, used by INTUITION. 
+Extra commands for INTUITION.DEV's mbake CLI, including a native SQLite helper.
 
 
 [INTUITION.DEV Home Page](https://www.INTUITION.DEV)

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v8.2.0';
+        return 'v8.2.2';
     }
     static date() {
         return new Date().toISOString();
@@ -96,6 +96,3 @@ class Resize {
     }
 }
 exports.Resize = Resize;
-module.exports = {
-    Resize, MBakeX
-};

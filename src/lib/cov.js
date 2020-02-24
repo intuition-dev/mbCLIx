@@ -146,6 +146,3 @@ Cover.ids = {};
 Cover.tstList = {};
 Cover.clazzList = {};
 Cover.memberList = new Set([]);
-module.exports = {
-    Cover
-};

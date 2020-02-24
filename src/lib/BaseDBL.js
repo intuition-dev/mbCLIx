@@ -3,17 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "Base DB" });
 const fs = require('fs-extra');
 class BaseDBL {
+    constructor() {
+        this.log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
+        this.BDatabase = require('better-sqlite3');
+    }
     defCon(path, fn, mem) {
         this._fn = path + fn;
-        log.info(this._fn);
-        this._db = new BaseDBL.Database(this._fn);
+        this.log.info(this._fn);
+        this._db = new this.BDatabase(this._fn);
         if (!mem)
             mem = '256000000000';
         this._db.pragma('cache_size = -' + mem);
-        log.info(this._db.pragma('cache_size', { simple: true }));
+        this.log.info(this._db.pragma('cache_size', { simple: true }));
         this._db.pragma('busy_timeout=' + 120 * 1000);
         this._db.pragma('mmap_size=' + mem);
         this._db.pragma('synchronous=OFF');
@@ -26,7 +29,7 @@ class BaseDBL {
         this._db.pragma('read_uncommitted=true');
         this._db.pragma('cache_spill=false');
         this._db.pragma('locking_mode=NORMAL');
-        log.info(this._db.pragma('locking_mode', { simple: true }));
+        this.log.info(this._db.pragma('locking_mode', { simple: true }));
     }
     tableExists(tab) {
         try {
@@ -67,18 +70,14 @@ class BaseDBL {
             fs.removeSync(this._fn);
         }
         catch (err) {
-            log.warn(err);
+            this.log.warn(err);
         }
     }
     async backup(newName) {
         await this._db.backup(newName, { progress({ totalPages: t, remainingPages: r }) {
-                log.info(r);
+                this.log.info(r);
             } });
     }
 }
 exports.BaseDBL = BaseDBL;
 BaseDBL.MAXINT = 9223372036854775807;
-BaseDBL.Database = require('better-sqlite3');
-module.exports = {
-    BaseDBL
-};

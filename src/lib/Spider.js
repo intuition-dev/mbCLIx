@@ -154,6 +154,3 @@ class Scrape {
     }
 }
 exports.Scrape = Scrape;
-module.exports = {
-    Scrape, Map
-};
