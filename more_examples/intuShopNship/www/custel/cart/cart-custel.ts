@@ -67,7 +67,7 @@ depp.require(['poly', 'mustache'], function () { // inside the require
       </style>
    `
 
-   window.customElements.define('cart-custel', class extends HTMLElement {
+   customElements.define('cart-custel', class extends HTMLElement {
       sr // shadow root var
       tmpl // binding template
       constructor() {
