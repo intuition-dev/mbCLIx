@@ -1,11 +1,9 @@
-"use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
-Object.defineProperty(exports, "__esModule", { value: true });
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const fs = require('fs-extra');
-class BaseDBL {
+export class BaseDBL {
     constructor() {
         this.log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
         this.BDatabase = require('better-sqlite3');
@@ -90,5 +88,4 @@ class BaseDBL {
             } });
     } //()
 } //class
-exports.BaseDBL = BaseDBL;
 BaseDBL.MAXINT = 9223372036854775807;
