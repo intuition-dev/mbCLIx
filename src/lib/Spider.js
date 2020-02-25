@@ -1,4 +1,6 @@
 "use strict";
+// All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend these classes!
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -7,7 +9,8 @@ const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const axios_1 = __importDefault(require("axios"));
 const probe = require("probe-image-size");
-const extractor = require("unfluff");
+const extractor = require("unfluff"); //scrape
+// const SummarizerManager = require("node-summarizer").SummarizerManager
 const cheerio = require('cheerio');
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
@@ -27,15 +30,16 @@ class Map {
         this._rootLen = root.length;
     }
     gen() {
+        //return new Promise(function (resolve, reject) {
         const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
         this._sitemap = sitemap_1.createSitemap({ hostname: m['hostname'] });
         const hostname = m['hostname'];
         log.info(hostname);
-        const rec = FileHound.create()
+        const rec = FileHound.create() //recursive
             .paths(this._root)
             .match('dat.yaml')
             .findSync();
-        for (let val of rec) {
+        for (let val of rec) { // todo try{}
             val = FileOpsExtra_1.Dirs.slash(val);
             val = val.slice(0, -9);
             let dat = new FileOpsBase_1.Dat(val);
@@ -45,28 +49,34 @@ class Map {
             val = val.substring(this._rootLen);
             keys.url = val;
             this._sitemap.add(keys);
-        }
+        } //for
         let xml = this._sitemap.toString(true);
         fs.writeFileSync(this._root + '/sitemap.xml', xml);
         console.info(' Sitemap ready', xml);
-    }
-}
+        // resolve('OK')
+        //})
+    } //()
+} // class
 exports.Map = Map;
+// //////////////////////////////////////////////////////////////////////////////
 class Scrape {
     constructor() {
         axios_1.default.defaults.responseType = 'document';
     }
+    //delete me
     tst() {
         const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421';
         this.s(u1).then(function (ret) {
             log.info(ret);
         });
     }
+    // most likely write to dat.yaml after folder is named
     s(url, selector) {
         const THIZ = this;
         return new Promise(function (resolve, reject) {
             try {
                 console.info(url);
+                //feed json items
                 axios_1.default.get(url).then(function (response) {
                     let ret = new Object();
                     const $ = cheerio.load(response.data);
@@ -108,13 +118,20 @@ class Scrape {
                     ret['attachments'] = data.videos();
                     ret['tags'] = data.tags();
                     ret['description'] = data.description();
+                    // clean
                     ret['title'] = Scrape.asci(ret['title']);
                     ret['content_text'] = Scrape.asci(ret['content_text']);
                     ret['description'] = Scrape.asci(ret['description']);
                     full_text = Scrape.asci(full_text);
                     const all = ret['title'] + ' ' + ret['content_text'] + ' ' + ret['description'] + ' ' + full_text;
+                    //const Summarizer = new SummarizerManager(all, 1)
+                    //ret['sentiment'] = Summarizer.getSentiment()
+                    //let summary = Summarizer.getSummaryByFrequency()
+                    //fix to match feed.json
                     ret['content_text'] = Scrape.asci(data.description());
+                    //ret['description'] = summary.summary // use this for image tag
                     ret['word_count'] = Scrape.countWords(full_text);
+                    //image size
                     const iurl = ret['image'];
                     if (iurl) {
                         Scrape.getImageSize(iurl).then(function (sz) {
@@ -130,7 +147,7 @@ class Scrape {
                 log.warn(err);
                 reject(err);
             }
-        });
+        }); //pro
     }
     static getImageSize(iurl_) {
         return probe(iurl_, { timeout: 3000 });
@@ -151,6 +168,6 @@ class Scrape {
             }
         }
         return filterd_string;
-    }
-}
+    } //()
+} //class
 exports.Scrape = Scrape;

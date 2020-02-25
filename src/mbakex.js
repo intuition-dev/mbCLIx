@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+// All rights reserved by INTUITION.DEV |  Cekvenich, licensed under LGPL 3.0
 Object.defineProperty(exports, "__esModule", { value: true });
 const commandLineArgs = require("command-line-args");
 const Base_1 = require("mbake/lib/Base");
@@ -10,13 +11,14 @@ const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const FileOpsExtra_2 = require("agentg/lib/FileOpsExtra");
 const cov_1 = require("./lib/cov");
+// imports done /////////////////////////////////////////////
 const cwd = process.cwd();
 function version() {
-    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx());
+    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx()); // tsc
 }
 function help() {
     console.info();
-    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx());
+    console.info('mbakex CLI version: ' + mbakeX_1.MBakeX.verx()); // tsc
     console.info('  your node version is ' + process.version);
     console.info('  from ' + __dirname);
     console.info();
@@ -47,7 +49,8 @@ function help() {
     console.info('  For a Electron(pre-PhoneGap) app:                           mbakex -e');
     console.info('  For a starter hybrid Phonegap app:                          mbakex -o');
     console.info();
-}
+} //()
+// args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
     { name: 'mbakex', defaultOption: true },
     { name: 'help', alias: 'h', type: Boolean },
@@ -78,7 +81,8 @@ FileOpsExtra_2.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(funct
     catch (err) {
         console.log(err);
     }
-});
+}); // 
+// ///////////////////////////////////////////////////////////////////////////////////////////
 function cover(arg) {
     var res = arg.split(':');
     const VMdir = res[0];
@@ -98,6 +102,7 @@ function add(arg) {
     const f = new FileOpsBase_1.FileOps(dir);
     f.clone(args[1], args[2]);
 }
+// unzip: ////////////////////////////////////////////////////////////////////////////////////////////
 function unzipG() {
     new FileOpsExtra_2.DownloadC('phoneGap', __dirname).autoUZ();
     console.info('Extracted a starter PhoneGap app');
@@ -106,6 +111,7 @@ function unzipE() {
     new FileOpsExtra_2.DownloadC('electron', __dirname).autoUZ();
     console.info('Extracted a starter Electron app');
 }
+//  ////////////////////////////////////////////////////////////////////////////////////////////////
 function map(arg) {
     new Spider_1.Map(arg).gen();
 }
@@ -133,22 +139,26 @@ function bakeD(arg) {
         console.log(val);
     });
 }
+// get folder to be processed: ///////////////////////////////////////////////////////////////////////////////////////////////////////
 if (arg) {
     arg = FileOpsExtra_1.Dirs.slash(arg);
     if (arg.startsWith('/')) {
+        //do nothing, full path is arg
     }
-    else if (arg.startsWith('..')) {
+    else if (arg.startsWith('..')) { // few  cases to test
         arg = arg.substring(2);
         let d = cwd;
         d = FileOpsExtra_1.Dirs.slash(d);
+        // find offset
         let n = d.lastIndexOf('/');
         d = d.substring(0, n);
         arg = d + arg;
     }
-    else {
+    else { // just plain, dir passed
         arg = cwd + '/' + arg;
     }
 }
+// start: /////////////////////////////////////////////////////////////////////////////////////
 if (argsParsed.elect)
     unzipE();
 else if (argsParsed.phonegap)

@@ -1,8 +1,10 @@
 "use strict";
+// All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
+// NOTE: You can extend these classes!
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v8.2.2';
+        return 'v8.2.4';
     }
     static date() {
         return new Date().toISOString();
@@ -16,7 +18,7 @@ class MBakeX {
             try {
                 console.info(' Clearing ' + path_);
                 let dir = FileOpsExtra_1.Dirs.slash(path_);
-                const rec = FileHound.create()
+                const rec = FileHound.create() //recursive
                     .paths(dir)
                     .ext(['pug', 'yaml', 'js', 'ts', 'scss', 'sass', 'md'])
                     .findSync();
@@ -39,6 +41,7 @@ class MBakeX {
 exports.MBakeX = MBakeX;
 const sharp = require("sharp");
 const probe = require("probe-image-size");
+// OK
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
@@ -46,15 +49,16 @@ const log = bunyan.createLogger({ src: true, stream: formatOut, name: "x" });
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Resize {
     do(dir) {
         log.info(dir);
-        const rec = FileHound.create()
+        const rec = FileHound.create() //recursive
             .paths(dir)
             .ext('jpg')
             .findSync();
-        let ret = [];
-        for (let s of rec) {
+        let ret = []; //empty string array
+        for (let s of rec) { //clean the strings
             let n = s.slice(0, -4);
             if (n.includes('.min'))
                 continue;
@@ -93,6 +97,6 @@ class Resize {
             trellisQuantisation: true
         })
             .toFile(file + '.32.min.jpg');
-    }
-}
+    } //()
+} //class
 exports.Resize = Resize;

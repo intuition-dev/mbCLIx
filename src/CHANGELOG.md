@@ -1,3 +1,5 @@
+## 8.2.4
+- droped ts
 
 ## 8.2.2
 - es5 droped

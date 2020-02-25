@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v8.2.2'
+      return 'v8.2.4'
    }
    static date(): string {
       return new Date().toISOString()

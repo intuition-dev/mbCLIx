@@ -1,12 +1,12 @@
 
 node_modules/
+*.ts
 
 *.sh
 *.cmd
 
 .DS_Store
 
-gitdown.yaml
 
 
 
