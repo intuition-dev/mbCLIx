@@ -11,7 +11,7 @@ import { FileOps } from 'mbake/lib/FileOpsBase'
 
 import { Dirs} from 'agentg/lib/FileOpsExtra'
 
-import { DownloadFrag, VersionNag, DownloadC  } from 'agentg/lib/FileOpsExtra'
+import { VersionNag, DownloadC  } from 'agentg/lib/FileOpsExtra'
 
 import { Cover } from './lib/cov'
 
@@ -40,7 +40,6 @@ function help() {
    console.info('  To bake with production ENV flag(3) in prod:                 mbakex --bakeP .')
 
    console.info()
-   console.info('  Download fragment to setup the app devOps:                   mbakex --ops .')
    console.info('  Add|clone an item|page from:to :                             mbakex --add dir:source:target')
 
    console.info()
@@ -83,7 +82,6 @@ const optionDefinitions = [
    { name: 'bakeS', type: Boolean },
    { name: 'bakeD', type: Boolean },
 
-   { name: 'ops', type: Boolean },
    { name: 'add', type: Boolean },
 
    { name: 'cover', type: Boolean },
@@ -118,11 +116,6 @@ function cover(arg) {
    Cover.run(VMdir, TestDir)
 }
 
-
-function frag(arg) {
-   new DownloadFrag(arg, true)
-}
-
 function add(arg) {
    const args = arg.split(':')
    let dir:string = args[0]
@@ -155,7 +148,6 @@ function map(arg) {
 function img(arg) {
    new Resize().do(arg)
 }
-
 
 function src(arg) {
    new MBakeX().clearSrc(arg)
@@ -222,8 +214,6 @@ if (argsParsed.elect)
       bakeS(arg)
    else if (argsParsed.bakeD)
       bakeD(arg)
-   else if (argsParsed.ops)
-      frag(arg)
    else if (argsParsed.add)
       add(arg)
    else if (argsParsed.cover)
