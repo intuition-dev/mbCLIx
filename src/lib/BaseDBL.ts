@@ -1,23 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
 const formatOut = bformat({ outputMode: 'short' });
 const fs = require('fs-extra');
-class BaseDBL {
-    constructor() {
-        this.MAXINT = 9223372036854775807;
-        this.log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
-        this.BDatabase = require('better-sqlite3');
-    }
+
+export class BaseDBL {
+
+    MAXINT = 9223372036854775807;
+
+    log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
+    BDatabase = require('better-sqlite3');
+    
+    _fn
+    _db
+    
     /**
      * connect with defaults, not using RAM as default
      * @param path
      * @param fn
      * @param mem  defaults to 256000000000 // 256 meg in cache and file map
      */
-    defCon(path, fn, mem) {
+    defCon(path, fn, mem?) {
         this._fn = path + fn;
         this.log.info(this._fn);
         this._db = new this.BDatabase(this._fn);
@@ -39,6 +42,7 @@ class BaseDBL {
         this._db.pragma('locking_mode=NORMAL'); // 3rd party connection,  NORMAL or EXCLUSIVE
         this.log.info(this._db.pragma('locking_mode', { simple: true }));
     } //()
+
     tableExists(tab) {
         try {
             const row = this.readOne("SELECT name FROM sqlite_master WHERE type=\'table\' AND name= ?", tab);
@@ -50,16 +54,19 @@ class BaseDBL {
             return false;
         }
     } //()
+
     // returns # of rows changed
     write(sql, ...args) {
         const stmt = this._db.prepare(sql);
         const info = stmt.run(args);
         return info.changes;
     }
+
     read(sql, ...args) {
         const stmt = this._db.prepare(sql);
         return stmt.all(args);
     }
+
     /**
     like read, but returns only the first row
     */
@@ -67,15 +74,19 @@ class BaseDBL {
         const stmt = this._db.prepare(sql);
         return stmt.get(args);
     }
+
     BEGIN() {
         this.write('BEGIN');
     }
+
     COMMIT() {
         this.write('COMMIT');
     }
+
     ROLLBACK() {
         this.write('ROLLBACK');
     }
+
     delDB() {
         try {
             this._db.close();
@@ -85,10 +96,11 @@ class BaseDBL {
             this.log.warn(err);
         }
     } //()
+    
     async backup(newName) {
         await this._db.backup(newName, { progress({ totalPages: t, remainingPages: r }) {
                 this.log.info(r);
             } });
     } //()
 } //class
-exports.BaseDBL = BaseDBL;
+

@@ -32,7 +32,6 @@ function help() {
     console.info('  To bake with staging ENV flag(2) in prod:                    mbakex --bakeS .');
     console.info('  To bake with production ENV flag(3) in prod:                 mbakex --bakeP .');
     console.info();
-    console.info('  Download fragment to setup the app devOps:                   mbakex --ops .');
     console.info('  Add|clone an item|page from:to :                             mbakex --add dir:source:target');
     console.info();
     console.info('  To map map.yaml to sitemap.xml                               mbakex -m .');
@@ -62,7 +61,6 @@ const optionDefinitions = [
     { name: 'bakeP', type: Boolean },
     { name: 'bakeS', type: Boolean },
     { name: 'bakeD', type: Boolean },
-    { name: 'ops', type: Boolean },
     { name: 'add', type: Boolean },
     { name: 'cover', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
@@ -88,9 +86,6 @@ function cover(arg) {
     const VMdir = res[0];
     const TestDir = res[1];
     cov_1.Cover.run(VMdir, TestDir);
-}
-function frag(arg) {
-    new FileOpsExtra_2.DownloadFrag(arg, true);
 }
 function add(arg) {
     const args = arg.split(':');
@@ -179,8 +174,6 @@ else if (argsParsed.bakeS)
     bakeS(arg);
 else if (argsParsed.bakeD)
     bakeD(arg);
-else if (argsParsed.ops)
-    frag(arg);
 else if (argsParsed.add)
     add(arg);
 else if (argsParsed.cover)
