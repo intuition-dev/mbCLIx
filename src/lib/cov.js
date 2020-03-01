@@ -1,4 +1,11 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const bunyan = require('bunyan');
 const bformat = require('bunyan-format2');
@@ -6,7 +13,7 @@ const formatOut = bformat({ outputMode: 'short' });
 const log = bunyan.createLogger({ src: true, stream: formatOut, name: "cov" });
 const fs = require("fs-extra");
 const FileHound = require('filehound');
-const ts = require("typescript");
+const ts = __importStar(require("typescript"));
 /**
  NOT MULTI INSTANCE or CONCURRENT
 **/

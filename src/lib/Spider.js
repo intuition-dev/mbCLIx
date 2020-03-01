@@ -1,10 +1,13 @@
 "use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
-const axios_1 = require("axios");
+const axios_1 = __importDefault(require("axios"));
 const probe = require("probe-image-size");
 const extractor = require("unfluff"); //scrape
 // const SummarizerManager = require("node-summarizer").SummarizerManager

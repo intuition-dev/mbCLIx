@@ -44,9 +44,6 @@ function help() {
     console.info('    Note: . is current directory, or use any path instead of .');
     console.info(' -------------------------------------------------------------');
     console.info();
-    console.info(' Starters:');
-    console.info('  For a Electron(pre-PhoneGap) app:                           mbakex -e');
-    console.info('  For a starter hybrid Phonegap app:                          mbakex -o');
     console.info();
 } //()
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,8 +62,6 @@ const optionDefinitions = [
     { name: 'cover', type: Boolean },
     { name: 'map', alias: 'm', type: Boolean },
     { name: 'img', alias: 'i', type: Boolean },
-    { name: 'elect', alias: 'e', type: Boolean },
-    { name: 'phonegap', alias: 'o', type: Boolean },
 ];
 const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed['mbakex'];
@@ -96,15 +91,6 @@ function add(arg) {
     console.log(dir, args);
     const f = new FileOpsBase_1.FileOps(dir);
     f.clone(args[1], args[2]);
-}
-// unzip: ////////////////////////////////////////////////////////////////////////////////////////////
-function unzipG() {
-    new FileOpsExtra_2.DownloadC('phoneGap', __dirname).autoUZ();
-    console.info('Extracted a starter PhoneGap app');
-}
-function unzipE() {
-    new FileOpsExtra_2.DownloadC('electron', __dirname).autoUZ();
-    console.info('Extracted a starter Electron app');
 }
 //  ////////////////////////////////////////////////////////////////////////////////////////////////
 function map(arg) {
@@ -154,11 +140,7 @@ if (arg) {
     }
 }
 // start: /////////////////////////////////////////////////////////////////////////////////////
-if (argsParsed.elect)
-    unzipE();
-else if (argsParsed.phonegap)
-    unzipG();
-else if (argsParsed.watcher) {
+if (argsParsed.watcher) {
     Wa_1.Wa.watch(arg, argsParsed.port, argsParsed['reload-port']);
 }
 else if (argsParsed.img) {
