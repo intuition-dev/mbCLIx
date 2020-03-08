@@ -32,7 +32,7 @@ class Map {
     gen() {
         //return new Promise(function (resolve, reject) {
         const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'));
-        this._sitemap = sitemap_1.createSitemap({ hostname: m['hostname'] });
+        this._sitemap = new sitemap_1.SitemapStream({ hostname: m['hostname'] });
         const hostname = m['hostname'];
         log.info(hostname);
         const rec = FileHound.create() //recursive

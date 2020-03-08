@@ -28,8 +28,8 @@
         "luxon": ">=1.22.0",
         "mbake": ">=8.2.11",
         "probe-image-size": ">=5.0.0",
-        "sharp": ">=0.24.1",
-        "sitemap": ">=5.1.0",
+        "sharp": ">=0.25.1",
+        "sitemap": ">=6.0.0",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {

@@ -24,7 +24,7 @@ import yaml = require('js-yaml')
 
 import fs = require('fs-extra')
 import FileHound = require('filehound')
-import { createSitemap } from 'sitemap';
+import { SitemapStream } from 'sitemap';
 
 export class Map {
    _sitemap
@@ -44,7 +44,7 @@ export class Map {
 
       const m = yaml.load(fs.readFileSync(this._root + '/map.yaml'))
 
-      this._sitemap = createSitemap ( { hostname: m['hostname']}  ) 
+      this._sitemap = new SitemapStream ( { hostname: m['hostname']}  ) 
       
       const hostname = m['hostname']
       log.info(hostname)
