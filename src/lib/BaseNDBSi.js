@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
+const terse_b_1 = require("terse-b/terse-b");
 const fs = require('fs-extra');
-class BaseDBL {
+/**
+ * Native SQLite. There is also a reglar SQLite, so don't be confused with this native SQLite
+ */
+class BaseNDBSi {
     constructor() {
         this.MAXINT = 9223372036854775807;
-        this.log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
+        this.log = new terse_b_1.TerseB(this.constructor.name);
         this.BDatabase = require('better-sqlite3');
     }
     /**
@@ -91,4 +92,4 @@ class BaseDBL {
             } });
     } //()
 } //class
-exports.BaseDBL = BaseDBL;
+exports.BaseNDBSi = BaseNDBSi;

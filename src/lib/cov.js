@@ -7,13 +7,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "cov" });
 const fs = require("fs-extra");
 const FileHound = require('filehound');
+const terse_b_1 = require("terse-b/terse-b");
 const ts = __importStar(require("typescript"));
+const log = new terse_b_1.TerseB(this.constructor.name);
 /**
  NOT MULTI INSTANCE or CONCURRENT
 **/
@@ -42,7 +40,6 @@ class Cover {
             Cover._cfile(f);
             Cover.memberList = new Set([]); //reset for next
         }
-        log.info();
         const tstFiles = FileHound.create() // hard coded but does not need to be:
             .paths(testsDir)
             .ext('js')
@@ -66,10 +63,9 @@ class Cover {
             Cover.clazzList[key] = value;
         });
         Object.keys(Cover.clazzList).forEach(key => {
-            log.info();
             totalClzCount++;
             if (key in Cover.tstList) { // Clz has
-                log.info('*', key);
+                console.info('*', key);
                 tstClzCount++;
                 const members = Cover.clazzList[key];
                 totalCount = totalCount + members.size;
@@ -77,31 +73,31 @@ class Cover {
                 tstCount = tstCount + tests.size;
                 // using data structures, not AST:
                 let intersection = new Set([...members].filter(x => tests.has(x)));
-                log.info('Tested:', Array.from(intersection).sort());
+                console.info('Tested:', Array.from(intersection).sort());
                 let minus = new Set([...members].filter(x => !tests.has(x)));
-                log.info('Not Tested:', Array.from(minus).sort());
+                console.info('Not Tested:', Array.from(minus).sort());
             } //fi
             else
-                log.info('** No tests for', key);
+                console.info('** No tests for', key);
         }); //loop
-        log.info();
-        log.info('REPORT:');
-        log.info('Classes:', totalClzCount);
-        log.info('Tested Classes:', tstClzCount);
-        log.info('Of tested Classes, their prop #:', totalCount);
-        log.info('Tested props:', tstCount);
-        log.info();
+        console.info();
+        console.info('REPORT:');
+        console.info('Classes:', totalClzCount);
+        console.info('Tested Classes:', tstClzCount);
+        console.info('Of tested Classes, their prop #:', totalCount);
+        console.info('Tested props:', tstCount);
+        console.info();
     } //()
     /**
      Tester file
     @param fullFileName
      */
     static _tfile(fullFileName) {
-        log.info(fullFileName);
+        console.info(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitTst(ast);
-        //log.info(Cover.tstList)
+        //console.info(Cover.tstList)
     }
     static _visitTst(node) {
         // declared
@@ -128,12 +124,12 @@ class Cover {
       @param fullFileName
      *****************/
     static _cfile(fullFileName) {
-        log.info(fullFileName);
+        console.info(fullFileName);
         const f = fs.readFileSync(fullFileName).toString();
         const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true);
         Cover._visitClass(ast);
         Cover.clazzList[Cover.curClazz] = Cover.memberList;
-        //log.info(Cover.clazzList)
+        //console.info(Cover.clazzList)
     } //()
     static _visitClass(node) {
         if (ts.isClassDeclaration(node))

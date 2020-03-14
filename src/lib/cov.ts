@@ -1,12 +1,10 @@
 
-
- 
-
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "cov"})
 import fs = require('fs-extra')
 const FileHound = require('filehound')
-
+import { TerseB } from "terse-b/terse-b"
 import * as ts from 'typescript'
+
+const log:any = new TerseB(this.constructor.name) 
 
 /** 
  NOT MULTI INSTANCE or CONCURRENT
@@ -38,7 +36,7 @@ export class Cover {
          Cover._cfile(f)
          Cover.memberList= new Set([]) //reset for next
       }
-      log.info()
+      
       const tstFiles = FileHound.create() // hard coded but does not need to be:
          .paths(testsDir)
          .ext('js')
@@ -65,10 +63,9 @@ export class Cover {
      })
 
       Object.keys(Cover.clazzList).forEach( key =>  {
-         log.info()
          totalClzCount ++
          if(key in Cover.tstList) { // Clz has
-            log.info('*',key)
+            console.info('*',key)
             tstClzCount ++
             const members:Set<string> = Cover.clazzList[key]
             totalCount = totalCount + members.size
@@ -77,21 +74,21 @@ export class Cover {
 
             // using data structures, not AST:
             let intersection = new Set( [...members] .filter(x => tests.has(x)))
-            log.info('Tested:', Array.from(intersection).sort() )
+            console.info('Tested:', Array.from(intersection).sort() )
             let minus =  new Set( [...members].filter(x => !tests.has(x)) )
-            log.info('Not Tested:', Array.from(minus).sort() )
+            console.info('Not Tested:', Array.from(minus).sort() )
          } //fi
-         else log.info('** No tests for',key)
+         else console.info('** No tests for',key)
 
       })//loop
 
-      log.info()
-      log.info('REPORT:')
-      log.info('Classes:', totalClzCount )
-      log.info('Tested Classes:', tstClzCount )
-      log.info('Of tested Classes, their prop #:', totalCount )
-      log.info('Tested props:', tstCount )
-      log.info()
+      console.info()
+      console.info('REPORT:')
+      console.info('Classes:', totalClzCount )
+      console.info('Tested Classes:', tstClzCount )
+      console.info('Of tested Classes, their prop #:', totalCount )
+      console.info('Tested props:', tstCount )
+      console.info()
    }//()
 
    /**
@@ -99,11 +96,11 @@ export class Cover {
    @param fullFileName 
     */
    static _tfile(fullFileName) {
-      log.info(fullFileName)
+      console.info(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       Cover._visitTst(ast)
-      //log.info(Cover.tstList)
+      //console.info(Cover.tstList)
    }
    static ids = {}
    static tstList = {}
@@ -133,12 +130,12 @@ export class Cover {
      @param fullFileName 
     *****************/
    static _cfile(fullFileName) {
-      log.info(fullFileName)
+      console.info(fullFileName)
       const f:string = fs.readFileSync(fullFileName).toString()
       const ast = ts.createSourceFile(fullFileName, f, ts.ScriptTarget.Latest, true)
       Cover._visitClass(ast)
       Cover.clazzList[Cover.curClazz] = Cover.memberList
-      //log.info(Cover.clazzList)
+      //console.info(Cover.clazzList)
    }//()
    static clazzList= {}
    static curClazz:string

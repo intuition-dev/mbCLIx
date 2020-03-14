@@ -12,11 +12,8 @@ import extractor = require('unfluff')//scrape
 // const SummarizerManager = require("node-summarizer").SummarizerManager
 const cheerio = require('cheerio')
 
-
- 
-
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "spider"})
-
+import { TerseB } from "terse-b/terse-b"
+const log:any = new TerseB('Spider') 
 // map
 import sm = require('sitemap')
 

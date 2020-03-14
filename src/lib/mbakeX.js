@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class MBakeX {
     static verx() {
-        return 'v8.3.0';
+        return 'v8.3.2';
     }
     static date() {
         return new Date().toISOString();
@@ -42,10 +42,8 @@ exports.MBakeX = MBakeX;
 const sharp = require("sharp");
 const probe = require("probe-image-size");
 // OK
-const bunyan = require('bunyan');
-const bformat = require('bunyan-format2');
-const formatOut = bformat({ outputMode: 'short' });
-const log = bunyan.createLogger({ src: true, stream: formatOut, name: "x" });
+const terse_b_1 = require("terse-b/terse-b");
+const log = new terse_b_1.TerseB('mbakeX');
 const FileHound = require("filehound");
 const fs = require("fs-extra");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");

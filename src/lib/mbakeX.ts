@@ -3,7 +3,7 @@
 
 export class MBakeX {
    static verx() {
-      return 'v8.3.0'
+      return 'v8.3.2'
    }
    static date(): string {
       return new Date().toISOString()
@@ -49,9 +49,9 @@ import probe = require('probe-image-size')
 
 // OK
 
- 
+import { TerseB } from "terse-b/terse-b"
+const log:any = new TerseB('mbakeX') 
 
-const log = bunyan.createLogger({src: true, stream: formatOut, name: "x"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')
 import { Dirs} from 'agentg/lib/FileOpsExtra'

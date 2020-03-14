@@ -1,14 +1,16 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
-;
-;
-;
+import { TerseB } from "terse-b/terse-b"
+
 const fs = require('fs-extra');
 
-export class BaseDBL {
+/**
+ * Native SQLite. There is also a reglar SQLite, so don't be confused with this native SQLite
+ */
+export class BaseNDBSi {
 
     MAXINT = 9223372036854775807;
 
-    log = bunyan.createLogger({ src: true, stream: formatOut, name: this.constructor.name });
+    log:any = new TerseB(this.constructor.name) 
     BDatabase = require('better-sqlite3');
     
     _fn
