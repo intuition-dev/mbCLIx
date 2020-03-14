@@ -48,9 +48,9 @@ import sharp = require('sharp')
 import probe = require('probe-image-size')
 
 // OK
-const bunyan = require('bunyan')
-const bformat = require('bunyan-format2')  
-const formatOut = bformat({ outputMode: 'short' })
+
+ 
+
 const log = bunyan.createLogger({src: true, stream: formatOut, name: "x"})
 import FileHound = require('filehound')
 import fs = require('fs-extra')

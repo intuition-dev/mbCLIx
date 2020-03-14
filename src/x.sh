@@ -2,10 +2,10 @@
 clear
 tsc
 
-# node mbakex.js --add .:lib:lib2 
+# DEV=true node mbakex.js --add .:lib:lib2 
 
 
-# node mbakex.js -i .
+# DEV=true node mbakex.js -i .
 
 
-node mbakex.js --gitDown .
+DEV=true node mbakex.js --gitDown .
