@@ -7,7 +7,7 @@ import { SDB } from './lib/SDB';
 const yaml = require("js-yaml")
 const fs = require("fs-extra")
 
-const srv = new Serv(['*'])
+const srv = new Serv(['*'],4 *1024)
 const port = 3000
 
 let db:SDB
