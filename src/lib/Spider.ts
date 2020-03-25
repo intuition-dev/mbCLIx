@@ -5,7 +5,8 @@ import { Dat} from 'mbake/lib/FileOpsBase'
 
 import { Dirs} from 'agentg/lib/FileOpsExtra'
 
-import axios from 'axios'
+const fetch = require('make-fetch-happen')
+
 import probe = require('probe-image-size')
 import extractor = require('unfluff')//scrape
 
@@ -81,16 +82,9 @@ export class Map {
 export class Scrape {
 
    constructor() {
-      axios.defaults.responseType = 'document'
+      //axios.defaults.responseType = 'document'
    }
 
-   //delete me
-   tst() {
-      const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421'
-      this.s(u1).then(function(ret){
-         log.info(ret)
-      })
-   }
 
    // most likely write to dat.yaml after folder is named
    s(url:string, selector?:string) {
@@ -99,7 +93,7 @@ export class Scrape {
          try {
             console.info(url)
             //feed json items
-            axios.get(url).then(function (response) {
+            fetch(url).then(function (response) {
                let ret = new Object()
                const $ = cheerio.load(response.data)
                if(!selector) selector = 'body'
