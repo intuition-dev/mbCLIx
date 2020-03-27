@@ -1,13 +1,10 @@
 "use strict";
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
-const axios_1 = __importDefault(require("axios"));
+const fetch = require('make-fetch-happen');
 const probe = require("probe-image-size");
 const extractor = require("unfluff"); //scrape
 // const SummarizerManager = require("node-summarizer").SummarizerManager
@@ -59,14 +56,7 @@ exports.Map = Map;
 // //////////////////////////////////////////////////////////////////////////////
 class Scrape {
     constructor() {
-        axios_1.default.defaults.responseType = 'document';
-    }
-    //delete me
-    tst() {
-        const u1 = 'https://www.nbcnews.com/think/opinion/why-trump-all-americans-must-watch-ava-duvernay-s-central-ncna1019421';
-        this.s(u1).then(function (ret) {
-            log.info(ret);
-        });
+        //axios.defaults.responseType = 'document'
     }
     // most likely write to dat.yaml after folder is named
     s(url, selector) {
@@ -75,7 +65,7 @@ class Scrape {
             try {
                 console.info(url);
                 //feed json items
-                axios_1.default.get(url).then(function (response) {
+                fetch(url).then(function (response) {
                     let ret = new Object();
                     const $ = cheerio.load(response.data);
                     if (!selector)
