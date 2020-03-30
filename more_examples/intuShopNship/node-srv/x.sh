@@ -1,3 +1,3 @@
 clear
 tsc
-DEV=true node index.js
+ node index.js
