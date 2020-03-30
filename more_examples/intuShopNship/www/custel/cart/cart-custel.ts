@@ -73,7 +73,7 @@ depp.require(['poly', 'mustache'], function () { // inside the require
       constructor() {
          super()
          console.log('CART WCOMP')
-         this.sr = this.attachShadow({ mode: 'closed' })
+         this.sr = this.attachShadow({ mode: 'open' })
          this.tmpl = c2Temp.innerHTML
       }//cons
 
