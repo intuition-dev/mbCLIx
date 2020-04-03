@@ -1,7 +1,7 @@
 {
     "name": "mbakex",
     "preferGlobal": true,
-    "version": "8.4.5",
+    "version": "8.4.7",
     "description": " Extra commands for INTUITION.DEV's mbake CLI, including a native SQLite helper. ",
     "bin": "mbakex.js",
     "license": "LGPL-3.0-only",
@@ -18,13 +18,13 @@
         "CRUD"
     ],
     "engines": {
-        "node": ">=12.16.1"
+        "node": ">=13.12.0"
     },
     "dependencies": {
         "better-sqlite3": ">=6.0.1",
         "cheerio": ">=1.0.0-rc.3",
         "filehound": ">=1.17.4",
-        "mbake": ">=8.4.5",
+        "mbake": ">=8.4.7",
         "probe-image-size": ">=5.0.0",
         "sharp": ">=0.25.2",
         "sitemap": ">=6.1.0",

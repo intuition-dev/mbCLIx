@@ -1,4 +1,4 @@
-## 8.3.5
+## 8.4.7
 - renamed sqlite name to BaseNDBSi from BaseDBL
 - added new terseB log
 
