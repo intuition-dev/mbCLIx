@@ -15,6 +15,6 @@
     "mbake": ">=6.7.24"
   },
   "devDependencies": {
-    "@types/node": ">=12.6.2"
+    "@types/node": ">=13.11.0"
   }
 }
