@@ -28,9 +28,11 @@
         "probe-image-size": ">=5.0.0",
         "sharp": ">=0.25.2",
         "sitemap": ">=6.1.1",
+        "minimist": "^1.2.5",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {
+        "minimist": "^1.2.5",
         "@marp-team/marpit": ">=1.5.2",
         "@types/node": ">=13.13.1",
         "ip": ">=1.1.5",
