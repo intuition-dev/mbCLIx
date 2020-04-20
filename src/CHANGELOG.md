@@ -1,3 +1,7 @@
+## 8.4.16
+- version bump
+
+
 ## 8.4.12
 - renamed sqlite name to BaseNDBSi from BaseDBL
 - added new terseB log
