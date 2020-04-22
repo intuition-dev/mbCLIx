@@ -9,12 +9,9 @@ Extra commands for INTUITION.DEV's mbake CLI, including a native SQLite helper.
 
 ## Install
 
-Note: Some of the upstream packages we user are native, so you need to : apt-get install build-essential or similar to get the platfrom C compiler. https://github.com/npm/cli/issues/287
 
 ```sh
-    apt-get install build-essential
-    npm i -g npm@next
-    npm i -g --unsafe-perm=true --allow-root mbakex
+    npm i -g mbakex
 ```
 
 [Git Repo](http://git.metabake.net)

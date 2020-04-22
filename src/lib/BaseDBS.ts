@@ -8,7 +8,7 @@ import { DateTime } from 'luxon'
 /**
  * Native SQLite. There is also a reglar SQLite, so don't be confused with this native SQLite
  */
-export class BaseNDBSi {
+export class BaseDBS {
 
     MAXINT = 9223372036854775807;
 

@@ -6,7 +6,7 @@ const fs = require('fs-extra');
 /**
  * Native SQLite. There is also a reglar SQLite, so don't be confused with this native SQLite
  */
-class BaseNDBSi {
+class BaseDBS {
     constructor() {
         this.MAXINT = 9223372036854775807;
         this.log = new terse_b_1.TerseB(this.constructor.name);
@@ -92,4 +92,4 @@ class BaseNDBSi {
             } });
     } //()
 } //class
-exports.BaseNDBSi = BaseNDBSi;
+exports.BaseDBS = BaseDBS;
