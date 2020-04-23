@@ -13,13 +13,12 @@ class BaseDBS {
         this.BDatabase = require('better-sqlite3');
     }
     /**
-     * connect with defaults, not using RAM as default
-     * @param path
-     * @param fn
+     *
+     * @param pathNfn
      * @param mem  defaults to 256000000000 // 256 meg in cache and file map
      */
-    defCon(path, fn, mem) {
-        this._fn = path + fn;
+    defCon(pathNfn, mem) {
+        this._fn = pathNfn;
         this.log.info(this._fn);
         this._db = new this.BDatabase(this._fn);
         if (!mem)
