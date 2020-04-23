@@ -1,7 +1,6 @@
-const sqlite3 = require('sqlite3').verbose()
 const fs = require('fs-extra')
 
-import { BaseDB } from 'mbake/lib/BaseDB'
+import { BaseSDB } from 'mbakex/lib/BaseSDB'
 
 export class SDB extends BaseDB {
 
