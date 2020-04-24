@@ -1,7 +1,7 @@
 
 ## 8.4.22
 - moved sql
-- removed npm i -g --unsafe-perm=true --allow-root mbakex note
+- removed npm i -g --unsafe-perm=true --allow-root mbakex 
 
 ## 8.4.16
 - version bump
