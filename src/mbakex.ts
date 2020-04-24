@@ -95,6 +95,7 @@ VersionNag.isCurrent('mbakex', MBakeX.verx() ).then(function(isCurrent_:boolean)
    try{
    if(!isCurrent_) 
       console.log('There is a newer version of mbakex, please update.')
+      else console.log('Current')
 
    } catch(err) {
       console.log(err)

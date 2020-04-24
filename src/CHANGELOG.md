@@ -1,5 +1,5 @@
 
-## 8.4.21
+## 8.4.22
 - moved sql
 - removed npm i -g --unsafe-perm=true --allow-root mbakex note
 

@@ -8,4 +8,4 @@ tsc
 #  node mbakex.js -i .
 
 
- node mbakex.js --gitDown .
+ node mbakex.js 

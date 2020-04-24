@@ -70,6 +70,8 @@ FileOpsExtra_2.VersionNag.isCurrent('mbakex', mbakeX_1.MBakeX.verx()).then(funct
     try {
         if (!isCurrent_)
             console.log('There is a newer version of mbakex, please update.');
+        else
+            console.log('Current');
     }
     catch (err) {
         console.log(err);
