@@ -21,20 +21,20 @@
         "node": ">=14.0.0"
     },
     "dependencies": {
-        "better-sqlite3": ">=6.0.1",
+        "better-sqlite3": ">=7.0.1",
         "cheerio": ">=1.0.0-rc.3",
         "filehound": ">=1.17.4",
         "mbake": ">=8.4.22",
         "probe-image-size": ">=5.0.0",
         "sharp": ">=0.25.2",
-        "sitemap": ">=6.1.1",
+        "sitemap": ">=6.1.2",
         "minimist": "^1.2.5",
         "unfluff": ">=3.2.0"
     },
     "devDependencies": {
         "minimist": "^1.2.5",
         "@marp-team/marpit": ">=1.5.2",
-        "@types/node": ">=13.13.2",
+        "@types/node": ">=13.13.4",
         "ip": ">=1.1.5",
         "ipinfo": ">=1.3.9",
         "limiter": ">=1.1.5",
