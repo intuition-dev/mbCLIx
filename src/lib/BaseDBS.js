@@ -28,7 +28,10 @@ class BaseDBS {
         this._db.pragma('busy_timeout=' + 120 * 1000); // 2 minutes
         this._db.pragma('mmap_size=' + mem); // 
         this._db.pragma('synchronous=OFF');
-        this._db.pragma('journal_mode=MEMORY'); // or WAL
+        this._db.unsafe(true);
+        this._db.pragma('journal_mode=OFF'); // MEMORY or WAL
+        this._db.pragma('SQLITE_THREADSAFE=1');
+        this._db.pragma('SQLITE_OMIT_SHARED_CACHE=true');
         this._db.pragma('wal_checkpoint=TRUNCATE'); // release memory used for rollback
         this._db.pragma('temp_store=MEMORY');
         this._db.pragma('automatic_index=false');
