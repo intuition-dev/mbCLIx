@@ -2,9 +2,10 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Resize = exports.MBakeX = void 0;
 class MBakeX {
     static verx() {
-        return 'v8.4.24';
+        return 'v8.5.0';
     }
     static date() {
         return new Date().toISOString();

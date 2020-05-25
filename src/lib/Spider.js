@@ -2,6 +2,7 @@
 // All rights reserved by Cekvenich|INTUITION.DEV) |  Cekvenich, licensed under LGPL 3.0
 // NOTE: You can extend these classes!
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Scrape = exports.Map = void 0;
 const FileOpsBase_1 = require("mbake/lib/FileOpsBase");
 const FileOpsExtra_1 = require("agentg/lib/FileOpsExtra");
 const fetch = require('make-fetch-happen');
