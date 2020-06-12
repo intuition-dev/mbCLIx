@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Resize = exports.MBakeX = void 0;
 class MBakeX {
     static verx() {
-        return 'v8.5.1';
+        return 'v8.5.2';
     }
     static date() {
         return new Date().toISOString();
