@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -24,7 +24,7 @@ const fs = require("fs-extra");
 const FileHound = require('filehound');
 const terse_b_1 = require("terse-b/terse-b");
 const ts = __importStar(require("typescript"));
-const log = new terse_b_1.TerseB(this.constructor.name);
+const log = new terse_b_1.TerseB('cov.ts');
 /**
  NOT MULTI INSTANCE or CONCURRENT
 **/

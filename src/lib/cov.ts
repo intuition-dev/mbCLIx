@@ -4,7 +4,7 @@ const FileHound = require('filehound')
 import { TerseB } from "terse-b/terse-b"
 import * as ts from 'typescript'
 
-const log:any = new TerseB(this.constructor.name) 
+const log:any = new TerseB('cov.ts') 
 
 /** 
  NOT MULTI INSTANCE or CONCURRENT
